@@ -24,7 +24,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: dissertation
-        path: sources/dissertation.pdf
+        path: sources/_00_dissertation.pdf
 
   deploy:
     runs-on: ubuntu-latest
