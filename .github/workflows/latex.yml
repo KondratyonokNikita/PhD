@@ -11,16 +11,15 @@ jobs:
     - name: Build document
       uses: xu-cheng/latex-action@v2
       with:
-        root_file: main.tex
+        root_file: _00_dissertation.tex
         working_directory: sources/
-        args: -jobname=my_doc -pdf -file-line-error -halt-on-error -interaction=nonstopmode
-        compiler: latexmk
+        latexmk_use_xelatex: true
 
     - name: Upload pdf document
       uses: actions/upload-artifact@v2
       with:
-        name: my_doc
-        path: sources/my_doc.pdf
+        name: dissertation
+        path: sources/dissertation.pdf
 
   deploy:
     runs-on: ubuntu-latest
@@ -34,13 +33,13 @@ jobs:
       - name: Variables
         id: vars
         run: |
-          echo "::set-output name=date::$(date +'%Y-%m-%d')"
+          echo "::set-output name=date::$(date +'%d-%m-%Y')"
           echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
 
       - name: Download artifacts
         uses: actions/download-artifact@v2
         with:
-          name: my_doc
+          name: dissertation
 
       - name: Create Release
         uses: actions/create-release@v1
@@ -48,8 +47,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions
         with:
-          tag_name: my_doc-${{ steps.vars.outputs.date }}-${{ steps.vars.outputs.sha8 }}
-          release_name: My Actions document (version ${{ steps.vars.outputs.date }})
+          tag_name: dissertation-${{ steps.vars.outputs.date }}-${{ steps.vars.outputs.sha8 }}
+          release_name: PhD (${{ steps.vars.outputs.date }})
           draft: false
           prerelease: false
 
@@ -59,6 +58,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./my_doc.pdf
-          asset_name: my_asset_name.pdf
+          asset_path: ./dissertation.pdf
+          asset_name: Kondratyonok_PhD.pdf
           asset_content_type: application/pdf

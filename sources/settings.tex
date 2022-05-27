@@ -1,0 +1,306 @@
+% \input glyphtounicode.tex    % копирование и поиск русских букв в pdf
+% \pdfgentounicode=1
+
+\usepackage{lastpage}
+\usepackage{caption2}
+\usepackage{epstopdf}
+
+\usepackage{lscape}
+
+\usepackage{makeidx}
+\usepackage{soul}
+\usepackage{mathrsfs}
+\usepackage[russian, english]{babel}
+\usepackage{longtable}
+
+\babelfont{rm}{Times New Roman}
+\babelfont{sf}{Times New Roman}
+
+\ProvidesPackage{literat}[1999/05/20 v0.2
+  ParaGraph Literaturnaya as default upright]
+\renewcommand{\rmdefault}{tli}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+\usepackage{euscript}
+% \usepackage{lmodern}
+
+\usepackage{amsfonts} %Математические шрифты
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem} % Для списка публикаций
+\usepackage{totcount} % Подсчет кол-ва источников для списка литературы
+\newtotcounter{citnum} %From the package documentation
+\regtotcounter{section}
+\def\oldbibitem{} \let\oldbibitem=\bibitem
+\def\bibitem{\stepcounter{citnum}\oldbibitem}
+
+% \usepackage{pscyr}
+
+% Для точки как аргумента функции
+\newcommand*{\Cdot}[1][1.25]{%
+  \mathpalette{\CdotAux{#1}}\cdot%
+}
+\newdimen\CdotAxis
+\newcommand*{\CdotAux}[3]{%
+  {%
+    \settoheight\CdotAxis{$#2\vcenter{}$}%
+    \sbox0{%
+      \raisebox\CdotAxis{%
+        \scalebox{#1}{%
+          \raisebox{-\CdotAxis}{%
+            $\mathsurround=0pt #2#3$%
+          }%
+        }%
+      }%
+    }%
+    % Remove depth that arises from scaling.
+    \dp0=0pt %
+    % Decrease scaled height.
+    \sbox2{$#2\bullet$}%
+    \ifdim\ht2<\ht0 %
+      \ht0=\ht2 %
+    \fi
+    % Use the same width as the original \cdot.
+    \sbox2{$\mathsurround=0pt #2#3$}%
+    \hbox to \wd2{\hss\usebox{0}\hss}%
+  }%
+}
+
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\rmdefault}{ftm}
+
+
+\sloppy\clubpenalty4000\widowpenalty4000
+
+% Размеры страницы мои для формата А4
+%%\setlength{\hoffset}{-1in}% убираем отступ слева в 1 дюйм
+%%\setlength{\voffset}{-1in}% убираем отступ сверху в 1 дюйм
+\setlength{\hoffset}{0mm} \setlength{\voffset}{-11mm}
+\setlength{\textheight}{247mm}% размеры текста по высоте без колонтитула
+\setlength{\textwidth}{170mm}% размеры текста по ширине
+\setlength{\topmargin}{0mm}% высота над верхним колонтитулом
+\setlength{\oddsidemargin}{1.9mm}% отступ слева
+\setlength{\evensidemargin}{-4.0mm}
+\addtolength{\evensidemargin}{8.0mm}% отступ  слева на четных страницах при двусторонней печати
+\addtolength{\oddsidemargin}{1.9mm}%отступ слева на (нечетной при двусторонней)всех страницах при односторонней печати
+%\setlength{\headheight}{17pt}% высота верхнего колонтитула( прописана отдельно в стилевом файле)
+\setlength{\headsep}{0mm}% высота между верхним колонтитулом и текстом
+\setlength{\footskip}{10mm}% высота между текстом и нижним колонтитулом
+\setlength{\marginparwidth}{0mm}% ширина заметок на полях
+\setlength{\marginparpush}{0mm}
+\setlength{\marginparsep}{0mm}% ширина между заметками на полях и текстом
+%
+
+\setlength{\parindent}{9mm} \setlength{\linespread}{1}
+
+%\pagestyle{empty}
+\pagestyle{plain}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0mm}
+
+% Из Никифорова для оборотных страниц
+\newlength{\lb}
+\setlength{\lb}{24pt}
+\newcommand{\tb}{ \hspace*{\lb}}
+\newlength{\pb}
+\setlength{\pb}{\textwidth} \addtolength{\pb}{-\lb}
+\newlength{\wlb}
+\settowidth{\wlb}{H62}
+\newlength{\wpb}
+\setlength{\wpb}{\lb} \addtolength{\wpb}{-\wlb}
+%
+
+
+% Нумерация формул
+\makeatletter \@addtoreset {equation}{section}
+%\renewcommand\theequation{\@arabic\c@section.\@arabic\c@equation}%первая section в пределах section
+%\renewcommand{\theequation}{\thechapter.\arabic{equation}}%первая chapter в пределах section
+\renewcommand\theequation{\thesection.\@arabic\c@equation}%первые chapter и section
+
+%После названия точка
+\makeatletter
+\def\@seccntformat#1{\csname the#1\endcsname\quad}
+\makeatother
+
+%Hacks fo less count of overfulls
+\pretolerance=200
+\tolerance=500
+
+%definitions of some symbols
+
+\def\proof{\par\noindent{Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о}.\ }
+\def\proofo{\par\noindent{Д\,о\,к\,а\,з\,а\,т\,е\,л\,ь\,с\,т\,в\,о}\ }
+\def\endproof{\hfill{$\otimes$}}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%% Кусок для теоремоподобных окружений
+\gdef\theoremstyle#1{%
+   \@ifundefined{th@#1}{\@warning
+          {Unknown theoremstyle `#1'. Using `plain'}%
+          \theorem@style{plain}}%
+      {\theorem@style{#1}}%
+      \begingroup
+        \csname th@\the\theorem@style \endcsname
+      \endgroup}
+\global\let\@begintheorem\relax
+\global\let\@opargbegintheorem\relax
+\newtoks\theorem@style
+\global\theorem@style{plain}
+\gdef\theorembodyfont#1{%
+   \def\@tempa{#1}%
+   \ifx\@tempa\@empty
+    \theorem@bodyfont{}%
+   \else
+    \theorem@bodyfont{\reset@font#1}%
+   \fi
+   }
+\newtoks\theorem@bodyfont
+\global\theorem@bodyfont{}
+\gdef\theoremheaderfont#1{\gdef\theorem@headerfont{#1}%
+       \gdef\theoremheaderfont##1{%
+        \typeout{\string\theoremheaderfont\space should be used
+                 only once.}}}
+\ifx\upshape\undefined
+\gdef\theorem@headerfont{\bfseries}
+\else \gdef\theorem@headerfont{\normalfont\bfseries}\fi
+\begingroup
+\gdef\th@plain{\normalfont\itshape
+  \def\@begintheorem##1##2{%
+        \item[\indent\hskip\labelsep \theorem@headerfont ##1\ ##2.]}%
+\def\@opargbegintheorem##1##2##3{%
+   \item[\indent\hskip\labelsep \theorem@headerfont ##1\ ##2\ ##3.]}}
+%\endgroup
+%%%%%%%%%%%% стиль как в Определениях
+%\begingroup
+\gdef\th@defn{\normalfont\itshape
+  \def\@begintheorem##1##2{%
+        \item[\indent\hskip\labelsep ##1\ ##2.]}%
+\def\@opargbegintheorem##1##2##3{%
+   \item[\indent\hskip\labelsep ##1\ ##2\ ##3.]}}
+%\endgroup
+%%%%%%%%%%%% стиль для упражнений
+%\begingroup
+\gdef\th@exes{\small
+  \def\@begintheorem##1##2{%
+        \item[\indent\hskip\labelsep ##1\ ##2.]}%
+\def\@opargbegintheorem##1##2##3{%
+   \item[\indent\hskip\labelsep ##1\ ##2\ ##3.]}}
+\endgroup
+\gdef\@xnthm#1#2[#3]{\expandafter\@ifdefinable\csname #1\endcsname
+   {%
+    \@definecounter{#1}\@newctr{#1}[#3]%
+    \expandafter\xdef\csname the#1\endcsname
+      {\expandafter \noexpand \csname the#3\endcsname
+       \@thmcountersep \@thmcounter{#1}}%
+    \def\@tempa{\global\@namedef{#1}}%
+    \expandafter \@tempa \expandafter{%
+      \csname th@\the \theorem@style
+            \expandafter \endcsname \the \theorem@bodyfont
+     \@thm{#1}{#2}}%
+    \global \expandafter \let \csname end#1\endcsname \@endtheorem
+   }}
+\gdef\@ynthm#1#2{\expandafter\@ifdefinable\csname #1\endcsname
+   {\@definecounter{#1}%
+    \expandafter\xdef\csname the#1\endcsname{\@thmcounter{#1}}%
+    \def\@tempa{\global\@namedef{#1}}\expandafter \@tempa
+     \expandafter{\csname th@\the \theorem@style \expandafter
+     \endcsname \the\theorem@bodyfont \@thm{#1}{#2}}%
+    \global \expandafter \let \csname end#1\endcsname \@endtheorem}}
+\gdef\@othm#1[#2]#3{%
+  \expandafter\ifx\csname c@#2\endcsname\relax
+   \@nocounterr{#2}%
+  \else
+   \expandafter\@ifdefinable\csname #1\endcsname
+   {\expandafter \xdef \csname the#1\endcsname
+     {\expandafter \noexpand \csname the#2\endcsname}%
+    \def\@tempa{\global\@namedef{#1}}\expandafter \@tempa
+     \expandafter{\csname th@\the \theorem@style \expandafter
+     \endcsname \the\theorem@bodyfont \@thm{#2}{#3}}%
+    \global \expandafter \let \csname end#1\endcsname \@endtheorem}%
+  \fi}
+\gdef\@thm#1#2{\refstepcounter{#1}%
+   \trivlist
+   \@topsep \theorempreskipamount               % used by first \item
+   \@topsepadd \theorempostskipamount           % used by \@endparenv
+   \@ifnextchar [%
+   {\@ythm{#1}{#2}}%
+   {\@begintheorem{#2}{\csname the#1\endcsname}\ignorespaces}}
+\global\let\@xthm\relax
+\newskip\theorempreskipamount
+\newskip\theorempostskipamount
+\global\setlength\theorempreskipamount{12pt plus 5pt minus 3pt}
+\global\setlength\theorempostskipamount{8pt plus 3pt minus 1.5pt}
+\global\let\@endtheorem=\endtrivlist
+\@onlypreamble\@xnthm
+\@onlypreamble\@ynthm
+\@onlypreamble\@othm
+\@onlypreamble\newtheorem
+\@onlypreamble\theoremstyle
+\@onlypreamble\theorembodyfont
+\@onlypreamble\theoremheaderfont
+\theoremstyle{plain}
+
+\makeatother
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{statement}{Утверждение}[section]
+\newtheorem{proposition}{Предложение}[section]
+\newtheorem{theorem}{Теорема}[section]
+
+{\theoremstyle{exes}\newtheorem{exes}{У\,п\,р\,а\,ж\,н\,е\,н\,и\,е}}
+
+{\theoremstyle{defn}\theorembodyfont{\rmfamily}
+\newtheorem{definition}{О\,п\,р\,е\,д\,е\,л\,е\,н\,и\,е}[section]
+\newtheorem{example}{\bfseries{Пример}}[section]
+\newtheorem{algorithm}{А\,л\,г\,о\,р\,и\,т\,м}[section]
+\newtheorem{remark}{\itshape {Замечание}}[section]
+\newtheorem{property}{\bfseries{С\,в\,о\,й\,с\,т\,в\,о}}[section]
+\newtheorem{corollary}{\itshape{Следствие}}[section]}
+
+\newlength\eqnparsize \setlength\eqnparsize{12cm}
+
+\PicInChaper
+
+%\usepackage{titlesec}
+%\titlelabel{\thetitle.\quad}
+\usepackage{secdot}
+\sectiondot{section}
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\usepackage{subfiles}
+
+\newcommand{\onlyinsubfile}[1]{#1}
+\newcommand{\notinsubfile}[1]{}
+
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{ 
+  language=R,                     % the language of the code
+  basicstyle=\small\ttfamily, % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{Blue},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it is 1, each line
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  % frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  keywordstyle=\color{RoyalBlue},      % keyword style
+  commentstyle=\color{YellowGreen},   % comment style
+  stringstyle=\color{ForestGreen}      % string literal style
+}

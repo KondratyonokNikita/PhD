@@ -1,0 +1,77 @@
+\documentclass[_dissertation.tex]{subfiles}
+\begin{document}
+
+\onlyinsubfile{
+    \renewcommand{\contentsname}{ОГЛАВЛЕНИЕ}
+    \setcounter{tocdepth}{3}
+    \tableofcontents
+}
+
+\newpage
+\begin{center}
+    \refstepcounter{section}
+    \section*{ГЛАВА \arabic{section}.\\ ПРЕДВАРИТЕЛЬНЫЕ СВЕДЕНИЯ}\label{ch:Prelimiaries}
+    \addcontentsline{toc}{chapter}{ГЛАВА \arabic{section}. ПРЕДВАРИТЕЛЬНЫЕ СВЕДЕНИЯ}
+\end{center}
+
+Пусть $R$ -- дедекиндово кольцо.
+Нормой $\Nm{\ideal{n}}$ идеала $\ideal{n} \subset R$ называется мощность факторкольца $R/\ideal{n}$.
+
+Идеал $\ideal{n} \subset R$ называется простым, если факторкольцо $R/\ideal{n}$ является областью целостности.
+Собственный идеал $\ideal{n} \subset R$ называется максимальным, если он не содержится ни в каком другом собственном идеале.
+Любой максимальный идеал является простым.
+
+Далее предполагаем, что для любого  максимального идеала $\ideal{n} \subset R$ факторкольцо $R/\ideal{n}$ конечно.
+
+\begin{definition}
+    Для любого кольца $K$ через $K^{\times}$ обозначим множество обратимых элементов кольца $K$ с нулем.
+\end{definition}
+
+\begin{definition}
+    Функцией Эйлера идеала $\ideal{n} \subset R$ называется функция
+    \begin{equation*}
+        \varphi(\ideal{n}) = |(R/\ideal{n})^{\times}|.
+    \end{equation*}
+\end{definition}
+
+\begin{statement}\cite{Narkiewicz}\label{statement:euler_function}
+    Пусть $\ideal{n}$ -- идеал кольца $R$.
+    Тогда
+    \begin{equation*}
+        \varphi(\ideal{n}) = \Nm{\ideal{n}} \prod_{\ideal{p} | \ideal{n}} \left(
+            1 - \frac{1}{\Nm{\ideal{p}}}
+        \right),
+    \end{equation*}
+    где произведение берется по всем простым идеалам $\ideal{p}$, делящим $\ideal{n}$.
+    Если $x \in R$ и $(xR, \ideal{n}) = 1$, то
+    \begin{equation*}
+        x^{\varphi(\ideal{n})} \equiv 1 (\modul \ideal{n})
+    \end{equation*}
+\end{statement}
+
+\begin{statement}\label{statement:cauchy}
+    Если порядок конечной группы $G$ делится на простое число $p$, то $G$ содержит элементы порядка $p$.
+\end{statement}
+
+\begin{statement}\label{statement:lagrange}
+    Пусть группа $G$ конечна, и $H$ -- её подгруппа.
+    Тогда порядок $G$ равен порядку $H$, умноженному на индекс подгруппы.
+\end{statement}
+
+\begin{statement}\label{statement:chinese_remainder_theorem}
+    Пусть $\ideal{n}_1, \ideal{n}_2, \dots, \ideal{n}_k$ -- попарно взаимнопростые идеалы кольца $R$.
+    Тогда
+    \begin{equation*}
+        \begin{split}
+            R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k) \cong & (R/\ideal{n}_1) \times (R/\ideal{n}_2) \times \dots \times (R/\ideal{n}_k)\\
+            (R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k))^{\times} \cong & (R/\ideal{n}_1)^{\times} \times (R/\ideal{n}_2)^{\times} \times \dots \times (R/\ideal{n}_k)^{\times}
+        \end{split}
+    \end{equation*}
+\end{statement}
+
+\onlyinsubfile{
+    \subfile{_10_bibliography}
+    \subfile{_11_pub}
+}
+
+\end{document}
