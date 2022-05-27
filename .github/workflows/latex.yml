@@ -1,39 +1,30 @@
 name: Build and deploy latex sources to GitHub Pages
-on: push
+on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
 
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Build document
-      uses: xu-cheng/latex-action@v2
-      with:
-        root_file: _00_dissertation.tex
-        working_directory: sources/
-        latexmk_use_xelatex: true
-        latexmk_shell_escape: true
-        pre_compile: |
-          apk add msttcorefonts-installer fontconfig
-          update-ms-fonts
-          fc-cache -f
+      - name: Build document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: _00_dissertation.tex
+          working_directory: sources/
+          latexmk_use_xelatex: true
+          latexmk_shell_escape: true
+          pre_compile: |
+            apk add msttcorefonts-installer fontconfig
+            update-ms-fonts
+            fc-cache -f
 
-    - name: Upload pdf document
-      uses: actions/upload-artifact@v2
-      with:
-        name: dissertation
-        path: sources/_00_dissertation.pdf
-
-  deploy:
-    runs-on: ubuntu-latest
-
-    if: github.ref == 'refs/heads/main'
-
-    needs: [build]
-
-    steps:
+      - name: Upload pdf document
+        uses: actions/upload-artifact@v2
+        with:
+          name: dissertation
+          path: sources/_00_dissertation.pdf
 
       - name: Variables
         id: vars
@@ -50,7 +41,7 @@ jobs:
         uses: actions/create-release@v1
         id: create_release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: dissertation-${{ steps.vars.outputs.date }}-${{ steps.vars.outputs.sha8 }}
           release_name: PhD (${{ steps.vars.outputs.date }})
