@@ -23,14 +23,12 @@
 
 Далее предполагаем, что для любого  максимального идеала $\ideal{n} \subset R$ факторкольцо $R/\ideal{n}$ конечно.
 
-\begin{definition}
-    Для любого кольца $K$ через $K^{\times}$ обозначим множество обратимых элементов кольца $K$ с нулем.
-\end{definition}
+Для любого кольца $K$ через $\multiplicative{K}$ обозначим множество обратимых элементов кольца $K$ с нулем.
 
 \begin{definition}
     Функцией Эйлера идеала $\ideal{n} \subset R$ называется функция
     \begin{equation*}
-        \varphi(\ideal{n}) = |(R/\ideal{n})^{\times}|.
+        \varphi(\ideal{n}) = |\multiplicative{(R/\ideal{n})}|.
     \end{equation*}
 \end{definition}
 
@@ -49,11 +47,11 @@
     \end{equation*}
 \end{statement}
 
-\begin{statement}\label{statement:cauchy}
+\begin{statement}\label{statement:cauchy}(Теорема Коши)
     Если порядок конечной группы $G$ делится на простое число $p$, то $G$ содержит элементы порядка $p$.
 \end{statement}
 
-\begin{statement}\label{statement:lagrange}
+\begin{statement}\label{statement:lagrange}(Теорема Лагранжа)
     Пусть группа $G$ конечна, и $H$ -- её подгруппа.
     Тогда порядок $G$ равен порядку $H$, умноженному на индекс подгруппы.
 \end{statement}
@@ -64,7 +62,7 @@
     \begin{equation*}
         \begin{split}
             R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k) \cong & (R/\ideal{n}_1) \times (R/\ideal{n}_2) \times \dots \times (R/\ideal{n}_k)\\
-            (R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k))^{\times} \cong & (R/\ideal{n}_1)^{\times} \times (R/\ideal{n}_2)^{\times} \times \dots \times (R/\ideal{n}_k)^{\times}
+            \multiplicative{(R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k))} \cong & \multiplicative{(R/\ideal{n}_1)} \times \multiplicative{(R/\ideal{n}_2)} \times \dots \times \multiplicative{(R/\ideal{n}_k)}
         \end{split}
     \end{equation*}
 \end{statement}

@@ -14,6 +14,78 @@
     \addcontentsline{toc}{chapter}{ГЛАВА \arabic{section}. ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}
 \end{center}
 
+\begin{definition}
+    Пусть $R$ факториальное кольцо.
+    Функцию $\elementnorm{\dot}: R \to \mathbb{N} \cap \{0, -\infty\}$ будем называть нормой в $R$, если
+    \begin{itemize}
+        \item $\elementnorm{x} = -\infty$ тогда и только тогда, когда $x = 0$
+
+        \item $\elementnorm{xy} \ge \elementnorm{x}$
+
+        \item для $x, y \in \zeroless{R}$ равенство $\elementnorm{xy} = \elementnorm{x}$ выполнено тогда и только тогда, когда $y \in \invertible{K}$.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    Для любого факториального кольца $R$ существует норма.
+    Рассмотрим разложение элемента $x$ на простые множители $x = \varepsilon p_1^{\alpha_1} \dots p_k^{\alpha_k}$, где $\varepsilon \in \invertible{R}$, $p_1, \dots, p_k$ -- простые элементы $R$.
+    Тогда функция
+    \begin{equation*}
+        \elementnorm{x} = \left\{\begin{split}
+            \sum_{i=1}^k \alpha_{i}, & \textrm{ если } x \neq 0\\
+            -\inftu, & \textrm{ если } x = 0
+        \end{split}\right.
+    \end{equation*}
+    является нормой в $R$.
+\end{remark}
+
+\begin{definition}
+
+\end{definition}
+
+\begin{definition}
+    Пусть $a$ и $b$ ненулевые элементы факториального кольца $R$.
+    Для любых $k \in \mathbb{N}$ и $q_1, \dots, q_k \in R$ обозначим
+    \begin{equation*}
+        \mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, r_0, \dots, r_{k-1}, r_k) \in R^{k+2},
+    \end{equation*}
+    где $r_{-1} = a$, $r_0 = b$, $r_i = r_{i-2} - q_i r_{i-1}$, для $i = 1, \dots, k$.
+    Выражение $\mathcal{D}_{a, b}(q_1, \dots, q_k)$ будем называть цепочкой делений для $a, b \in R$.
+    Через $\mathcal{E}_{a, b}$ обозначим множество всех цепочек делений для $a, b \in R$, которые заканчиваются на $0$:
+    \begin{equation*}
+        \mathcal{E}_{a, b} = \left\{
+        \mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, \dots, r_k) \big| r_1, \dots, r_{k-1} \in \zeroless{R}, r_k = 0
+        \right\}.
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Пусть $a$ и $b$ ненулевые элементы факториального кольца $R$.
+    Цепочкой делений с выбором минимального по норме остатка для $a, b \in R$ будем называть такую цепочку делений, что $q_i = \textrm{int}(r_{i-2}/r_{i-1})$ для любого $i = 1, \dots, k$.
+
+    Если цепочка делений с выбором минимального по норме остатка существует, то обозначим через $\mathcal{L}_{a, b}$ ее длину.
+    Если ее не существует, то обозначим $\mathcal{L}_{a, b} = \infty$.
+\end{definition}
+
+\begin{definition}
+    Обозначим через $\mathcal{l}_{a, b}$ длину кратчайшей цепочки делений для $a, b \in \zeroless{R}$.
+    \begin{equation*}
+        \mathcal{l}_{a, b} = \left\{\begin{split}
+            \min_{\mathcal{D}_{a, b}(q_1, \dots, q_k) \in \mathcal{E}_{a, b}} k, & \textrm{ если } \mathcal{E}_{a, b} \neq \emptyset\\
+            \infty, & \textrm{ если } \mathcal{E}_{a, b} = \emptyset
+        \end{split}\right..
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Через $l_n(R)$ обозначим максимальную длину цепочки делений с выбором минимального по норме остатка для $a, b \in \zeroless{R}$ с ограниченной нормой.
+    \begin{equation*}
+        l_n(R) = \max \left\{
+            \mathcal{L}_{a, b} \big| a, b \in \zeroless{R}, \elementnorm{a} \le \elementnorm{b} \le n
+        \right\}.
+    \end{equation*}
+\end{definition}
+
 \onlyinsubfile{
     \subfile{_10_bibliography}
     \subfile{_11_pub}

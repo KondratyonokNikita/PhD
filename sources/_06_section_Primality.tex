@@ -1,4 +1,4 @@
-\documentclass[_dissertation.tex]{subfiles}
+\documentclass[_00_dissertation.tex]{subfiles}
 \begin{document}
 
 \onlyinsubfile{
@@ -18,54 +18,54 @@
 
 \begin{theorem}\label{theorem:euler_criteria}
     Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
-    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in (R/\ideal{n})^{\times}$ выполнено
+    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in \multiplicative{(R/\ideal{n})}$ выполнено
     \begin{equation*}
-        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right](\modul \ideal{n}).
+        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}.
     \end{equation*}
 \end{theorem}
 \begin{proof}
     Предположим, что $\ideal{n}$ -- простой идеал.
-    Рассмотрим произвольный идеал $\ideal{a} \in (R/\ideal{n})^{\times}$.
-    Пусть $g$ -- первообразный корень $(R/\ideal{n})^{\times}$.
+    Рассмотрим произвольный идеал $\ideal{a} \in \multiplicative{(R/\ideal{n})}$.
+    Пусть $g$ -- первообразный корень $\multiplicative{(R/\ideal{n})}$.
 
-    Так как $\Nm{\ideal{n}}$ нечетный, то $\ideal{a}$ является квадратичным вычетом тогда и только тогда, когда существует такое $t' = 2t \in \{0, 2, \dots, \Nm{\ideal{n}} - 1\}$, что $a \equiv g^{t'} (\modul \ideal{n})$.
-    Так как порядок $g$ равен $\Nm{\ideal{n}} - 1$, то последнее сравнение выполняется тогда и только тогда, когда $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv 1(\modul \ideal{n})$.
+    Так как $\Nm{\ideal{n}}$ нечетный, то $\ideal{a}$ является квадратичным вычетом тогда и только тогда, когда существует такое $t' = 2t \in \{0, 2, \dots, \Nm{\ideal{n}} - 1\}$, что $a \equiv g^{t'} \pmod{\ideal{n}}$.
+    Так как порядок $g$ равен $\Nm{\ideal{n}} - 1$, то последнее сравнение выполняется тогда и только тогда, когда $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv 1 \pmod{\ideal{n}}$.
     Это завершает доказательство необходимости.
 
     Предположим, что $\ideal{n}$ -- не простой идеал.
     Пусть $\ideal{n}$ раскладывается в произведение простых идеалов следующим образом $\ideal{n} = \prod_{i=1}^{r} \ideal{p}_i^{\alpha_i}$.
     Так как норма простого идеала примарная, то обозначим $\Nm{\ideal{p}_i} = q_i^{f_i}$, где $q_i$ -- простой в $\mathbb{Z}$.
-    Пусть для любого $\ideal{a} \in (R/\ideal{n})^{\times}$ выполнено $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right](\modul \ideal{n})$.
+    Пусть для любого $\ideal{a} \in \multiplicative{(R/\ideal{n})}$ выполнено $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}$.
 
     Пусть существует такой $j \in \{1, \dots, r\}$, что $\alpha_j > 1$ в разложении $\ideal{n}$ на множители.
-    Из теоремы Коши для групп \ref{statement:cauchy} и свойств функции Эйлера \ref{statement:euler_function} следует, что существует $\ideal{a} \in (R/\ideal{n})^{\times}$ порядка $q_j l$.
+    Из теоремы Коши для групп \ref{statement:cauchy} и свойств функции Эйлера \ref{statement:euler_function} следует, что существует $\ideal{a} \in \multiplicative{(R/\ideal{n})}$ порядка $q_j$.
     Тогда $q_j | \Nm{\ideal{n}} - 1$, что невозможно.
 
     Следовательно, $\alpha_j = 1$ для любого $j \in \{1, \ldots, r\}$.
     Так как $\ideal{n}$ -- составное, то $r \ge 2$.
-    Рассмотрим произвольный квадратичный невычет $\ideal{b} \in (R/\ideal{p}_1)^{\times}$.
-    Согласно аналогу Китайской теоремы об остатках \ref{statement:chinese_remainder_theorem} существует такой $\ideal{a} \in (R/\ideal{n})^{\times}$, что выполнено $a \equiv b(\modul \ideal{p}_1)$ и $a \equiv 1(\modul \ideal{p}_2\dots\ideal{p}_r)$.
+    Рассмотрим произвольный квадратичный невычет $\ideal{b} \in \multiplicative{(R/\ideal{p}_1)}$.
+    Согласно аналогу Китайской теоремы об остатках \ref{statement:chinese_remainder_theorem} существует такой $\ideal{a} \in \multiplicative{(R/\ideal{n})}$, что выполнено $a \equiv b \pmod{\ideal{p}_1}$ и $a \equiv 1 \pmod{\ideal{p}_2\dots\ideal{p}_r}$.
     Но в этом случае $\left[\frac{\ideal{a}}{\ideal{n}}\right] = -1$.
-    Из условия теоремы следует, что $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv -1(\modul \ideal{n})$, что противоречит условию $a \equiv 1(\modul \ideal{p}_2)$.
+    Из условия теоремы следует, что $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv -1 \pmod{\ideal{n}}$, что противоречит условию $a \equiv 1 \pmod{\ideal{p}_2}$.
     Это завершает доказательство достаточности.
 
     Теорема доказана.
 \end{proof}
 
 \begin{algorithm}\label{algorithm:solovay_strassen}
-    Дан идеал $\ideal{n} \subset R$.
+    Дан нетривиальный идеал $\ideal{n} \subset R$.
     Необходимо определить является ли он простым.
 
     \begin{enumerate}
         \item Вычислить $\Nm{\ideal{n}}$;
         
-        \item Выбрать случайное $\ideal{a} \subset (R/\ideal{n})^{\times}$;
+        \item Выбрать случайное $\ideal{a} \subset \multiplicative{(R/\ideal{n})}$;
 
-        \item Вычислить $r_0 = \ideal{a}^{\frac{\Nm{\ideal{n}} -- 1}{2}} (\modul \ideal{n})$;
+        \item Вычислить $r_0 = \ideal{a}^{\frac{\Nm{\ideal{n}} -- 1}{2}} \pmod{\ideal{n}}$;
 
         \item Вычислить $r_1 = \left[\frac{\ideal{a}}{\ideal{n}}\right]$;
 
-        \item Если $r_0 \equiv r_1 (\modul \ideal{n})$, то вернуть ''неизвестно'' и завершить алгоритм;
+        \item Если $r_0 \equiv r_1 \pmod{\ideal{n}}$, то вернуть ''неизвестно'' и завершить алгоритм;
 
         \item Вернуть ''$\ideal{n}$ не простой'' и завершить алгоритм.
     \end{enumerate}
@@ -84,16 +84,16 @@
     Рассмотрим множество
     \begin{equation*}
         G = \left\{
-            a \in (R/\ideal{n})^{\times} | \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right](\modul \ideal{n})
+            \ideal{a} \in \multiplicative{(R/\ideal{n})} \big| \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}
         \right\}.
     \end{equation*}
-    Алгоритм \ref{algorithm:solovay_strassen} возвращает ответ ''неизвестно'' только для элементов из множества $G$.
+    Алгоритм~\ref{algorithm:solovay_strassen} возвращает ответ ''неизвестно'' только для элементов из множества $G$.
 
-    Заметим, что если алгоритм \ref{algorithm:solovay_strassen} возвращает ответ ''неизвестно'' для $\ideal{a}$ и $\ideal{b}$, то он вернет ответ ''неизвестно'' и для $\ideal{a}\ideal{b}$.
-    Следовательно, $G$ образует подгруппу группы $(R/\ideal{n})^{\times}$.
+    Заметим, что если алгоритм~\ref{algorithm:solovay_strassen} возвращает ответ ''неизвестно'' для $\ideal{a}$ и $\ideal{b}$, то он вернет ответ ''неизвестно'' и для $\ideal{a}\ideal{b}$.
+    Следовательно, $G$ образует подгруппу группы $\multiplicative{(R/\ideal{n})}$.
 
     Исходя из критерия Эйлера эта подгруппа собственная.
-    Из теоремы Лагранжа \ref{statement:lagrange} выполнено $|G|/|(R/\ideal{n})^{\times}| \le \frac{1}{2}$.
+    Из теоремы Лагранжа~\ref{statement:lagrange} выполнено $|G|/|\multiplicative{(R/\ideal{n})}| \le \frac{1}{2}$.
 \end{proof}
 
 \begin{remark}
@@ -105,22 +105,22 @@
 \begin{theorem}\label{theorem:miller_criteria}
     Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
     Пусть $\Nm{\ideal{n}} - 1 = 2^t u$, $(u, 2) = 1$.
-    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in (R/\ideal{n})^{\times}$, $(\ideal{a}, \ideal{n}) = 1$, $\ideal{a}^u \not\equiv 1(\modul \ideal{n})$ существует $k\in \{0, \dots, t-1\}$, такое что $\ideal{a}^{2^{k}u} \equiv -1 (\modul \ideal{n})$.
+    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in \multiplicative{(R/\ideal{n})}$, $(\ideal{a}, \ideal{n}) = 1$, $\ideal{a}^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $\ideal{a}^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
 \end{theorem}
 \begin{proof}
     Предположим, что $\ideal{n}$ -- простой идеал.
-    Рассмотрим произвольный идеал $\ideal{a} \in (R/\ideal{n})^{\times}$, $(\ideal{a}, \ideal{n}) = 1$, $\ideal{a}^u \not\equiv 1(\modul \ideal{n})$.
+    Рассмотрим произвольный идеал $\ideal{a} \in \multiplicative{(R/\ideal{n})}$, $(\ideal{a}, \ideal{n}) = 1$, $\ideal{a}^u \not\equiv 1 \pmod{\ideal{n}}$.
     Из теоремы Эйлера \ref{statement:euler_function} следует, что:
     \begin{equation*}
-        \ideal{a}^{2^{t} u} = \ideal{a}^{\varphi(\ideal{n})} \equiv 1 (\modul \ideal{n})
+        \ideal{a}^{2^{t} u} = \ideal{a}^{\varphi(\ideal{n})} \equiv 1 \pmod{\ideal{n}}
     \end{equation*}
 
     Раскладываем на множители и получаем, что выполнено
     \begin{equation*}
-        (\ideal{a}^{u} - 1)(\ideal{a}^{u} + 1)(\ideal{a}^{2u} + 1)\dots(\ideal{a}^{2^{t-1}u} + 1) \equiv 0 (\modul \ideal{n})
+        (\ideal{a}^{u} - 1)(\ideal{a}^{u} + 1)(\ideal{a}^{2u} + 1)\dots(\ideal{a}^{2^{t-1}u} + 1) \equiv 0 \pmod{\ideal{n}}
     \end{equation*}
 
-    Из того, что $\ideal{a}^{u} \not\equiv 1 (\modul \ideal{n})$ следует, что $\ideal{a}^{2^{k}u} + 1 \equiv 0 (\modul \ideal{n})$ для некоторого $k\in \{0, \dots, t-1\}$.
+    Из того, что $\ideal{a}^{u} \not\equiv 1 \pmod{\ideal{n}}$ следует, что $\ideal{a}^{2^{k}u} + 1 \equiv 0 \pmod{\ideal{n}}$ для некоторого $k\in \{0, \dots, t-1\}$.
     Это завершает доказательство необходимости.
 
     Предположим, что $\ideal{n}$ -- не простой идеал.
@@ -128,19 +128,19 @@
     Так как норма простого идеала примарная, то обозначим $\Nm{\ideal{p}_i} = q_i^{f_i}$, где $q_i$ -- простой в $\mathbb{Z}$.
 
     Пусть существует такой $j \in \{1, \dots, r\}$, что $\alpha_j > 1$ в разложении $\ideal{n}$ на множители.
-    Из теоремы Коши для групп \ref{statement:cauchy} и свойств функции Эйлера \ref{statement:euler_function} следует, что существует $\ideal{a} \in (R/\ideal{n})^{\times}$ порядка $q_j l$.
-    Так как $u \not\equiv 0 (\modul q_j)$, то $\ideal{a}^u \not\equiv 1 (\modul \ideal{n})$.
-    Следовательно, существует число $k \in \{1, \dots, t-1\}$, такое что выполнено сравнение $\ideal{a}^{2^{k}u} \equiv -1(\modul \ideal{n})$.
-    Тогда $\ideal{a}^{2^{k+1}u} \equiv 1(\modul \ideal{n})$.
-    Значит выполнено $2^{k+1}u \equiv 0 (\modul q_j)$.
-    Из последнего сравнения следует, что $\Nm{\ideal{n}} - 1 \equiv 0(\modul q_j)$, что невозможно.
+    Из теоремы Коши для групп \ref{statement:cauchy} и свойств функции Эйлера~\ref{statement:euler_function} следует, что существует $\ideal{a} \in \multiplicative{(R/\ideal{n})}$ порядка $q_j$.
+    Так как $u \not\equiv 0 \pmod{q_j}$, то $\ideal{a}^u \not\equiv 1 \pmod{\ideal{n}}$.
+    Следовательно, существует число $k \in \{1, \dots, t-1\}$, такое что выполнено сравнение $\ideal{a}^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+    Тогда $\ideal{a}^{2^{k+1}u} \equiv 1 \pmod{\ideal{n}}$.
+    Значит выполнено $2^{k+1}u \equiv 0 \pmod{q_j}$.
+    Из последнего сравнения следует, что $\Nm{\ideal{n}} - 1 \equiv 0 \pmod{q_j}$, что невозможно.
     
     Следовательно, $\alpha_j = 1$ для любого $j \in \{1, \ldots, r\}$.
     Так как $\ideal{n}$ -- составное, то $r \ge 2$.
-    Из аналога Китайской теоремы об остатках \ref{statement:chinese_remainder_theorem} и того, что элемент $-1$ имеет порядок $2$ в каждой группе $(R/\ideal{p}_j)^{\times}$ следует, что существует по крайней мере $2^r-1 \ge 3$ элемента $(R/\ideal{n})^{\times}$ порядка $2$.
-    Пусть $\ideal{a} \not\equiv \pm 1(\modul \ideal{n})$ является произвольным элементом порядка $2$ в группе $(R/\ideal{n})^{\times}$.
-    Из того, что $(u, 2) = 1$ следует, что $\ideal{a}^u \equiv \ideal{a} \not\equiv \pm 1(\modul \ideal{n})$.
-    Таким образом, существует $k \in \{0,\ldots, t-1\}$, такое что верно $\ideal{a}^{2^{k}u} \equiv -1(\modul \ideal{n})$.
+    Из аналога Китайской теоремы об остатках~\ref{statement:chinese_remainder_theorem} и того, что элемент $-1$ имеет порядок $2$ в каждой группе $\multiplicative{(R/\ideal{p}_j)}$ следует, что существует по крайней мере $2^r-1 \ge 3$ элемента $\multiplicative{(R/\ideal{n})}$ порядка $2$.
+    Пусть $\ideal{a} \not\equiv \pm 1 \pmod{\ideal{n}}$ является произвольным элементом порядка $2$ в группе $\multiplicative{(R/\ideal{n})}$.
+    Из того, что $(u, 2) = 1$ следует, что $\ideal{a}^u \equiv \ideal{a} \not\equiv \pm 1 \pmod{\ideal{n}}$.
+    Таким образом, существует $k \in \{0,\ldots, t-1\}$, такое что верно $\ideal{a}^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
     Это противоречит тому, что порядок $\ideal{a}$ равен $2$.
     Это завершает доказательство достаточности.
 
@@ -154,9 +154,9 @@
     \begin{enumerate}
         \item Найти $u, t \in \mathbb{N}$, что $\Nm{\ideal{n}} - 1 = 2^t u$ и $(2, u) = 1$;
         
-        \item Выбрать случайное $\ideal{a} \subset (R/\ideal{n})^{\times}\setminus\{0\}$;
+        \item Выбрать случайное $\ideal{a} \subset \multiplicative{(R/\ideal{n})}\setminus\{0\}$;
 
-        \item Вычислить $r_0 = \ideal{a}^u (\modul \ideal{n})$;
+        \item Вычислить $r_0 = \ideal{a}^u \pmod{\ideal{n}}$;
 
         \item Если $r_0 = 1$, то вернуть ''неизвестно'' и завершить алгоритм;
 
@@ -168,7 +168,7 @@
 
             \item Увеличить $k$ на $1$;
 
-            \item Вычислить $r_{k+1} \equiv r_k^2 (\modul \ideal{n})$;
+            \item Вычислить $r_{k+1} \equiv r_k^2 \pmod{\ideal{n}}$;
         \end{enumerate}
 
         \item Вернуть ''$\ideal{n}$ не простой'' и завершить алгоритм.
@@ -186,73 +186,79 @@
 \end{proposition}
 \begin{proof}
     Рассмотрим множество всех $\ideal{a}$, для которых алгоритм дает ответ "неизвестно".
-    Это в точности множество таких $\ideal{a}$, что $\ideal{a}^u \equiv 1(\modul \ideal{n})$ или для которых существует $j \in \{0, \dots, t-1\}$, что $\ideal{a}^{2^{j}u} \equiv -1(\modul \ideal{n})$.
-    Из этого следует, что $\ideal{a}^{\Nm{\ideal{n}} - 1} \equiv 1(\modul \ideal{n})$ для всех таких $\ideal{a}$.
+    Это в точности множество таких $\ideal{a}$, что $\ideal{a}^u \equiv 1 \pmod{\ideal{n}}$ или для которых существует $j \in \{0, \dots, t-1\}$, что $\ideal{a}^{2^{j}u} \equiv -1 \pmod{\ideal{n}}$.
+    Из этого следует, что $\ideal{a}^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}$ для всех таких $\ideal{a}$.
 
     Рассмотрим множество
     \begin{equation*}
-        G = \{\ideal{a} \in (R/\ideal{n})^{\times} | \ideal{a}^{\Nm{\ideal{n}} - 1} \equiv 1(\modul \ideal{n})\}.
+        G = \left\{
+            \ideal{a} \in \multiplicative{(R/\ideal{n})} \big| \ideal{a}^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}
+        \right\}.
     \end{equation*}
     Предположим, что $G$ -- нетривиальная подгруппа.
-    Тогда из теоремы Лагранжа следует, что $|G| / |(R/\ideal{n})^{\times}| \le 1/2$.
+    Тогда из теоремы Лагранжа следует, что $|G| / |\multiplicative{(R/\ideal{n})}| \le 1/2$.
     Из этого следует верность теоремы для этого случая.
 
-    Предположим, что $\ideal{n}$ такой, что $G = (R/\ideal{n})^{\times}$.
+    Предположим, что $\ideal{n}$ такой, что $G = \multiplicative{(R/\ideal{n})}$.
+    Пусть $\ideal{n}$ раскладывается в произведение простых идеалов следующим образом $\ideal{n} = \prod_{i=1}^r \ideal{p}_i^{\alpha_i}$.
+    Так как норма простого идеала примарная, то обозначим $\Nm{p_i} = q_i^{f_i}$, где $q_i$ -- простой в $\mathbb{Z}$.
 
-    Предположим, что существует простой идеал $\ideal{p}$, что $\ideal{p}^2 | \ideal{n}$.
-    Тогда $\varphi(\ideal{p}^2) | \varphi(\ideal{n})$, следовательно, $\Nm{\ideal{p}} | \varphi(\ideal{n})$.
-    Из теоремы Коши для групп \ref{statement:cauchy} следует, что в группе $(R/\ideal{n})^{\times}$ существует элемент $a$ порядка $\Nm{\ideal{p}}$.
-    Из теоремы Эйлера \ref{statement:euler_function} следует, что $a^{\Nm{\ideal{n}} - 1} \equiv 1(\modul \ideal{n})$, следовательно, $a^{\Nm{\ideal{n}} - 1} \equiv 1(\modul \ideal{p})$.
-    Из утверждений выше получаем, что $\Nm{\ideal{p}} | \Nm{\ideal{n}} - 1$.
-    Следовательно, не существует простого идеала $\ideal{p}$, что $\ideal{p}^2 | \ideal{n}$.
+    Предположим, что существует такой $j \in \{1, \dots, r\}$, что $\alpha_i > 1$ в разложении $\ideal{n}$ на множители.
+    Тогда $\Nm{\ideal{p}_j} | \varphi(\ideal{n})$, следовательно $q_j | \varphi(\ideal{n})$.
+    Из теоремы Коши для групп~\ref{statement:cauchy} следует, что в группе $\multiplicative{(R/\ideal{n})}$ существует элемент $a$ порядка $q_j$.
+    Из теоремы Эйлера~\ref{statement:euler_function} следует, что $a^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}$, следовательно, $a^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{p}}$.
+    Из утверждений выше получаем, что $q_j | \Nm{\ideal{n}} - 1$.
+    Это противоречит тому, что $q_j | \Nm{\ideal{n}}$.
 
-    Пусть $\ideal{n} = \prod_{i=1}^r \ideal{p}_i$, где $\ideal{p}_i$ попарно различные простые идеалы и $r \ge 2$.
-    Обозначим $\Nm{\ideal{p}_i} = 2^{t_i} u_i$, $(u_i, 2) = 1$, $s = \min_{i=\overline{1, r}} t_i$, $P = \prod_{i=1}^r (u_i, u)$.
+    Следовательно, $\alpha_j = 1$ для любого $j \in \{1, \dots, r\}$.
+    Так как $\ideal{n}$ -- составное, то $r \ge 2$.
+    Обозначим $\Nm{\ideal{p}_i} - 1 = 2^{t_i} u_i$, где $(u_i, 2) = 1$.
+    Так же обозначим $s = \min_{i=\overline{1, r}} t_i$, $P = \prod_{i=1}^r (u_i, u)$.
 
-    Из аналога Китайской теоремы об остатках \ref{statement:chinese_remainder_theorem} следует, что
+    Из аналога Китайской теоремы об остатках~\ref{statement:chinese_remainder_theorem} следует, что
     \begin{equation*}
-        a^u \equiv 1(\modul \ideal{n})
+        a^u \equiv 1 \pmod{\ideal{n}}
         \Leftrightarrow
-        a^u \equiv 1(\modul \ideal{p}_i), i=\overline{1, r}.
+        a^u \equiv 1 \pmod{\ideal{p}_i}, i=\overline{1, r}.
     \end{equation*}
 
-    Из теоремы Эйлера \ref{statement:euler_function} следует, что
+    Из теоремы Эйлера~\ref{statement:euler_function} следует, что
     \begin{equation*}
-        a^u \equiv 1(\modul \ideal{p}_i)
+        a^u \equiv 1 \pmod{\ideal{p}_i}
         \Leftrightarrow
-        \lambda u \equiv 0(\modul \Nm{\ideal{p}_i} - 1),
+        \lambda u \equiv 0 \pmod{\Nm{\ideal{p}_i} - 1},
     \end{equation*}
-    где $a \equiv g^\lambda(\modul \ideal{p}_i)$ и $g$ -- первообразный корень $(R/\ideal{p}_i)^{\times}$.
-    Так как последнее сравнение имеет $(u, \Nm{\ideal{p}_i} - 1)$ решений, то количество решений сравнения $a^u \equiv 1(\modul \ideal{n})$ равно
+    где $a \equiv g^\lambda \pmod{\ideal{p}_i}$ и $g$ -- первообразный корень $\multiplicative{(R/\ideal{p}_i)}$.
+    Так как последнее сравнение имеет $(u, \Nm{\ideal{p}_i} - 1)$ решений, то количество решений сравнения $a^u \equiv 1 \pmod{\ideal{n}}$ равно
     \begin{equation*}
         \prod_{i=1}^r (u, \Nm{\ideal{p}_i} - 1) = P.
     \end{equation*}
 
     Аналогично получаем, что
     \begin{equation*}
-        a^{2^j u} \equiv -1(\modul \ideal{n})
+        a^{2^j u} \equiv -1 \pmod{\ideal{n}}
         \Leftrightarrow
-        \lambda 2^j u \equiv \frac{\Nm{\ideal{p}_i} - 1}{2}(\modul \Nm{\ideal{p}_i} - 1), i=\overline{1, r}.
+        \lambda 2^j u \equiv \frac{\Nm{\ideal{p}_i} - 1}{2} \pmod{\Nm{\ideal{p}_i} - 1}, i=\overline{1, r}.
     \end{equation*}
-    Заметим, что сравнение $\lambda 2^j u \equiv \frac{\Nm{\ideal{p}_i} - 1}{2}(\modul \Nm{\ideal{p}_i} - 1)$ не имеет решений при $j \ge t_i$ и имеет $(2^j u, \Nm{\ideal{p}_i} - 1)$ решений при $j < t_i$.
-    Тогда количество решений $a^{2^j u} \equiv -1(\modul \ideal{n})$ равно
+    Заметим, что сравнение $\lambda 2^j u \equiv \frac{\Nm{\ideal{p}_i} - 1}{2} \pmod{\Nm{\ideal{p}_i} - 1}$ не имеет решений при $j \ge t_i$ и имеет $(2^j u, \Nm{\ideal{p}_i} - 1)$ решений при $j < t_i$.
+    Тогда количество решений $a^{2^j u} \equiv -1 \pmod{\ideal{n}}$ равно
     \begin{equation*}
         \prod_{i=1}^r (2^j u, \Nm{\ideal{p}_i} - 1) = 2^{jr} \prod_{i=1}^r (u, \Nm{\ideal{p}_i} - 1) = 2^{jr} P.
     \end{equation*}
 
-    Следовательно, количество идеалов $a \in(R/\ideal{n})^{\times}$, на которых алгоритм дает ответ ''неизвестно'' равно
+    Следовательно, количество идеалов $a \in \multiplicative{(R/\ideal{n})}$, на которых алгоритм дает ответ ''неизвестно'' равно
     \begin{equation*}
         P + \sum_{j=1}^{s-1} 2^{jr} P = P\left(1 + \frac{2^{rs} - 1}{2^r - 1}\right) = P\frac{2^{rs} + 2^r - 2}{2^r - 1}
     \end{equation*}
 
     Исходя из определения, получаем
     \begin{equation*}
-        |(R/\ideal{n})^{\times}| = \varphi(\ideal{n}) = \prod_{i=1}^r \varphi(\ideal{p}_i) = \prod_{i=1}^r (\Nm{\ideal{p}_i} - 1) = \prod_{i=1}^r 2^{t_i} u_i \ge 2^{rs} P.
+        |\multiplicative{(R/\ideal{n})}| = \varphi(\ideal{n}) = \prod_{i=1}^r \varphi(\ideal{p}_i) = \prod_{i=1}^r (\Nm{\ideal{p}_i} - 1) = \prod_{i=1}^r 2^{t_i} u_i \ge 2^{rs} P.
     \end{equation*}
 
     Таким образом
     \begin{equation*}
-        |G|/|(R/\ideal{n})^{\times}| \le \frac{2^{rs} + 2^r - 2}{2^{rs}(2^r - 1)} \le \frac{1}{2}.
+        |G|/|\multiplicative{(R/\ideal{n})}| \le \frac{2^{rs} + 2^r - 2}{2^{rs}(2^r - 1)} \le \frac{1}{2}.
     \end{equation*}
 \end{proof}
 
@@ -263,22 +269,18 @@
 \subsection{Детерминированное тестирование на простоту}
 
 \begin{definition}
-    Характером группы $G$ называется гомоморфизм $\chi: G \to \mathbb{C}^*$.
+    Характером группы $G$ называется гомоморфизм $\chi: G \to \mathbb{C}^*$, где $\mathbb{C}^*$ -- мультипликаттивная группа поля $\mathbb{C}$.
+    Характер называется тривиальным, если его образ является тривиальной группой, т.е. состоит из $1$ элемента.
 \end{definition}
 
 \begin{definition}
-    Характером Дирихле по модулю $\ideal{n}$ называется функция $\chi$ из множества идеалов $R$ в $\mathbb{C}$, для которой выполнено:
+    Характером Дирихле по модулю $\ideal{n}$ называется гомоморфизм $\chi: \multiplicative{(R/\ideal{n})} \setminus \{0\} \to \mathbb{C}$, для которой выполнено:
     \begin{itemize}
-        \item $\chi(\ideal{a}\ideal{b}) = \chi(\ideal{a})\chi(\ideal{b})$;
+        \item если $(\ideal{a}, \ideal{n}) > 1$, то $\chi(\ideal{a}) = 0$;
 
-        \item \begin{equation*}
-            \chi(\ideal{a})\left\{\begin{split}
-                = 0 & \text{если }\; (\ideal{a}, \ideal{n}) > 1\\
-                \neq 0 & \text{если }\; (\ideal{a}, \ideal{n}) = 1.
-            \end{split}\right.
-        \end{equation*}
-        
-        \item если $\ideal{a} \equiv \ideal{b} (\modul \ideal{n})$, то $\chi(\ideal{a}) = \chi(\ideal{b})$.
+        \item если $(\ideal{a}, \ideal{n}) = 1$, то $\chi(\ideal{a}) \neq 0$;
+
+        \item если $\ideal{a} \equiv \ideal{b} \pmod{\ideal{n}}$, то $\chi(\ideal{a}) = \chi(\ideal{b})$.
     \end{itemize}
 \end{definition}
 
@@ -286,22 +288,70 @@
     Главным характером Дирихле называется
     \begin{equation*}
         \chi_0(\ideal{a}) = \left\{\begin{split}
-            0 & \text{если }\; (\ideal{a}, \ideal{n}) > 1\\
-            1 & \text{если }\; (\ideal{a}, \ideal{n}) = 1.
+            0 & \textrm{ если }\; (\ideal{a}, \ideal{n}) > 1\\
+            1 & \textrm{ если }\; (\ideal{a}, \ideal{n}) = 1.
         \end{split}\right.
     \end{equation*}
 \end{definition}
 
-Пусть $\rho$ -- характер группы $(R/\ideal{n})^{\times}\setminus\{0\}$.
-Доопределим его до характера Дирихле по модулю $\ideal{n}$ следующим образом
-\begin{equation*}
-    \chi(\ideal{a}) = \left\{\begin{split}
-        0 & \text{если }\; \ideal{a} \not\in (R/\ideal{n})^{\times}\setminus\{0\}
-        \rho(\ideal{a}) & \text{если }\; \ideal{a} \in (R/\ideal{n})^{\times}\setminus\{0\}
-    \end{split}\right.
-\end{equation*}
+\begin{remark}
+    Пусть $\rho$ -- характер группы $\multiplicative{(R/\ideal{n})}\setminus\{0\}$.
+    Его можно доопределить до характера Дирихле по модулю $\ideal{n}$ следующим образом
+    \begin{equation*}
+        \chi(\ideal{a}) = \left\{\begin{split}
+            0 & \textrm{ если }\; \ideal{a} \not\in \multiplicative{(R/\ideal{n})}\setminus\{0\}\\
+            \rho(\ideal{a}) & \textrm{ если }\; \ideal{a} \in \multiplicative{(R/\ideal{n})}\setminus\{0\}
+        \end{split}\right.
+    \end{equation*}
+\end{remark}
 
-Характер называется нетривиальны
+\begin{definition}
+    Кольцо $R$ удовлетворяет условию A, если существует многочлен $f_A$, что для любого нетривиального характера Дирихле $\chi$ существует простой идеал $\ideal{p}$ взаимнопростой с $\ideal{n}$ и такой, что $\chi(\ideal{p}) \neq 1$ и
+    \begin{equation*}
+        \Nm{\ideal{p}} \le f(\log{\Nm{\ideal{n}}}).
+    \end{equation*}
+\end{definition}
+
+\begin{remark}
+    Обобщенная гипотеза Римана гласит, что для любого характера Дирихле $\chi$ и любого $s \in \mathbb{C}$ такого, что $L(\chi, s) = 0$ выполняется: если $s \not\in \mathbb{R}_{-}$, то $s = \frac{1}{2}$.
+
+    Из работы Анкени~\cite{Ankeny} следует, что, если обобщенная гипотеза Римана выполнена, то условие A выполнено для кольца целых чисел и $f_{\mathbb{Z}}(x) = 2x^2$.
+\end{remark}
+
+\begin{remark}
+    Пусть $K$ числовое поле с кольцом целых алгебраических чисел $\mathcal{O}_K$.
+    Расширенная гипотеза Римана гласит, что для любого $s \in \mathbb{C}$ такого, что $\zeta_K(s) = 0$ выполняется: если $\Re{s} \in [0, 1]$, то $\Re{s} = \frac{1}{2}$.
+
+    Из работы Баха~\cite{Bach} следует, что, если расширенная гипотеза Римана выполнена, то условие A выполнено для всех колец целых алгебраических чисел и $f_{\mathcal{O}_K}(x) = 12x^2 + 12\log^2 \Delta$.
+\end{remark}
+
+\begin{proposition}
+    Пусть дедекиндово кольцо $R$ удовлетворяет условию A.
+    Пусть $G$ является конечной
+\end{proposition}
+
+\begin{theorem}\label{theorem:euler_criteria_deterministic}
+    Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$, удовлетворяющего условию A.
+    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in \multiplicative{(R/\ideal{n})}$, $\Nm{\ideal{a}} \le f_R(\Nm{\ideal{n}})$ выполнено
+    \begin{equation*}
+        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}.
+    \end{equation*}
+\end{theorem}
+
+\begin{theorem}\label{theorem:miller_criteria_deterministic}
+    Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$, удовлетворяющего условию A.
+    Пусть $\Nm{\ideal{n}} - 1 = 2^t u$, $(u, 2) = 1$.
+    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in \multiplicative{(R/\ideal{n})}$, $\Nm{\ideal{a}} \le f_R(\Nm{\ideal{n}})$, $(\ideal{a}, \ideal{n}) = 1$, $\ideal{a}^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $\ideal{a}^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+\end{theorem}
+%\begin{proof}
+%    Необходимость следует из теоремы~\ref{theorem:euler_criteria}.
+%    Докажем достаточность.
+%
+%    Пусть $\ideal{n}$ -- составной идеал кольца $R$.
+%    Предположим, что существует такой $\ideal{p}$, что $\ideal{p}^2 | \ideal{N}$.
+%    Рассмотрим отображение $\chi(\ideal{a}) = \ideal{a}^{\Nm{\ideal{p}} - 1}$.
+%    Заметим, что это отображение является гомоморфизмом
+%\end{proof}
 
 \onlyinsubfile{
     \subfile{_10_bibliography}
