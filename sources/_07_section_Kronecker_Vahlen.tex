@@ -14,13 +14,16 @@
     \addcontentsline{toc}{chapter}{ГЛАВА \arabic{section}. ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}
 \end{center}
 
+% TODO придумать нормальное название
+\subsection{Предварительные сведения}
+
 \begin{definition}
     Пусть $R$ факториальное кольцо.
-    Функцию $\elementnorm{\dot}: R \to \mathbb{N} \cap \{0, -\infty\}$ будем называть нормой в $R$, если
+    Функцию $\elementnorm{\cdot}: R \to \mathbb{N} \cup \{0, -\infty\}$ будем называть нормой в $R$, если
     \begin{itemize}
-        \item $\elementnorm{x} = -\infty$ тогда и только тогда, когда $x = 0$
+        \item $\elementnorm{x} = -\infty$ тогда и только тогда, когда $x = 0$;
 
-        \item $\elementnorm{xy} \ge \elementnorm{x}$
+        \item $\elementnorm{xy} \ge \elementnorm{x}$;
 
         \item для $x, y \in \zeroless{R}$ равенство $\elementnorm{xy} = \elementnorm{x}$ выполнено тогда и только тогда, когда $y \in \invertible{K}$.
     \end{itemize}
@@ -39,9 +42,33 @@
     является нормой в $R$.
 \end{remark}
 
-\begin{definition}
+Далее в этой главе будем считать, что факориальное кольцо $R$ задано вместе с нормой $\elementnorm{\cdot}$.
 
+\begin{definition}
+    Пусть $R$ факториальное кольцо и $F$ его поле частных.
+    Функию $\fr{\cdot}: F \to F$ будем называть дробной частью в $F$, если
+    \begin{itemize}
+        \item $\fr{\alpha + q} = \fr{\alpha}$ для любых $\alpha \in F$, $q \in R$;
+
+        \item если $m \in R$, $n \in \zeroless{R}$ и $(m, n) = 1$, то $\fr{m/n} = r/n$, где $r \in R$, $(m-r)/n \in R$ и $\elementnorm{r} = \min \{\elementnorm{s} | s \in R, (m-s)/n \in R\}$.
+    \end{itemize}
+    Функцию $\int{\cdot}: F \to R$ будем называть целой частью, если
+    \begin{equation*}
+        \int{\alpha} = \alpha - \ft{\alpha}.
+    \end{equation*}
 \end{definition}
+
+\begin{remark}
+    Для любого факториального кольца $R$ существует дробная и целая часть.
+    Рассмотрим случайный элемент $X \in F/R$.
+    Этот элемент можно представить в виде $X = \{m/n + t | t \in R\}$, где $m \in R$, $n \in \zeroless{R}$ $(m, n) = 1$.
+    Существует элемент $t_0 \in R$, минимизирующий норму $\elementnorm{m + n t_0}$.
+    Тогда для любого элемента $x \in X$ положим $\fr{x} = m/n + t_0$.
+    Несложно заметить, что эта функция является дробной частью.
+    Целая часть определяется из дробной и равна $\int{x} = x - \fr{x}$.
+\end{remark}
+
+Далее в этой главе будем считать, что факориальное кольцо $R$ задано вместе дробной частью $\fr{\cdot}$ и целой частью $\int{\cdot}$.
 
 \begin{definition}
     Пусть $a$ и $b$ ненулевые элементы факториального кольца $R$.
@@ -68,9 +95,9 @@
 \end{definition}
 
 \begin{definition}
-    Обозначим через $\mathcal{l}_{a, b}$ длину кратчайшей цепочки делений для $a, b \in \zeroless{R}$.
+    Обозначим через $\mathpzc{l}_{a, b}$ длину кратчайшей цепочки делений для $a, b \in \zeroless{R}$.
     \begin{equation*}
-        \mathcal{l}_{a, b} = \left\{\begin{split}
+        \mathpzc{l}_{a, b} = \left\{\begin{split}
             \min_{\mathcal{D}_{a, b}(q_1, \dots, q_k) \in \mathcal{E}_{a, b}} k, & \textrm{ если } \mathcal{E}_{a, b} \neq \emptyset\\
             \infty, & \textrm{ если } \mathcal{E}_{a, b} = \emptyset
         \end{split}\right..
@@ -85,6 +112,165 @@
         \right\}.
     \end{equation*}
 \end{definition}
+
+\subsection{Теорема Кронекера-Валена в специальном классе факториальных колец}
+
+\begin{definition}
+    Обозначим через $F_1$ множество всех несократимых дробей $F$
+    \begin{equation*}
+        F_1 = \{
+            \alpha \in F \big| \alpha = \fr{\alpha}
+        \}.
+    \end{equation*}
+    Определим функцию $\omega: F_1 \to F_1$ следующим образом
+    \begin{equation*}
+        \omega(\alpha) = \left\{\begin{split}
+            \fr{\alpha^{-1}}, \textrm{ если } \alpha \neq 0\\
+            0, \textrm{ если } \alpha = 0
+        \end{split}\right.
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Тройку $(x_0, \alpha, n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$ будем называть регулярной, если существуют
+    \begin{itemize}
+        \item $p, l \in \mathbb{N}$, $p \le n$ и $l \le p+1$,
+
+        \item $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$ для $i = 1, \dots, l-1$,
+
+        \item $\varepsilon \in \{0, 1\}$,
+    \end{itemize}
+    для которых выполнены следующие условия
+    \begin{itemize}
+        \item $\beta_1 = \omega^{(p)}\left(\fr{(\alpha - x_0)^{-1}}\right)$;
+
+        \item $\beta_{i+1} = (\varepsilon_i \beta_i + c_i)^{-1} + b_i$, $i = 1, \dots, l-1$;
+
+        \item $\beta_{l} = \alpha^{(-1)^{\varepsilon}}$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Через $\mathcal{T}$ обозначим множество всех таких факориальных колец $R$, для которых существует $D_K \in \mathbb{N}$, что выполнено
+    \begin{itemize}
+        \item для всех $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ тройка $(x_0, \alpha, D_K)$ регулярная;
+
+        \item если $D_K \ge 3$, то для любого $k \in [3, D_K] \cap \mathbb{N}$ и любых $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ из равенства $\omega^{(k-2)}(\fr{(\alpha - x_0)^{-1}}) = 0$ следует, что тройка $(x_0, \alpha, k-2)$ регулярная.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Обозначим $\Lambda_K = \sup_{m/n \in F_1} |m/n|$, где $|m/n| = \frac{\elementnorm{m}}{\elementnorm{n}}$ для $m/n \in \zeroless{F_1}$, $(m, n) = 1$ и $|0| = 0$.
+\end{definition}
+
+\begin{definition}
+    Обозначим
+    \begin{equation*}
+        [x_1: x_2: \dots: x_k] = x_{1} + \cfrac{1}{
+            x_{2} + \cfrac{1}{
+                x_{3} + \cfrac{1}{
+                    \ddots + \cfrac{1}{
+                        x_{k}
+                    }
+                }
+            }
+        }.
+    \end{equation*}
+    Будем говорить, что имеет место $(\alpha, k)$-разрешимость, если разрешимо уравнение
+    \begin{equation*}
+        \frac{a}{b} = [x_1: x_2: \dots: x_k].
+    \end{equation*}
+\end{definition}
+
+\begin{lemma}
+    Пусть кольцо $R \in \mathcal{T}$.
+    Для любых $\alpha \in F_1$ и $k \in \mathbb{N}$ имеет место $(\alpha, k)$-разрешимость тогда и только тогда, когда $\omega^{(k-1)}(\alpha) = 0$.
+\end{lemma}
+\begin{proof}
+    Пусть $\alpha = m/n$, где $(m, n) = 1$.
+    Если $\alpha = 0$ или $k = 1$, то утверждение леммы очевидно.
+
+    Пусть $k = 2$.
+    Заметим, что имеет место $(\alpha, 2)$-разрешимость тогда и только тогда, когда $m \equiv \varepsilon \pmod{n]}$ для некоторого $\varepsilon \in \invertible{R}$.
+    Пусть $q \in R$ и $m = qn + \varepsilon$, тогда $m/n = \fr{m/n} = \fr{\varepsilon/n}$.
+    Если $n \in \invertible{R}$, то $\fr{\varepsilon/n} = 0$ и утверждение леммы очевидно.
+    Если $n \not\in \invertible{R}$, то $\fr{\varepsilon/n} = \varepsilon/n$ и $\omega(m/n) = \fr{n/\varepsilon} = 0$.
+
+    Пусть $D_K \ge 3$ и $k \le D_K$.
+    Докажем лемму индукцией по $k$.
+    База индукции -- лемма верна для $k = 1, 2$.
+    Заметим, что имеет место $(\alpha, k)$-разрешимость тогда и только тогда, когда существует $z \in R$, что имеет место $((\alpha - z)^{-1}, k-1)$-разрешимость.
+    Таким образом надо показать, что для $3 \le k \le D_K$ $\omega^{(k-1)}(\alpha) = 0$ тогда и только тогда, когда существует $z \in R$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
+
+    Если $\omega^{(k-1)}(\alpha) = 0$, то по определению $\omega^{(k-2)}(\fr{\alpha^{-1}}) = 0$.
+    Если $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$ и $z = 0$, то по определению $\omega^{(k-1)}(\alpha) = 0$.
+
+    Предположим, что существует $z \neq 0$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
+    Из определения класса $\mathcal{T}$ следует, что тройка $(z, \alpha, k-2)$ регулярная.
+    Следовательно, сущесвуют $p, l \in \mathbb{N}$, $p \le k-2$, $l \le p+1$, $\varepsilon \in \{0, 1\}$, $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$, $i = 1, \dots, l-1$, что
+    \begin{equation*}
+        \begin{split}
+            \beta_1 = \omega^{(p)}\left(\fr{(\alpha - x_0)^{-1}}\right)\\
+            \beta_{i+1} = (\varepsilon_i \beta_i + c_i)^{-1} + b_i$, $i = 1, \dots, l-1\\
+            \beta_{l} = \alpha^{(-1)^{\varepsilon}}
+        \end{split}.
+    \end{equation*}
+
+    Из предположения индукции и равенства $\omega^{(k-p-2)}(\beta_1) = 0$ следует, что имеет место $(\beta_1, k-p-1)$-разрешимость.
+    Из определения $\beta_i$ следует, что для любых $i = 1, \dots, l-1$ и $j \in \mathbb{N}$  имеет место $(\beta_i, j)$-разрешимость тогда и только тогда, когда имеет место $(\beta_{i+1}, j+1)$-разрешимость.
+    Следовательно, имеет место $(\alpha^{(-1)^{\varepsilon}}, k-p+l-2)$-разрешимость.
+    Так как $k - p + l - 2 \le k - 1$, то по предположению индукции $\omega^{(k-p+l-3)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
+    Следовательно, $\omega^{(k-2)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
+    Тогда из определения получаем $\omega^{(k-1)}(\alpha) = 0$.
+
+    Теперь докажем лемму для произвольного $k > D_K$.
+    Если $D_K < 3$, то база индукции -- лемма верна для $k = 1, 2$.
+    Если $D_K \ge 3$, то база индукции -- лемма верна для $k \le D_K$.
+
+    Надо показать, что $\omega^{(k-1)}(\alpha) = 0$ тогда и только тогда, когда существует $z \in R$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
+
+    Если $\omega^{(k-1)}(\alpha) = 0$, то по определению $\omega^{(k-2)}(\fr{\alpha^{-1}}) = 0$.
+    Если $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$ и $z = 0$, то по определению $\omega^{(k-1)}(\alpha) = 0$.
+
+    Предположим, что существует $z \neq 0$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
+    Из определения класса $\mathcal{T}$ следует, что тройка $(z, \alpha, D_K)$ регулярная.
+    Следовательно, сущесвуют $p, l \in \mathbb{N}$, $p \le D_K$, $l \le p+1$, $\varepsilon \in \{0, 1\}$, $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$, $i = 1, \dots, l-1$, что
+    \begin{equation*}
+        \begin{split}
+            \beta_1 = \omega^{(p)}\left(\fr{(\alpha - x_0)^{-1}}\right)\\
+            \beta_{i+1} = (\varepsilon_i \beta_i + c_i)^{-1} + b_i$, $i = 1, \dots, l-1\\
+            \beta_{l} = \alpha^{(-1)^{\varepsilon}}
+        \end{split}.
+    \end{equation*}
+
+    Из предположения индукции и равенства $\omega^{(k-p-2)}(\beta_1) = 0$ следует, что имеет место $(\beta_1, k-p-1)$-разрешимость.
+    Из определения $\beta_i$ следует, что для любых $i = 1, \dots, l-1$ и $j \in \mathbb{N}$  имеет место $(\beta_i, j)$-разрешимость тогда и только тогда, когда имеет место $(\beta_{i+1}, j+1)$-разрешимость.
+    Следовательно, имеет место $(\alpha^{(-1)^{\varepsilon}}, k-p+l-2)$-разрешимость.
+    Так как $k - p + l - 2 \le k - 1$, то по предположению индукции $\omega^{(k-p+l-3)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
+    Следовательно, $\omega^{(k-2)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
+    Тогда из определения получаем $\omega^{(k-1)}(\alpha) = 0$.
+
+\end{proof}
+
+\begin{theorem}
+    Пусть кольцо $R \in \mathcal{T}$.
+    Тогда цепочка делений с выбором минимального по норме остатка является кратчайшей, т.е. $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$ для всех $a, b \in \zeroless{R}$.
+\end{theorem}
+
+\subsection{Теорема Ламе в факориальных кольцах}
+
+\begin{theorem}
+    Если $R$ -- евклидово кольцо относительно нормы $\elementnorm{\cdot}$, то $\Lambda_R \in [0, 1]$.
+
+    Если $R$ -- факториальное кольцо и $\Lambda_R \in [0, 1)$, то $R$ -- евклидово относительно нормы $\elementnorm{\cdot}$ и $l_n(R) \le [\log_{\Lambda_R^{-1}} n] + 2$ для всех $n \in \mathbb{N}$, где $\log_{\infty} n = 0$.
+\end{theorem}
+
+\begin{theorem}
+    Пусть $d \neq 1$ целое число свободное от квадратов.
+    Если кольцо $\mathbb{Z}[\sqrt{d}]$ евклидово, то $l_n(\mathbb{Z}[\sqrt{d}]) = O(\log n)$.
+\end{theorem}
+
+\subsection*{Выводы по главе~\ref{ch:Kronecker-Vahlen theorem}}
 
 \onlyinsubfile{
     \subfile{_10_bibliography}
