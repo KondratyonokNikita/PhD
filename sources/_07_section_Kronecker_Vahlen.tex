@@ -153,7 +153,7 @@
 \begin{definition}
     Через $\mathcal{T}$ обозначим множество всех таких факориальных колец $R$, для которых существует $D_K \in \mathbb{N}$, что выполнено
     \begin{itemize}
-        \item для всех $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ тройка $(x_0, \alpha, D_K)$ регулярная;
+        \item для всех $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ тройка $(x_0, \alpha, D_K - 1)$ регулярная;
 
         \item если $D_K \ge 3$, то для любого $k \in [3, D_K] \cap \mathbb{N}$ и любых $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ из равенства $\omega^{(k-2)}(\fr{(\alpha - x_0)^{-1}}) = 0$ следует, что тройка $(x_0, \alpha, k-2)$ регулярная.
     \end{itemize}
@@ -182,7 +182,7 @@
     \end{equation*}
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:omega_and_euclidean_algorithm}
     Пусть кольцо $R \in \mathcal{T}$.
     Для любых $\alpha \in F_1$ и $k \in \mathbb{N}$ имеет место $(\alpha, k)$-разрешимость тогда и только тогда, когда $\omega^{(k-1)}(\alpha) = 0$.
 \end{lemma}
@@ -196,66 +196,115 @@
     Если $n \in \invertible{R}$, то $\fr{\varepsilon/n} = 0$ и утверждение леммы очевидно.
     Если $n \not\in \invertible{R}$, то $\fr{\varepsilon/n} = \varepsilon/n$ и $\omega(m/n) = \fr{n/\varepsilon} = 0$.
 
-    Пусть $D_K \ge 3$ и $k \le D_K$.
+    Пусть $k \ge 3$.
     Докажем лемму индукцией по $k$.
-    База индукции -- лемма верна для $k = 1, 2$.
     Заметим, что имеет место $(\alpha, k)$-разрешимость тогда и только тогда, когда существует $z \in R$, что имеет место $((\alpha - z)^{-1}, k-1)$-разрешимость.
-    Таким образом надо показать, что для $3 \le k \le D_K$ $\omega^{(k-1)}(\alpha) = 0$ тогда и только тогда, когда существует $z \in R$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
-
+    Таким образом надо показать, что для $\omega^{(k-1)}(\alpha) = 0$ тогда и только тогда, когда существует $z \in R$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
     Если $\omega^{(k-1)}(\alpha) = 0$, то по определению $\omega^{(k-2)}(\fr{\alpha^{-1}}) = 0$.
     Если $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$ и $z = 0$, то по определению $\omega^{(k-1)}(\alpha) = 0$.
 
     Предположим, что существует $z \neq 0$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
-    Из определения класса $\mathcal{T}$ следует, что тройка $(z, \alpha, k-2)$ регулярная.
-    Следовательно, сущесвуют $p, l \in \mathbb{N}$, $p \le k-2$, $l \le p+1$, $\varepsilon \in \{0, 1\}$, $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$, $i = 1, \dots, l-1$, что
+    Если $D_K \ge 3$ и $k \le D_K$, то обозначим $X = k-2$, иначе $X = D_K - 1$.
+    Заметим, что $X \le k-2$.
+    Из определения класса $\mathcal{T}$ следует, что тройка $(z, \alpha, X)$ регулярная.
+    Следовательно, сущесвуют $p, l \in \mathbb{N}$, $p \le X$, $l \le p+1$, $\varepsilon \in \{0, 1\}$, $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$, $i = 1, \dots, l-1$, что
     \begin{equation*}
         \begin{split}
-            \beta_1 = \omega^{(p)}\left(\fr{(\alpha - x_0)^{-1}}\right)\\
+            \beta_1 = \omega^{(p)}\left(\fr{(\alpha - z)^{-1}}\right)\\
             \beta_{i+1} = (\varepsilon_i \beta_i + c_i)^{-1} + b_i, i = 1, \dots, l-1\\
             \beta_{l} = \alpha^{(-1)^{\varepsilon}}
         \end{split}.
     \end{equation*}
 
+    Заметим, что $0 \le k-p-2 < k$, так как $p \le X \le k-2$.
     Из предположения индукции и равенства $\omega^{(k-p-2)}(\beta_1) = 0$ следует, что имеет место $(\beta_1, k-p-1)$-разрешимость.
-    Из определения $\beta_i$ следует, что для любых $i = 1, \dots, l-1$ и $j \in \mathbb{N}$  имеет место $(\beta_i, j)$-разрешимость тогда и только тогда, когда имеет место $(\beta_{i+1}, j+1)$-разрешимость.
+    Из определения $\beta_i$ следует, что для любых $i = 1, \dots, l-1$ и $j \in \mathbb{N}$ из того, что имеет место $(\beta_i, j)$-разрешимость следует, что имеет место $(\beta_{i+1}, j+1)$-разрешимость.
     Следовательно, имеет место $(\alpha^{(-1)^{\varepsilon}}, k-p+l-2)$-разрешимость.
     Так как $k - p + l - 2 \le k - 1$, то по предположению индукции $\omega^{(k-p+l-3)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
     Следовательно, $\omega^{(k-2)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
-    Тогда из определения получаем $\omega^{(k-1)}(\alpha) = 0$.
+    Тогда из определения $\omega$ получаем $\omega^{(k-1)}(\alpha) = 0$.
+    Лемма доказана.
+\end{proof}
 
-    Теперь докажем лемму для произвольного $k > D_K$.
-    Если $D_K < 3$, то база индукции -- лемма верна для $k = 1, 2$.
-    Если $D_K \ge 3$, то база индукции -- лемма верна для $k \le D_K$.
-
-    Надо показать, что $\omega^{(k-1)}(\alpha) = 0$ тогда и только тогда, когда существует $z \in R$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
-
-    Если $\omega^{(k-1)}(\alpha) = 0$, то по определению $\omega^{(k-2)}(\fr{\alpha^{-1}}) = 0$.
-    Если $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$ и $z = 0$, то по определению $\omega^{(k-1)}(\alpha) = 0$.
-
-    Предположим, что существует $z \neq 0$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
-    Из определения класса $\mathcal{T}$ следует, что тройка $(z, \alpha, D_K)$ регулярная.
-    Следовательно, сущесвуют $p, l \in \mathbb{N}$, $p \le D_K$, $l \le p+1$, $\varepsilon \in \{0, 1\}$, $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$, $i = 1, \dots, l-1$, что
+\begin{lemma}\label{lemma:euclidean_algorithm_and_minima}
+    Пусть кольцо $R$ факториальное.
+    Тогда для любых двух элементов $a, b \in \zeroless{R}$ выполнено равенство
     \begin{equation*}
-        \begin{split}
-            \beta_1 = \omega^{(p)}\left(\fr{(\alpha - x_0)^{-1}}\right)\\
-            \beta_{i+1} = (\varepsilon_i \beta_i + c_i)^{-1} + b_i$, $i = 1, \dots, l-1\\
-            \beta_{l} = \alpha^{(-1)^{\varepsilon}}
-        \end{split}.
+        \mathcal{L}_{a, b} = \min\{
+            k \in \mathbb{N} \big| \omega^{(k-1)}(a\/b) = 0
+        \},
     \end{equation*}
+    где $\min \emptyset = \infty$.
+\end{lemma}
+\begin{proof}
+    Рассмотрим произвольные $a, b \in \zeroless{R}$.
+    Предположим, что $\mathcal{L}_{a, b} = k < \infty$ и $\mathcal{D}_{a, b}(q_1, \dots, \q_k) = (r_{-1}, r_0, \dots, r_k)$ это цепочка делений с выбором минимального по норме остатка.
 
-    Из предположения индукции и равенства $\omega^{(k-p-2)}(\beta_1) = 0$ следует, что имеет место $(\beta_1, k-p-1)$-разрешимость.
-    Из определения $\beta_i$ следует, что для любых $i = 1, \dots, l-1$ и $j \in \mathbb{N}$  имеет место $(\beta_i, j)$-разрешимость тогда и только тогда, когда имеет место $(\beta_{i+1}, j+1)$-разрешимость.
-    Следовательно, имеет место $(\alpha^{(-1)^{\varepsilon}}, k-p+l-2)$-разрешимость.
-    Так как $k - p + l - 2 \le k - 1$, то по предположению индукции $\omega^{(k-p+l-3)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
-    Следовательно, $\omega^{(k-2)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
-    Тогда из определения получаем $\omega^{(k-1)}(\alpha) = 0$.
+    Из определения цепочки делений с выбором минимального по норме остатка следует, что
+    \begin{equation*}
+        \frac{r_{i-2}}{r_{i-1}} = q_i + \frac{r_i}{r_{i-1}}
+    \end{equation*}
+    для $i = 1, \dots, k-1$ и
+    \begin{equation*}
+        \frac{r_{k-2}}{r_{k-1}} = q_k.
+    \end{equation*}
+    Заметим, что
+    \begin{equation*}
+        \omega\left(
+            \fr{\frac{r_{i-2}}{r_{i-1}}}
+        \right) = \fr{\frac{r_{i-1}}{r_i}}.
+    \end{equation*}
+    Следовательно, получаем
+    \begin{equation*}
+        \omega^{(k-1)}\left(
+            \fr{\frac{a}{b}}
+        \right) = \fr{\frac{r_{k-2}}{r_{k-1}}} = 0.
+    \end{equation*}
+    Так как
+    \begin{equation*}
+        \omega^{(j-1)}\left(
+            \fr{\frac{a}{b}}
+        \right) = \fr{\frac{r_{j-2}}{r_{j-1}}} = 0,
+    \end{equation*}
+    для $j = 1, \dots, k-1$, то $\mathcal{L}_{a, b} = k = \min\{k \in \mathbb{N} \big| \omega^{(k-1)}(a\/b) = 0\}$.
 
+    Предположим, что $\mathcal{L}_{a, b} = \infty$, но условия леммы не выполняются.
+    Выберем минимальное такое $k \in \mathbb{N}$, что $\omega^{(k-1)}\left(\fr{\frac{a}{b}}\right) = 0$.
+
+    Обозначим $r_{-1} = a$, $r_0 = b$.
+    Тогда имеем $\omega^{(k-1)}\left(\fr{\frac{r_{-1}}{r_0}}\right) = 0$.
+
+    Пусть $\omega^{(k-i)}\left(\fr{\frac{r_{i-2}}{r_{i-1}}}\right) = 0$.
+    Пусть $\int{\frac{r_{i-2}}{r_{i-1}}} = q_i$, $\fr{\frac{r_{i-2}}{r_{i-1}}} = \frac{r_i}{r_{i-1}}$.
+    Если $r_i = 0$, то $\mathcal{L}_{a, b} = i$, и получаем противоречие.
+    Следовательно, имеем $r_i \neq 0$ и по определению $\omega$ получаем равенствво $\omega^{(k-i-1)}\left(\fr{\frac{r_{i-1}}{r_i}}\right) = 0$.
+
+    Используя это рассуждение $k-1$ раз, получаем, что $\omega^{(0)}\left(\fr{\frac{r_{k-2}{r_{k-1}}}}\right) = 0$.
+    Однако имеем
+    \begin{equation*}
+        0 = \omega^{(0)}\left(
+            \fr{\frac{r_{k-2}{r_{k-1}}}}
+        \right) = \fr{\frac{r_{k-2}{r_{k-1}}}} = \frac{r_{k}{r_{k-1}}}.
+    \end{equation*}
+    Следовательно, получаем $r_k = 0$.
+    Из построения следует, что построили цепочку делений с выбором минимального по норме остатка, что противоречит $\mathcal{L}_{a, b} = \infty$.
+    Лемма доказана.
 \end{proof}
 
 \begin{theorem}
     Пусть кольцо $R \in \mathcal{T}$.
     Тогда цепочка делений с выбором минимального по норме остатка является кратчайшей, т.е. $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$ для всех $a, b \in \zeroless{R}$.
 \end{theorem}
+\begin{proof}
+    Пусть $\mathpzc{l}_{a, b} = \infty$.
+    Тогда $\mathcal{L}_{a, b} = \infty$, так как иначе цепочка делений с выбором минимального по норме остатка имела бы длину меньше, чем кратчайшая.
+
+    Пусть $\mathpzc{l}_{a, b} = k < \infty$ и $\mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, r_0, \dots, r_k)$ кратчайшая цепочка делений.
+    Тогда, по лемме~\ref{lemma:omega_and_euclidean_algorithm} получаем, что $\omega^{(k-1)}\left(\frac{a}{b}\right) = 0$.
+    Тогда, по лемме~\ref{lemma:euclidean_algorithm_and_minima} получаем, что $\mathcal{L}_{a, b} \le k$.
+    Следовательно, получаем $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$.
+    Теорема доказана.
+\end{proof}
 
 \subsection{Теорема Ламе в факориальных кольцах}
 
@@ -269,8 +318,6 @@
     Пусть $d \neq 1$ целое число свободное от квадратов.
     Если кольцо $\mathbb{Z}[\sqrt{d}]$ евклидово, то $l_n(\mathbb{Z}[\sqrt{d}]) = O(\log n)$.
 \end{theorem}
-
-\subsection*{Выводы по главе~\ref{ch:Kronecker-Vahlen theorem}}
 
 \onlyinsubfile{
     \subfile{_10_bibliography}
