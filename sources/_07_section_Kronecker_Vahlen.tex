@@ -14,7 +14,6 @@
     \addcontentsline{toc}{chapter}{ГЛАВА \arabic{section}. ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}
 \end{center}
 
-% TODO придумать нормальное название
 \subsection{Предварительные сведения}
 
 \begin{definition}
@@ -113,6 +112,14 @@
     \end{equation*}
 \end{definition}
 
+\begin{remark}
+    Теорему Кронекера-Валена в кольце целых чисел можно сформулировать в терминах этой главы следующим образом.
+    Пусть $R = \mathbb{Z}$, $\elementnorm{x} = |x|$, $\fr{\alpha} = \alpha - [\alpha + 1/2]$.
+    Тогда цепочка делений с выбором минимального по норме остатка является кратчайшей, т.е. $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$ для всех $a, b \in \zeroless{R}$.
+
+    Далее в этой главе определяются достаточные условия на факториальное кольцо $R$ с заданной нормой и дробной частью, при которых теорема Кронекера-Валена будет выполняться в этом кольце.
+\end{remark}
+
 \subsection{Теорема Кронекера-Валена в специальном классе факториальных колец}
 
 \begin{definition}
@@ -157,10 +164,6 @@
 
         \item если $D_K \ge 3$, то для любого $k \in [3, D_K] \cap \mathbb{N}$ и любых $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ из равенства $\omega^{(k-2)}(\fr{(\alpha - x_0)^{-1}}) = 0$ следует, что тройка $(x_0, \alpha, k-2)$ регулярная.
     \end{itemize}
-\end{definition}
-
-\begin{definition}
-    Обозначим $\Lambda_K = \sup_{m/n \in F_1} |m/n|$, где $|m/n| = \frac{\elementnorm{m}}{\elementnorm{n}}$ для $m/n \in \zeroless{F_1}$, $(m, n) = 1$ и $|0| = 0$.
 \end{definition}
 
 \begin{definition}
@@ -238,7 +241,7 @@
 \end{lemma}
 \begin{proof}
     Рассмотрим произвольные $a, b \in \zeroless{R}$.
-    Предположим, что $\mathcal{L}_{a, b} = k < \infty$ и $\mathcal{D}_{a, b}(q_1, \dots, \q_k) = (r_{-1}, r_0, \dots, r_k)$ это цепочка делений с выбором минимального по норме остатка.
+    Предположим, что $\mathcal{L}_{a, b} = k < \infty$ и $\mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, r_0, \dots, r_k)$ это цепочка делений с выбором минимального по норме остатка.
 
     Из определения цепочки делений с выбором минимального по норме остатка следует, что
     \begin{equation*}
@@ -279,12 +282,17 @@
     Если $r_i = 0$, то $\mathcal{L}_{a, b} = i$, и получаем противоречие.
     Следовательно, имеем $r_i \neq 0$ и по определению $\omega$ получаем равенствво $\omega^{(k-i-1)}\left(\fr{\frac{r_{i-1}}{r_i}}\right) = 0$.
 
-    Используя это рассуждение $k-1$ раз, получаем, что $\omega^{(0)}\left(\fr{\frac{r_{k-2}{r_{k-1}}}}\right) = 0$.
+    Используя это рассуждение $k-1$ раз, получаем, что
+    \begin{equation*}
+        \omega^{(0)}\left(
+            \fr{\frac{r_{k-2}}{r_{k-1}}}
+        \right) = 0.
+    \end{equation*}
     Однако имеем
     \begin{equation*}
         0 = \omega^{(0)}\left(
-            \fr{\frac{r_{k-2}{r_{k-1}}}}
-        \right) = \fr{\frac{r_{k-2}{r_{k-1}}}} = \frac{r_{k}{r_{k-1}}}.
+            \fr{\frac{r_{k-2}}{r_{k-1}}}
+        \right) = \fr{\frac{r_{k-2}}{r_{k-1}}} = \frac{r_{k}{r_{k-1}}}.
     \end{equation*}
     Следовательно, получаем $r_k = 0$.
     Из построения следует, что построили цепочку делений с выбором минимального по норме остатка, что противоречит $\mathcal{L}_{a, b} = \infty$.
@@ -308,16 +316,59 @@
 
 \subsection{Теорема Ламе в факориальных кольцах}
 
+Ранее было показано, что при определенных условиях на кольцо цепочка делений с выбором минимального по норме остатка является кратчайшей.
+Однако существуют кольца, для которых эти условия не выполняются и в которых цепочка делений с выбором минимального по норме остатка не является кратчайшей.
+Например, в работе~\cite{source:Rolletschek_1990} было показано, что теорема Кронекера-Валена не выполняется в кольце $\mathbb{Z}[\sqrt{-11}]$.
+В работе ~\cite{source:Cooke} было показано, что для колец целых алгебраических чисел с бесконечной группой единиц длина кратчайшей цепочки делений с выбором минимальноо по норме остатка ограничена константой.
+Следовательно, важным вопросом является исследование ассимптотического поведения длины кратчайшей цепочки делений.
+
+В работе~\cite{source:Selfridge} доказана следующее полезное утверждение.
+\begin{proposition}
+    Пусть $d \neq 1$ -- целое число свободное от квадратов.
+    Обозначим
+    \begin{equation*}
+        F(d) = \left\{\begin{split}
+            \left(
+                \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{2}\right]
+            \right) \cap \left(
+                \mathbb{Q} \times \mathbb{Q}
+            \right), \textrm{ если } d \not\equiv 1 \pmod 4\\
+            \left(
+                \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{4}\right]
+            \right) \cap \left(
+                \mathbb{Q} \times \mathbb{Q}
+            \right), \textrm{ если } d \equiv 1 \pmod 4\\
+        \end{split}\right.,
+    \end{equation*}
+    а так же для $r > 0$ и $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$
+    \begin{equation*}
+        U(\lambda, r) = \left\{
+            q_1 + q_2 \sqrt{d} \in Q[\sqrt{d}] \big| |(q_1 - \lambda_1)^2 - d(q_2 - \lambda_2)^2| < r
+        \right\}.
+    \end{equation*}
+    Тогда кольцо $\mathbb{Z}[\sqrt{d}]$ является евклидовым относительно нормы числового поля $\mathbb{Q}[\sqrt{d}]$ тогда и только тогда, когда существует $\lambda \in \mathbb{Z}[\sqrt{d}]$, что $F(d) \subseteq U(\lambda, 1)$.
+\end{proposition}
+
+\begin{definition}
+    Обозначим $\Lambda_K = \sup_{m/n \in F_1} |m/n|$, где $|m/n| = \frac{\elementnorm{m}}{\elementnorm{n}}$ для $m/n \in \zeroless{F_1}$, $(m, n) = 1$ и $|0| = 0$.
+\end{definition}
+
 \begin{theorem}
     Если $R$ -- евклидово кольцо относительно нормы $\elementnorm{\cdot}$, то $\Lambda_R \in [0, 1]$.
 
     Если $R$ -- факториальное кольцо и $\Lambda_R \in [0, 1)$, то $R$ -- евклидово относительно нормы $\elementnorm{\cdot}$ и $l_n(R) \le [\log_{\Lambda_R^{-1}} n] + 2$ для всех $n \in \mathbb{N}$, где $\log_{\infty} n = 0$.
 \end{theorem}
+\begin{proof}
+
+\end{proof}
 
 \begin{theorem}
     Пусть $d \neq 1$ целое число свободное от квадратов.
     Если кольцо $\mathbb{Z}[\sqrt{d}]$ евклидово, то $l_n(\mathbb{Z}[\sqrt{d}]) = O(\log n)$.
 \end{theorem}
+\begin{proof}
+
+\end{proof}
 
 \onlyinsubfile{
     \subfile{_10_bibliography}
