@@ -226,7 +226,6 @@
     Так как $k - p + l - 2 \le k - 1$, то по предположению индукции $\omega^{(k-p+l-3)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
     Следовательно, $\omega^{(k-2)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
     Тогда из определения $\omega$ получаем $\omega^{(k-1)}(\alpha) = 0$.
-    Лемма доказана.
 \end{proof}
 
 \begin{lemma}\label{lemma:euclidean_algorithm_and_minima}
@@ -296,7 +295,6 @@
     \end{equation*}
     Следовательно, получаем $r_k = 0$.
     Из построения следует, что построили цепочку делений с выбором минимального по норме остатка, что противоречит $\mathcal{L}_{a, b} = \infty$.
-    Лемма доказана.
 \end{proof}
 
 \begin{theorem}
@@ -311,15 +309,185 @@
     Тогда, по лемме~\ref{lemma:omega_and_euclidean_algorithm} получаем, что $\omega^{(k-1)}\left(\frac{a}{b}\right) = 0$.
     Тогда, по лемме~\ref{lemma:euclidean_algorithm_and_minima} получаем, что $\mathcal{L}_{a, b} \le k$.
     Следовательно, получаем $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$.
-    Теорема доказана.
 \end{proof}
 
-\subsection{Теорема Ламе в факориальных кольцах}
+\subsection{Метод проверки $R \in \mathcal{T}$}
+
+Пусть дано некоторое факториальное кольцо $R$.
+Рассмотрим алгоритм проверки принадлежности этого кольца классу $T$.
+
+\begin{definition}
+    Через $\mathcal{S}$ обозначим множество всех таких факториальных колец $R$, что для всех $x \in \zeroless{R}$ и $\alpha \in \zeroless{F_1}$ выполнено одно из условий
+    \begin{itemize}
+        \item $\int{(\alpha - x)^{-1}} \in \invertible{R} \cup \{0\}$;
+        
+        \item $x \int{(\alpha - x)^{-1}} + 1 \in \invertible{R}$.
+    \end{itemize}
+\end{definition}
+
+\begin{lemma}
+    Множество $\mathcal{S}$ содержится в $\mathcal{T}$.
+\end{lemma}
+\begin{proof}
+    Предположим, что факториальное кольцо $R \in \mathcal{S}$.
+    Возьмем $D_K = 2$.
+    Необходимо доказать, что для любых $x \in \zeroless{R}$ и $\alpha \in \zeroless{F_1}$ тройка $(x, \alpha, D_K-1)$ является регулярной.
+    
+    Возьмем $p = 1$, $l = 2$ и обозначим $b = \int{(\alpha - x)^{-1}}$.
+    Тогда имеем
+    \begin{equation*}
+        \beta_1 = \omega\left(
+            \fr{(\alpha - x)^{-1}}
+        \right) = \omega\left(
+            (\alpha - x)^{-1} - b
+        \right) = \fr{\frac{\alpha - x}{1 - b\alpha + bx}}.
+    \end{equation*}
+    Обозначим $c = \int{\beta_1}$, тогда
+    \begin{equation*}
+        \beta_1 = \frac{\alpha - x}{1 - b\alpha + bx} - c.
+    \end{equation*}
+    
+    Предположим, что $b \in \invertible{R} \cup \{0\}$.
+    Если $b = 0$, то
+    \begin{equation*}
+        \begin{split}
+            \beta_2 = \left(
+                \beta_1 + x + c
+            \right)^{-1} = \\
+            = \left(
+                \frac{\alpha - x}{1} - c + x + c
+            \right)^{-1} = \alpha^{-1}.
+        \end{split}
+    \end{equation*}
+
+    Если $b \in \invertible{R}$, то
+    \begin{equation*}
+        \begin{split}
+            \beta_2 = \left(
+                -b^2 \beta_1 - b - b^2 c
+            \right)^{-1} + b^{-1} + x = \\
+            = \left(
+                -b^2 \left(
+                    \frac{\alpha - x}{1 - b\alpha + bx} - c
+                \right) - b - b^2 c
+            \right)^{-1} + b^{-1} + x = \\
+            = \left(
+                \frac{-b^2\alpha + b^2x}{1 - b\alpha + bx} - b
+            \right)^{-1} + b^{-1} + x = \\
+            = \left(
+                \frac{-b^2\alpha + b^2x - b + b^2\alpha - b^2x}{1 - b\alpha + bx}
+            \right)^{-1} + b^{-1} + x = \\
+            = \left(
+                \frac{- b}{1 - b\alpha + bx}
+            \right)^{-1} + b^{-1} + x = \\
+            = \frac{-1 + b\alpha - bx}{b} + b^{-1} + x = \alpha.
+        \end{split}
+    \end{equation*}
+    
+    Предположим, что $xb + 1 \in \invertible{R}$.
+    Обозначим $xb + 1 = \varepsilon$.
+    Тогда
+    \begin{equation*}
+        \begin{split}
+            \beta_2 = \left(
+                \beta_1 \varepsilon^2 + c\varepsilon^2 + x\varepsilon
+            \right)^{-1} + b\varepsilon^{-1} = \\
+            = \frac{\varepsilon^{-1}}{\beta_1 \varepsilon + c\varepsilon + x} + b\varepsilon^{-1} = \\
+            = \frac{1 - bx\varepsilon^{-1}}{\beta_1 \varepsilon + c\varepsilon + x} + b\varepsilon^{-1} = \\
+            = \frac{1 - bx\varepsilon^{-1} + b\varepsilon^{-1}\beta_1 \varepsilon + b\varepsilon^{-1}c\varepsilon + b\varepsilon^{-1}x}{\beta_1 \varepsilon + c\varepsilon + x} = \\
+            = \frac{1 + b\beta_1 + bc}{\beta_1 \varepsilon + c\varepsilon + x} = \\
+            = \frac{1 + b\beta_1 + bc}{\beta_1(xb + 1) + c(xb + 1) + x} = \\
+            = \frac{
+                1 + b\left(
+                    \frac{\alpha - x}{1 - b\alpha + bx} - c
+                \right) + bc
+            }{
+                \left(
+                    \frac{\alpha - x}{1 - b\alpha + bx} - c
+                \right)(xb + 1) + c(xb + 1) + x
+            } = \\
+            = \frac{
+                1 + \frac{b\alpha - bx}{1 - b\alpha + bx}
+            }{
+                \frac{xb\alpha + \alpha - x^2b - x}{1 - b\alpha + bx} + x
+            } = \\
+            = \frac{
+                \frac{1}{1 - b\alpha + bx}
+            }{
+                \frac{\alpha}{1 - b\alpha + bx}
+            } = \alpha^{-1},
+        \end{split}
+    \end{equation*}
+    
+    Следовательно, тройка $(x, \alpha, D_K - 1)$ регулярная.
+\end{proof}
+
+Используя доказанную выше лемму, сформулируем метод проверки, что факториальное кольцо $R \in \mathcal{S}$.
+\begin{algorithm}\label{algorithm:R_in_S}
+    На вход подается факториальное кольцо $R$.
+    
+    \begin{enumerate}
+        \item Построить множество
+        \begin{equation*}
+            J = \left\{
+                x \in \zeroless{R} \big| \forall \alpha \in \zeroless{F_1}, \int{(\alpha - x)^{-1}} \in \invertible{R} \cup \{0\}
+            \right\}
+        \end{equation*}
+        
+        \item Для каждого $x_0 \in \zeroless{R} \setminus J$ построить множество
+        \begin{equation*}
+            Y(x_0) = \left\{
+                f_{x_0}(\alpha) = \int{(\alpha - x_0)^{-1}} | \alpha \in \zeroless{F_1}
+            \right\}
+        \end{equation*}
+        
+        \item Для каждого $x_0 \in \zeroless{R} \setminus J$ построить множество
+        \begin{equation*}
+            U(x_0) = \left(
+                \left\{
+                    \frac{\varepsilon - 1}{x_0} | \varepsilon \in \invertible{R}
+                \right\} \cap R
+            \right) \cup \invertible{R}
+        \end{equation*}
+        
+        \item Если $Y(x_0) \subseteq U(x_0)$ для всех $x_0 \in \zeroless{R} \setminus J$, то ответ ''$R \in \mathcal{S}$'', иначе ответ ''неизвестно''
+    \end{enumerate}
+\end{algorithm}
+
+Докажем корректность этого алгоритма.
+
+\begin{lemma}
+    Если алгоритм~\ref{algorithm:R_in_S} вернул ответ ''$R \in \mathcal{S}$'', то $R \in \mathcal{S}$.
+\end{lemma}
+\begin{proof}
+    Предположим, что ответ ''$R \in \mathcal{S}$''.
+    Рассмотрим произвольный $x_0 \in \zeroless{R}$.
+    Если $x_0 \in J$, то
+    \begin{equation*}
+        \int{(\alpha - x)^{-1}} \in \invertible{R} \cup \{0\},
+    \end{equation*}
+    и выполнена первое условие определения множества $\mathcal{S}$.
+    
+    Предположим, что $x_0 \not\in J$.
+    Рассмотрим $y = \int{(\alpha - x_0)^{-1}} \in Y(x_0)$.
+    С другой стороны, $y \in U(x_0)$, следовательно, $y = \frac{\varepsilon - 1}{x_0}$.
+    Тогда получаем, что
+    \begin{equation*}
+        \frac{\varepsilon - 1}{x_0} = \int{(\alpha - x_0)^{-1}}.
+    \end{equation*}
+    Следовательно, получаем
+    \begin{equation*}
+        \varepsilon = x_0 \int{(\alpha - x_0)^{-1}} + 1.
+    \end{equation*}
+    Значит выполнено второе условие определения множества $\mathcal{S}$.
+\end{proof}
+
+\subsection{Теорема Ламе в факториальных кольцах}
 
 Ранее было показано, что при определенных условиях на кольцо цепочка делений с выбором минимального по норме остатка является кратчайшей.
 Однако существуют кольца, для которых эти условия не выполняются и в которых цепочка делений с выбором минимального по норме остатка не является кратчайшей.
 Например, в работе~\cite{source:Rolletschek_1990} было показано, что теорема Кронекера-Валена не выполняется в кольце $\mathbb{Z}[\sqrt{-11}]$.
-В работе ~\cite{source:Cooke} было показано, что для колец целых алгебраических чисел с бесконечной группой единиц длина кратчайшей цепочки делений с выбором минимальноо по норме остатка ограничена константой.
+В работе ~\cite{source:Cooke} было показано, что для колец целых алгебраических чисел с бесконечной группой единиц длина кратчайшей цепочки делений с выбором минимального по норме остатка ограничена константой.
 Следовательно, важным вопросом является исследование ассимптотического поведения длины кратчайшей цепочки делений.
 
 В работе~\cite{source:Selfridge} доказана следующее полезное утверждение.
@@ -414,7 +582,7 @@
     Следовательно, можно считать, что $x_0 \in \mathbb{Q}$ и $y_0 \not\in \mathbb{Q}$.
     Тогда существует $\varepsilon_y > 0$ и $y \in [y_0 - \varepsilon_y, y_0 + \varepsilon_y] \cap \mathbb{Q}$, что $(x_0, y) \in E(d) \setminus V(\lambda, 1)$.
     Получаем противоречие с условием $F(d) \setminus U(\lambda, 1) = \emptyset$.
-    Следоваельно, выполнено $E(d) \subseteq V(\lambda, 1)$.
+    Следовательно, выполнено $E(d) \subseteq V(\lambda, 1)$.
 
     Докажем, что существует $r_0 < 1$, что $F(d) \subseteq U(\lambda, r_0)$.
     Используя рассуждения выше, заметим, что для этого достаточно показать, что $E(d) \subseteq V(\lambda, r_0)$ для некоторого $r_0 < 1$.
