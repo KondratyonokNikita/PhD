@@ -57,7 +57,7 @@
     \end{equation*}
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{remark:easy_fr}
     Для любого факториального кольца $R$ существует дробная и целая часть.
     Рассмотрим случайный элемент $X \in F/R$.
     Этот элемент можно представить в виде $X = \{m/n + t | t \in R\}$, где $m \in R$, $n \in \zeroless{R}$ $(m, n) = 1$.
@@ -291,13 +291,13 @@
     \begin{equation*}
         0 = \omega^{(0)}\left(
             \fr{\frac{r_{k-2}}{r_{k-1}}}
-        \right) = \fr{\frac{r_{k-2}}{r_{k-1}}} = \frac{r_{k}{r_{k-1}}}.
+        \right) = \fr{\frac{r_{k-2}}{r_{k-1}}} = \frac{r_{k}}{r_{k-1}}.
     \end{equation*}
     Следовательно, получаем $r_k = 0$.
     Из построения следует, что построили цепочку делений с выбором минимального по норме остатка, что противоречит $\mathcal{L}_{a, b} = \infty$.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:Kroneker_Vahlen_theorem_in_UFD}
     Пусть кольцо $R \in \mathcal{T}$.
     Тогда цепочка делений с выбором минимального по норме остатка является кратчайшей, т.е. $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$ для всех $a, b \in \zeroless{R}$.
 \end{theorem}
@@ -482,6 +482,321 @@
     Значит выполнено второе условие определения множества $\mathcal{S}$.
 \end{proof}
 
+\begin{example}\label{example:Z}
+    Пусть $R = \mathbb{Z}$.
+    Норма задана функцией $\elementnorm{x} = |x|$.
+    Дробная часть $\fr{\alpha} = \alpha - \left[\alpha + \frac{1}{2}\right]$.
+    Тогда
+    \begin{itemize}
+        \item $J = \left\{x \in \mathbb{Z} \big| |x| > 1\right\}$
+        
+        \item $Y(1) = \{-2, -1\}$, $Y(-1) = \{1, 2\}$
+        
+        \item $U(1) = \{-2, -1, 0, 1\}$, $U(-1) = \{-1, 0, 1, 2\}$
+        
+        \item $Y(1) \subseteq U(1)$, $Y(-1) \subseteq U(-1)$
+    \end{itemize}
+    
+    Следовательно, $\mathbb{Z} \in \mathcal{S}$.
+\end{example}
+
+% TODO переписать
+\begin{example}\label{example:thm1:P[t]}
+    Пусть $\mathbb{R}=\mathbb{P}[t]$, где $\mathbb{P}$ -- поле.
+    Норма задана функцией $\upsilon(f)=\deg f$, $f \in \mathbb{P}[t]$.
+    Дробная часть $\textrm{fr}(m(t)/n(t))=r(t)/n(t)$, $m(t)\equiv r(t)(\textrm{mod}\ n(t))$, $\deg r<\deg n$, $m(t)/n(t) \in \mathbb{P}(t).$
+
+    \begin{enumerate}
+        \item $\mathbb{J}=\mathbb{K}_{*}$;
+
+        \item $\mathbb{K}_{*}\backslash\mathbb{J} = \emptyset$;
+    \end{enumerate}
+
+    Следовательно, $\mathbb{P}[t] \in \mathcal{S}$.
+\end{example}
+
+\begin{example}\label{example:thm1:coordinate_ring_of_circle}
+	Пусть $\mathbb{R}$ это координатное кольцо $\mathbb{Q}[i][x, y]/(x^2 + y^2 + 1)$.
+	Известно, что это кольцо изоморфно $\mathbb{Q}[i][t,  t^{-1}]$, где отображение задано следующим образом
+	\begin{equation*}
+		X \to \cos \theta \to \frac{e^{ix} + e^{-ix}}{2} \to \frac{t + t^{-1}}{2}\\
+		Y \to \sin \theta \to \frac{-ie^{ix} + ie^{-ix}}{2} \to \frac{-it + it^{-1}}{2}
+	\end{equation*}
+	Так же известно, что $Q[i][t, t^{-1}]$ -- факториальное.
+	
+	Обратимыми элементами в этом кольце  являются одночлены вида $\alpha t^k$, где $\alpha\in\mathbb{Q}[i]$, $k\in\mathbb{Z}$.
+	Введем норму в этом кольце следующим образом
+	\begin{equation*}
+		 \upsilon(x) = \upsilon\left(
+		 	\sum_{i=k_1}^{k_2} \alpha_i t^i
+		 \right) = k_2 - k_1
+	\end{equation*}
+    где $\alpha_i\in\mathbb{Q}[i]$, если $x \neq 0$ и $\upsilon(0) = -\infty$.
+    Проверим критерии.
+    Рассмотрим два элемента кольца
+    \begin{equation*}
+    	x = \sum_{i=k_1}^{k_2} \alpha_i t^i\\
+    	y = \sum_{i=l_1}^{l_2} \beta_i t^i
+    \end{equation*}
+	При  умножении максимальная степень будет равна $k_2 + l_2$, а минимальная $k_1 + l_1$.
+	Тогда $\upsilon(xy) = k_2 + l_2 - k_1 - l_1 \ge k_2 - k_1$.
+	Это равенство будет выполняться только если $l_2 - l_1 = 0$.
+	А это будет означать, что $y\in\mathbb{I}$.
+	
+	Покажем, что $\textrm{fr}(\alpha) = \varepsilon^{-1}\textrm{fr}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
+	Предположим, что $\textrm{fr}\left(\frac{m}{n}\right) = \frac{r}{n}$.
+	Это означает, что $n | (m-r)$ и $r$ имеет минимальную норму из возможных.
+	Так как норма не меняется при умножении на обратимый элемент, то $\varepsilon r$ будет иметь минимальную норму, а так же $n | (\varepsilon m - \varepsilon r)$.
+	Следовательно, имеем $\textrm{fr}(\alpha) = \varepsilon^{-1}\textrm{fr}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
+	Тогда $\textrm{int}(\alpha) = \varepsilon^{-1}\textrm{int}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
+	
+	Заметим, что умножив $\textrm{int}((\alpha-x)^{-1})$ на некоторый обратимый элемент можно сделать так, что $\alpha$ принадлежит полю частных кольца многочленов, а $x$ это многочлен.
+	Тогда этот пример будет аналогичным примеру с многочленами.
+	Следовательно, для данного координатного кольца выполнен аналог теоремы Кронекера-Валена.
+\end{example}
+
+\begin{example}\label{example:Z[t]}
+    Пусть $\mathbb{R}=\mathbb{Z}[t]$, $\upsilon(f)=\deg f$, $f \in \mathbb{Z}[t]$.
+    Определим дробную часть в $\mathbb{F}=\mathbb{Z}(t)$ следующим образом.
+    Рассмотрим отображение $\mathcal{A}:\mathbb{F}/\mathbb{K}\to\mathbb{F}$:
+    \begin{equation*}
+        \mathcal{A}(\mathbb{A})=m(t)/n(t),
+    \end{equation*}
+    где $\mathbb{A}=\{m(t)/n(t)+q(t)|q(t)\in\mathbb{Z}[t]\}.$
+    Для произвольных $\mathbb{A}\in\mathbb{F}/\mathbb{K},$ $\alpha\in\mathbb{A}$ положим
+    \begin{equation*}
+        \begin{array}{c}
+            \textrm{int}(\alpha)=r(t),\\
+            \textrm{fr}(\alpha)=\mathcal{A}(\mathbb{A})-r(t),
+        \end{array}
+    \end{equation*}
+    где $r(t)\in\mathbb{Z}[t]$ и для любого $p(t)\in\mathbb{Z}[t]$
+    \begin{equation*}
+        \lim_{t\to+\infty}\left|\frac{\mathcal{A}(\mathbb{A})-r(t)}{\mathcal{A}(\mathbb{A})-p(t)}\right|\le 1.
+    \end{equation*}
+
+    Докажем, что
+    \begin{equation*}
+    	\mathbb{J}\supseteq\{f\in\mathbb{Z}[t]|\deg f>0\ \textrm{или}\ |f(t)|\equiv|x_{0}|>2\}.
+    \end{equation*}
+    Рассмотрим произвольные $\mathbb{A}\in\mathbb{F}/\mathbb{K}$ и $\alpha=m(t)/n(t)\in\mathbb{A}$, $\alpha=\textrm{fr}(\alpha)$.
+
+    Имеем два случая.
+    Предположим, что $\deg m > \deg n$.
+    Из того, что $\alpha=\textrm{fr}(\alpha)$ и определения дробной части следует, что
+    \begin{equation*}
+    	1 \ge \lim_{t\to+\infty}\left|\frac{\frac{m(t)}{n(t)}}{\frac{m(t)}{n(t)} - p(t)}\right| = \lim_{t\to+\infty}\left|\frac{m(t)}{m(t) - n(t)p(t)}\right|.
+    \end{equation*}
+	Следовательно, получаем, что для любых $p(t)\in \mathbb{Z}[t]$ выполнено $\deg m(t) \le \deg(m(t) - n(t)p(t))$.
+    Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0}(t)\in\mathbb{Z}[t]$.
+    Тогда
+    \begin{equation*}
+    	\textrm{fr}((\alpha - x_{0})^{-1}) = (\alpha - x_0)^{-1} - r =\\
+    	= \left(\frac{m}{n} - x_0\right)^{-1} - r = \frac{n}{m - x_0 n} - r =\\
+    	= \frac{n - r(m - nx_{0})}{m - nx_{0}}.
+    \end{equation*}
+    Из того, что $\deg n < \deg m\le \deg(m-nx_{0})$ следует, что $\deg(n-r(m-nx_{0})) > \deg n$.
+    Однако выше показано, что $\deg(n-r(m-nx_{0})) < \deg n$, исходя из определения дробной части.
+    Получаем противоречие.
+    Следовательно, если $\deg m > \deg n$, то для любого $x_0 \in \mathbb{Z}[t]$ выполнено $\textrm{int}((\alpha-x_{0})^{-1}) = 0$.
+
+    Теперь предположим, что $\deg m \le \deg n$.
+    Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0}\in\mathbb{Z}[t]$, $\deg x_{0} > 0$.
+    Тогда $\deg(m-nx_{0}) > \deg n$.
+    Следовательно, имеем $\deg(n-r(m-nx_{0})) > \deg n$.
+    А это противоречит определению дробной части.
+    Следовательно, если $\deg m \le \deg n$, то для любого $x_{0}\in\mathbb{Z}[t]$, $\deg x_{0} > 0$ выполнено $\textrm{int}((\alpha-x_{0})^{-1}) = 0$.
+
+	Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0} = c \in \mathbb{Z}\setminus\{0, \pm 1, \pm 2\}$.
+    Если $\deg m < \deg n$, то $\deg n < \deg(n-r(m-nc))$ или $r=const$.
+    Первый вариант противоречит определению дробной части.
+    Если $r=const$, то $\lim_{t\to+\infty}\left|\frac{n(t)-r(m(t)-n(t)c)}{n(t)}\right|=|1+rc|\ge2$, но это противоречит определению дробной части.
+    Таким образом имеем $\deg m=\deg n$.
+    Учитывая то, что $\alpha=\textrm{fr}(\alpha)$ и $\deg m=\deg n$ получаем $\lim_{t\to+\infty}\left|\frac{m(t)}{n(t)}\right|\le 0.5$.
+    Если $\deg r>0,$ то $ \deg n<\deg(n-r(m-nc)),$ но это противоречие.
+    Таким образом $r=const$ и
+    \begin{eqnarray}
+        \lim_{t\to+\infty}\left|\frac{n(t)-r(m(t)-n(t)c)}{n(t)}\right| \ge |1+rc|-|r|/2 \ge\\
+        \ge |r|(|c|-1/2)-1 \ge \frac{3}{2},
+    \end{eqnarray}
+    но это противоречит определению дробной части.
+
+    Таким образом $\mathbb{J}\supseteq\{f\in\mathbb{Z}[t]|\deg f>0\ \textrm{или}\ |f(t)|\equiv|x_{0}|>2\}$.
+    Если $x_{0}\equiv\pm2,$ то $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ тогда и только тогда, когда $\deg m=\deg n$ и $r(t)\equiv\pm1$, откуда следует, что $\pm2\in\mathbb{J}$.
+    Несложно показать, что $0,\pm1\notin\mathbb{J}$.
+    
+    Тогда $\mathbb{K}_{*}\backslash\mathbb{J}\subseteq\{\pm1\}$.
+    Вычисляем $\mathbb{Y}(1)=\{-2,-1\}$, $\mathbb{Y}(-1)=\{1,2\}$ и $\mathbb{U}(1)=\{-2,-1,0,1\}$, $\mathbb{U}(-1)=\{-1,0,1,2\}$.
+
+    Следовательно, $\mathbb{Z}[t] \in \mathcal{S}.$
+\end{example}
+
+\begin{example}\label{example:a|b or b|a}
+    Пусть $\mathbb{R}$ евклидово кольцо такое, что для любых $a,b\in\mathbb{K}$ или $a|b$, или $b|a$.
+    В этом случае $\mathbb{F}=\mathbb{K}\cup\{1/a|a\in\mathbb{K}_{*}\backslash\mathbb{I}\}$.
+
+    Докажем, что $\mathbb{J}=\mathbb{K}_{*}$.
+    Рассмотрим произвольный $\alpha\in\mathbb{F}_{1}^{*}$, тогда существует $b\in\mathbb{K}_{*}\backslash\mathbb{I}$ такой, что $\alpha=1/b$.
+    Пусть $x\in\mathbb{K}_{*}$.
+    Покажем, что $\textrm{int}((\alpha-x)^{-1})=(\alpha-x)^{-1}$.
+    Имеем $(\alpha-x)^{-1}=\frac{b}{1-bx}$.
+    Предположим, что $\textrm{fr}(\frac{b}{1-bx})\neq0$, что эквивалентно утверждению, что $\frac{b}{1-bx}=\frac{1}{c}$ для некоторого $c\in\mathbb{K}_{*}\backslash\mathbb{I}$.
+    Так как $b$ и $1-bx$ взаимнопростые, то $b\in\mathbb{I}$.
+    Следовательно, имеем $\alpha-x=b^{-1}-x\in\mathbb{K}$, это означает, что $\alpha\in\mathbb{K}$, но это противоречит условию $\alpha\in\mathbb{F}_{1}^{*}$.
+    Таким образом имеем $x\ \textrm{int}((\alpha-x)^{-1})+1=\frac{1}{1-bx}$.
+    Предположим, что $1-bx\in\mathbb{K}_{*}\backslash\mathbb{I}$.
+    Так как $b$ и $1-bx$ взаимнопростые, то $b|(1-bx)$.
+    Следовательно, $b\in\mathbb{I}$.
+    Из последнего следует, что $\alpha-x=b^{-1}-x\in\mathbb{K}$, но это противоречит условию $\alpha\in\mathbb{F}_{1}^{*}$.
+    Итого получаем $1-bx\in\mathbb{I}$.
+    Следовательно, $x\ \textrm{int}((\alpha-x)^{-1})+1\in\mathbb{I}$.
+
+	Тогда $\mathbb{K}_{*}\backslash\mathbb{J} = \emptyset$.
+    Следовательно, $\mathbb{K}\in \mathcal{S}$.
+\end{example}
+
+Рассмотрим пример факториального кольца, не лежащего в $\mathcal{S}$, но лежащего в $\mathcal{T}$.
+
+\begin{example}\label{example:Z[i]}
+    Пусть $\mathbb{R}=\mathbb{Z}[i]$.
+    Покажем, что кольцо $\mathbb{Z}[i]$ не принадлежит $\mathcal{S}.$
+    Выберем $\alpha=\frac{9-4i}{20}$, $x=1$.
+    Тогда $\textrm{int}((\alpha-x)^{-1})=-2+i \notin \mathbb{I} \cup \{0\}$ и $x \ \textrm{int}((\alpha-x)^{-1})+1=-1+i \notin \mathbb{I}.$
+
+    Покажем, что $\mathbb{K}\in\mathcal{T}$.
+    Заметим, что $\mathbb{F}_1=\{z\in\mathbb{C}|Re(z),Im(z)\in\mathbb{Q}\cap[-1/2,1/2[\}$.
+    Положим $D_{\mathbb{K}}=3$ в определении множества $\mathcal{T}$.
+
+    Проверим первое условие из определения $\mathcal{T}$.
+    Рассмотрим произвольные $x_0\in\mathbb{Z}[i]\setminus\{0\}$ и $\alpha\in\mathbb{F}^*_1$.
+    Обозначим $b=\textrm{int}((\alpha-x_0)^{-1})$.
+    Пусть $p$ --- число из первого условия определения $\mathcal{T}$.
+    Если $\upsilon(x_0)>5$, то при $p=1$ имеем $\beta_1=\alpha$.
+    Если $b\in\mathbb{I}\cup\{0\}$, то для $p=1$ имеем $\beta_1=\textrm{fr}((\alpha-x_0)/(bx_0+1-\alpha))$, тогда $\beta_2=\alpha$.
+    Далее предполагаем, что $b\not\in\mathbb{I}\cup\{0\}$ и $\upsilon(x_0)\le 5$.
+    Заметим, что $\upsilon(x_0)\in\{1,2\}$.
+    Достаточно рассмотреть только случаи $x_0=1$ и $x_0=1+i$ (так как для любого $x_0$ таком, что $\upsilon(x_0)\in\{1,2\}$ существует элемент $\varepsilon\in\mathbb{I}$ такой, что $x_0=\varepsilon$ или $x_0=(1+i)\varepsilon$).
+
+    Пусть $x_0=1+i$, тогда $b=-1+i$.
+    Положим $p=1$, и получим
+    \begin{equation*}
+        \beta_1=\textrm{fr}((\alpha-(1+i))/(\alpha(1-i)-1)),\ \beta_2=\alpha^{-1}.
+    \end{equation*}
+
+    Пусть $x_0=1$, тогда $b\in\{-2,-1\pm i,-2\pm i\}$.
+
+    Если $b=-2$, то для $p=1$ имеем
+    \begin{equation*}
+        \beta_1=\textrm{fr}((\alpha-1)/(2\alpha-1)),\ \beta_2=\alpha^{-1}.
+    \end{equation*}
+
+    Если $b=-1\pm i$, то для $p=1$ имеем
+    \begin{equation*}
+        \beta_1=\textrm{fr}((\alpha-1)/(\alpha(1\mp i)\pm i)),\ \beta_2=\alpha^{-1}.
+    \end{equation*}
+
+    Пусть $b=-2+i$. Рассмотрим элемент
+    \begin{equation*}
+        \beta=\omega(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha-1)/(\alpha(2-i)-(1-i))).
+    \end{equation*}
+
+    Заметим, что
+    \begin{equation*}
+        \gamma=\textrm{int}((\alpha-1)/(\alpha(2-1)-(1-i)))\in\{1+i,1+2i,2+i,2+2i\}.
+    \end{equation*}
+
+    Если $\gamma=1+i$, то
+    \begin{equation*}
+        \beta=(1-\alpha(2+i))/(\alpha(2-i)-(1-i)).
+    \end{equation*}
+
+    Положим $p=2$, тогда имеем
+    \begin{equation*}
+        \begin{array}{c}
+            \beta_1=\omega^{(2)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha(2-i)-(1-i))/(1-\alpha(2+i))),\\
+            \beta_2=\alpha/(1-\alpha(2+i)),\\
+            \beta_3=\alpha^{-1}.
+        \end{array}
+    \end{equation*}
+
+    Если $\gamma=1+2i$, то
+    \begin{equation*}
+        \beta=((2+i)-\alpha(3+3i))/(\alpha(2-i)-(1-i)).
+    \end{equation*}
+
+    Положим $p=2$, тогда имеем
+    \begin{equation*}
+        \begin{array}{c}
+            \beta_1=\omega^{(2)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha(2-i)-(1-i))/((2+i)-\alpha(3+3i))),\\
+            \beta_2=\alpha/(1-\alpha(2+i)),\\
+            \beta_3=\alpha^{-1}.
+        \end{array}
+    \end{equation*}
+
+    Если $\gamma=2+i$, то
+    \begin{equation*}
+        \beta=((2-i)-4\alpha)/(\alpha(2-i)-(1-i)).
+    \end{equation*}
+
+    Положим $p=2$, тогда имеем
+    \begin{equation*}
+        \begin{array}{c}
+            \beta_1=\omega^{(2)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha(2-i)-(1-i))/((2-i)-4\alpha)),\\
+            \beta_2=\alpha/(1-\alpha(2+i)),\\
+            \beta_3=\alpha^{-1}.
+        \end{array}
+    \end{equation*}
+
+    Если $\gamma=2+2i$, то
+    \begin{equation*}
+        \beta=(3-\alpha(5+2i))/(\alpha(2-i)-(1-i)).
+    \end{equation*}
+
+    Положим $p=3$, тогда имеем
+    \begin{equation*}
+        \begin{array}{c}
+            \beta_1=\omega^{(3)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((3-\alpha(5+2i))/(2-2i-\alpha(5-2i))),\\
+            \beta_2=\alpha/(1-\alpha(2_i),\\
+            \beta_3=\alpha^{-1}.
+        \end{array}
+    \end{equation*}
+
+    Случай $b=-2-i$ аналогичен случаю $b=-2+i$.
+
+    Проверим второе условие определения множества $\mathcal{T}$.
+    Рассмотрим произвольные $x_0\in\mathbb{Z}[i]\setminus\{0\}$ и $\alpha\in\mathbb{F}^*_1$ такие, что $\omega(\textrm{fr}((\alpha-x_0)^{-1}))=0$.
+    Так как во всех случаях, кроме $x_0=1$, $b=-2\pm i$, можно взять $D_{\mathbb{K}}=2$ вместо $D_{\mathbb{K}}=3$, то необходимо рассмотреть только случай $x_0=1$, $b=-2\pm i$.
+    Пусть $b=-2+i$, тогда из условия $\omega(\textrm{fr}((\alpha-x_0)^{-1}))=0$ следует, что $\alpha\in\{1/(2+i),(2+i)/(3+3i),(2-i)/4,3/(5+2i)\}$.
+    Для первого, второго и третьего элемента выполнено $\omega^{(2)}(\alpha)=0$.
+    Для четвертого элемента условие $\alpha=\textrm{fr}(\alpha)$ не выполняется.
+    Случай $b=-2-i$ аналогичен случаю $b=-2+i$.
+    Следовательно, $\mathbb{K}=\mathbb{Z}[i]$ не принадлежит классу $\mathcal{S}$, но принадлежит классу $\mathcal{T}$.
+\end{example}
+
+Покажем, что существует факториальное кольцо $\mathbb{K}$ такое, что $\mathbb{K}\not\in\mathcal{T}$ и цепочка делений с выбором минимального по норме остатка не является кратчайшей.
+
+\begin{example}\label{example:Z[sqrt{-11}]}
+    Пусть $\mathbb{R}=\mathbb{Z}[\sqrt{-11}]$, где норма и дробная часть заданы соотношениями \ref{eq:norm_quadratic} и \ref{eq:fraction_part_quadratic}.
+    Заметим, что множество
+    \begin{equation*}
+        \{6,-2i\sqrt{11},6,-3+i\sqrt{11},-1-i\sqrt{11},2,0\}
+    \end{equation*}
+    образует цепочку делений с выбором минимального по норме остатка для пары $(a,b)=(6,-2i\sqrt{11})$.
+    Тогда $\mathcal{L}_{a,b}=5$.
+    С другой стороны существует цепочка делений
+    \begin{equation*}
+        \{6,-2i\sqrt{11},-5+i\sqrt{11},3+i\sqrt{11},2,0\},
+    \end{equation*}
+    из которой следует, что $\mathpzc{l}_{a,b}\le 4\le \mathcal{L}_{a,b}$.
+    Следовательно, теорема \ref{thm:kronecker_vahlen_ufd} не выполняется.
+    Предположим, что $\mathbb{Z}[i\sqrt{11}]\in\mathcal{T}$, но тогда по теореме \ref{thm:kronecker_vahlen_ufd} получаем, что для любой пары $(c,d)\in\mathbb{K}_* \times\mathbb{K}_*$ выполнено $\mathpzc{l}_{c,d}=\mathcal{L}_{c,d}$.
+    Получаем противоречие с приведенным примером.
+    Аналогично можно показать, что лемма \ref{lem:1} не выполняется для $\mathbb{Z}[\sqrt{-11}].$
+\end{example}
+% end TODO
+
+% TODO большой алгоритм проверки R \in \mathcal{T}
+
 \subsection{Теорема Ламе в факториальных кольцах}
 
 Ранее было показано, что при определенных условиях на кольцо цепочка делений с выбором минимального по норме остатка является кратчайшей.
@@ -524,7 +839,7 @@
 \begin{theorem}\label{theorem:euclidean_and_lambda}
     Если $R$ -- евклидово кольцо относительно нормы $\elementnorm{\cdot}$, то $\Lambda_R \in [0, 1]$.
 
-    Если $R$ -- факториальное кольцо и $\Lambda_R \in [0, 1)$, то $R$ -- евклидово относительно нормы $\elementnorm{\cdot}$ и $l_n(R) \le [\log_{\Lambda_R^{-1}} n] + 2$ для всех $n \in \mathbb{N}$, где $\log_{\infty} n = 0$.
+    Если $R$ -- факториальное кольцо с мультипликативной нормой $\elementnorm{\cdot}$ и $\Lambda_R \in [0, 1)$, то $R$ -- евклидово относительно нормы $\elementnorm{\cdot}$ и $l_n(R) \le [\log_{\Lambda_R^{-1}} n] + 2$ для всех $n \in \mathbb{N}$, где $\log_{\infty} n = 0$.
 \end{theorem}
 \begin{proof}
     Пусть $R$ -- евклидово кольцо относительно нормы $\elementnorm{\cdot}$.
@@ -534,24 +849,13 @@
     Следовательно, $\left|\frac{a}{b}\right| = \frac{\elementnorm{a}}{\elementnorm{b}} \le \frac{\elementnorm{v}}{\elementnorm{b}} < 1$.
     Из этого следует, что $\Lambda_R \in [0, 1]$.
 
-    Если $R$ -- факториальное кольцо и $\Lambda_R \in [0, 1)$.
-    Рассмотрим произвольный элемент $\frac{a}{b} \in \zeroless{F_1}$, где $a, b \in \zeroless{R}$, $(a, b) = 1$.
-    Тогда имеем $\left|\frac{a}{b}\right| = \frac{\elementnorm{a}}{\elementnorm{b}} < 1$.
-
+    Пусть $R$ -- факториальное кольцо и $\Lambda_R \in [0, 1)$.
     Рассмотрим произвольные $a, b \in \zeroless{K}$.
     Положим $q = \int{\frac{a}{b}}$, $r = b\fr{\frac{a}{b}}$.
     Тогда $a = bq + r$ и $\elementnorm{r} \le \Lambda_R \elementnorm{b}$ из определения $\Lambda_R$.
     Если $\elementnorm{b} > 0$, то $\elementnorm{r} \le \Lambda_R \elementnorm{b} < \elementnorm{b}$.
     Если $\elementnorm{b} = 0$, то $b$ обратимый элемент и $q = 0$ и $r = 0$, а тогда $a = 0$.
     Следовательно, $R$ -- евклидово.
-
-%    TODO
-    \begin{center}
-        \begin{large}
-            Тут кажется используем мультипликативностть нормы, хотя она не обязана быть.
-            А именно, если $(a, b) \neq 1$, то рассуждения выше нельзя проводить, так как $\left|\frac{a}{b}\right| \neq \frac{\elementnorm{a}}{\elementnorm{b}}$.
-        \end{large}
-    \end{center}
 \end{proof}
 
 \begin{theorem}
@@ -570,7 +874,7 @@
     Для $r > 0$ определим множество
     \begin{equation*}
         V(\lambda, r) = \left\{
-            (x, y) \in R \times R \Big| \left|(x-\lambda_1)^2 - d(y-\lambda_2)^2\right| < r
+            (x, y) \in R \times R \Big| \left|(x - \lambda_1)^2 - d(y - \lambda_2)^2\right| < r
         \right\}.
     \end{equation*}
     Докажем, что $E(d) \subseteq V(\lambda, 1)$.
@@ -586,27 +890,13 @@
 
     Докажем, что существует $r_0 < 1$, что $F(d) \subseteq U(\lambda, r_0)$.
     Используя рассуждения выше, заметим, что для этого достаточно показать, что $E(d) \subseteq V(\lambda, r_0)$ для некоторого $r_0 < 1$.
-    Предположим, что для любого $r \in (0, 1)$ это не выполняется и $E(d) \setminus V(\lambda, r) = X_r \neq \emptyset$.
-    Рассмотрим произвольную последовательность $r_n$, для которой $\lim_{n \to \infty} r_n = 1-0$.
-    Для каждого элемента этой последовательности можно выбрать точку $q_{r_n} \in X_{r_n}$.
-
-    Так как последовательность точек $q_{r_n}$ ограничена, то существует сходящаяся подпоследовательность $q_{r_{n_m}}$.
-    Пусть $\lim_{m \to \infty} q_{r_{n_m}} = q$.
-    Заметим, что $V(\lambda, 1) = \cup_{m \in \mathbb{N}} V(\lambda, r_{n_m})$.
-    Следовательно, $E(d) \setminus V(\lambda, 1) = \cap_{m \in \mathbb{N}} X_{r_{n_m}}$.
-
-    Из того, что $q_{r_{n_m}} \in X_{r_{n_m}}$ и множество $E(d) \setminus V(\lambda, 1)$ замкнуто в $\mathbb{R} \times \mathbb{R}$ следует, что $q \in E(d) \setminus V(\lambda, 1)$.
-    Это противоречит тому, что $E(d) \setminus V(\lambda, 1) = \emptyset$.
-
-%    TODO
-    \begin{center}
-        \begin{large}
-            Тут совсем непонятно почему $q \in E(d) \setminus V(\lambda, 1)$.
-            Имеем, что $X_{r_1} \subset X_{r_2}$, если $r_2 < r_1$.
-            Вроде выглядит как правда, до как формально доказать непонятно.
-            Да и вообще в предложении выше сказано, что это критерий и там указана четко граница $1$ и непонятно почему ее вообще можно было бы уменьшить.
-        \end{large}
-    \end{center}
+    
+    Множество $E(d)$ закрытое.
+    Следовательно, существует такая точка $(x_0, y_0) \in E(d)$, что
+    \begin{equation*}
+        r_{x_0} = \left|(x_0 - \lambda_1)^2 - d(y_0 - \lambda_2)^2\right| = \min_{x \in E(d)} \left|(x - \lambda_1)^2 - d(y - \lambda_2)^2\right|.
+    \end{equation*}
+    Заметим, что $r_{x_0} < 1$, так как $E(d) \subseteq V(\lambda, 1)$.
 
     Следовательно, существует $r_0 < 1$, что $F(d) \subseteq U(\lambda, r_0)$.
     Рассмотрим произвольные $\gamma, \delta \in \mathbb{Z}[\sqrt{d}]$, $\delta \neq 0$.
@@ -614,8 +904,504 @@
     Так как $\elementnorm{\frac{\gamma}{\delta} - q} = \frac{\elementnorm{\gamma - q\delta}}{\elementnorm{\delta}}$, то получаем, что существуют $q, r \in \mathbb{Z}[\sqrt{d}]$, что $\gamma = q\delta + r$ и $\elementnorm{r} \le r_0 \elementnorm{\delta}$.
     Следовательно, $\Lambda_{\mathbb{Z}[\sqrt{d}]} \le r_0$.
 
-    Тогда, из теоремы~\ref{theorem:euclidean_and_lambda} следует, что $l_n(\mathbb{Z}[\sqrt{d}]) \le [\log_{r_0}^{-1} n] + 2$.
-    Теорема доказана.
+    Тогда, из теоремы~\ref{theorem:euclidean_and_lambda} следует, что $l_n(\mathbb{Z}[\sqrt{d}]) \le [\log_{r_0^{-1}} n] + 2$.
+\end{proof}
+
+\subsection{Теорема Кронекера-Валена в кольце алгебраических целых чисел числового поля}
+
+\subsubsection{Норма и дробная часть}
+
+Пусть $K$ -- числовое поле со степенью расширения равной $n$.
+Пусть $R = \mathbb{Z}_K$ -- кольцо алгебраических целых чисел поля $K$.
+И пусть $(e_i)_{1 \le i \le n}$ -- базис $\mathbb{Z}_K$.
+Будем считать, что группа $\invertible{\mathbb{Z}_K}$ бесконечна и образована $r$ фундаментальными единицами и корнями единицы в $K$.
+Будем обозначать их через $\{\varepsilon_1, \dots, \varepsilon_r\}$ и считать, что они известны.
+Обозначим $\nu$ -- генератор корней из единицы в $K$ порядка $l$.
+
+Введем норму $\elementnorm{\cdot}$ в кольце $R$.
+Обозначим через $N_{K/\mathbb{Q}}$ норму в числовом поле $K$.
+Далее в этой части будем полагать, что $\mathbb{Z}_K$ евклидово по отношению к норме $N_{K/\mathbb{Q}}$.
+
+Через $(\sigma_i)_{1 \le i \le n}$ обозначим вложения $K$ в $\mathbb{C}$.
+Пусть $\sigma_i$ для $1 \le i \le r_1$ является действительным, а для $r_1 < i < r_1 + r_2$ мнимым и $\sigma_{i+r_2} = \overline{\sigma_{i}}$.
+Определим функцию $\Phi(x): K \to \mathbb{R}^n$ следующим образом
+\begin{equation*}
+	\Phi(x) = \left(
+		\sigma_1(x), \ldots, \sigma_{r_1}(x),
+		\mathcal{R}\sigma_{r_1 + 1}(x), \ldots, \mathcal{R}\sigma_{r_1 + r_2}(x),
+		\mathcal{I}\sigma_{r_1 + 1}(x), \ldots, \mathcal{I}\sigma_{r_1 + r_2}(x)
+	\right)
+\end{equation*}
+
+Пусть $x, y \in \mathbb{R}^n$, $x = (x_i)_{1 \le i \le n}$ и $y = (y_i)_{1 \le i \le n}$.
+Определим произведение в $\mathbb{R}^n$ следующим образом
+\begin{equation*}
+    (xy)_i =
+    \begin{cases}
+        x_i y_i                       & \textrm{ если } 1 \le i \le r_1,\\
+        x_i y_i - x_{i+r_2} y_{i+r_2} & \textrm{ если } r_1 < i \le r_1+r_2,\\
+        x_{i-r_2} y_i - x_i y_{i-r_2} & \textrm{ если } r_1+r_2 < i \le n.
+    \end{cases}
+\end{equation*}
+
+Обозначим через $\mathcal{N}:\mathbb{R}^n \to \mathbb{R}$ норму в $\mathbb{R}^n$.
+По определению считаем, что
+\begin{equation*}
+    \mathcal{N}(x) = \prod\limits_{i=1}^{r_1} x_i \prod\limits_{i=r_1+1}^{r_1+r_2} (x_i^2 + x_{i+r_2}^2).
+\end{equation*}
+
+Заметим, что для любых $x, y\in \mathbb{R}^n$ выполнено $\mathcal{N}(xy) = \mathcal{N}(x)\mathcal{N}(y)$.
+А так же для любых $\xi\in K$ выполнено $N_{K/\mathbb{Q}}(\xi) = \mathcal{N}(\Phi(\xi))$.
+Далее можно определить $\elementnorm{\cdot}: \mathbb{Z}_K \to \mathbb{N} \cup \{0, -\infty\}$ следующим образом.
+\begin{equation*}
+    \elementnorm{\xi} = \begin{cases}
+        -\infty & \textrm{ если } x = 0,\\
+        \mathcal{N}(\Phi(\xi)) & \textrm{ если } x \in \zeroless{R},\\
+    \end{cases}
+\end{equation*}
+Заметим, что тогда $\mathbb{Z}_K$ является евклидовым относительно нормы $\elementnorm{\cdot}$.
+
+Дробную часть $\fr{\cdot}$ в $K$ введем аналогично замечанию~\ref{remark:easy_fr}.
+
+\begin{definition}
+    Для $\xi \in K$ обозначим через $\int{\xi} \in \mathbb{Z}_K$ такой элемент, что
+    \begin{equation*}
+        \inf\limits_{z\in\mathbb{Z}_K} |\mathcal{N}(\Phi(\xi) - \Phi(z))| = |\mathcal{N}(\Phi(\xi) - \Phi(\int{\xi}))|.
+    \end{equation*}
+    Для $\xi \in K$ обозначим через $\fr{\xi} = \xi - \int{\xi}$.
+\end{definition}
+
+Из доказанного в работе~\cite{source:Lezowski} следует, что получающееся определение дробной части корректно.
+
+\begin{proposition}\label{proposition:orbit}\cite{source:Lezowski}
+    Пусть $x \in \mathbb{R}^n$.
+    Обозначим
+    \begin{equation*}
+        m_{\overline{K}}(x) = \inf_{z\in\mathbb{Z}_K} |\mathcal{N}(x - \Phi(z))|.
+    \end{equation*}
+    Тогда для любого $\varepsilon \in \invertible{\mathbb{Z}_K}$, $Z \in \Phi(\mathbb{Z}_K)$ выполнено
+    \begin{equation*}
+        m_{\overline{K}}(\Phi(\varepsilon)x - Z) = m_{\overline{K}}(x).
+    \end{equation*}
+\end{proposition}
+
+\subsubsection{Метод деления с выбором минимального по норме остатка}
+
+Рассмотрим группу единиц $\invertible{\mathbb{Z}_K}$.
+Будем считать, что она задается $r$ фундаментальными единицами и корнями из $1$ в $K$.
+Фундаментальные единицы будем обозначать $\{\varepsilon_1, \dots, \varepsilon_r\}$, а корень из $1$ будем обозначать $\upsilon$.
+
+\begin{definition}
+    Под фундаментальной областью поля $K$ будем понимать
+    \begin{equation*}
+        \mathcal{F} = \left\{
+            \sum\limits_{i=1}^n x_i\Phi(e_i) \Big| x_i \in \mathbb{Q}\cap[0, 1)
+        \right\}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Пусть $x\in \mathbb{R}^n$.
+    Определим орбиту элемента $x$ следующим образом 
+    \begin{equation*}
+    	\textrm{Orb}(x) = \left\{
+    		\Phi(\varepsilon)x - z \in \mathcal{F} \Big| \varepsilon \in \invertible{\mathbb{Z}_K}, z \in \mathbb{Z}_K
+    	\right\}.
+    \end{equation*}
+\end{definition}
+
+Из утверждения \ref{proposition:orbit} следует, что функция $m_{\overline{K}}$ принимает одно значение на всех элементах орбиты.
+
+\begin{proposition}\cite{source:Lezowski}
+    Для любого элемента $x\in \mathbb{R}^n$ орбита $\textrm{Orb}(x)$ конечна тогда и только тогда, когда $x \in \Phi(K)$.
+\end{proposition}
+
+\begin{definition}
+    Для всех $1 \le i \le n$ обозначим
+    \begin{equation*}
+        \Gamma_i = \prod\limits_{j=1}^r \max\left\{
+            |\sigma_i(\varepsilon_j)|, \frac{1}{|\sigma_i(\varepsilon_j)}
+        \right\}.
+    \end{equation*}
+
+    А так же определим
+    \begin{equation*}
+        \Gamma(k) =
+        \begin{cases}
+            \left(
+                \prod\limits_{j=1}^{n-1} \Gamma_j
+            \right)^{\frac{1}{n}} k^{\frac{1}{n}}\ \textrm{если}\ K\ \textrm{действительное},\\
+            \left(
+                \prod\limits_{j=1}^{r_1} \Gamma_j \prod\limits_{j=1}^{r_1+r_2-1} \Gamma_j \Gamma_{j+r_2}
+            \right)^{\frac{1}{n}} k^{\frac{1}{n}}\ \textrm{иначе},
+        \end{cases}
+    \end{equation*}
+    где $k>0$.
+\end{definition}
+
+\begin{proposition}\label{proposition:division_with_least_norm_remainder}\cite{source:Lezowski}
+    Пусть $x \in \Phi(K)$ и $k > 0$.
+    Для каждого $z \in \textrm{Orb}(x)$ обозначим
+    \begin{equation*}
+        \mathcal{I}_{z, k} = \{Z \in \Phi(\mathbb{Z}_K): |z_i-Z_i| \le \Gamma(k) \forall i, 1 \le i \le n\},
+    \end{equation*}
+    \begin{equation*}
+        \mathcal{M}_k = \min\limits_{z \in \textrm{Orb}(x)} \min\limits_{Z \in \mathcal{I}_{z, k}} |\mathcal{N}(z-Z)|.
+    \end{equation*}
+
+    Тогда, если $\mathcal{M}_k \le k$, то $m_{\overline{K}}(x) = \mathcal{M}_k$.
+\end{proposition}
+
+\begin{lemma}
+    Пусть $\xi \in K$ и $k > 0$.
+    Обозначим $x = \Phi(\xi)$.
+    Предположим, что $z' \in \textrm{Orb}(x)$ и $Z'\in\mathcal{I}_{z', k}$ такие элементы, что $\mathcal{M}_k = |\mathcal{N}(z'-Z')|$.
+    Если $\mathcal{M}_k \le k$, то $\int{\xi}$ можно вычислить за $O(1)$ арифметических операций в $K$.
+\end{lemma}
+\begin{proof}
+    Из утверждения \ref{proposition:division_with_least_norm_remainder} следует, что
+    \begin{equation*}
+        m_{\overline{K}}(x) = \mathcal{M}_k.
+    \end{equation*}
+    
+    Используя определение $m_{\overline{K}}(x)$ и условие этого утверждения, получаем, что
+    \begin{equation*}
+        \inf\limits_{z \in \mathbb{Z}_K} |\mathcal{N}(x - \Phi(z))| = |\mathcal{N}(z' - Z')|.
+    \end{equation*}
+
+    Из того, что $z' \in \textrm{Orb}(x)$ следует, что существует $\varepsilon \in \invertible{\mathbb{Z}_K}$ такое, что $z' = \Phi(\varepsilon)x$.
+    Так как $\mathcal{N}(x) = \mathcal{N}(\Phi(\varepsilon)x)$ для всех $x \in \mathbb{R}^n$ и $\varepsilon \in \invertible{\mathbb{Z}_K}$ выполнено следующее равенство
+    \begin{equation*}
+        \inf\limits_{z \in \mathbb{Z}_K} |\mathcal(x - \Phi(z))| = |\mathcal{N}(x - Z'\Phi(\varepsilon^{-1}))|.
+    \end{equation*}
+
+    Таким образом, получаем, что $\int{\xi} = Z'\Phi(\varepsilon^{-1})$, где $\varepsilon$ задана соотношением $z' = \Phi(\varepsilon)x$.
+    Следовательно, надо для $\xi \in R$ уметь вычислять $\textrm{Orb}(\Phi(\xi))$.
+    Определим следующую операцию
+    \begin{equation*}
+        x = \sum\limits_{i=1}^n q_i e_i \longmapsto \overline{x} = \sum\limits_{i=1}^n (q_i - \lfloor q_i \rfloor)e_i.
+    \end{equation*}
+    
+    Обозначим
+    \begin{equation*}
+        \mathcal{O}(\xi) = \left\{
+            \overline{\varepsilon\xi} \Big| \varepsilon \in \invertible{\mathbb{Z}_K}
+    	\right\}.
+    \end{equation*}
+    
+    Для каждого $1 \le i \le r$ существует положительное число $m$ такое, что $\overline{\varepsilon_i}^m\overline{\xi} = \overline{\xi}$.
+    Обозначим $l_i$ наименьшее такое число.
+    Для $\upsilon$ наименьшее такое число обозначим $l$.
+    Далее будем полагать, что $l$ и $l_i$ известны для $K$.
+    
+    С этими обозначениями, из \cite{source:Lezowski} следует, что
+    \begin{equation}\label{equation:orbit}
+        \mathcal{O}(\xi) = \left\{
+            \overline{\nu}^m \prod\limits_{i=1}^r \overline{\varepsilon_i}^{m_i} \overline{\xi}:
+                0 \le m < l, 0 \le m_i < l_i, 1 \le i \le r
+        \right\}
+    \end{equation}
+    и $\textrm{Orb}(\Phi(\xi)) = \{\Phi(\zeta):\zeta \in \mathcal{O}(\xi)\}$ для любого $\xi\in K$.
+
+    Предположим, что мы знаем такие $m$ и $m_i$ что $\varepsilon = \nu^m\prod_{i=1}^r \varepsilon_i^{m_i}$.
+    Так как $m$ и $m_i$ ограничены $l$ и $l_i$, то можно вычислить $\Phi(\varepsilon^{-1})$ за $O(1)$ арифметических операций.
+\end{proof}
+
+\begin{remark}
+    Для произвольного $x \in \Phi(K)$ и $z \in \textrm{Orb}(x)$ будем предполагать, что известно $\varepsilon_z \in \invertible{\mathbb{Z}_K}$ такое, что $z = \Phi(\overline{\varepsilon_z \Phi^{-1}(x)})$, и более того можно вычислить $\varepsilon_z^{-1}$ за $O(1)$ арифметических операций.
+\end{remark}
+
+Используя доказанные выше утверждения, получаем следующий алгоритм.
+
+\begin{algorithm}\label{algorithm:least_norm_remainder}
+    Дано числовое поле $K$ и два элемента $a, b \in \mathbb{Z}_K$.
+    Необходимо вычислить наименьший общий остаток $r$ при делении $a$ на $b$.
+
+    \begin{enumerate}
+        \item Вычислить $x = \Phi(a/b) \in \Phi(K)$;
+        
+        \item Вычислить $\textrm{Orb}(x)$, используя~\ref{equation:orbit};
+
+        \item Выбрать произвольное действительное $k > 0$;
+
+        \item Вычислить $\Gamma(k)$ \label{loop:1};
+
+        \item Объявить переменные $z'$ и $Z'$, которые будут инициализированы позже;
+
+        \item Для всех $z \in \textrm{Orb}(x)$
+        \begin{enumerate}
+            \item Вычислить $\mathcal{I}_{z, k}$;
+
+            \item Для всех $Z \in \mathcal{I}_{z, k}$, если $z'$ и $Z'$ не инициализированы или $\mathcal{N}(z' - Z') > \mathcal{N}(z - Z)$ положить $z' = z$ и $Z' = Z$;
+        \end{enumerate}
+
+        \item Вычислить $\mathcal{M}_k = \mathcal{N}(z' - Z')$
+        
+        \item Если $\mathcal{M}_k > k$, то положить $k = \mathcal{M}_k$ и перейти к шагу \ref{loop:1}
+
+        \item Вычислить $\int{\frac{a}{b}} = Z'\Phi(\varepsilon_z'^{-1})$
+
+        \item Вернуть $r = a - b \int{\frac{a}{b}}$
+    \end{enumerate}
+\end{algorithm}
+
+Оценим вычислительную сложность этого алгоритма.
+
+\begin{statement}
+    Для любых $a, b \in \zeroless{\mathbb{Z}_K}$ наименьший по норме остаток $r$ при делении $a$ на $b$ можно найти, используя алгоритм \ref{algorithm:least_norm_remainder}, за $O(1)$ арифметических операций в $K$.
+\end{statement}
+\begin{proof}
+    Из того, что
+    \begin{equation*}
+        |\textrm{Orb}(x)| \le l\prod\limits_{i=1}^r l_i
+    \end{equation*}
+    следует, что множество $\textrm{Orb}(x)$ можно найти за $O(1)$ арифметических операций в $K$.
+    Так же мощность множества $\mathcal{I}_{z, k}$ ограничена некоторой константой, зависящей только от $\Gamma(k)$.
+    Заметим, что $\Gamma(k)$ на зависит от $\frac{a}{b}$.
+    Так как функция $k \to \mathcal{M}_k$ неубывающая, из предложения \ref{proposition:division_with_least_norm_remainder} следует, что цикл необходимо будет повторить не более двух раз.
+    Таким образом, можно заключить, что наименьший по норме остаток при делении $a$ на $b$ можно найти за $O(1)$ арифметических операций в $K$.
+\end{proof}
+
+\subsubsection{Метод доказательства невыполнимости теоремы Кронекера-Валена}
+
+В этой части работы будет представлен метод автоматического доказательства невыполнимости теоремы Кронекера-Валена в кольце целых алгебраических чисел числового поля $K$.
+Метод доказательства приведен в алгоритме \ref{algorithm:kronecker_vahlen_common}.
+
+\begin{algorithm}\label{algorithm:kronecker_vahlen_common}
+    Дано числовое поле $K$.
+    Требуется доказать, что теорема Кронекера-Валена не выполняется в $\mathbb{Z}_K$.
+    
+    \begin{enumerate}
+        \item Взять произвольные $a, b \in \mathbb{Z}_K$;
+
+        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}_{a, b}$;
+
+        \item Найти $c \in \mathbb{Z}_K$ такое, что $a = bx + c$ для некоторого $x \in \mathbb{Z}_K$;
+
+        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}'_{b,c}$;
+
+        \item Если $\textrm{len}(\mathcal{D}_{a, b}) > \textrm{len}(\mathcal{D}'_{b, c}) + 1$, то теорема Кронекера-Валена не выполняется в $K$.
+    \end{enumerate}
+\end{algorithm}
+
+\subsubsection{Теорема Кронекера-Валена в действительных квадратичных норменно-евклидовых кольцах}
+
+Применим описанный выше метод в частном случае.
+Предположим, что поле $K$ такое, что $\mathbb{Z}_K$ действительное квадратичное норменно-евклидово кольцо.
+В методе будем рассматривать такие целые элементы $a$ и $b$, которые являются рациональными, т.е. $a, b \in \mathbb{Z}$.
+А так же будем искать $c$ используя остаток при делении $a$ на $b$ на $\mathbb{Z}$.
+Модифицированный метод приведен в алгоритме~\ref{algorithm:kronecker_vahlen_special}.
+
+\begin{algorithm}\label{algorithm:kronecker_vahlen_special}
+    Дано такое числовое поле $K$, что $\mathbb{Z}_K$ действительное квадратичное норменно-евклидово кольцо
+    Требуется доказать, что теорема Кронекера-Валена не выполняется в $\mathbb{Z}_K$.
+
+    \begin{enumerate}
+        \item Взять произвольные $a, b \in \mathbb{Z}$;
+
+        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}_{a,b}$;
+
+        \item Вычислить $c = a \% b$;
+        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}'_{b,c}$;
+
+        \item Если $\textrm{len}(\mathcal{D}_{a, b}) > \textrm{len}(\mathcal{D}'_{b, c}) + 1$, то теорема Кронекера-Валена не выполняется в $K$;
+
+        \item Вычислить $c = a \% b - b$;
+
+        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}''_{b,c}$;
+
+        \item Если $\textrm{len}(\mathcal{D}_{a, b}) > \textrm{len}(\mathcal{D}''_{b, c}) + 1$, то теорема Кронекера-Валена не выполняется в $K$;
+    \end{enumerate}
+\end{algorithm}
+
+Реализуем этот алгоритм на R и применим его для всех действительных квадратичных норменно-евклидовых колец.
+
+\begin{theorem}\label{theorem:kronecker}
+    Пусть поле $K$ такое, что $\mathbb{Z}_K$ действительное квадратичное норменно-евклидово кольцо.
+    Тогда теорема Кронекера-Валена не выполняется в $\mathbb{Z}_K$.
+\end{theorem}
+\begin{proof}
+    Известно, что существует ровно $16$ полей $K = \mathbb{Q}(\sqrt{d})$, удовлетворяющих условиям теоремы, со значениями $d$ из множества $\{2, 3, 5, 6, 7, 11, 13, 17, 19, 21, 29, 33, 37, 41, 57, 73\}$.
+    Приведем контрпримеры для всех $\mathbb{Q}(\sqrt{d})$.
+
+    \begin{itemize}
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{2}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{equation*}
+            \{50, 29, -8, -11-8\sqrt{2}, -7-5\sqrt{2}, 0\}
+        \end{equation*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{50, 29, 21, 19601-13860\sqrt{2}, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{3}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{equation*}
+            \{52, 38, 14, 24+14\sqrt{3}, 14+8\sqrt{3}, 0\}
+        \end{equation*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{52, 38, -24, 2702-1560\sqrt{3}, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{5}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{multline*}
+            \{58, 39, 17101-10569\frac{1+\sqrt{5}}{2},\\
+            -1974+1220\frac{1+\sqrt{5}}{2}, -377+233\frac{1+\sqrt{5}}{2}, 0\}
+        \end{multline*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{58, 39, 19, 1, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{6}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{equation*}
+            \{50, 33, -2425+990\sqrt{6}, -9602+3920\sqrt{6}, -485+198\sqrt{6}, 0\}
+        \end{equation*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{50, 33, 17, -1, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{7}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{equation*}
+            \{50, 23, -5355+2024\sqrt{7}, -20830+7873\sqrt{7}, 2024-765\sqrt{7}, 0\}
+        \end{equation*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{50, 23, 4, -1, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{11}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{equation*}
+            \{50, 34, -902+272\sqrt{11}, -252+76\sqrt{11}, -398+120\sqrt{11}, 0\}
+        \end{equation*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{50, 34, 16, 2, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{13}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{multline*}
+            \{52, 19, -355666+154451\frac{1+\sqrt{13}}{2},\\
+            -128511+55807\frac{1+\sqrt{13}}{2}, -98644+42837\frac{1+\sqrt{13}}{2}, 0\}
+        \end{multline*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{52, 19, -5, -1, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{17}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{multline*}
+            \{51, 14, 11153-4354\frac{1+\sqrt{17}}{2},\\
+            3038-1186\frac{1+\sqrt{17}}{2}, 333-130\frac{1+\sqrt{17}}{2}, 0\}
+        \end{multline*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{51, 14, -5, -1, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{19}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{equation*}
+            \{70, 29, -6194+1421\sqrt{19}, 3012-691\sqrt{19}, -170+39\sqrt{19}, 0\}
+        \end{equation*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{70, 29, 12, -57799+13260\sqrt{19}, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{21}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{multline*}
+          \{50, 33, 36845-13200\frac{1+\sqrt{21}}{2},\\
+          14738-5280\frac{1+\sqrt{21}}{2}, 7369-2640\frac{1+\sqrt{21}}{2}, 0\}
+        \end{multline*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{50, 33, 17, -1, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{29}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{equation*}
+            \{54, 21, 201-63\frac{1+\sqrt{29}}{2}, 96-30\frac{1+\sqrt{29}}{2}, -9+3\frac{1+\sqrt{29}}{2}, 0\}
+        \end{equation*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{54, 21, 12, -3, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{33}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{multline*}
+            \{50, 27, 58999613-17495460\frac{1+\sqrt{33}}{2},\\
+            -30811543+9136706\frac{1+\sqrt{33}}{2}, -2623473+777952\frac{1+\sqrt{33}}{2}, 0\}
+        \end{multline*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{50, 27, -4, -1, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{37}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{multline*}
+            \{51, 23, -2525+713\frac{1+\sqrt{37}}{2},\\
+            471-133\frac{1+\sqrt{37}}{2}, 1027-290\frac{1+\sqrt{37}}{2}, 0\}
+        \end{multline*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{51, 23, 5, -1027+290\frac{1+\sqrt{37}}{2}, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{41}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{multline*}
+            \{51, 33, -12093+3267\frac{1+\sqrt{41}}{2},\\
+            -47628+12867\frac{1+\sqrt{41}}{2}, 454959-122910\frac{1+\sqrt{41}}{2}, 0\}
+        \end{multline*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{51, 33, 18, -3, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{57}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{equation*}
+            \{51, 31, -11, -2, -1, 0\}
+        \end{equation*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{51, 31, 20, 131+40\frac{1+\sqrt{57}}{2}, 0\}
+        \end{equation*}
+
+        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{73}]}$.
+        Цепочка делений с выбором минимального по норме остатка:
+        \begin{multline*}
+            \{57, 32, -7, -580996+121751\frac{1+\sqrt{73}}{2},\\
+            2548249-534000\frac{1+\sqrt{73}}{2}, 0\}
+        \end{multline*}
+        Более короткая цепочка делений:
+        \begin{equation*}
+            \{57, 32, 25, -943-250\frac{1+\sqrt{73}}{2}, 0\}
+        \end{equation*}
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}
+    Пусть $R = \mathbb{Q}[\sqrt{d}]$ -- квадратичное норменно-евклидово кольцо.
+    Теорема Кронекера-Валена выполняется в $R$ тогда и только тогда, когда $d=-1, -2, -3, -7$.
+\end{corollary}
+\begin{proof}
+    Если $d>=0$, то утверждение следует из теоремы~\ref{theorem:kronecker}.
+    Если $d<0$, то утверждение следует из работы~\cite{Rolletschek_1990}.
 \end{proof}
 
 \onlyinsubfile{
