@@ -158,11 +158,11 @@
 \end{definition}
 
 \begin{definition}
-    Через $\mathcal{T}$ обозначим множество всех таких факориальных колец $R$, для которых существует $D_K \in \mathbb{N}$, что выполнено
+    Через $\mathcal{T}$ обозначим множество всех таких факориальных колец $R$, для которых существует $D_R \in \mathbb{N}$, что выполнено
     \begin{itemize}
-        \item для всех $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ тройка $(x_0, \alpha, D_K - 1)$ регулярная;
+        \item для всех $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ тройка $(x_0, \alpha, D_R - 1)$ регулярная;
 
-        \item если $D_K \ge 3$, то для любого $k \in [3, D_K] \cap \mathbb{N}$ и любых $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ из равенства $\omega^{(k-2)}(\fr{(\alpha - x_0)^{-1}}) = 0$ следует, что тройка $(x_0, \alpha, k-2)$ регулярная.
+        \item если $D_R \ge 3$, то для любого $k \in [3, D_R] \cap \mathbb{N}$ и любых $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ из равенства $\omega^{(k-2)}(\fr{(\alpha - x_0)^{-1}}) = 0$ следует, что тройка $(x_0, \alpha, k-2)$ регулярная.
     \end{itemize}
 \end{definition}
 
@@ -207,7 +207,7 @@
     Если $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$ и $z = 0$, то по определению $\omega^{(k-1)}(\alpha) = 0$.
 
     Предположим, что существует $z \neq 0$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
-    Если $D_K \ge 3$ и $k \le D_K$, то обозначим $X = k-2$, иначе $X = D_K - 1$.
+    Если $D_R \ge 3$ и $k \le D_R$, то обозначим $X = k-2$, иначе $X = D_R - 1$.
     Заметим, что $X \le k-2$.
     Из определения класса $\mathcal{T}$ следует, что тройка $(z, \alpha, X)$ регулярная.
     Следовательно, сущесвуют $p, l \in \mathbb{N}$, $p \le X$, $l \le p+1$, $\varepsilon \in \{0, 1\}$, $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$, $i = 1, \dots, l-1$, что
@@ -330,8 +330,8 @@
 \end{lemma}
 \begin{proof}
     Предположим, что факториальное кольцо $R \in \mathcal{S}$.
-    Возьмем $D_K = 2$.
-    Необходимо доказать, что для любых $x \in \zeroless{R}$ и $\alpha \in \zeroless{F_1}$ тройка $(x, \alpha, D_K-1)$ является регулярной.
+    Возьмем $D_R = 2$.
+    Необходимо доказать, что для любых $x \in \zeroless{R}$ и $\alpha \in \zeroless{F_1}$ тройка $(x, \alpha, D_R - 1)$ является регулярной.
     
     Возьмем $p = 1$, $l = 2$ и обозначим $b = \int{(\alpha - x)^{-1}}$.
     Тогда имеем
@@ -419,7 +419,7 @@
         \end{split}
     \end{equation*}
     
-    Следовательно, тройка $(x, \alpha, D_K - 1)$ регулярная.
+    Следовательно, тройка $(x, \alpha, D_R - 1)$ регулярная.
 \end{proof}
 
 Используя доказанную выше лемму, сформулируем метод проверки, что факториальное кольцо $R \in \mathcal{S}$.
@@ -795,7 +795,125 @@
 \end{example}
 % end TODO
 
+Приведем общий метод проверки, что факториальное кольцо $R \in \mathcal{T}$.
+
+\begin{algorithm}\label{algorithm:R_in_T}
+    На вход подается факториальное кольцо $R$.
+    
+    \begin{enumerate}
+        \item Выбрать $D_R, M \in \mathbb{N}$
+        
+        \item Построить множество
+        \begin{equation*}
+            \mathbb{J} = \left\{
+                x_0 \in R \Bigg| \int{\frac{1}{\alpha-x_0}} \in \invertible{R} \cup \{0\} \forall \alpha \in \zeroless{F}
+            \right\}
+        \end{equation*}
+        
+        \item Создать список $\mathbb{L}$, в котором будут храниться элементы из $R^i$, где $i \in \{1, \ldots, D_R - 1\}$
+
+        \item Вычислить $\mathbb{L}=\mathbb{K}^*\setminus\mathbb{J}$. Мы будем хранить элементы из $\mathbb{L}$, в которых более двух компонент в множестве $\mathbb{L}_M$
+
+        \item\label{step:every_element_in_L} Выбрать элемент $(x_0, \ldots, x_l) \in \mathbb{L}$ и удалить его из $\mathbb{L}$
+
+        \item Вычислить
+        \begin{equation*}
+            \delta = \left(
+                \left(
+                    \ldots\left(
+                        \left(
+                            \alpha - x_0
+                        \right)^{-1} - x_1
+                    \right)^{-1} - \ldots
+                \right)^{-1} - x_l
+            \right)^{-1}
+        \end{equation*}
+
+        \item Построить множество
+        \begin{equation*}
+            \mathbb{A} = \left\{
+                b \in R \big| b = \int{\delta}
+            \right\}
+        \end{equation*}
+
+        \item\label{step:every_element_in_A} Для каждого элемента $x_{l+1} \in \mathbb{A}$ выполнить
+        \begin{enumerate}
+            \item Вычислить
+            \begin{equation*}
+                beta_1 = \omega^{(l+1)} \left(
+                    \int{(\alpha-x_0)^{-1}}
+                \right) = \fr{(\delta-x_{l+1})^{-1}}
+            \end{equation*}
+
+            \item Попробовать найти такие $(\varepsilon_i) \in \invertible{R}$ и $(a_i), (b_i) \in R$, что $\elementnorm{a_i},\elementnorm{b_i} \le M$ и
+            \begin{equation*}
+                \begin{split}
+                    \beta_{i+1}=\frac{1}{\varepsilon_i \beta_i + a_i} + b_i,\\
+                    \beta_{l+2}=\alpha \textrm{ или } \beta_{l+2}=\alpha^{-1}
+                \end{split}
+            \end{equation*}
+
+            \item Если такие элементы не нашлись и $l+1 \ge D_R$, то вернуть ''выберите большие $D_R$ и $M$'' и завершить алгоритм
+            
+            \item Если такие элементы не нашлись и $l+1 < D_R$, то добавить в множество $\mathbb{L}$ элемент $(x_0,\ldots,x_l,x_{l+1})$
+            
+            \item Если такие элементы нашлись, то перейти к следующему элементу в шаге~\ref{step:every_element_in_A}
+        \end{enumerate}
+
+        \item Если множество $\mathbb{L}$ не пустое, то выбрать другой элемент на шаге~\ref{step:every_element_in_L}
+        
+        \item Если множество $\mathbb{L}$ пустое и $D_R < 3$, то вернуть ''$R \in \mathcal{T}$'' и завершить алгоритм
+        
+        \item Для всех $k \in [3, D_R]$
+        \begin{enumerate}
+            \item Построить множество
+            \begin{equation*}
+                \mathbb{B} = \left\{
+                    \alpha \in \zeroless{F} \big| \omega^{(k-2)}\left(
+                        \fr{(\alpha-x_0)^{-1}}
+                    \right) = 0
+                \right\}
+            \end{equation*}
+
+            \item Для всех $\alpha_0 \in \mathbb{B}$ попробовать найти такие $(\varepsilon_i) \in \invertible{R}$ и $(a_i), (b_i) \in R$, что $\elementnorm{a_i}, \elementnorm{b_i} \le M$ и
+            \begin{equation*}
+                \begin{split}
+                    \beta_{i+1}=\frac{1}{\varepsilon_i \beta_i + a_i} + b_i,\\
+                    \beta_{k-1}=\alpha \textrm{ или } \beta_{k-1}=\alpha^{-1},
+                \end{split}
+            \end{equation*}
+            где $\beta_1 = 0$
+
+            \item Если такие элементы не были найдены, то вернуть ''выберите большие $D_R$ и $M$'' и завершить алгоритм
+            
+            \item Если такие элементы были найдены и проверены все $x_0 \in \zeroless{\mathbb{L}}$, то вернуть ''$R \in \mathcal{T}$'' и завершить алгоритм
+        \end{enumerate}
+    \end{enumerate}
+\end{algorithm}
+
+\begin{lemma}
 % TODO большой алгоритм проверки R \in \mathcal{T}
+\end{lemma}
+\begin{proof}
+    \textbf{Correctness of Algorithm 2.}
+    Suppose that the answer of Algorithm 2 is "Yes".
+    Take arbitrary $x_0\in\mathbb{K}$.
+    If $x_0\in\mathbb{J}$, then the triple $(x_0,\alpha,D_\mathbb{K})$ is regular for any $\alpha\in\mathbb{F}^*$ and $D_\mathbb{K}\in\mathbb{N}$.
+
+    Then we want to show that the triple $(x_0,\alpha,D_\mathbb{K})$ is regular for any $x_0\in\mathbb{K}^*\setminus\mathbb{J}$ and $\alpha\in\mathbb{F}^*$.
+    Let us consider the set $\mathbb{L}_1$ of all elements that were put in $\mathbb{L}$.
+    If $(x_0,\ldots,x_k)\in\mathbb{L}_1$, $(y_0,\ldots,y_l)\in\mathbb{L}_1$ and $x_i=y_i$ for any $i=\overline{1,k}$, $k\le l$, then we will delete $(x_0,\ldots,x_k)$ from $\mathbb{L}_1$. Let us fix $x_0$ and show that $(x_0,\alpha,D_\mathbb{K})$ is regular. It is easy to see that if $(x_0,\alpha,k)$ is regular, then $(x_0,\alpha,k+i)$ is regular for any $i\in\mathbb{N}$.
+
+    Let us consider an element $(x_0,\ldots,x_l)\in\mathbb{L}_1$.
+    This element generates the set of $\alpha$ such that 
+    $$x_l=\left(\left(\ldots\left(\left(\alpha-x_0\right)^{-1} -x_1\right)^{-1}-\ldots\right)^{-1}-x_{l-1}\right)^{-1}.$$
+    It is obvious that all such elements of $\mathbb{L}_1$ with fixed $x_0$ generates $\mathbb{F}^*$.
+    Since the answer of Algorithm 2 is "Yes" we can find sequences from the Algorithm for each element of $\mathbb{L}_1$ with fixed $x_0$.
+    So the triple $(x_0,\alpha,D_\mathbb{K})$ is regular for any $x_0, \alpha$.
+    And the first part of the definition of the set $\mathcal{T}$ holds.
+
+    Suppose that $D_\mathbb{K}\ge3$. Proof of correctness of Steps 10-13 is completely analogous to the proof of correctness of Steps 1-9.
+\end{proof}
 
 \subsection{Теорема Ламе в факториальных кольцах}
 
