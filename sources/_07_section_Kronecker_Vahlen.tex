@@ -840,7 +840,7 @@
         \begin{enumerate}
             \item Вычислить
             \begin{equation*}
-                beta_1 = \omega^{(l+1)} \left(
+                \beta_1 = \omega^{(l+1)} \left(
                     \int{(\alpha-x_0)^{-1}}
                 \right) = \fr{(\delta-x_{l+1})^{-1}}
             \end{equation*}
@@ -853,9 +853,9 @@
                 \end{split}
             \end{equation*}
 
-            \item Если такие элементы не нашлись и $l+1 \ge D_R$, то вернуть ''выберите большие $D_R$ и $M$'' и завершить алгоритм
+            \item Если такие элементы не нашлись и $l+1 \ge D_R - 1$, то вернуть ''выберите большие $D_R$ и $M$'' и завершить алгоритм
             
-            \item Если такие элементы не нашлись и $l+1 < D_R$, то добавить в множество $\mathbb{L}$ элемент $(x_0,\ldots,x_l,x_{l+1})$
+            \item Если такие элементы не нашлись и $l+1 < D_R - 1$, то добавить в множество $\mathbb{L}$ элемент $(x_0,\ldots,x_l,x_{l+1})$
             
             \item Если такие элементы нашлись, то перейти к следующему элементу в шаге~\ref{step:every_element_in_A}
         \end{enumerate}
@@ -892,27 +892,38 @@
 \end{algorithm}
 
 \begin{lemma}
-% TODO большой алгоритм проверки R \in \mathcal{T}
+    Пусть алгоритм~\ref{algorithm:R_in_T} вернул ''$R \in \mathcal{T}$''.
+    Тогда $R \in \mathcal{T}$.
 \end{lemma}
 \begin{proof}
-    \textbf{Correctness of Algorithm 2.}
-    Suppose that the answer of Algorithm 2 is "Yes".
-    Take arbitrary $x_0\in\mathbb{K}$.
-    If $x_0\in\mathbb{J}$, then the triple $(x_0,\alpha,D_\mathbb{K})$ is regular for any $\alpha\in\mathbb{F}^*$ and $D_\mathbb{K}\in\mathbb{N}$.
+    Рассмотрим произвольный $x_0 \in R$.
+    Если $x_0 \in \mathbb{J}$, то тройка $(x_0, \alpha, D_R - 1)$ правильная для всех $\alpha \in \zeroless{F}$ и $D_R \in \mathbb{N}$.
 
-    Then we want to show that the triple $(x_0,\alpha,D_\mathbb{K})$ is regular for any $x_0\in\mathbb{K}^*\setminus\mathbb{J}$ and $\alpha\in\mathbb{F}^*$.
-    Let us consider the set $\mathbb{L}_1$ of all elements that were put in $\mathbb{L}$.
-    If $(x_0,\ldots,x_k)\in\mathbb{L}_1$, $(y_0,\ldots,y_l)\in\mathbb{L}_1$ and $x_i=y_i$ for any $i=\overline{1,k}$, $k\le l$, then we will delete $(x_0,\ldots,x_k)$ from $\mathbb{L}_1$. Let us fix $x_0$ and show that $(x_0,\alpha,D_\mathbb{K})$ is regular. It is easy to see that if $(x_0,\alpha,k)$ is regular, then $(x_0,\alpha,k+i)$ is regular for any $i\in\mathbb{N}$.
+    Рассмотрим множество $\mathbb{L}_1$ всех элементов, что добавлялись в $\mathbb{L}$.
+    Если $(x_0, \ldots, x_k) \in \mathbb{L}_1$, $(y_0, \ldots, y_l) \in \mathbb{L}_1$ и $x_i = y_i$ для всех $i = \overline{1,k}$, $k \le l$, то удалим $(x_0, \ldots, x_k)$ из $\mathbb{L}_1$.
 
-    Let us consider an element $(x_0,\ldots,x_l)\in\mathbb{L}_1$.
-    This element generates the set of $\alpha$ such that 
-    $$x_l=\left(\left(\ldots\left(\left(\alpha-x_0\right)^{-1} -x_1\right)^{-1}-\ldots\right)^{-1}-x_{l-1}\right)^{-1}.$$
-    It is obvious that all such elements of $\mathbb{L}_1$ with fixed $x_0$ generates $\mathbb{F}^*$.
-    Since the answer of Algorithm 2 is "Yes" we can find sequences from the Algorithm for each element of $\mathbb{L}_1$ with fixed $x_0$.
-    So the triple $(x_0,\alpha,D_\mathbb{K})$ is regular for any $x_0, \alpha$.
-    And the first part of the definition of the set $\mathcal{T}$ holds.
+    Зафиксируем $x_0$ и покажем, что тройка $(x_0, \alpha, D_R - 1)$ регулярная.
+    Заметим, что, если тройка $(x_0, \alpha, k)$ регулярная, то тройка $(x_0, \alpha, k + i)$ регулярная для всех $i \in \mathbb{N}$.
 
-    Suppose that $D_\mathbb{K}\ge3$. Proof of correctness of Steps 10-13 is completely analogous to the proof of correctness of Steps 1-9.
+    Рассмотрим элемент $(x_0, \ldots, x_l) \in \mathbb{L}_1$.
+    Этот элемент генерирует множество таких элементов $\alpha$, что
+    \begin{equation*}
+        x_l = \left(
+            \left(
+                \ldots \left(
+                    \left(
+                        \alpha - x_0
+                    \right)^{-1} - x_1
+                \right)^{-1} - \ldots
+            \right)^{-1} - x_{l-1}
+        \right)^{-1}.
+    \end{equation*}
+    Очевидно, что все такие элементы $\mathbb{L}_1$ с фиксированным $x_0$ генерируют $\zeroless{F}$.
+    
+    Так как ответ алгоритма ''$R \in \mathcal{T}$'', то тройка $(x_0, \alpha, D_R - 1)$ регулярная для всех $x_0, \alpha$.
+    Следовательно, выполняется первая часть определения множества $\mathcal{T}$.
+    
+    Если $D_R \ge 3$, тот доказательство проводится аналогично.
 \end{proof}
 
 \subsection{Теорема Ламе в факториальных кольцах}
