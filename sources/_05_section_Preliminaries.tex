@@ -17,6 +17,26 @@
 Пусть $R$ -- дедекиндово кольцо.
 Нормой $\Nm{\ideal{n}}$ идеала $\ideal{n} \subset R$ называется мощность факторкольца $R/\ideal{n}$.
 
+% \begin{definition}
+%     Идеал $\mathfrak{p}$ называется простым, если выполняются следующие два условия
+
+%     \begin{enumerate}
+%         \item Для любых двух $a, b\in R$, если $ab\in \mathfrak{p}$, то $a\in\mathfrak{p}$ или $b\in\mathfrak{p}$.
+
+%         \item Идеал $\mathfrak{p}$ не совпадает с $R$.
+%     \end{enumerate}
+% \end{definition}
+
+% \begin{definition}
+%     Идеал $\mathfrak{m}$ называется максимальным, если выполняются следующие условия
+
+%     \begin{enumerate}
+%         \item Это собственный идеал, т.е. $\mathfrak{m}$ собственное подмножество $R$.
+
+%         \item Не существует собственных идеалов, для которых $\mathfrak{m}$ является собственным подмножеством.
+%     \end{enumerate}
+% \end{definition}
+
 Идеал $\ideal{n} \subset R$ называется простым, если факторкольцо $R/\ideal{n}$ является областью целостности.
 Собственный идеал $\ideal{n} \subset R$ называется максимальным, если он не содержится ни в каком другом собственном идеале.
 Любой максимальный идеал является простым.
@@ -31,6 +51,26 @@
         \varphi(\ideal{n}) = |\multiplicative{(R/\ideal{n})}|.
     \end{equation*}
 \end{definition}
+
+% \begin{statement}\cite{source:Petukhova}
+%     Для функции Эйлера в абстрактном числовом кольце выполнено свойство мультипликативности:
+%     \begin{eqnarray}
+%         \varphi\left(
+%             \prod\limits_{i=1}^k \mathfrak{m}^{\alpha_i}
+%         \right) = \prod\limits_{i=1}^k \varphi(\mathfrak{m}^{\alpha_i})\nonumber
+%     \end{eqnarray}
+    
+%     Для максимального идеала $\mathfrak{m}$ значение функции Эйлера можно вычислить по формуле:
+%     \begin{eqnarray}
+%         \varphi(\mathfrak{m}^{\alpha}) = \mathcal{N}(\mathfrak{m})^{\alpha} - \mathcal{N}(\mathfrak{m})^{\alpha-1}.\nonumber
+%     \end{eqnarray}
+% \end{statement}
+
+% \begin{statement}[Обобщенная теорема Эйлера]\cite{Petukhova}
+%   Пусть $R$ --- дедекиндово кольцо, обладающее свойствами, описанными выше.
+%   Пусть $m\in R$, $\mathfrak{U}\subset R$ --- идеал.
+%   Если $Rm+\mathfrak{U} = R$, то $m^{\varphi(\mathfrak{U})}\equiv 1(\modul \mathfrak{U})$.
+% \end{statement}
 
 \begin{statement}\cite{Narkiewicz}\label{statement:euler_function}
     Пусть $\ideal{n}$ -- идеал кольца $R$.
