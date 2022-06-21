@@ -23,6 +23,7 @@
 Далее в этой главе полагаем, что дедекиндово кольцо $R$ имеет конечное поле остатков.
 
 \begin{example}
+    Рассмотрим примеры дедекиндовых колец, удовлетворяющих этим условиям.
     \begin{itemize}
         \item Пусть $K$ -- числовое поле.
         Кольцо $\mathbb{Z}_K$, образованное алгебраическими целыми элементами этого поля является дедекиндовым с конечным полем остатков.
@@ -54,10 +55,17 @@
 % \end{statement}
 
 \begin{statement}[Теорема Копперсмита]\label{statement:coppersmith}
-  Пусть $f(x,y)$ неприводимый многочлен от двух переменных над $\mathbb{Z}$ со степенью $\delta$ по каждой переменной отдельно.
+  Пусть
+  \begin{equation*}
+      f(x, y) = \sum\limits_{i, j} p_{i, j} x^i y^j
+  \end{equation*}
+  неприводимый многочлен от двух переменных над $\mathbb{Z}$ со степенью $\delta$ по каждой переменной отдельно.
   Пусть $X$, $Y$ границы предполагаемого решения $(x_0, y_0)$.
-  Пусть $W$ модуль максимального коэффициента $f(xX, yY)$.
-  Если $XY\le W^{\frac{2}{3\delta}}$, то существует полиномиальный относительно $\log W$ и $2^\delta$ алгоритм, который позволяет найти все $(x_0,y_0)$ такие, что $f(x_0,y_0)=0$, $|x_0|\le X$ и $|y_0|\le Y$.
+  Обозначим
+  \begin{equation*}
+      W = \max_{i, j} |p_{i, j}| X^i Y^j.
+  \end{equation*}
+  Пусть $XY < W^{\frac{3}{2\delta}}$, то существует полиномиальный относительно $\log W$ и $2^\delta$ алгоритм, который позволяет найти такую пару $(x_0, y_0)$, что $f(x_0, y_0) = 0$, $|x_0| \le X$ и $|y_0| \le Y$.
 \end{statement}
 
 \subsection{Формулировка и анализ аналога RSA-криптосистемы}
@@ -292,9 +300,9 @@
     \end{equation*}
 \end{proof}
 
-\begin{theorem}\label{thm:d_is_known_2}
+\begin{theorem}\label{theorem:d_is_known_2}
     Пусть $(\ideal{N}, e, d)$ параметры RSA-криптосистемы в дедекиндовом кольце $R$, где $\Nm{\ideal{p}}$ и $\Nm{\ideal{q}}$ имеют одинаковую битовую длину.
-    Пусть $ed \le (\Nm{\ideal{N}})^2,$ $\Nm{\ideal{N}} \ge 107$.
+    Пусть $ed \le (\Nm{\ideal{N}})^2$, $\Nm{\ideal{N}} \ge 3$.
     Если $d$ известно, то существует эффективный алгоритм, который позволяет найти $\Nm{\ideal{p}}$ и $\Nm{\ideal{q}}$.
 \end{theorem}
 \begin{proof}
@@ -304,30 +312,10 @@
     Тогда $\Nm{\ideal{p}} \le (\Nm{\ideal{N}})^{1/2} \le \Nm{\ideal{q}} < 2\Nm{\ideal{p}} \le 2(\Nm{\ideal{N}})^{1/2}$.
     Следовательно,
     \begin{equation*}
-        \Nm{\ideal{p}} + \Nm{\ideal{q}} < 3(\Nm{\ideal{N}})^{1/2} \le \frac{\Nm{\ideal{N}}}{2}.
+        \Nm{\ideal{N}} - \varphi(\ideal{N}) = \Nm{\ideal{p}} + \Nm{\ideal{q}} - 1 < 3(\Nm{\ideal{N}})^{1/2} < 3(\Nm{\ideal{N}})^{1/2} \le \frac{\Nm{\ideal{N}}}{2}.
     \end{equation*}
 
-    Тогда
-    \begin{equation*}
-        \begin{split}
-            \varphi(\ideal{N}) = (\Nm{\ideal{p}}-1)(\Nm{\ideal{q}}-1) = \Nm{\ideal{N}} + 1 - \Nm{\ideal{p}} - \Nm{\ideal{q}} >\\
-            > \Nm{\ideal{N}} + 1 - \frac{\Nm{\ideal{N}}}{2} > \frac{\Nm{\ideal{N}}}{2}.
-        \end{split}
-    \end{equation*}
-
-    Обозначим $\overline{k} = \frac{ed-1}{\Nm{\ideal{N}}}$.
-    Тогда
-
-    \begin{equation*}
-        \begin{split}
-            k - \overline{k} =
-            \frac{(\Nm{\ideal{N}}-\varphi(\ideal{N}))(ed-1)}{\Nm{\ideal{N}}\varphi(\ideal{N})} =\\
-            = \frac{(\Nm{\ideal{p}}+\Nm{\ideal{q}}-1)(ed-1)}{\Nm{\ideal{N}}\varphi(\ideal{N})} < \frac{3(\Nm{\ideal{N}})^{1/2}(ed-1)}{\Nm{\ideal{N}}\frac{\Nm{\ideal{N}}}{2}} =\\
-            = 6(\Nm{\ideal{N}})^{-3/2}(ed-1)
-        \end{split}
-    \end{equation*}
-
-    Из того, что $\Nm{\ideal{N}} - \varphi(\ideal{N}) = \Nm{\ideal{p}} + \Nm{\ideal{q}} - 1 < 3(\Nm{\ideal{N}})^{1/2}$, следует, что $\varphi(\ideal{N}) \in [\Nm{\ideal{N}}-3(\Nm{\ideal{N}})^{1/2}, \Nm{\ideal{N}}]$.
+    Тогда $\varphi(\ideal{N}) \in [\Nm{\ideal{N}}-3(\Nm{\ideal{N}})^{1/2}, \Nm{\ideal{N}}]$.
     Разделим этот интервал на $6$ интервалов длины $\frac{1}{2}(\Nm{\ideal{N}})^{1/2}$ с центрами в точках $\Nm{\ideal{N}} - \frac{2i-1}{4}(\Nm{\ideal{N}})^{1/2}$, где $i \in \{1, \ldots, 6\}$.
     Рассмотрим $i \in \{1, \ldots, 6\}$ такое, что
     \begin{equation*}
@@ -349,12 +337,17 @@
             \Nm{\ideal{N}} - g - \varphi(\ideal{N})
         \right| < \frac{1}{4}(\Nm{\ideal{N}})^{1/2} + 1.
     \end{equation*}
-    
-    Следовательно, $\varphi(\ideal{N}) = \Nm{\ideal{N}} - g - y$ для некоторого неизвестного $y$ такого, что $|y| \le \frac{1}{4}(\Nm{\ideal{N}})^{1/2}$.
-    Обозначим $x = k - \lceil\overline{k}\rceil$.
+
+    Обозначим $\overline{k} = \frac{ed-1}{\Nm{\ideal{N}}}$.
     Тогда
+
     \begin{equation*}
-        ed - 1 = k\varphi(\ideal{N}) = (\lceil\overline{k}\rceil + x)(\Nm{\ideal{N}} - g - y).
+        \begin{split}
+            k - \overline{k} =
+            \frac{(\Nm{\ideal{N}}-\varphi(\ideal{N}))(ed-1)}{\Nm{\ideal{N}}\varphi(\ideal{N})} =\\
+            = \frac{(\Nm{\ideal{p}}+\Nm{\ideal{q}}-1)(ed-1)}{\Nm{\ideal{N}}\varphi(\ideal{N})} < \frac{3(\Nm{\ideal{N}})^{1/2}(ed-1)}{\Nm{\ideal{N}}\frac{\Nm{\ideal{N}}}{2}} =\\
+            = 6(\Nm{\ideal{N}})^{-3/2}(ed-1)
+        \end{split}
     \end{equation*}
   
     Рассмотрим многочлен
@@ -365,66 +358,88 @@
         \end{split}
     \end{equation*}
     
-    Заметим, что пара $(x_0, y_0) = (k - \lceil\overline{k}\rceil, \Nm{\ideal{p}} + \Nm{\ideal{q}} + 1 - g)$ является его корнем.
+    Заметим, что пара $(x_0, y_0) = (k - \lceil\overline{k}\rceil, \Nm{\ideal{N}} - g - \varphi(\ideal{N}))$ является его корнем.
     
     Воспользуемся теоремой Копперсмита.
-    Положим $\delta = 1$, $X = 6(\Nm{\ideal{N}})^{1/2}$ и $Y = \frac{1}{4}(\Nm{\ideal{N}})^{1/2}+1$.
-    Тогда $|x_0| \le X$ и $|y_0| \le Y$.
-    Пусть $W$ норма вектора коэффициентов многочлена $f(xX, yY)$.
-    Тогда $W \ge (\Nm{\ideal{N}} - g)X > 3(\Nm{\ideal{N}})^{3/2}$.
-    Следовательно
+    Положим $\delta = 1$.
+    Заметим, что
     \begin{equation*}
-        XY = \frac{3}{2}\Nm{\ideal{N}} + 6(\Nm{\ideal{N}})^{1/2} < W^{2/3} = W^{\frac{2}{3\delta}}
+        \begin{split}
+            |x_0| = \left|
+                k - \lceil\overline{k}\rceil
+            \right| \le \left|
+                k - \overline{k}
+            \right| < 6(\Nm{\ideal{N}})^{-3/2}(ed-1) < \\
+            < 6(\Nm{\ideal{N}})^{-3/2}(\Nm{\ideal{N}})^2 = 6(\Nm{\ideal{N}})^{1/2}\\
+            |y_0| = \left|
+                \Nm{\ideal{N}} - g - \varphi(\ideal{N})
+            \right| \le \frac{1}{4}(\Nm{\ideal{N}})^{1/2} + 1.
+        \end{split}
     \end{equation*}
-    для $\Nm{\ideal{N}} \ge 107$.
-  
-    Следовательно, мы можем найти корень $(x_0, y_0)$ за полиномиальное относительно $\log W$ время.
+    
+    Положим $X = 6(\Nm{\ideal{N}})^{1/2}$, $Y = \frac{1}{4}(\Nm{\ideal{N}})^{1/2} + 1$.
+    Тогда $|x_0| < X$, $|y_0| < Y$.
+    Из определения $W$ следует, что
+    \begin{equation*}
+        \begin{split}
+            W \ge (\Nm{\ideal{N}} - g)X = 6(\Nm{\ideal{N}})^{1/2}\left(
+                \Nm{\ideal{N}} - \left\lceil
+                    \frac{2i-1}{4}\Nm{\ideal{N}}
+                \right\rceil
+            \right) >\\
+            > \frac{3}{2}(\Nm{\ideal{N}})^{3/2}
+        \end{split}
+    \end{equation*}
+    
+    Для $\Nm{\ideal{N}} \ge 3$ выполнено
+    \begin{equation*}
+        \begin{split}
+            (XY)^{2/3} = \left(
+                6(\Nm{\ideal{N}})^{1/2} \left(
+                    \frac{1}{4}(\Nm{\ideal{N}})^{1/2} + 1
+                \right)
+            \right)^{2/3} =\\
+            = \left(
+                \frac{3}{2}\Nm{\ideal{N}} + 6(\Nm{\ideal{N}})^{1/2}
+            \right)^{2/3} < \frac{3}{2}(\Nm{\ideal{N}})^{3/2}.
+        \end{split}
+    \end{equation*}
+    
+    Следовательно, если $\Nm{\ideal{N}} \ge 3$, то $W^{\frac{3}{2}} > XY$.
+    Тогда, используя теорему Копперсмита, мы можем найти корень $(x_0, y_0)$ за полиномиальное относительно $\log W$ время.
     Корень $(x_0, y_0)$ позволяет найти $\Nm{\ideal{p}}$ и $\Nm{\ideal{q}}$.
 \end{proof}
+
+% результат из Конкурс_студ_работ_по_теор_инф_и_диск_мат_им_Алана_Тьюринга
+\begin{remark}
+    Если в условии теоремы~\ref{theorem:d_is_known_2} заменить неравенство $ed \le (\Nm{\ideal{N}})^2$ на более строгое $ed \le (\Nm{\ideal{N}})^{3/2}$, то получим, что
+    \begin{equation*}
+        k - \overline{k} < 6(\Nm{\ideal{N}})^{-3/2}(ed-1) < 6.
+    \end{equation*}
+    
+    Следовательно, вычислив $\overline{k} = \frac{ed-1}{\Nm{\ideal{N}}}$, можно перебрать все возможные $k$ и для каждого вычислить $\varphi(\ideal{N})$, $\Nm{\ideal{p}}$, $\Nm{\ideal{q}}$.
+\end{remark}
 
 Приведем примеры работы криптосистемы для некоторых координатных колец.
 
 \begin{example}
 	Рассмотрим кольцо многочленов от двух переменных над $\mathbb{Z}_2$.
 	Рассмотрим координатное кольцо
-	
 	\begin{equation*}
-		R = \frac{\mathbb{Z}_2(x, y)}{y-x}
+		R = \frac{\mathbb{Z}_2(x, y)}{y-x} \cong \mathbb{Z}_2[x]
 	\end{equation*}
 	
-	Оно изоморфно $\mathbb{Z}_2[x]$.
-	Известно, что это кольцо дедекиндово.
-	Рассмотрим идеалы $(x^3 + x + 1)$ и $(x^3 + x^2 + 1)$ и найдем их норму.
-	И $R/(x^3 + x + 1)$, и $R/(x^3 + x^2 + 1)$ состоит из многочленов степени не более $2$.
+	Это кольцо дедекиндово.
+	Рассмотрим идеалы $\ideal{p} = (x^3 + x + 1)$ и $\ideal{q} = (x^3 + x^2 + 1)$.
+	И $R/\ideal{p}$, и $R/\ideal{q}$ состоит из многочленов степени не более $2$.
 	Следовательно, норма обоих идеалов равна $8$.
 	
-	Теперь найдем элементы $R/(x^3 + x + 1)(x^3 + x^2 + 1)$
-	
-	\begin{equation*}
-		(x^3 + x + 1)(x^3 + x^2 + 1) = x^6 + x^5 + x^4 + x^3 + x^2 + x + 1
-	\end{equation*}
-	
-	Следовательно, $x^6 = x^5 + x^4 + x^3 + x^2 + x + 1$.
-	Следовательно, фактор-кольцо $R/(x^3 + x + 1)(x^3 + x^2 + 1)$ состоит из многочленов не более чем $5$ степени.
-	Их $64$, следовательно, по норме все сходится.
-	
+	Вычислим $\ideal{N} = \ideal{p}\ideal{q} = (x^6 + x^5 + x^4 + x^3 + x^2 + x + 1)$.
+	Заметим, что $R/\ideal{N}$ состоит из многочленов степени не более $5$.
+	Следовательно, $\Nm{\ideal{N}} = 64$.
+	Вычислим $\varphi(\ideal{N}) = 7 * 7 = 49$.
+
 	Заметим, что
-	\begin{equation*}
-		\begin{array}{l}
-			x^6 = x^5 + x^4 + x^3 + x^2 + x + 1\\
-			x^7 = 1\\
-			x^8 = x\\
-			x^9 = x^2\\
-			x^{10} = x^3\\
-			x^{11} = x^4\\
-			x^{12} = x^5\\
-			x^{13} = x^6 = x^5 + x^4 + x^3 + x^2 + x + 1\\
-			x^{14} = x^7 = 1\\
-			\ldots
-		\end{array}
-	\end{equation*}
-	
-	Следовательно, имеем
 	\begin{equation*}
 		\begin{array}{l}
 			x^{7i} = 1\\
@@ -436,50 +451,41 @@
 			x^{7i+6} = x^5 + x^4 + x^3 + x^2 + x + 1
 		\end{array}
 	\end{equation*}
-	
-	Вычисляем
-	\begin{equation*}
-		\varphi_K((x^3 + x + 1)(x^3 + x^2 + 1)) = 7 * 7 = 49
-	\end{equation*}
-	
-	Выбираем случайное $e = 11$.
-	Тогда $d=9$.
-	
+
+	Выберем случайное $e = 11$.
+	Тогда $d = 9$.
 	Возьмем элемент $x^4 + x^2 + 1$.
-	Зашифруем его
+	Зашифруем его, а затем расшифруем
 	\begin{equation*}
-		(x^4 + x^2 + 1)^{11} = x^2 + x + 1
-	\end{equation*}
-	
-	Теперь расшифруем
-	\begin{equation*}
-		(x^2 + x + 1)^{9} = x^4 + x^2 + 1
+	    \begin{split}
+    		(x^4 + x^2 + 1)^{11} = x^2 + x + 1\\
+    		(x^2 + x + 1)^{9} = x^4 + x^2 + 1
+	    \end{split}
 	\end{equation*}
 \end{example}
 
 \begin{example}
 	Рассмотрим кольцо многочленов от двух переменных над $\mathbb{Z}_2$. И рассмотрим координатное кольцо
-	
 	\begin{equation*}
 		R = \frac{\mathbb{Z}_2(x, y)}{\langle xy - 1\rangle}.
 	\end{equation*}
 	
 	Так как в этом координатном кольце $xy - 1 = 0$, то оно состоит из многочленов вида $xf(x) + yg(y) + c$.
-	Из этого несложно заметить, что $R\cong \mathbb{Z}_2(x, x^{-1})$.
+	Из этого несложно заметить, что $R \cong \mathbb{Z}_2(x, x^{-1})$.
 	
-	Рассмотрим идеал $(x+1)$.
-	Его норма $2$, так как фактор кольцо $R/(x+1)$ состоит из элементов $0$ и $1$.
+	Рассмотрим идеал $\ideal{p} = (x + 1)$.
+	Его норма $2$, так как фактор кольцо $R/\ideal{p}$ состоит из элементов $0$ и $1$.
 	
-	Рассмотрим идеал $(x^2 + x + 1)$.
-	Кольцо $R/(x^2 + x + 1)$ состоит из $x+1$, $x$, $1$, $0$.
+	Рассмотрим идеал $\ideal{q} = (x^2 + x + 1)$.
+	Кольцо $R/\ideal{q}$ состоит из $x+1$, $x$, $1$, $0$.
 	Следовательно, норма этого идеала $4$.
 
-	Теперь рассмотрим произведение этих идеалов $(x+1)(x^2 + x + 1) = x^3 + 1$.
-	Несложно заметить, что $R/(x^3 + 1)$ состоит из многочленов $0$, $1$, $x$, $x+1$, $x^2$, $x^2+1$, $x^2+x$, $x^2+x+1$.
-	Значит норма $(x^3 + 1)$ равна $8$.
+	Вычислим $\ideal{N} = \ideal{p}\ideal{q} = x^3 + 1$.
+	Несложно заметить, что $R/\ideal{N}$ состоит из многочленов степени не более $2$.
+	Значит норма $\Nm{\ideal{N}} = 8$.
+	Вычислим $\varphi_K(\ideal{N}) = 3$
 
 	Заметим, что
-	
 	\begin{equation*}
 		\begin{array}{l}
 			x^{3i} = 1\\
@@ -487,25 +493,16 @@
 			x^{3i+2} = x^2
 		\end{array}
 	\end{equation*}
-	
-	Вычисляем
-	\begin{equation*}
-		\varphi_K((x+1)(x^2 + x + 1)) = 3
-	\end{equation*}
-	
-	Выбираем случайное $e = 2$.
-	Тогда $d=2$.
+
+	Выберем случайное $e = 2$.
+	Тогда $d = 2$.
 	Возьмем элемент $x^2 + 1$.
-	Зашифруем его
-	
+	Зашифруем его, а затем расшифруем
 	\begin{equation*}
-		(x^2 + 1)^2 = x^4 + 1 = x + 1
-	\end{equation*}
-	
-	Теперь расшифруем
-	
-	\begin{equation*}
-		(x + 1)^2 = x^2 + 1
+	    \begin{split}
+    		(x^2 + 1)^2 = x^4 + 1 = x + 1\\
+	        (x + 1)^2 = x^2 + 1
+	    \end{split}
 	\end{equation*}
 \end{example}
 
