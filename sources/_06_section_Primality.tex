@@ -351,7 +351,7 @@
     Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$, удовлетворяющего условию A.
     Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in \invertible{R/\ideal{n}}$, $\Nm{\ideal{a}} \le f_R(\Nm{\ideal{n}})$ выполнено
     \begin{equation*}
-        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}.
+        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}.
     \end{equation*}
 \end{theorem}
 \begin{proof}
@@ -359,35 +359,38 @@
     
     Предположим, что $\ideal{n} \in \zeroless{R} \setminus \invertible{R}$ составной идеал нечетной нормы и для любого и идеала $\ideal{a} \in \invertible{R/\ideal{n}}$, $\Nm{\ideal{a}} \le f_R(\Nm{\ideal{n}})$ выполнено
     \begin{equation*}
-        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}.
+        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}.
     \end{equation*}
     
-    Рассмотрим такое отображение $\chi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено $\chi(a) = a^{(\Nm{\ideal{n}} - 1)/2}\left[\frac{a}{\ideal{n}}\right]$.
+    Рассмотрим такое отображение $\chi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено $\chi(\ideal{a}) = \ideal{a}^{(\Nm{\ideal{n}} - 1)/2}\left[\frac{a}{\ideal{n}}\right]$.
     Из теоремы~\ref{theorem:euler_criteria} следует, что $\chi$ нетривиальный гомоморфизм.
     
     Тогда, используя предложение~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $\ideal{a} \in \invertible{R/\ideal{n}}$, что
     \begin{equation*}
-        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \left[\frac{\ideal{a}}{\ideal{n}}\right] \not\equiv 1 \pmod{\ideal{n}}.
+        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \left[\frac{\ideal{a}}{\ideal{n}}\right] \not\equiv 1 \pmod{\ideal{n}}.
     \end{equation*}
     Получили противоречие.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{proposition:miller_criteria_character}
     Пусть идеал $\ideal{p}$ простой с нечетной нормой.
     Тогда сравнение
     \begin{equation*}
-        x^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}
+        \ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}
     \end{equation*}
-    имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $x \in \invertible{R/\ideal{p}^2}$.
+    имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}^2}$.
 \end{proposition}
 \begin{proof}
-    Из утверждения~\ref{statement:euler_function} следует, что сравнение $x^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$ имеет ровно $\Nm{\ideal{p}} - 1$ решений относительно $x \in \invertible{R/\ideal{p}}$.
+    Из утверждения~\ref{statement:euler_function} следует, что сравнение $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$ имеет ровно $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}}$.
     
-    Заметим, что все решения сравнения $x^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}$ имеют вид $a + pt$, где $a \in \invertible{R/\ideal{p}}$, $t \in R/\ideal{p}$ и $a$ является решением сравнения $x^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$.
-    Подставим этот вид в сравнение, применим формулу Тейлора и получим
+    Заметим, что все решения сравнения $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}$ имеют вид $\ideal{a} + \ideal{p}\ideal{t}$, где $\ideal{a} \in \invertible{R/\ideal{p}}$, $\ideal{t} \in R/\ideal{p}$ и $a$ является решением сравнения $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$.
+    Подставим этот вид в сравнение, раскроем скобки и получим сравнение
     \begin{equation*}
-        \frac{a^{\Nm{\ideal{p}} - 1} - 1}{\ideal{p}}
+        \ideal{p}\ideal{t}(\Nm{\ideal{p}} - 1)\ideal{a}^{\Nm{\ideal{p}} - 2} \equiv 1 - \ideal{a}^{\Nm{\ideal{p}} - 1} \pmod{\ideal{p}^2}.
     \end{equation*}
+    
+    Так как $((\Nm{\ideal{p}} - 1)a^{\Nm{\ideal{p}} - 2}, \ideal{p}) = 1$, то это сравнение имеет ровно одно решение при фиксированном $\ideal{a}$.
+    Следовательно, исходное сравнение имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}^2}$.
 \end{proof}
 
 \begin{theorem}\label{theorem:miller_criteria_deterministic}
@@ -401,11 +404,58 @@
     Предположим, что $\ideal{n} \in \zeroless{R} \setminus \invertible{R}$ составной идеал нечетной нормы и для любого идеала $\ideal{a} \in \invertible{R/\ideal{n}}$, $\Nm{\ideal{a}} \le f_R(\Nm{\ideal{n}})$, $(\ideal{a}, \ideal{n}) = 1$, $\ideal{a}^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $\ideal{a}^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
 
     Предположим, что существует такой простой идеал $\ideal{p}$, что $\ideal{p}^2 | \ideal{n}$.
-    Рассмотрим такое отображение $\chi: \invertible{R/\ideal{p}^2} \to \invertible{R/\ideal{p}^2}$, что для всех $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено $\chi(a) = a^{\Nm{\ideal{p}} - 1}$.
+    Рассмотрим такое отображение $\chi: \invertible{R/\ideal{p}^2} \to \invertible{R/\ideal{p}^2}$, что для всех $\ideal{a} \in \invertible{R/\ideal{p}^2}$ выполнено $\chi(\ideal{a}) = \ideal{a}^{\Nm{\ideal{p}} - 1}$.
+    Из предложения~\ref{proposition:miller_criteria_character} следует, что это нетривиальный гомоморфизм.
+    Тогда, из предложения~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $\ideal{a} \in \invertible{R/\ideal{p}^2}$, что
+    \begin{equation*}
+        \ideal{a}^{\Nm{\ideal{p}} - 1} \not\equiv 1 \pmod{\ideal{p}^2}.
+    \end{equation*}
+
+    Предположим, что $\ideal{a}^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}$.
+    Тогда $\ideal{a}^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{p}^2}$.
+    Тогда $\textrm{ord}_{R/\ideal{p}^2}(\ideal{a}) | \Nm{\ideal{n}} - 1$ и $\textrm{ord}_{R/\ideal{p}^2}(\ideal{a}) | \varphi(\ideal{p}^2)$.
+    Из этого следует, что $\textrm{ord}_{R/\ideal{p}^2}(\ideal{a}) | \Nm{\ideal{p}} - 1$.
+    Это противоречит выражению $\ideal{a}^{\Nm{\ideal{p}} - 1} \not\equiv 1 \pmod{\ideal{p}^2}$.
+
+    Следовательно, не существует такой простой идеал $\ideal{p}$, что $\ideal{p}^2 | \ideal{n}$.
+    Пусть $\ideal{p}$ и $\ideal{q}$ различные простые делители $\ideal{n}$.
     
+    Обозначим $v_2(n)$ максимальную степень двойки, делящую $n \in \mathbb{Z}$.
+    Не нарушая общности, предположим, что $v_2(\Nm{\ideal{p}} - 1) \ge v_2(\Nm{\ideal{q}} - 1)$.
+    Пусть
+    \begin{equation*}
+        \ideal{d} = \begin{cases}
+            \ideal{p}\ideal{q} &\textrm{ если } v_2(\Nm{\ideal{p}} - 1) = v_2(\Nm{\ideal{q}} - 1)\\
+            \ideal{p} &\textrm{ если } v_2(\Nm{\ideal{p}} - 1) > v_2(\Nm{\ideal{q}} - 1).
+        \end{cases}
+    \end{equation*}
+    Рассмотрим такое отображение $\xi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено $\xi(\ideal{a}) = \left[\frac{a}{\ideal{d}}\right]$.
+    Это отображение является нетривиальным гомоморфизмом.
+    Тогда, из предложения~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $\ideal{a} \in \invertible{R/\ideal{n}}$, что
+    \begin{equation*}
+        \left[\frac{a}{d}\right] \not\equiv 1 \pmod{\ideal{n}}.
+    \end{equation*}
     
-    Рассмотрим отображение $\chi(\ideal{a}) = \ideal{a}^{\Nm{\ideal{p}} - 1}$.
-    Заметим, что это отображение является гомоморфизмом
+    Положим $\ideal{b} = \ideal{a}^u$.
+    Тогда $\left[\frac{\ideal{b}}{\ideal{d}}\right] = -1$.
+    Следовательно, $\ideal{b} \not\equiv 1 \pmod{\ideal{d}}$.
+    Пусть $j \in \mathbb{Z}$ минимальное число, для которого $\ideal{a}^{2^j u} \equiv -1 \pmod{\ideal{n}}$.
+    Тогда $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = \textrm{ord}_{R/\ideal{q}}(\ideal{b}) = 2^{j+1}$.
+    
+    Рассмотрим два случая.
+    Пусть $v_2(\Nm{\ideal{p}} - 1) > v_2(\Nm{\ideal{q}} - 1)$.
+    Тогда $\textrm{ord}_{R/\ideal{q}}(\ideal{b}) = 2^{j+1} | \varphi(\ideal{q}) = \Nm{\ideal{q}} - 1$.
+    Следовательно, $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = 2^{j+1} | (\Nm{\ideal{p}} - 1)/2$.
+    Получаем, что $\left[\frac{\ideal{b}}{\ideal{d}}\right] = \left[\frac{\ideal{b}}{\ideal{d}}\right] = -1$ и $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$.
+    Это противоречит теореме~\ref{theorem:euler_criteria}.
+    
+    Пусть $v_2(\Nm{\ideal{p}} - 1) = v_2(\Nm{\ideal{q}} - 1)$.
+    Тогда $\left[\frac{\ideal{b}}{\ideal{d}}\right] = \left[\frac{\ideal{b}}{\ideal{p}}\right]\left[\frac{\ideal{b}}{\ideal{q}}\right] = -1$.
+    Следовательно, один из множителей равен $-1$.
+    Пусть $\left[\frac{\ideal{b}}{\ideal{p}}\right] = -1$ и $\left[\frac{\ideal{b}}{\ideal{q}}\right] = 1$.
+    Из теоремы~\ref{theorem:euler_criteria} следует, что $\ideal{b}^{(\Nm{\ideal{q}} - 1)/2} \equiv 1 \pmod{\ideal{q}}$ и $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = \textrm{ord}_{R/\ideal{q}}(\ideal{b}) | (\Nm{\ideal{q}} - 1)/2$.
+    Тогда $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) | (\Nm{\ideal{p}} - 1)/2$.
+    Следовательно, $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$, что противоречит предположению $\left[\frac{\ideal{b}}{\ideal{p}}\right] = -1$.
 \end{proof}
 
 
