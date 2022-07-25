@@ -29,7 +29,7 @@
 \end{definition}
 
 \begin{remark}
-    Для любого факториального кольца $R$ существует норма.
+    Для любого факториального кольца $R$ можно определить норму.
     Рассмотрим разложение элемента $x$ на простые множители $x = \varepsilon p_1^{\alpha_1} \dots p_k^{\alpha_k}$, где $\varepsilon \in \invertible{R}$, $p_1, \dots, p_k$ -- простые элементы $R$.
     Тогда функция
     \begin{equation*}
@@ -41,11 +41,11 @@
     является нормой в $R$.
 \end{remark}
 
-Далее в этой главе будем считать, что факориальное кольцо $R$ задано вместе с нормой $\elementnorm{\cdot}$.
+Далее в этой главе будем считать, что факториальное кольцо $R$ задано вместе с нормой $\elementnorm{\cdot}$.
 
 \begin{definition}
     Пусть $R$ факториальное кольцо и $F$ его поле частных.
-    Функию $\fr{\cdot}: F \to F$ будем называть дробной частью в $F$, если
+    Функцию $\fr{\cdot}: F \to F$ будем называть дробной частью в $F$, если
     \begin{itemize}
         \item $\fr{\alpha + q} = \fr{\alpha}$ для любых $\alpha \in F$, $q \in R$;
 
@@ -59,15 +59,22 @@
 
 \begin{remark}\label{remark:easy_fr}
     Для любого факториального кольца $R$ существует дробная и целая часть.
-    Рассмотрим случайный элемент $X \in F/R$.
+    Рассмотрим произвольный элемент $X \in F/R$.
     Этот элемент можно представить в виде $X = \{m/n + t | t \in R\}$, где $m \in R$, $n \in \zeroless{R}$ $(m, n) = 1$.
     Существует элемент $t_0 \in R$, минимизирующий норму $\elementnorm{m + n t_0}$.
-    Тогда для любого элемента $x \in X$ положим $\fr{x} = m/n + t_0$.
+    Тогда для любого элемента $x \in X$ положим
+    \begin{equation*}
+        \fr{x} = m/n + t_0.
+    \end{equation*}
+
     Несложно заметить, что эта функция является дробной частью.
-    Целая часть определяется из дробной и равна $\int{x} = x - \fr{x}$.
+    Целую часть определим следующим образом
+    \begin{equation*}
+        \int{x} = x - \fr{x}.
+    \end{equation*}
 \end{remark}
 
-Далее в этой главе будем считать, что факориальное кольцо $R$ задано вместе дробной частью $\fr{\cdot}$ и целой частью $\int{\cdot}$.
+Далее в этой главе будем считать, что факториальное кольцо $R$ задано вместе дробной частью $\fr{\cdot}$ и целой частью $\int{\cdot}$.
 
 \begin{definition}
     Пусть $a$ и $b$ ненулевые элементы факториального кольца $R$.
@@ -77,7 +84,7 @@
     \end{equation*}
     где $r_{-1} = a$, $r_0 = b$, $r_i = r_{i-2} - q_i r_{i-1}$, для $i = 1, \dots, k$.
     Выражение $\mathcal{D}_{a, b}(q_1, \dots, q_k)$ будем называть цепочкой делений для $a, b \in R$.
-    Через $\mathcal{E}_{a, b}$ обозначим множество всех цепочек делений для $a, b \in R$, которые заканчиваются на $0$:
+    Обозначим через $\mathcal{E}_{a, b}$ следующее множество:
     \begin{equation*}
         \mathcal{E}_{a, b} = \left\{
         \mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, \dots, r_k) \big| r_1, \dots, r_{k-1} \in \zeroless{R}, r_k = 0
@@ -179,9 +186,9 @@
             }
         }.
     \end{equation*}
-    Будем говорить, что имеет место $(\alpha, k)$-разрешимость, если разрешимо уравнение
+    Будем говорить, что для $\alpha \in F$ и $k \in \mathbb{N}$ имеет место $(\alpha, k)$-разрешимость, если разрешимо уравнение
     \begin{equation*}
-        \frac{a}{b} = [x_1: x_2: \dots: x_k].
+        \alpha = [x_1: x_2: \dots: x_k].
     \end{equation*}
 \end{definition}
 
@@ -194,7 +201,7 @@
     Если $\alpha = 0$ или $k = 1$, то утверждение леммы очевидно.
 
     Пусть $k = 2$.
-    Заметим, что имеет место $(\alpha, 2)$-разрешимость тогда и только тогда, когда $m \equiv \varepsilon \pmod{n]}$ для некоторого $\varepsilon \in \invertible{R}$.
+    Заметим, что имеет место $(\alpha, 2)$-разрешимость тогда и только тогда, когда $m \equiv \varepsilon \pmod{n}$ для некоторого $\varepsilon \in \invertible{R}$.
     Пусть $q \in R$ и $m = qn + \varepsilon$, тогда $m/n = \fr{m/n} = \fr{\varepsilon/n}$.
     Если $n \in \invertible{R}$, то $\fr{\varepsilon/n} = 0$ и утверждение леммы очевидно.
     Если $n \not\in \invertible{R}$, то $\fr{\varepsilon/n} = \varepsilon/n$ и $\omega(m/n) = \fr{n/\varepsilon} = 0$.
@@ -232,9 +239,9 @@
     Пусть кольцо $R$ факториальное.
     Тогда для любых двух элементов $a, b \in \zeroless{R}$ выполнено равенство
     \begin{equation*}
-        \mathcal{L}_{a, b} = \min\{
-            k \in \mathbb{N} \big| \omega^{(k-1)}(a\/b) = 0
-        \},
+        \mathcal{L}_{a, b} = \min\left\{
+            k \in \mathbb{N} \big| \omega^{(k-1)}\left(\frac{a}{b}\right) = 0
+        \right\},
     \end{equation*}
     где $\min \emptyset = \infty$.
 \end{lemma}
@@ -298,7 +305,7 @@
 \end{proof}
 
 \begin{theorem}\label{theorem:Kroneker_Vahlen_theorem_in_UFD}
-    Пусть кольцо $R \in \mathcal{T}$.
+    Пусть $R \in \mathcal{T}$.
     Тогда цепочка делений с выбором минимального по норме остатка является кратчайшей, т.е. $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$ для всех $a, b \in \zeroless{R}$.
 \end{theorem}
 \begin{proof}
@@ -306,7 +313,7 @@
     Тогда $\mathcal{L}_{a, b} = \infty$, так как иначе цепочка делений с выбором минимального по норме остатка имела бы длину меньше, чем кратчайшая.
 
     Пусть $\mathpzc{l}_{a, b} = k < \infty$ и $\mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, r_0, \dots, r_k)$ кратчайшая цепочка делений.
-    Тогда, по лемме~\ref{lemma:omega_and_euclidean_algorithm} получаем, что $\omega^{(k-1)}\left(\frac{a}{b}\right) = 0$.
+    Из леммы~\ref{lemma:omega_and_euclidean_algorithm} следует, что $\omega^{(k-1)}\left(\frac{a}{b}\right) = 0$.
     Тогда, по лемме~\ref{lemma:euclidean_algorithm_and_minima} получаем, что $\mathcal{L}_{a, b} \le k$.
     Следовательно, получаем $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$.
 \end{proof}
@@ -422,7 +429,8 @@
     Следовательно, тройка $(x, \alpha, D_R - 1)$ регулярная.
 \end{proof}
 
-Используя доказанную выше лемму, сформулируем метод проверки, что факториальное кольцо $R \in \mathcal{S}$.
+Используя доказанную выше лемму, сформулируем метод проверки включения $R \in \mathcal{S}$.
+
 \begin{algorithm}\label{algorithm:R_in_S}
     На вход подается факториальное кольцо $R$.
     
@@ -502,7 +510,7 @@
 
 % TODO переписать
 \begin{example}\label{example:thm1:P[t]}
-    Пусть $\mathbb{R}=\mathbb{P}[t]$, где $\mathbb{P}$ -- поле.
+    Пусть $R = \mathbb{P}[t]$, где $\mathbb{P}$ -- поле.
     Норма задана функцией $\upsilon(f)=\deg f$, $f \in \mathbb{P}[t]$.
     Дробная часть $\textrm{fr}(m(t)/n(t))=r(t)/n(t)$, $m(t)\equiv r(t)(\textrm{mod}\ n(t))$, $\deg r<\deg n$, $m(t)/n(t) \in \mathbb{P}(t).$
 
@@ -516,7 +524,7 @@
 \end{example}
 
 \begin{example}\label{example:thm1:coordinate_ring_of_circle}
-	Пусть $\mathbb{R}$ это координатное кольцо $\mathbb{Q}[i][x, y]/(x^2 + y^2 + 1)$.
+	Пусть $R$ это координатное кольцо $\mathbb{Q}[i][x, y]/(x^2 + y^2 + 1)$.
 	Известно, что это кольцо изоморфно $\mathbb{Q}[i][t,  t^{-1}]$, где отображение задано следующим образом
 	\begin{equation*}
 		X \to \cos \theta \to \frac{e^{ix} + e^{-ix}}{2} \to \frac{t + t^{-1}}{2}\\
@@ -556,7 +564,7 @@
 \end{example}
 
 \begin{example}\label{example:Z[t]}
-    Пусть $\mathbb{R}=\mathbb{Z}[t]$, $\upsilon(f)=\deg f$, $f \in \mathbb{Z}[t]$.
+    Пусть $R = \mathbb{Z}[t]$, $\upsilon(f)=\deg f$, $f \in \mathbb{Z}[t]$.
     Определим дробную часть в $\mathbb{F}=\mathbb{Z}(t)$ следующим образом.
     Рассмотрим отображение $\mathcal{A}:\mathbb{F}/\mathbb{K}\to\mathbb{F}$:
     \begin{equation*}
@@ -632,7 +640,7 @@
 \end{example}
 
 \begin{example}\label{example:a|b or b|a}
-    Пусть $\mathbb{R}$ евклидово кольцо такое, что для любых $a,b\in\mathbb{K}$ или $a|b$, или $b|a$.
+    Пусть $R$ евклидово кольцо такое, что для любых $a,b\in\mathbb{K}$ или $a|b$, или $b|a$.
     В этом случае $\mathbb{F}=\mathbb{K}\cup\{1/a|a\in\mathbb{K}_{*}\backslash\mathbb{I}\}$.
 
     Докажем, что $\mathbb{J}=\mathbb{K}_{*}$.
@@ -658,7 +666,7 @@
 Рассмотрим пример факториального кольца, не лежащего в $\mathcal{S}$, но лежащего в $\mathcal{T}$.
 
 \begin{example}\label{example:Z[i]}
-    Пусть $\mathbb{R}=\mathbb{Z}[i]$.
+    Пусть $R = \mathbb{Z}[i]$.
     Покажем, что кольцо $\mathbb{Z}[i]$ не принадлежит $\mathcal{S}.$
     Выберем $\alpha=\frac{9-4i}{20}$, $x=1$.
     Тогда $\textrm{int}((\alpha-x)^{-1})=-2+i \notin \mathbb{I} \cup \{0\}$ и $x \ \textrm{int}((\alpha-x)^{-1})+1=-1+i \notin \mathbb{I}.$
@@ -776,7 +784,7 @@
 Покажем, что существует факториальное кольцо $\mathbb{K}$ такое, что $\mathbb{K}\not\in\mathcal{T}$ и цепочка делений с выбором минимального по норме остатка не является кратчайшей.
 
 \begin{example}\label{example:Z[sqrt{-11}]}
-    Пусть $\mathbb{R}=\mathbb{Z}[\sqrt{-11}]$, где норма и дробная часть заданы соотношениями \ref{eq:norm_quadratic} и \ref{eq:fraction_part_quadratic}.
+    Пусть $R = \mathbb{Z}[\sqrt{-11}]$, где норма и дробная часть заданы соотношениями \ref{eq:norm_quadratic} и \ref{eq:fraction_part_quadratic}.
     Заметим, что множество
     \begin{equation*}
         \{6,-2i\sqrt{11},6,-3+i\sqrt{11},-1-i\sqrt{11},2,0\}
@@ -785,9 +793,10 @@
     Тогда $\mathcal{L}_{a,b}=5$.
     С другой стороны существует цепочка делений
     \begin{equation*}
-        \{6,-2i\sqrt{11},-5+i\sqrt{11},3+i\sqrt{11},2,0\},
+        \{6,-2i\sqrt{11},-5+i\sqrt{11},3+i\sqrt{11},2,0\}.
     \end{equation*}
-    из которой следует, что $\mathpzc{l}_{a,b}\le 4\le \mathcal{L}_{a,b}$.
+    
+    Из этого следует, что $\mathpzc{l}_{a,b}\le 4\le \mathcal{L}_{a,b}$.
     Следовательно, теорема \ref{thm:kronecker_vahlen_ufd} не выполняется.
     Предположим, что $\mathbb{Z}[i\sqrt{11}]\in\mathcal{T}$, но тогда по теореме \ref{thm:kronecker_vahlen_ufd} получаем, что для любой пары $(c,d)\in\mathbb{K}_* \times\mathbb{K}_*$ выполнено $\mathpzc{l}_{c,d}=\mathcal{L}_{c,d}$.
     Получаем противоречие с приведенным примером.
@@ -795,7 +804,7 @@
 \end{example}
 % end TODO
 
-Приведем общий метод проверки, что факториальное кольцо $R \in \mathcal{T}$.
+Приведем общий метод проверки включения $R \in \mathcal{T}$.
 
 \begin{algorithm}\label{algorithm:R_in_T}
     На вход подается факториальное кольцо $R$.
@@ -924,116 +933,6 @@
     Следовательно, выполняется первая часть определения множества $\mathcal{T}$.
     
     Если $D_R \ge 3$, тот доказательство проводится аналогично.
-\end{proof}
-
-\subsection{Теорема Ламе в факториальных кольцах}
-
-Ранее было показано, что при определенных условиях на кольцо цепочка делений с выбором минимального по норме остатка является кратчайшей.
-Однако существуют кольца, для которых эти условия не выполняются и в которых цепочка делений с выбором минимального по норме остатка не является кратчайшей.
-Например, в работе~\cite{source:Rolletschek_1990} было показано, что теорема Кронекера-Валена не выполняется в кольце $\mathbb{Z}[\sqrt{-11}]$.
-В работе ~\cite{source:Cooke} было показано, что для колец целых алгебраических чисел с бесконечной группой единиц длина кратчайшей цепочки делений с выбором минимального по норме остатка ограничена константой.
-Следовательно, важным вопросом является исследование ассимптотического поведения длины кратчайшей цепочки делений.
-
-В работе~\cite{source:Selfridge} доказана следующее полезное утверждение.
-\begin{proposition}\label{proposition:fundamental_in_circle}
-    Пусть $d \neq 1$ -- целое число свободное от квадратов.
-    Обозначим
-    \begin{equation*}
-        F(d) = \left\{\begin{split}
-            \left(
-                \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{2}\right]
-            \right) \cap \left(
-                \mathbb{Q} \times \mathbb{Q}
-            \right), \textrm{ если } d \not\equiv 1 \pmod 4\\
-            \left(
-                \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{4}\right]
-            \right) \cap \left(
-                \mathbb{Q} \times \mathbb{Q}
-            \right), \textrm{ если } d \equiv 1 \pmod 4
-        \end{split}\right.,
-    \end{equation*}
-    а так же для $r > 0$ и $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$
-    \begin{equation*}
-        U(\lambda, r) = \left\{
-            q_1 + q_2 \sqrt{d} \in Q[\sqrt{d}] \big| |(q_1 - \lambda_1)^2 - d(q_2 - \lambda_2)^2| < r
-        \right\}.
-    \end{equation*}
-    Тогда кольцо $\mathbb{Z}[\sqrt{d}]$ является евклидовым относительно нормы числового поля $\mathbb{Q}[\sqrt{d}]$ тогда и только тогда, когда существует $\lambda \in \mathbb{Z}[\sqrt{d}]$, что $F(d) \subseteq U(\lambda, 1)$.
-\end{proposition}
-
-\begin{definition}\label{definition:euclidean_lambda}
-    Обозначим $\Lambda_K = \sup_{m/n \in F_1} |m/n|$, где $|m/n| = \frac{\elementnorm{m}}{\elementnorm{n}}$ для $m/n \in \zeroless{F_1}$, $(m, n) = 1$ и $|0| = 0$.
-\end{definition}
-
-\begin{theorem}\label{theorem:euclidean_and_lambda}
-    Если $R$ -- евклидово кольцо относительно нормы $\elementnorm{\cdot}$, то $\Lambda_R \in [0, 1]$.
-
-    Если $R$ -- факториальное кольцо с мультипликативной нормой $\elementnorm{\cdot}$ и $\Lambda_R \in [0, 1)$, то $R$ -- евклидово относительно нормы $\elementnorm{\cdot}$ и $l_n(R) \le [\log_{\Lambda_R^{-1}} n] + 2$ для всех $n \in \mathbb{N}$, где $\log_{\infty} n = 0$.
-\end{theorem}
-\begin{proof}
-    Пусть $R$ -- евклидово кольцо относительно нормы $\elementnorm{\cdot}$.
-    Рассмотрим произвольный элемент $\frac{a}{b} \in \zeroless{F_1}$, где $a, b \in \zeroless{R}$, $(a, b) = 1$.
-    Так как кольцо евклидово, то существуют $q, r \in R$ такие, что $a = bq + r$ и $\elementnorm{r} < \elementnorm{b}$.
-    Так как $\fr{\frac{a}{b}} = \frac{a}{b}$, то $\elementnorm{a} \le \elementnorm{r}$.
-    Следовательно, $\left|\frac{a}{b}\right| = \frac{\elementnorm{a}}{\elementnorm{b}} \le \frac{\elementnorm{v}}{\elementnorm{b}} < 1$.
-    Из этого следует, что $\Lambda_R \in [0, 1]$.
-
-    Пусть $R$ -- факториальное кольцо и $\Lambda_R \in [0, 1)$.
-    Рассмотрим произвольные $a, b \in \zeroless{K}$.
-    Положим $q = \int{\frac{a}{b}}$, $r = b\fr{\frac{a}{b}}$.
-    Тогда $a = bq + r$ и $\elementnorm{r} \le \Lambda_R \elementnorm{b}$ из определения $\Lambda_R$.
-    Если $\elementnorm{b} > 0$, то $\elementnorm{r} \le \Lambda_R \elementnorm{b} < \elementnorm{b}$.
-    Если $\elementnorm{b} = 0$, то $b$ обратимый элемент и $q = 0$ и $r = 0$, а тогда $a = 0$.
-    Следовательно, $R$ -- евклидово.
-\end{proof}
-
-\begin{theorem}
-    Пусть $d \neq 1$ целое число свободное от квадратов.
-    Если кольцо $\mathbb{Z}[\sqrt{d}]$ евклидово относительно нормы числового поля $\elementnorm{\cdot}$, то $l_n(\mathbb{Z}[\sqrt{d}]) = O(\log n)$.
-\end{theorem}
-\begin{proof}
-    Из предложения~\ref{proposition:fundamental_in_circle} следует, что существует $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$, что $F(d) \subseteq U(\lambda, 1)$.
-    Обозначим
-    \begin{equation*}
-        E(d) = \left\{\begin{split}
-            \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{2}\right], \textrm{ если } d \not\equiv 1 \pmod 4\\
-            \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{4}\right], \textrm{ если } d \equiv 1 \pmod 4
-        \end{split}\right..
-    \end{equation*}
-    Для $r > 0$ определим множество
-    \begin{equation*}
-        V(\lambda, r) = \left\{
-            (x, y) \in R \times R \Big| \left|(x - \lambda_1)^2 - d(y - \lambda_2)^2\right| < r
-        \right\}.
-    \end{equation*}
-    Докажем, что $E(d) \subseteq V(\lambda, 1)$.
-    Предположим, что $(x_0, y_0) \in E(d) \setminus V(\lambda, 1)$.
-    Так как $F(d) \setminus U(\lambda, 1) = \emptyset$, то или $x_0 \not\in \mathbb{Q}$, или $y_0 \not\in \mathbb{Q}$.
-
-    Предположим, что $x_0 \not\in \mathbb{Q}$.
-    Тогда существует $\varepsilon_x > 0$ и $x \in [x_0 - \varepsilon_x, x_0 + \varepsilon_x] \cap \mathbb{Q}$, что $(x, y_0) \in E(d) \setminus V(\lambda, 1)$.
-    Следовательно, можно считать, что $x_0 \in \mathbb{Q}$ и $y_0 \not\in \mathbb{Q}$.
-    Тогда существует $\varepsilon_y > 0$ и $y \in [y_0 - \varepsilon_y, y_0 + \varepsilon_y] \cap \mathbb{Q}$, что $(x_0, y) \in E(d) \setminus V(\lambda, 1)$.
-    Получаем противоречие с условием $F(d) \setminus U(\lambda, 1) = \emptyset$.
-    Следовательно, выполнено $E(d) \subseteq V(\lambda, 1)$.
-
-    Докажем, что существует $r_0 < 1$, что $F(d) \subseteq U(\lambda, r_0)$.
-    Используя рассуждения выше, заметим, что для этого достаточно показать, что $E(d) \subseteq V(\lambda, r_0)$ для некоторого $r_0 < 1$.
-    
-    Множество $E(d)$ закрытое.
-    Следовательно, существует такая точка $(x_0, y_0) \in E(d)$, что
-    \begin{equation*}
-        r_{x_0} = \left|(x_0 - \lambda_1)^2 - d(y_0 - \lambda_2)^2\right| = \min_{x \in E(d)} \left|(x - \lambda_1)^2 - d(y - \lambda_2)^2\right|.
-    \end{equation*}
-    Заметим, что $r_{x_0} < 1$, так как $E(d) \subseteq V(\lambda, 1)$.
-
-    Следовательно, существует $r_0 < 1$, что $F(d) \subseteq U(\lambda, r_0)$.
-    Рассмотрим произвольные $\gamma, \delta \in \mathbb{Z}[\sqrt{d}]$, $\delta \neq 0$.
-    Из доказанного выше следует, что существует $q \in \mathbb{Z}[\sqrt{d}]$, что $\elementnorm{\frac{\gamma}{\delta} - q} \le r_0$.
-    Так как $\elementnorm{\frac{\gamma}{\delta} - q} = \frac{\elementnorm{\gamma - q\delta}}{\elementnorm{\delta}}$, то получаем, что существуют $q, r \in \mathbb{Z}[\sqrt{d}]$, что $\gamma = q\delta + r$ и $\elementnorm{r} \le r_0 \elementnorm{\delta}$.
-    Следовательно, $\Lambda_{\mathbb{Z}[\sqrt{d}]} \le r_0$.
-
-    Тогда, из теоремы~\ref{theorem:euclidean_and_lambda} следует, что $l_n(\mathbb{Z}[\sqrt{d}]) \le [\log_{r_0^{-1}} n] + 2$.
 \end{proof}
 
 \subsection{Теорема Кронекера-Валена в кольце алгебраических целых чисел числового поля}
@@ -1524,13 +1423,126 @@
     \end{itemize}
 \end{proof}
 
-\begin{corollary}
+\begin{proposition}
     Пусть $R = \mathbb{Q}[\sqrt{d}]$ -- квадратичное норменно-евклидово кольцо.
     Теорема Кронекера-Валена выполняется в $R$ тогда и только тогда, когда $d=-1, -2, -3, -7$.
-\end{corollary}
+\end{proposition}
 \begin{proof}
     Если $d>=0$, то утверждение следует из теоремы~\ref{theorem:kronecker}.
     Если $d<0$, то утверждение следует из работы~\cite{Rolletschek_1990}.
+\end{proof}
+
+\subsection{Теорема Ламе в факториальных кольцах}
+
+Ранее было показано, что при определенных условиях на кольцо цепочка делений с выбором минимального по норме остатка является кратчайшей.
+Однако существуют кольца, для которых эти условия не выполняются и в которых цепочка делений с выбором минимального по норме остатка не является кратчайшей.
+Например, в работе~\cite{source:Rolletschek_1990} было показано, что теорема Кронекера-Валена не выполняется в кольце $\mathbb{Z}[\sqrt{-11}]$.
+В работе ~\cite{source:Cooke} было показано, что для колец целых алгебраических чисел с бесконечной группой единиц длина кратчайшей цепочки делений с выбором минимального по норме остатка ограничена константой.
+Следовательно, важным вопросом является исследование асимптотического поведения длины кратчайшей цепочки делений.
+
+В работе~\cite{source:Selfridge} доказано следующее полезное утверждение.
+
+\begin{proposition}\label{proposition:fundamental_in_circle}
+    Пусть $d \neq 1$ -- целое число свободное от квадратов.
+    Обозначим
+    \begin{equation*}
+        F(d) = \left\{\begin{split}
+            \left(
+                \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{2}\right]
+            \right) \cap \left(
+                \mathbb{Q} \times \mathbb{Q}
+            \right), \textrm{ если } d \not\equiv 1 \pmod 4\\
+            \left(
+                \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{4}\right]
+            \right) \cap \left(
+                \mathbb{Q} \times \mathbb{Q}
+            \right), \textrm{ если } d \equiv 1 \pmod 4
+        \end{split}\right.
+    \end{equation*}
+    
+    Для $r > 0$ и $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$
+    \begin{equation*}
+        U(\lambda, r) = \left\{
+            q_1 + q_2 \sqrt{d} \in Q[\sqrt{d}] \big| |(q_1 - \lambda_1)^2 - d(q_2 - \lambda_2)^2| < r
+        \right\}.
+    \end{equation*}
+
+    Тогда кольцо $\mathbb{Z}[\sqrt{d}]$ является евклидовым относительно нормы числового поля $\mathbb{Q}[\sqrt{d}]$ тогда и только тогда, когда существует $\lambda \in \mathbb{Z}[\sqrt{d}]$, что $F(d) \subseteq U(\lambda, 1)$.
+\end{proposition}
+
+\begin{definition}\label{definition:euclidean_lambda}
+    Обозначим $\Lambda_K = \sup_{m/n \in F_1} |m/n|$, где $|m/n| = \frac{\elementnorm{m}}{\elementnorm{n}}$ для $m/n \in \zeroless{F_1}$, $(m, n) = 1$ и $|0| = 0$.
+\end{definition}
+
+\begin{theorem}\label{theorem:euclidean_and_lambda}
+    Если $R$ -- евклидово кольцо относительно нормы $\elementnorm{\cdot}$, то $\Lambda_R \in [0, 1]$.
+
+    Если $R$ -- факториальное кольцо с мультипликативной нормой $\elementnorm{\cdot}$ и $\Lambda_R \in [0, 1)$, то $R$ -- евклидово относительно нормы $\elementnorm{\cdot}$ и $l_n(R) \le [\log_{\Lambda_R^{-1}} n] + 2$ для всех $n \in \mathbb{N}$, где $\log_{\infty} n = 0$.
+\end{theorem}
+\begin{proof}
+    Пусть $R$ -- евклидово кольцо относительно нормы $\elementnorm{\cdot}$.
+    Рассмотрим произвольный элемент $\frac{a}{b} \in \zeroless{F_1}$, где $a, b \in \zeroless{R}$, $(a, b) = 1$.
+    Так как кольцо евклидово, то существуют $q, r \in R$ такие, что $a = bq + r$ и $\elementnorm{r} < \elementnorm{b}$.
+    Так как $\fr{\frac{a}{b}} = \frac{a}{b}$, то $\elementnorm{a} \le \elementnorm{r}$.
+    Следовательно, $\left|\frac{a}{b}\right| = \frac{\elementnorm{a}}{\elementnorm{b}} \le \frac{\elementnorm{v}}{\elementnorm{b}} < 1$.
+    Из этого следует, что $\Lambda_R \in [0, 1]$.
+
+    Пусть $R$ -- факториальное кольцо и $\Lambda_R \in [0, 1)$.
+    Рассмотрим произвольные $a, b \in \zeroless{K}$.
+    Положим $q = \int{\frac{a}{b}}$, $r = b\fr{\frac{a}{b}}$.
+    Тогда $a = bq + r$ и $\elementnorm{r} \le \Lambda_R \elementnorm{b}$ из определения $\Lambda_R$.
+    Если $\elementnorm{b} > 0$, то $\elementnorm{r} \le \Lambda_R \elementnorm{b} < \elementnorm{b}$.
+    Если $\elementnorm{b} = 0$, то $b$ обратимый элемент и $q = 0$ и $r = 0$, а тогда $a = 0$.
+    Следовательно, $R$ -- евклидово.
+\end{proof}
+
+\begin{theorem}
+    Пусть $d \neq 1$ целое число свободное от квадратов.
+    Если кольцо $\mathbb{Z}[\sqrt{d}]$ евклидово относительно нормы числового поля $\elementnorm{\cdot}$, то $l_n(\mathbb{Z}[\sqrt{d}]) = O(\log n)$.
+\end{theorem}
+\begin{proof}
+    Из предложения~\ref{proposition:fundamental_in_circle} следует, что существует $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$, что $F(d) \subseteq U(\lambda, 1)$.
+    Обозначим
+    \begin{equation*}
+        E(d) = \left\{\begin{split}
+            \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{2}\right], \textrm{ если } d \not\equiv 1 \pmod 4\\
+            \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{4}\right], \textrm{ если } d \equiv 1 \pmod 4
+        \end{split}\right..
+    \end{equation*}
+    Для $r > 0$ определим множество
+    \begin{equation*}
+        V(\lambda, r) = \left\{
+            (x, y) \in R \times R \Big| \left|(x - \lambda_1)^2 - d(y - \lambda_2)^2\right| < r
+        \right\}.
+    \end{equation*}
+    Докажем, что $E(d) \subseteq V(\lambda, 1)$.
+    Предположим, что $(x_0, y_0) \in E(d) \setminus V(\lambda, 1)$.
+    Так как $F(d) \setminus U(\lambda, 1) = \emptyset$, то или $x_0 \not\in \mathbb{Q}$, или $y_0 \not\in \mathbb{Q}$.
+
+    Предположим, что $x_0 \not\in \mathbb{Q}$.
+    Тогда существует $\varepsilon_x > 0$ и $x \in [x_0 - \varepsilon_x, x_0 + \varepsilon_x] \cap \mathbb{Q}$, что $(x, y_0) \in E(d) \setminus V(\lambda, 1)$.
+    Следовательно, можно считать, что $x_0 \in \mathbb{Q}$ и $y_0 \not\in \mathbb{Q}$.
+    Тогда существует $\varepsilon_y > 0$ и $y \in [y_0 - \varepsilon_y, y_0 + \varepsilon_y] \cap \mathbb{Q}$, что $(x_0, y) \in E(d) \setminus V(\lambda, 1)$.
+    Получаем противоречие с условием $F(d) \setminus U(\lambda, 1) = \emptyset$.
+    Следовательно, выполнено $E(d) \subseteq V(\lambda, 1)$.
+
+    Докажем, что существует $r_0 < 1$, что $F(d) \subseteq U(\lambda, r_0)$.
+    Используя рассуждения выше, заметим, что для этого достаточно показать, что $E(d) \subseteq V(\lambda, r_0)$ для некоторого $r_0 < 1$.
+    
+    Множество $E(d)$ закрытое.
+    Следовательно, существует такая точка $(x_0, y_0) \in E(d)$, что
+    \begin{equation*}
+        r_{x_0} = \left|(x_0 - \lambda_1)^2 - d(y_0 - \lambda_2)^2\right| = \min_{x \in E(d)} \left|(x - \lambda_1)^2 - d(y - \lambda_2)^2\right|.
+    \end{equation*}
+    Заметим, что $r_{x_0} < 1$, так как $E(d) \subseteq V(\lambda, 1)$.
+
+    Следовательно, существует $r_0 < 1$, что $F(d) \subseteq U(\lambda, r_0)$.
+    Рассмотрим произвольные $\gamma, \delta \in \mathbb{Z}[\sqrt{d}]$, $\delta \neq 0$.
+    Из доказанного выше следует, что существует $q \in \mathbb{Z}[\sqrt{d}]$, что $\elementnorm{\frac{\gamma}{\delta} - q} \le r_0$.
+    Так как $\elementnorm{\frac{\gamma}{\delta} - q} = \frac{\elementnorm{\gamma - q\delta}}{\elementnorm{\delta}}$, то получаем, что существуют $q, r \in \mathbb{Z}[\sqrt{d}]$, что $\gamma = q\delta + r$ и $\elementnorm{r} \le r_0 \elementnorm{\delta}$.
+    Следовательно, $\Lambda_{\mathbb{Z}[\sqrt{d}]} \le r_0$.
+
+    Тогда, из теоремы~\ref{theorem:euclidean_and_lambda} следует, что $l_n(\mathbb{Z}[\sqrt{d}]) \le [\log_{r_0^{-1}} n] + 2$.
 \end{proof}
 
 \onlyinsubfile{

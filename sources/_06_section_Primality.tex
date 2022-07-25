@@ -18,34 +18,34 @@
 
 \begin{theorem}\label{theorem:euler_criteria}
     Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
-    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено
+    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$ выполнено
     \begin{equation*}
-        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}.
+        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
     \end{equation*}
 \end{theorem}
 \begin{proof}
     Предположим, что $\ideal{n}$ -- простой идеал.
-    Рассмотрим произвольный идеал $\ideal{a} \in \invertible{R/\ideal{n}}$.
-    Пусть $g$ -- первообразный корень $\invertible{R/\ideal{n}}$.
+    Рассмотрим произвольный $a \in \invertible{R/\ideal{n}}$.
+    Пусть $g$ -- первообразный корень по модулю $\ideal{n}$.
 
-    Так как $\Nm{\ideal{n}}$ нечетный, то $\ideal{a}$ является квадратичным вычетом тогда и только тогда, когда существует такое $t' = 2t \in \{0, 2, \dots, \Nm{\ideal{n}} - 1\}$, что $a \equiv g^{t'} \pmod{\ideal{n}}$.
+    Так как $\Nm{\ideal{n}}$ нечетный, то $a$ является квадратичным вычетом тогда и только тогда, когда существует такое $t' = 2t \in \{0, 2, \dots, \Nm{\ideal{n}} - 1\}$, что $a \equiv g^{t'} \pmod{\ideal{n}}$.
     Так как порядок $g$ равен $\Nm{\ideal{n}} - 1$, то последнее сравнение выполняется тогда и только тогда, когда $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv 1 \pmod{\ideal{n}}$.
     Это завершает доказательство необходимости.
 
     Предположим, что $\ideal{n}$ -- не простой идеал.
     Пусть $\ideal{n}$ раскладывается в произведение простых идеалов следующим образом $\ideal{n} = \prod_{i=1}^{r} \ideal{p}_i^{\alpha_i}$.
     Так как норма простого идеала примарная, то обозначим $\Nm{\ideal{p}_i} = q_i^{f_i}$, где $q_i$ -- простой в $\mathbb{Z}$.
-    Пусть для любого $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}$.
+    Пусть для любого $a \in \invertible{R/\ideal{n}}$ выполнено $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{a}{\ideal{n}}\right] \pmod{\ideal{n}}$.
 
     Пусть существует такой $j \in \{1, \dots, r\}$, что $\alpha_j > 1$ в разложении $\ideal{n}$ на множители.
-    Из теоремы Коши для групп \ref{statement:cauchy} и свойств функции Эйлера \ref{statement:euler_function} следует, что существует $\ideal{a} \in \invertible{R/\ideal{n}}$ порядка $q_j$.
+    Из теоремы Коши для групп \ref{statement:cauchy} и свойств функции Эйлера \ref{statement:euler_function} следует, что существует $a \in \invertible{R/\ideal{n}}$ порядка $q_j$.
     Тогда $q_j | \Nm{\ideal{n}} - 1$, что невозможно.
 
     Следовательно, $\alpha_j = 1$ для любого $j \in \{1, \ldots, r\}$.
     Так как $\ideal{n}$ -- составное, то $r \ge 2$.
-    Рассмотрим произвольный квадратичный невычет $\ideal{b} \in \invertible{R/\ideal{p}_1}$.
-    Согласно аналогу Китайской теоремы об остатках \ref{statement:chinese_remainder_theorem} существует такой $\ideal{a} \in \invertible{R/\ideal{n}}$, что выполнено $a \equiv b \pmod{\ideal{p}_1}$ и $a \equiv 1 \pmod{\ideal{p}_2\dots\ideal{p}_r}$.
-    Но в этом случае $\left[\frac{\ideal{a}}{\ideal{n}}\right] = -1$.
+    Рассмотрим произвольный квадратичный невычет $b \in \invertible{R/\ideal{p}_1}$.
+    Согласно аналогу Китайской теоремы об остатках \ref{statement:chinese_remainder_theorem} существует такой $a \in \invertible{R/\ideal{n}}$, что выполнено $a \equiv b \pmod{\ideal{p}_1}$ и $a \equiv 1 \pmod{\ideal{p}_2\dots\ideal{p}_r}$.
+    Но в этом случае $\jacobi{a}{\ideal{n}} = -1$.
     Из условия теоремы следует, что $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv -1 \pmod{\ideal{n}}$, что противоречит условию $a \equiv 1 \pmod{\ideal{p}_2}$.
     Это завершает доказательство достаточности.
 
@@ -59,11 +59,9 @@
     \begin{enumerate}
         \item Вычислить $\Nm{\ideal{n}}$;
         
-        \item Выбрать случайное $\ideal{a} \subset \invertible{R/\ideal{n}}$;
+        \item Выбрать случайное $a \in \invertible{R/\ideal{n}}$;
 
-        \item Вычислить $r_0 = \ideal{a}^{\frac{\Nm{\ideal{n}} -- 1}{2}} \pmod{\ideal{n}}$;
-
-        \item Вычислить $r_1 = \left[\frac{\ideal{a}}{\ideal{n}}\right]$;
+        \item Вычислить $r_0 = a^{\frac{\Nm{\ideal{n}} - 1}{2}} \pmod{\ideal{n}}$, $r_1 = \jacobi{a}{\ideal{n}}$;
 
         \item Если $r_0 \equiv r_1 \pmod{\ideal{n}}$, то вернуть ''неизвестно'' и завершить алгоритм;
 
@@ -84,16 +82,16 @@
     Рассмотрим множество
     \begin{equation*}
         G = \left\{
-            \ideal{a} \in \invertible{R/\ideal{n}} \big| \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}
+            a \in \invertible{R/\ideal{n}} \big| a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}
         \right\}.
     \end{equation*}
     Алгоритм~\ref{algorithm:solovay_strassen} возвращает ответ ''неизвестно'' только для элементов из множества $G$.
 
-    Заметим, что если алгоритм~\ref{algorithm:solovay_strassen} возвращает ответ ''неизвестно'' для $\ideal{a}$ и $\ideal{b}$, то он вернет ответ ''неизвестно'' и для $\ideal{a}\ideal{b}$.
+    Заметим, что если алгоритм~\ref{algorithm:solovay_strassen} возвращает ответ ''неизвестно'' для $a$ и $b$, то он вернет ответ ''неизвестно'' и для $ab$.
     Следовательно, $G$ образует подгруппу группы $\invertible{R/\ideal{n}}$.
 
-    Исходя из критерия Эйлера эта подгруппа собственная.
-    Из теоремы Лагранжа~\ref{statement:lagrange} выполнено $|G|/|\invertible{R/\ideal{n}}| \le \frac{1}{2}$.
+    Из теоремы~\ref{theorem:euler_criteria} следует, что $G$ собственная подгруппа.
+    Тогда из теоремы Лагранжа~\ref{statement:lagrange} следует, что $|G|/|\invertible{R/\ideal{n}}| \le \frac{1}{2}$.
 \end{proof}
 
 \begin{remark}
@@ -103,22 +101,22 @@
 \begin{theorem}\label{theorem:miller_criteria}
     Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
     Пусть $\Nm{\ideal{n}} - 1 = 2^t u$, $(u, 2) = 1$.
-    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in \invertible{R/\ideal{n}}$, $(\ideal{a}, \ideal{n}) = 1$, $\ideal{a}^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $\ideal{a}^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
 \end{theorem}
 \begin{proof}
     Предположим, что $\ideal{n}$ -- простой идеал.
-    Рассмотрим произвольный идеал $\ideal{a} \in \invertible{R/\ideal{n}}$, $(\ideal{a}, \ideal{n}) = 1$, $\ideal{a}^u \not\equiv 1 \pmod{\ideal{n}}$.
+    Рассмотрим произвольный $a \in \invertible{R/\ideal{n}}$, $a^u \not\equiv 1 \pmod{\ideal{n}}$.
     Из теоремы Эйлера \ref{statement:euler_function} следует, что:
     \begin{equation*}
-        \ideal{a}^{2^{t} u} = \ideal{a}^{\varphi(\ideal{n})} \equiv 1 \pmod{\ideal{n}}
+        a^{2^{t} u} = a^{\varphi(\ideal{n})} \equiv 1 \pmod{\ideal{n}}
     \end{equation*}
 
     Раскладываем на множители и получаем, что выполнено
     \begin{equation*}
-        (\ideal{a}^{u} - 1)(\ideal{a}^{u} + 1)(\ideal{a}^{2u} + 1)\dots(\ideal{a}^{2^{t-1}u} + 1) \equiv 0 \pmod{\ideal{n}}
+        (a^{u} - 1)(a^{u} + 1)(a^{2u} + 1)\dots(a^{2^{t-1}u} + 1) \equiv 0 \pmod{\ideal{n}}
     \end{equation*}
 
-    Из того, что $\ideal{a}^{u} \not\equiv 1 \pmod{\ideal{n}}$ следует, что $\ideal{a}^{2^{k}u} + 1 \equiv 0 \pmod{\ideal{n}}$ для некоторого $k\in \{0, \dots, t-1\}$.
+    Из того, что $a^{u} \not\equiv 1 \pmod{\ideal{n}}$ следует, что $a^{2^{k}u} + 1 \equiv 0 \pmod{\ideal{n}}$ для некоторого $k\in \{0, \dots, t-1\}$.
     Это завершает доказательство необходимости.
 
     Предположим, что $\ideal{n}$ -- не простой идеал.
@@ -126,20 +124,20 @@
     Так как норма простого идеала примарная, то обозначим $\Nm{\ideal{p}_i} = q_i^{f_i}$, где $q_i$ -- простой в $\mathbb{Z}$.
 
     Пусть существует такой $j \in \{1, \dots, r\}$, что $\alpha_j > 1$ в разложении $\ideal{n}$ на множители.
-    Из теоремы Коши для групп \ref{statement:cauchy} и свойств функции Эйлера~\ref{statement:euler_function} следует, что существует $\ideal{a} \in \invertible{R/\ideal{n}}$ порядка $q_j$.
-    Так как $u \not\equiv 0 \pmod{q_j}$, то $\ideal{a}^u \not\equiv 1 \pmod{\ideal{n}}$.
-    Следовательно, существует число $k \in \{1, \dots, t-1\}$, такое что выполнено сравнение $\ideal{a}^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
-    Тогда $\ideal{a}^{2^{k+1}u} \equiv 1 \pmod{\ideal{n}}$.
+    Из теоремы Коши для групп \ref{statement:cauchy} и свойств функции Эйлера~\ref{statement:euler_function} следует, что существует $a \in \invertible{R/\ideal{n}}$ порядка $q_j$.
+    Так как $u \not\equiv 0 \pmod{q_j}$, то $a^u \not\equiv 1 \pmod{\ideal{n}}$.
+    Следовательно, существует число $k \in \{1, \dots, t-1\}$, такое что выполнено сравнение $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+    Тогда $a^{2^{k+1}u} \equiv 1 \pmod{\ideal{n}}$.
     Значит выполнено $2^{k+1}u \equiv 0 \pmod{q_j}$.
     Из последнего сравнения следует, что $\Nm{\ideal{n}} - 1 \equiv 0 \pmod{q_j}$, что невозможно.
     
     Следовательно, $\alpha_j = 1$ для любого $j \in \{1, \ldots, r\}$.
     Так как $\ideal{n}$ -- составное, то $r \ge 2$.
     Из аналога Китайской теоремы об остатках~\ref{statement:chinese_remainder_theorem} и того, что элемент $-1$ имеет порядок $2$ в каждой группе $\invertible{R/\ideal{p}_j}$ следует, что существует по крайней мере $2^r-1 \ge 3$ элемента $\invertible{R/\ideal{n}}$ порядка $2$.
-    Пусть $\ideal{a} \not\equiv \pm 1 \pmod{\ideal{n}}$ является произвольным элементом порядка $2$ в группе $\invertible{R/\ideal{n}}$.
-    Из того, что $(u, 2) = 1$ следует, что $\ideal{a}^u \equiv \ideal{a} \not\equiv \pm 1 \pmod{\ideal{n}}$.
-    Таким образом, существует $k \in \{0,\ldots, t-1\}$, такое что верно $\ideal{a}^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
-    Это противоречит тому, что порядок $\ideal{a}$ равен $2$.
+    Пусть $a \not\equiv \pm 1 \pmod{\ideal{n}}$ является произвольным элементом порядка $2$ в группе $\invertible{R/\ideal{n}}$.
+    Из того, что $(u, 2) = 1$ следует, что $a^u \equiv a \not\equiv \pm 1 \pmod{\ideal{n}}$.
+    Таким образом, существует $k \in \{0,\ldots, t-1\}$, такое что верно $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+    Это противоречит тому, что порядок $a$ равен $2$.
     Это завершает доказательство достаточности.
 
     Теорема доказана.
@@ -152,9 +150,9 @@
     \begin{enumerate}
         \item Найти $u, t \in \mathbb{N}$, что $\Nm{\ideal{n}} - 1 = 2^t u$ и $(2, u) = 1$;
         
-        \item Выбрать случайное $\ideal{a} \subset \invertible{R/\ideal{n}}\setminus\{0\}$;
+        \item Выбрать случайный $a \in \invertible{R/\ideal{n}}$;
 
-        \item Вычислить $r_0 = \ideal{a}^u \pmod{\ideal{n}}$;
+        \item Вычислить $r_0 = a^u \pmod{\ideal{n}}$;
 
         \item Если $r_0 = 1$, то вернуть ''неизвестно'' и завершить алгоритм;
 
@@ -183,14 +181,14 @@
     Тогда вероятность ответа "$\ideal{n}$ не простой" у алгоритма \ref{algorithm:miller_rabin} не менее $1/2$.
 \end{proposition}
 \begin{proof}
-    Рассмотрим множество всех $\ideal{a}$, для которых алгоритм дает ответ "неизвестно".
-    Это в точности множество таких $\ideal{a}$, что $\ideal{a}^u \equiv 1 \pmod{\ideal{n}}$ или для которых существует $j \in \{0, \dots, t-1\}$, что $\ideal{a}^{2^{j}u} \equiv -1 \pmod{\ideal{n}}$.
-    Из этого следует, что $\ideal{a}^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}$ для всех таких $\ideal{a}$.
+    Рассмотрим множество всех $a$, для которых алгоритм дает ответ "неизвестно".
+    Это в точности множество таких $a$, что $a^u \equiv 1 \pmod{\ideal{n}}$ или для которых существует $j \in \{0, \dots, t-1\}$, что $a^{2^{j}u} \equiv -1 \pmod{\ideal{n}}$.
+    Из этого следует, что $a^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}$ для всех таких $a$.
 
     Рассмотрим множество
     \begin{equation*}
         G = \left\{
-            \ideal{a} \in \invertible{R/\ideal{n}} \big| \ideal{a}^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}
+            a \in \invertible{R/\ideal{n}} \big| a^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}
         \right\}.
     \end{equation*}
     Предположим, что $G$ -- нетривиальная подгруппа.
@@ -385,7 +383,7 @@
     Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$, удовлетворяющего условию A.
     Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in \invertible{R/\ideal{n}}$, $\Nm{\ideal{a}} \le f_R(\Nm{\ideal{n}})$ выполнено
     \begin{equation*}
-        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}.
+        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
     \end{equation*}
 \end{theorem}
 \begin{proof}
@@ -393,15 +391,15 @@
     
     Предположим, что $\ideal{n} \in \zeroless{R} \setminus \invertible{R}$ составной идеал нечетной нормы и для любого и идеала $\ideal{a} \in \invertible{R/\ideal{n}}$, $\Nm{\ideal{a}} \le f_R(\Nm{\ideal{n}})$ выполнено
     \begin{equation*}
-        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{\ideal{a}}{\ideal{n}}\right] \pmod{\ideal{n}}.
+        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
     \end{equation*}
     
-    Рассмотрим такое отображение $\chi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено $\chi(\ideal{a}) = \ideal{a}^{(\Nm{\ideal{n}} - 1)/2}\left[\frac{a}{\ideal{n}}\right]$.
+    Рассмотрим такое отображение $\chi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено $\chi(\ideal{a}) = \ideal{a}^{(\Nm{\ideal{n}} - 1)/2}\jacobi{a}{\ideal{n}}$.
     Из теоремы~\ref{theorem:euler_criteria} следует, что $\chi$ нетривиальный гомоморфизм.
     
     Тогда, используя предложение~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $\ideal{a} \in \invertible{R/\ideal{n}}$, что
     \begin{equation*}
-        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \left[\frac{\ideal{a}}{\ideal{n}}\right] \not\equiv 1 \pmod{\ideal{n}}.
+        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \jacobi{a}{\ideal{n}} \not\equiv 1 \pmod{\ideal{n}}.
     \end{equation*}
     Получили противоречие.
 \end{proof}
@@ -463,15 +461,15 @@
             \ideal{p} &\textrm{ если } v_2(\Nm{\ideal{p}} - 1) > v_2(\Nm{\ideal{q}} - 1).
         \end{cases}
     \end{equation*}
-    Рассмотрим такое отображение $\xi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено $\xi(\ideal{a}) = \left[\frac{a}{\ideal{d}}\right]$.
+    Рассмотрим такое отображение $\xi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено $\xi(\ideal{a}) = \jacobi{a}{\ideal{d}}$.
     Это отображение является нетривиальным гомоморфизмом.
     Тогда, из предложения~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $\ideal{a} \in \invertible{R/\ideal{n}}$, что
     \begin{equation*}
-        \left[\frac{a}{d}\right] \not\equiv 1 \pmod{\ideal{n}}.
+        \jacobi{a}{\ideal{d}} \not\equiv 1 \pmod{\ideal{n}}.
     \end{equation*}
     
     Положим $\ideal{b} = \ideal{a}^u$.
-    Тогда $\left[\frac{\ideal{b}}{\ideal{d}}\right] = -1$.
+    Тогда $\jacobi{b}{\ideal{d}} = -1$.
     Следовательно, $\ideal{b} \not\equiv 1 \pmod{\ideal{d}}$.
     Пусть $j \in \mathbb{Z}$ минимальное число, для которого $\ideal{a}^{2^j u} \equiv -1 \pmod{\ideal{n}}$.
     Тогда $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = \textrm{ord}_{R/\ideal{q}}(\ideal{b}) = 2^{j+1}$.
@@ -480,528 +478,74 @@
     Пусть $v_2(\Nm{\ideal{p}} - 1) > v_2(\Nm{\ideal{q}} - 1)$.
     Тогда $\textrm{ord}_{R/\ideal{q}}(\ideal{b}) = 2^{j+1} | \varphi(\ideal{q}) = \Nm{\ideal{q}} - 1$.
     Следовательно, $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = 2^{j+1} | (\Nm{\ideal{p}} - 1)/2$.
-    Получаем, что $\left[\frac{\ideal{b}}{\ideal{d}}\right] = \left[\frac{\ideal{b}}{\ideal{d}}\right] = -1$ и $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$.
+    Получаем, что $\jacobi{b}{\ideal{d}} = \jacobi{a}{\ideal{p}} = -1$ и $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$.
     Это противоречит теореме~\ref{theorem:euler_criteria}.
     
     Пусть $v_2(\Nm{\ideal{p}} - 1) = v_2(\Nm{\ideal{q}} - 1)$.
-    Тогда $\left[\frac{\ideal{b}}{\ideal{d}}\right] = \left[\frac{\ideal{b}}{\ideal{p}}\right]\left[\frac{\ideal{b}}{\ideal{q}}\right] = -1$.
+    Тогда $\jacobi{b}{\ideal{d}} = \jacobi{b}{\ideal{p}}\jacobi{b}{\ideal{q}} = -1$.
     Следовательно, один из множителей равен $-1$.
-    Пусть $\left[\frac{\ideal{b}}{\ideal{p}}\right] = -1$ и $\left[\frac{\ideal{b}}{\ideal{q}}\right] = 1$.
+    Пусть $\jacobi{b}{\ideal{p}} = -1$ и $\jacobi{b}{\ideal{q}} = 1$.
     Из теоремы~\ref{theorem:euler_criteria} следует, что $\ideal{b}^{(\Nm{\ideal{q}} - 1)/2} \equiv 1 \pmod{\ideal{q}}$ и $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = \textrm{ord}_{R/\ideal{q}}(\ideal{b}) | (\Nm{\ideal{q}} - 1)/2$.
     Тогда $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) | (\Nm{\ideal{p}} - 1)/2$.
-    Следовательно, $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$, что противоречит предположению $\left[\frac{\ideal{b}}{\ideal{p}}\right] = -1$.
+    Следовательно, $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$, что противоречит предположению $\jacobi{b}{\ideal{p}} = -1$.
 \end{proof}
 
-\subsection{Факторизация идеалов}
-
-Надо доделать еще
-
-Пусть $R$ кольцо целых алгебраических элементов числового поля $K = \mathbb{Q}(\theta)$.
-
-Рассмотрим представления идеалов.
-Существует два способа представить идеал
-
-\begin{enumerate}
-    \item Через целый базис.
-    \begin{equation}\label{eq:Z_basis}
-        \mathfrak{p} = \oplus_{i=1}^{n} \mathbb{Z}\alpha_i,
-    \end{equation}
-    где $\alpha_i\in\mathcal{O}_K$.
-
-    \item Через два элемента $\mathcal{O}_K$.
-    Для любого $\alpha\in\mathfrak{p}$ существует $\beta\in\mathfrak{p}$ такой, что
-    \begin{equation}\label{eq:2_element}
-        \mathfrak{p} = \alpha\mathcal{O}_K + \beta\mathcal{O}_K.
-    \end{equation}
-
-    Будем обозначать идеалы в таком представлении через $(\alpha, \beta)$.
-    Идеал, который генерируется одним элементом $\alpha\in\mathcal{O}_K$ будем обозначать $(\alpha) = \alpha\mathcal{O}_K$.
-\end{enumerate}
-
-Будем предполагать, что поле $K$ фиксировано и, следовательно, известен индекс $[\mathcal{O}_K:\mathbb{Z}[\theta]]$.
-А так же разложение на простые идеалы всех простых делителей индекса.
-
-\begin{statement}[Теорема Дедекинда]\label{thm:dedekind}
-    Пусть $f(T)$ минимальный многочлен алгебраического числа $\theta$ в $\mathbb{Z}[\theta]$.
-    Для простого рационального числа $p$, не делящего индекс $[\mathcal{O}_K:\mathbb{Z}[\theta]]$, запишем
-    \begin{equation}
-        f(T) \equiv \pi_1(T)^{e_1}\dots \pi_g(T)^{e_g} \modul p,\nonumber
-    \end{equation}
-    где $\pi_i(T)$ --- различные монические неприводимые многочлены в $\mathbb{F}_p[T]$.
-    Тогда
-    \begin{equation}
-        (p) = \mathfrak{p}_1^{e_1}\dots \mathfrak{p}_g^{e_g},\nonumber
-    \end{equation}
-    где $\mathfrak{p}_i = (p_i, T_i(\theta))$, $T_i(T) \equiv \pi_i(T)(\modul p)$.
-\end{statement}
-
-Используя теорему Дедекинда, можно показать, что задача факторизации в кольце целых чисел числового поля полиномиально эквивалентна задаче факторизации целых чисел.
-
-Сделать это можно с помощью следующего алгоритма.
-
-\begin{enumerate}
-    \item Пусть дан идеал $(N)$ в форме своего $2$-представления.
-
-    \item Считаем норму идеала, равную норме элемента $N$ и раскладываем норму на множители одним из известных алгоритмов для факторизации целых чисел.
-    Например методом решета числового поля или алгоритмом Шора.
-    Получаем разложение
-    $$
-        n = \Nm{N} = \prod_{i=1}^{k} p_i^{\alpha_i}.
-    $$
-    Таким образом, мы знаем, что
-    $$
-        (\Nm{N}) = \prod_{i=1}^{k} (p_i)^{\alpha_i}.
-    $$
-
-    \item Факторизуем идеал $(p_i)$ с помощью теоремы Дедекинда \ref{thm:dedekind} и получаем двухэлементные представления идеалов
-    $$
-        (p_i) = \prod_{j=1}^{l_i} (p_i, f_{i, j}(\theta))
-    $$
-
-    \item Преобразуем полученные простые идеалы в $\mathbb{Z}$-представление и объединяем равные.
-    Получаем представление
-    $$
-        (\Nm{N}) = \prod_{i=1}^{l} \mathfrak{p}_i^{\beta_i}
-    $$
-
-    \item Используем бинарный поиск для нахождения степеней, в которых $\mathfrak{p}_i$ входит в $(N)$.
-\end{enumerate}
-
-Покажем, что алгоритм полиномиальный
-
-\begin{statement}
-    Для вычисления нормы идеала $(N)$ необходимо $O(n^3 \log^2 |N|)$ бинарных операций, где $|N|$ обозначает максимальный по модулю элемент матричного представления $N$.
-\end{statement}
-\begin{proof}
-    Для вычисления нормы идеала $(N)$ необходимо найти определитель матрицы, которая получается при матричном представлении элемента $N$.
-    Для этого необходимо $O(n^3 \log^2 |N|)$ бинарных операций.
-\end{proof}
-
-\begin{statement}
-    Разложить идеал $(p)$, используя теорему Дедекинда, можно за $O((n\log n + \log p)n\log n\log\log n\log^2 p)$ бинарных операций.
-\end{statement}
-\begin{proof}
-    Оценим сложность разложения многочлена на множители в $\mathbb{F}_p$.
-    Сделать это можно с помощью вероятностной версии алгоритма Берлекэмпа за $O((n\log n + \log p)n\log n\log\log n\log^2 p)$ бинарных операций.
-    В результате получим не более $n$ многочленов.
-    Тогда вычислить значения многочленом в разложении можно за $O(n\log^2 p)$.
-
-    Итого получаем, что разложить идеал $(p)$, используя теорему Дедекинда, можно за $O((n\log n + \log p)n\log n\log\log n\log^2 p + n\log^2 p) = O((n\log n + \log p)n\log n\log\log n\log^2 p)$ бинарных операций.
-\end{proof}
-
-\begin{statement}
-    Преобразовать $2$-представление идеала $(p, \alpha)$ из теоремы Дедекинда в $\mathbb{Z}$-представление можно $O(P(n)Q(\log p))$ бинарных операций, где $P(T)$ и $Q(T)$ некоторые полиномы.
-\end{statement}
-\begin{proof}
-    В книге \cite{Pohst} описан алгоритм преобразования $2$-представления в $\mathbb{Z}$-представление.
-    Необходимо найти Эрмитову нормальную форму блочной матрицы
-    $$
-        \begin{pmatrix}
-            A\\
-            B
-        \end{pmatrix},
-    $$
-    где $A = diag(p, \dots, p)$, а $B$ является матричным представлением элемента $\alpha$.
-    В 1979 году было доказано, что эрмитову нормальную форму матрицу можно найти за строго полиномиальное время \cite{Kannan}.
-    Это означает, что алгоритму необходимо полиномиальное, относительно размеров матрицы, количество арифметических операций над числами не превосходящими полинома от бинарного представления элементов матрицы.
-    Таким образом эрмитову нормальную форму можно вычислить за $O(P(n)Q(\log p))$ бинарных операций, где $P(T)$ и $Q(T)$ некоторые полиномы.
-\end{proof}
-
-\begin{remark}
-    Таким образом, зная разложение $(p_i)$ на произведение простых идеалов, можно найти одинаковые идеалы и разложение $(\Nm{N})$ на произведение различных идеалов за $O(P(n)Q(\log |N|))$ бинарных операций, так как $k \le \log \Nm{N}$ и $l_i \le n$.
-    Таким образом, найти разложение идеала $(\Nm{N})$ на произведение различных простых идеалов можно за полиномиальное относительно $\log\Nm{N}$ количество бинарных операций, если разложение $\Nm{N}$ на множители известно.
-
-    Это показывает, что аналог RSA-криптосистемы в некотором смысле не дает никакого выигрыша при использовании в кольцах алгебраических целых чисел числовых полей.
-\end{remark}
-
-\begin{remark}
-    Задача факторизации в абстрактных числовых полях является более сложной, так как нет доказательства аналога теоремы Дедекинда в абстрактных числовых кольцах.
-\end{remark}
-
-В работе \cite{Darkey-Mensah} приводится алгоритм факторизации идеалов в дедекиндовых кольцах.
-Во время факторизации идеал проходит три алгоритма: разложение на радикалы, разложение на множители с одинаковыми степенями и разложение на множители с разными степенями.
-Рассмотрим эти алгоритмы подробнее.
-
-Пусть $R$ -- дедекиндово кольцо и $\mathfrak{a}$ -- идеал в $R$.
-Так как $R$ дедекиндово, то $\mathfrak{a}$ единственным образом раскладывается в произведение простых идеалов.
-Пусть это разложение имеет вид
-\begin{equation*}
-    \mathfrak{a} = \mathfrak{p}_1^{k_1} \dots \mathfrak{p}_s^{k_s},
-\end{equation*}
-где $p_1, \dots, p_s$ различные простые идеалы и $k_1, \dots, k_s > 0$.
-Соберем вместе простые множители с одинаковой степенью.
-Для $j \le m = \max\{k_1, \dots, k_s\}$ обозначим
-\begin{equation*}
-    \mathfrak{g}_j = \bigcap\limits_{k_i = j} \mathfrak{p}_i
-\end{equation*}
-
-Представление
-\begin{equation*}
-    \mathfrak{a} = \mathfrak{g}_1 \mathfrak{g}_1^2 \dots \mathfrak{g}_m^m
-\end{equation*}
-называется разложением на радикалы.
-
-После выполнения этого разложения задача факторизации сводится к задаче факторизации идеала вида $\mathfrak{a} = \mathfrak{p}_1\dots\mathfrak{p}_s$, где $\mathfrak{p}_1, \dots, \mathfrak{p}_s$ являются простыми идеалами.
-Обозначим
-\begin{equation*}
-    \mathfrak{h}_j = \prod\limits_{\mathfrak{p} | \mathfrak{a}, \textrm{deg} \mathfrak{p} = j} \mathfrak{p}
-\end{equation*}
-
-Представление
-\begin{equation*}
-    \mathfrak{a} = \mathfrak{h}_1 \dots \mathfrak{h}_m
-\end{equation*}
-называется разложением на множители с разными степенями.
-
-После двух шагов получается, что задача факторизации идеала сводится к задаче факторизации радикала, который является произведением различных простых идеалов с одинаковой степенью, которая нам неизвестна.
-Далее можно воспользоваться алгоритмом, похожим на алгоритм Кантотра-Зассенхауса.
-
-Несмотря на то, что алгоритм факторизации имеется, у него есть определенные ограничения.
-Они описаны в работе \cite{Darkey-Mensah} и состоят в том, что надо уметь вычислять радикал идеала, сумму идеалов и частное.
-
-% \subsection{Вычислительная сложность алгебраических операций}
-
-% \begin{definition}
-% 	Поле $K$ будем называть расширением поля $L$, если $L$ является подполем $K$. Будем говорить, что расширение конечно, если $K$ является конечномерным векторным пространством над полем $L$. Размерность данного пространства будем обозначать $[K:L]$ и называть степенью расширения. 
-% \end{definition}
-
-% \begin{definition}
-% 	Пусть $K$ -- конечное расширение $L$, базисом поля $K$ будем называть базис в $K$ как в векторном пространстве над $L$.
-% \end{definition}
-
-% Пусть далее $K$ -- конечное расширение $L$.
-
-% Далее введём понятие нормы и следа в конечном расширении:
-
-% \begin{definition}
-% 	Пусть $E = \{e_1,\dots,e_n\}$ -- базис в $K$, причём $\alpha$ -- элемент $K$. Рассмотрим матрицу $A=(a_{ij};i,j\in\overline{1,n})\in L^{n\times n}$, задаваемую условиями
-% 	\begin{equation}
-% 	\alpha e_i = \sum\limits_{j=1}^n a_{ij}e_j.
-% 	\end{equation}
-% 	Тогда определим след и норму $\alpha$ как $\mathrm{Tr}(\alpha) = \mathrm{Tr}A$ и $\Nm(\alpha)=\mathrm{det}A$.
-% \end{definition}
-
-% Отметим, что в работе рассматриваются только расширения поля $\mathbb{Q}$ и для удобства будем полагать, что норма неотрицательна (то есть будем использовать её абсолютное значение). Как мы увидим дальше, эта норма совпадает с нормой введённой в первой главе.
-
-% Норма и след обладают свойствами полной мультипликативности и аддитивности соответственно\cite{Gekke}:
+\subsection{Вычислительная сложность алгебраических операций}
 
 % \begin{statement}
-% 	Норма и след не зависят от выбора базиса $K$. Причём для любых $x, y \in K$ выполнены соотношения:
-% 	$$
-% 		\Nm(xy) = \Nm(x)\Nm(y),\,\,\,\,\,\,\,\,\mathrm{Tr}(x + y) = \mathrm{Tr}(x) + \mathrm{Tr}(y).
-% 	$$
+%     Пусть $\ideal{n} \subseteq R$ идеал дедекиндового кольца.
+%     Для того, чтобы использовать алгоритм~\ref{algorithm:miller_rabin} для $\ideal{n}$ требуется $O(\log \Nm{\ideal{n}})$ арифметических операций.
 % \end{statement}
-
-% Исходя из Теоремы 53\cite{Gekke}:
-
-% \begin{statement}\label{field_rep}
-% 	Любое поле $K$ изоморфно полю $L[\alpha]$, то есть полю вида
-% 	\begin{equation}
-% 		\{c_0 + c_1\alpha + \dots + c_{n - 1}\alpha^{n - 1} | c_i \in L, i = \overline{1,n}\},
-% 	\end{equation}
-% 	где $\alpha$ - некий элемент поля $L$ с аннулирующим многочленом $g(x) = c_0 + c_1x + \dots + c_{n - 1}x^{n - 1}$.
-% \end{statement}
-
-% \begin{definition}
-% 	Будем говорить, что $K$ -- нормальное расширение $L$, если любой неприводимый над $L$ многочлен $f(x)$, имеющий хотя бы один корень в $K$ представим в виде произведения линейных множителей.
-% \end{definition}
-
-% \begin{definition}
-% 	Будем говорить, что $K$ -- сепарабельное расширение $L$, если каждый элемент $K$ имеет аннулирующий многочлен без кратных корней.
-% \end{definition}
-
-% \begin{definition}
-% 	Будем говорить, что $K$ -- расширение Галуа поля $L$, если оно нормально и сепарабельно одновременно.
-% \end{definition}
-
-% \subsubsection{Кольца целых алгебраических элементов}
-
-% Пусть далее $K$ -- конечное расширение $L$.
-
-% \begin{definition}
-% 	Элемент поля $K$ будем называть алгебраическим, если он является корнем многочлена из $L[x]$. Элемент поля $K$ будем называть целым алгебраическим, если он является корнем приведённого многочлена из $L[x]$.
-% \end{definition}
-
-% \begin{definition}
-% 	Множество всех целых алгебраических элементов поля $K$ будем обозначать $\O_K$ и называть кольцом целых.
-% \end{definition}
-
-% Известен следующий результат\cite{Gekke}:
-
-% \begin{statement}
-% 	Для любого расширения $K$ множество $\O_K$ порождает область целостности относительно операций сложения и умножения в $K$.
-% \end{statement}
-
-% Пусть далее $K$ -- конечное расширение поля $\mathbb{Q}$.
-
-% \begin{definition}
-% 	 Целым базисом в $\O_K$ будем называть такой базис $E = \{e_1, \dots, e_n\}$ поля $K$, что любой элемент $\O_K$ представим в виде линейной комбинации с целыми рациональными коэффициентами. 
-% \end{definition}
-
-% \begin{statement}\cite{Gekke}.
-% 	Целый базис существует в любом конечном расширении $\mathbb{Q}$.
-% \end{statement}
-
-% Во всех алгоритмах элементы кольца будут кодироваться как коэффициенты в разложении по фиксированному целому базису. Инварианты поля $K$ будем считать константами. 
-
-% \begin{definition}
-% 	Пусть $E = \{e_1,\dots,e_n\}$ -- фиксированный целый базис в $K$ и $\alpha = \sum\limits_{i = 1}^n \alpha_i e_i \in \O_K$. Абсолютным значением или длиной записи $\alpha$ будем называть
-% 	\begin{equation}
-% 		l(\alpha) = \max\limits_{i = \overline{1,n}}|\alpha_i|.
-% 	\end{equation}
-% \end{definition}
-
-% Таким образом, логарифм абсолютного значения характеризует длину записи элемента $\O_K$.
-
-% %Заметим, что в $\O_K$, как в области целостности, можно ввести ряд определений общеизвестных для кольца $\mathbb{Z}$. Будем говорить, что $a\in\O_K$ делит $b\in\O_K$, если существует $q \in \O_K$, такое что $b = qa$. Будем говорить, что $a\equiv b(\modul n)$, если $a - b$ кратно $n$. Нетрудно видеть, что это отношение эквивалентности в $\O_K$. Для каждого элемента $n$ введём аналоги кольца вычетов и его мультипликативной группы: $\O_{K,n} = \O_K \backslash n\O_K$ и $\O_{K,n}^{\times} = (\O_K \backslash n\O_K)^{\times}$. Отметим, хоть часть свойств введённых понятий аналогична свойствам в $\Z$ для произвольного $\O_K$, не все из них сохраняются. Будем говорить, что элемент $n \in \O_K$ обратим, если существует элемент $m \in \O_K$, что $nm = 1$. Будем говорить, что элемент $n \in \O_K$ простой, если для любого $m$ кратного $n$ элемент $m/n$ принадлежит $\O_K$ и обратим. Также обозначим $\varphi_{K}(N) = |\O_{K,N}^{\times}|$.
-
-% В $\cite{Gekke}$ описаны следующие результаты:
-
-% \begin{statement}
-% 	Для любого $N \in \O_K$ выполнено $\Nm(N) \in \mathbb{Z}$, более того $\Nm(N)$ кратно $N$.
-% \end{statement}
-
-% \begin{statement}
-% 	Для любого необратимого $N \in \O_K$ выполнено $|\O_{K,N}| = \Nm(N)$.
-% \end{statement}
-
-% \begin{definition}
-% 	Будем говорить, что кольцо $\O_K$ факториально, если любой ненулевой необратимый элемент $\alpha \in \O_K$ может быть записан в виде произведения обратимого элемента $\varepsilon$ и простых элементов $p_i$:
-% 	\begin{equation}
-% 	\alpha = \varepsilon p_1\dots p_r,\,r\geq 1,
-% 	\end{equation}
-% 	причём данное представление единственно в том смысле, что, если
-% 	\begin{equation}
-% 		\alpha = \mu q_1 \dots q_m, m\geq 1,
-% 	\end{equation}
-% 	где $\mu$ обратим, а $q_i$ простые, то $r = m$ и существует перестановка $\sigma$ множества $\{1,\dots,r\}$, что $p_i = \varepsilon_i q_{\sigma(i)}$, где $\varepsilon_i$ обратим.
-% \end{definition}
-
-% \begin{definition}
-% 	Будем говорить, что $\O_K$ является норменно-евклидовым кольцом, если для любых $a,\,b\in\O_K^{*}$ существуют $q,\,r\in\O_K$, что $q = bq + r$ и $\Nm(r) \leq \Nm(b)$.
-% \end{definition}
-
-% Можно показать, что любое норменно-евклидовое кольцо является факториальным. Часть результатов данной работы будет описана для факториальных колец.
-
-% Далее обозначим $K^* = K \setminus\{0\}$ -- мультипликативную группу поля, $\O_K^* = \O_K \setminus \{0\},$ $\O_K^{\times}$ - множество обратимых элементов. Исходя из полной мультипликативности нормы, получаем, что множество обратимых элементов совпадает с множеством элементов с нормой равной 1 и образует группу относительно умножения. Также для удобства введём следующие обозначения: $\O_{K, N} = \O_K / (N)$, $\O_{K, N}^\times = (\O_K / (N))^\times$, $\O_{K, \n} = \O_K / \n$, $\O_{K, \n}^\times = (\O_K / \n)^\times$.
-
-% Следующую теорема была доказана Дирихле и описывает структуру группы обратимых элементов:
-
-% \begin{statement}\cite{Gekke}
-% 	Выполнен изоморфизм $\O_K^{\times} \simeq G_K \times \Z^h$, где $G_K$ -- вращение группы $\O_K^{\times}$ и $h \in \N_0$.
-% \end{statement}
-
-% %Так же известно\cite{Gekke}, что $\O_{K}^{\times}$ конечна только в случае мнимых квадратичных полей.
-
-
-% %Далее рассмотрим факториальные $\O_K$.
-
-% %Далее рассмотрим элементы $\O_K$ для которых норма и абсолютное значение связаны, что будет полезно для нас в дальнейшем.
-% %Далее мы будем использовать вычислимые константы $\Delta,\Gamma,\Phi$ определённые в статье\cite{Balance}.
-% %Пусть $\mathrm{Hom}_{\mathbb{Q}}(K,\mathbb{C})$ множество гомоморфизмов $\sigma:K\to\mathbb{C}$, которые сохраняют $\mathbb{Q}$. Будем говорить, что элемент $\alpha \in \mathcal{O}_K^*$ является $\Delta$-сбалансированным, если $|\sigma(\alpha)|\leq\Delta|\sigma'(\alpha)|$ для любых $\sigma, \sigma' \in \mathrm{Hom}_{\mathbb{Q}}(K,\mathbb{C})$. Пусть $\varepsilon_1,\dots,\varepsilon_h$ -- фундаментальные единицы кольца $\O_K$.
-
-
-% %\begin{statement}\cite{Balance}.\label{statement:balances-inequality}
-% 	%Пусть $\alpha \in \mathcal{O}_K^*$ является $\Delta$-сбалансированным. Тогда
-% 	%\begin{equation}
-% 	%\frac{1}{\Gamma}\sqrt[n]{\Nm(\alpha)} \leq |\alpha|_{\infty} \leq \Gamma\Delta\sqrt[n]{\Nm(\alpha)}.
-% 	%\end{equation}
-% 	%Если $\alpha \in \mathcal{O}_K^*$ не является $\Delta$-сбалансированным, тогда существуют $k_1,\dots,k_h \in \mathbb{Z}$ и $|k_j| \leq \Phi$ такие что
-% 	%\begin{equation}
-% 	%\biggl|\alpha\prod_{j = 1}^h\varepsilon_i^{k_i}\biggr|_{\infty} < \frac{1}{2} |\alpha|_{\infty}.
-% 	%\end{equation}
-% %\end{statement}
-
-% %\subsection{Идеалы}
-
-% %Из Теоремы 65\cite{Gekke} следует что
-
-% %\begin{statement}\label{ideal_basis}
-% 	%Любой идеал $\n$ представим в виде
-% 	%\begin{equation}
-% 		%\n = (\alpha_1, \dots, \alpha_r) = \{\xi_1\alpha_1 + \dots + \xi_r \alpha_r | \xi_i \in \O_K, i = \overline{1,r}\},
-% 	%\end{equation}
-% 	%где $\alpha_i \in \O_K$ -- фиксированные элементы, причём $r \leq n$.
-% %\end{statement}
-
-% %\begin{definition}
-% %	Идеал $\n$ называется главным, если $\n = (\alpha) = \alpha \O_K$, где $\alpha \in O_K$.
-% %\end{definition}
-
-% %\begin{definition}
-% %	Произведением двух идеалов $\n = (\alpha_1,\dots,\alpha_p)$ и $\m = (\beta_1,\dots, \beta_1)$ будем называть идеал
-% %	\begin{equation}
-% %		\n\m = (\alpha_1\beta_1, \dots, \alpha_i \beta_j, \dots, \alpha_p \beta_q).
-% %	\end{equation}
-% %\end{definition}
-
-% %Будем говорить, что $\a$ делится на $\c$, если существует идеал $\b$, такой что $\a = \b\c$. Будем говорить, что $\c$ - общий делитель $\a$ и $\b$, если $\a$ и $\b$ одновременно кратны $\c$. Будем говорить, что $\c$ - наибольший общий делитель $\a$ и $\b$, если любой другой общий делитель делит $\c$, далее будем писать $\c = (\a,\b)$. Идеал будем называть простым, если он не имеет делителей отличных от $(1)$ и $\p$ и не равен $(1)$.
-
-% %Приведём ряд результатов из $\cite{Gekke}$:
-
-
-% %\begin{statement}
-% %	Если $\a\b = \a\c$ и $\a \neq (0)$, то $\b = \c$.
-% %\end{statement}
-
-% Важными свойствами являются следующие:
-
-% \begin{statement}\label{inclusion}
-% 	Идеал $\a$ делится на $\c$ тогда и только тогда, когда любой элемент $\a$ принадлежит $\c$.
-% \end{statement}
-
-% %\begin{statement}
-% 	%Для любых двух идеалов $\a = (\alpha_1,\dots, \alpha_r)$ и $\b = (\beta_1,\dots,\beta_s)$ существует однозначно определённый общий делитель $\c$, причём 
-% 	%\begin{equation}
-% 	%	\c = (\alpha_1,\dots, \alpha_r,\,\beta_1,\dots,\beta_s).
-% %	\end{equation}
-% %\end{statement}
-
-% %\begin{statement}
-% %	Если $\p$ -- простой идеал делящий $\a\b$, то $\p$ делит $\a$ или $\b$.
-% %\end{statement}
-
-% %\begin{statement}\label{arithmetic_theorem_for_ideals}
-% %	Если $\r$ -- идеал отличный от $(0)$ и $(1)$, то он представим виде произведения простых идеалов единственным образом с точностью до порядка множителей.
-% %\end{statement}
-
-
-% %Таким образом, как мы видим, для идеалов всегда выполняется ряд свойств схожих со свойствами чисел в $\Z$. Например, верен аналог основной теоремы арифметики и однозначно определён НОД(что не всегда верно в $\O_K$ для чисел).
-
-% %Будем говорить, что $a \equiv b(\modul \n)$ если $a - b \in \n$ или, другими словами, $\n$ делит $a - b$. Введём $\O_{K,\n} = \O_K\backslash \n$ и $\O_{K,\n}^{\times} = (\O_K\backslash \n)^{\times}$. Пусть $\Nm(\n) = |\O_{K,\n}|$ и $\varphi_K(\n) = |\O_{K,\n}^{\times}|$. Тогда верно следующее утверждение:
-
-% \begin{statement}\label{norm_and_ideal}
-% 	Главный идеал $(\Nm(\n))$ кратен $\n$.
-% \end{statement}
-
-% \begin{statement}
-% 	$\Nm(\n)$ конечно для любого идеала. Причём, если $\n = (n)$  - главный идеал, то $\Nm(\n) = \Nm(n)$.
-% \end{statement}
-
-% \begin{statement}
-% 	Сравнение 
-% 	\begin{equation}
-% 		\alpha\xi \equiv \beta (\modul \n),
-% 	\end{equation}
-% 	выполнено для некоторого $\xi$ тогда и только тогда, когда $(\alpha,\a)$ делит $\n$.
-% \end{statement}
-
-% %\begin{statement}
-% %	Для любых двух идеалов $\a, \b$ выполнено
-% %	\begin{equation}
-% %	\Nm(\a\b) = \Nm(\a)\Nm(\b).
-% %	\end{equation}
-% %\end{statement}
-
-% %\begin{statement}
-% %	Для любых взаимнопростых идеалов $\a, \b$ выполнено
-% %	$$
-% %	\varphi_K(\a\b) = \varphi_K(\a)\varphi_K(\b).
-% %	$$
-% %\end{statement}
-
-% %\begin{statement}\label{primitive}
-% %	Пусть $\p$ -- простой идеал. Тогда $\O_{K,\p}^{\times}$ -- циклическая группа. 
-% %\end{statement}
-
-% Иногда для точности аналог функции Эйлера будем обозначать за $\varphi_K(\p)$ вместо $\varphi(\p)$.
-
-% %\begin{statement}\label{statement_CRT}
-% %	Пусть $\m_1,\ldots,\m_k$ идеалы кольца $\mathcal{O}_K,$ причём  $(\m_i,\m_j)=1$ для любого $i \ne j.$ Тогда выполнены следующие изоморфизмы
-% %	\begin{equation}
-% %		\O_{K,\m_1\cdots\m_k} \simeq \O_{K,\m_1} \times \cdots \times \O_{K,\m_k},
-% %	\end{equation}
-% %	\begin{equation}
-% %	\O_{K,\m_1\cdots\m_k}^{\times} \simeq \O_{K,\m_1}^{\times} \times \cdots \times \O_{K,\m_k}^{\times}.
-% %	\end{equation}
-% %\end{statement}
-
-% %\begin{statement}\label{statement_Euler}
-% %	Пусть $\n$ - идеал отличный от $(0)$ и $(1)$. Тогда для любого $a \in \O_{K,\n}^{\times}$ выполнено
-% %	\begin{equation}
-% %		a^{\varphi_{K}(\n)} \equiv 1 (\modul \n).
-% %	\end{equation}
-% %\end{statement}
-
-% Таким образом, мы рассмотрели ряд свойств идеалов в произвольных расширениях. В случае факториальных $\O_K$ верно следующее свойство:
-
-% \begin{statement}\cite{Gekke}
-% 	Пусть $K$ - конечное расширение $\mathbb{Q}$, такое что $\O_K$ факториально. Тогда $\O_K$ является областью главных идеалов.
-% \end{statement}
-
-% Исходя из данного утверждения любой идеал в таких $\O_K$ может быть рассмотрен просто как элемент $\O_K$.
-
-
-% Далее для удобства обозначим через $\mathcal{P}_K$ множество простых идеалов $\mathcal{O}_K$, $P_{1,K}$ -- множество простых идеалов чётной нормы, $P_{2,K}$ -- множество простых идеалов нечётной нормы. Пусть также $\mathcal{T}_K = \{\varepsilon x| x\in \mathbb{Z}, \varepsilon\in\mathcal{O}_K^{\times}\}$, $\mathcal{Q}_K = \mathcal{O}_K\setminus\mathcal{T}_K$.
-
-
-% Отметим, что в $\O_K$ верны следующие необходимые и достаточные условия простоты идеалов:
-
-
-% \begin{statement}\label{sufficient_condition}
-% 	Пусть $\p$ -- идеал и $\Nm(\p)$ -- простое в $\Z$, тогда $\p$ простой идеал.
-% \end{statement}
-
 % \begin{proof}
-% 	Предположим, что $\p$ - не простой, тогда $\p = \m\n$, где $\m,\n \ne (1)$. Значит $\Nm(\p) = \Nm(\n)\Nm(\m)$. Противоречие.
+%     Пусть $\Nm{\ideal{n}} = 2^t u$, где $(2, u) = 1$.
+%     В алгоритме~\ref{algorithm:miller_rabin} выбирается произвольный идеал $\ideal{a} \subseteq R$ и вычисляется $\ideal{r}_0 = \ideal{a}^u \pmod{\ideal{n}}$.
+%     Это требует $O(\log u)$ арифметических операций.
+%     Далее не более $t$ раз для $\ideal{r}_i$ вычисляется $\ideal{r}_i^2 \pmod{\ideal{n}}$.
+%     Это требует не более $O(t)$ арифметических операций.
+
+%     Итого требуется $O(\log u) + O(t) = O(\log \Nm{\ideal{n}})$ арифметических операций.
 % \end{proof}
-
-% Отметим, что данное утверждение во многих кольцах не является необходимым. В \cite{Gekke} приводится следующее необходимое условие простоты.
-
-% \begin{statement}\label{necessary_condition}
-	
-% 	Пусть $\p$ -- простой идеал, тогда существует $\q$ -- простое в $\Z$, что $\Nm(p) = q^f$, где $f \in \N$.
-	
-% \end{statement}
-
-% Отметим, что данное необходимое условие ни в каком $\O_K$ не является достаточным.
-
-
 
 % \subsubsection{Способы представления идеалов}
 
-% %Заметим, что в Утверждении \ref{ideal_basis} был предложен способ задания идеала через базис элементов $\O_K$, данное представление будем называть базисным, с помощью него идеал может быть закодирован как матрица $n \times r$ целых рациональных чисел с помощью целого базиса в $\O_K$.
-
-% В данной секции будут рассмотрены различные способы представления идеалов в кольце $\O_K$.
-
-% Следующее простейшее представление будем называть базисным:
-
-% \begin{statement}\label{ideal_basis}
-% 	Любой идеал $\n$ представим в виде
-% 	\begin{equation}
-% 	\n = (\alpha_1, \dots, \alpha_r) = \{\xi_1\alpha_1 + \dots + \xi_r \alpha_r | \xi_i \in \O_K, i = \overline{1,r}\},
-% 	\end{equation}
-% 	где $\alpha_i \in \O_K$ -- фиксированные элементы, причём $r \leq n$.
-% \end{statement}
-
+% Рассмотрим способы представления идеалов.
 
 % \begin{definition}
-% 	Представление
-% 	\begin{equation}
-% 		\a = (e_1, \dots, e_n)_{\Z}= \{e_1 x_1 + \dots + e_m x_m| x_i \in \Z, i = \overline{1,m}\},
-% 	\end{equation}
-% 	где $E = \{e_1,\dots, e_m\} \subset \O_K$ -- базис $\a$ как $\Z$-модуля, будем называть $\Z$ - представлением идеала $\a$.
+%     Пусть $\ideal{n} \subseteq R$ произвольный идеал дедекиндового кольца $R$.
+%     Тогда существуют элементы $\alpha_1, \dots, \alpha_r \in R$ для $r \leq n$, что
+% 	\begin{equation*}
+% 	    \ideal{n} = \{\xi_1 \alpha_1 + \dots + \xi_r \alpha_r | \xi_i \in R\}.
+% 	\end{equation*}
 	
-% 	Далее мы не будем требовать, чтобы элементы $E$ были линейно независимы, но, для удобства, будем полагать, что $m = n$.
+% 	Такое представление будем обозначать $\ideal{n} = (\alpha_1, \dots, \alpha_r)$ и называть базисным представлением идеала.
 % \end{definition}
 
-% Далее под $\Z$-представлением будем понимать матрицу $A \in \mathbb{\Z}^{n \times n}$, такую что её столбец под номером $i$ - это коэффициенты разложения $e_i$ в фиксированный целый базис $\O_K$.
+% \begin{definition}
+%     Пусть $\ideal{n} \subseteq R$ произвольный идеал дедекиндового кольца $R$.
+%     Тогда существуют элементы $e_1, \dots, e_r \in R$ для $r \leq n$, что
+% 	\begin{equation}
+% 		\ideal{n} = \{x_1 e_1 + \dots + x_m e_m | x_i \in \mathbb{Z}\}.
+% 	\end{equation}
 
-% В источниках \cite{Cohen}, \cite{Post} может быть найдено следующее утверждение.
+%     Такое представление будем обозначать $\ideal{n} = (e_1, \dots, e_n)_{\mathbb{Z}}$ и называть $\mathbb{Z}$-представлением идеала.
+% \end{definition}
+
+% Далее под $\mathbb{Z}$-представлением будем понимать матрицу $A \in \mathbb{\mathbb{Z}}^{n \times n}$, такую что её столбец под номером $i$ - это коэффициенты разложения $e_i$ в фиксированный целый базис $\mathcal{O}_K$.
+
+% В источниках \cite{source:Cohen}, \cite{source:Post} может быть найдено следующее утверждение.
 
 % \begin{statement}
-% 	Любой идеал имеет $\Z$-представление.
+% 	Любой идеал имеет $\mathbb{Z}$-представление.
 % \end{statement}
 
-
-% $\Z$-представление требует не меньше памяти для хранения по сравнению с базисным представлением.
+% $\mathbb{Z}$-представление требует не меньше памяти для хранения по сравнению с базисным представлением.
 
 % \begin{definition}
 % 	Представление 
 % 	\begin{equation}
-% 		\a = (a, \alpha)_2 = \{a\xi_1 + \alpha \xi_2 | \xi_1, \xi_2 \in \O_K\},
+% 		\a = (a, \alpha)_2 = \{a\xi_1 + \alpha \xi_2 | \xi_1, \xi_2 \in \mathcal{O}_K\},
 % 	\end{equation}
-% 	где $a \in \N_0, \alpha \in \O_K$, будет называть 2-представление идеала $\a$.
+% 	где $a \in \N_0, \alpha \in \mathcal{O}_K$, будет называть 2-представление идеала $\a$.
 % \end{definition}
 
 % В источниках \cite{Cohen}, \cite{Post} может быть найдено следующее утверждение.
@@ -1010,22 +554,22 @@
 % 	Любой идеал имеет 2-представление.
 % \end{statement}
 
-% Далее под 2-представлением будем понимать вектор $\Z^n$ -- коэффициенты разложения $\alpha$ в целый базис и целое неотрицательное число $a$.
+% Далее под 2-представлением будем понимать вектор $\mathbb{Z}^n$ -- коэффициенты разложения $\alpha$ в целый базис и целое неотрицательное число $a$.
 
-% 2-представление является частным случаем базисного представления и любое 2-представление задаёт идеал. Отметим, что оно требует меньше памяти для хранения по сравнению с $\Z$-представлением и базисным представлением.   
+% 2-представление является частным случаем базисного представления и любое 2-представление задаёт идеал. Отметим, что оно требует меньше памяти для хранения по сравнению с $\mathbb{Z}$-представлением и базисным представлением.   
 
 % В \cite{Post} приведены соответствующие алгоритмы.
 
 % \begin{statement}
-% 	Существует полиномиальный алгоритм перехода от 2 - представления к $\Z$-представлению и обратно.
+% 	Существует полиномиальный алгоритм перехода от 2 - представления к $\mathbb{Z}$-представлению и обратно.
 % \end{statement}
 
 % К сожалению, не смотря на полиномиальность алгоритма, он может оказаться достаточно трудоёмким.
 
-% Рассмотрим один важный частный случай $\Z$-представления.
+% Рассмотрим один важный частный случай $\mathbb{Z}$-представления.
 
 % \begin{definition}
-% 	Будем говорить, что матрица $A \in \Z^{n \times n}$ записана в нормальной эрмитовой форме, если выполнены следующие условия:
+% 	Будем говорить, что матрица $A \in \mathbb{Z}^{n \times n}$ записана в нормальной эрмитовой форме, если выполнены следующие условия:
 	
 % 	\begin{enumerate}
 % 		\item $m_{i,j} = 0$, если $i > j$.
@@ -1034,18 +578,15 @@
 		
 % 		\item Для любого $i > j$ выполнено $0\leq m_{i,j}\leq m_{i,i}$.
 % 	\end{enumerate}
-	
 % \end{definition}
 
 
 % \begin{definition}
-	
-% 	Представление идеала $\a$ в нормальной эрмитовой форме будем называть такое его $\Z$-представление
+% 	Представление идеала $\a$ в нормальной эрмитовой форме будем называть такое его $\mathbb{Z}$-представление
 % 	\begin{equation}
-% 		\a = (e_1,\dots,e_n)_{\Z},
+% 		\a = (e_1,\dots,e_n)_{\mathbb{Z}},
 % 	\end{equation}
 % 	что соответствующая матрица является матрицей в эрмитовой нормальной форме.
-	
 % \end{definition}
 
 % В источниках \cite{Cohen}, \cite{Post} может быть найдено следующее утверждение.
@@ -1057,24 +598,24 @@
 % В статье \cite{PolynomialHermitForm} был построен необходимый алгоритм:
 
 % \begin{statement}
-% 	Существует полиномиальный алгоритм получения представления идеала в нормальной эрмитовой форме из его $\Z$-представления.
+% 	Существует полиномиальный алгоритм получения представления идеала в нормальной эрмитовой форме из его $\mathbb{Z}$-представления.
 % \end{statement}
 
 % \begin{corollary}
-% 	Таким образом, за полиномиальное время можно переходить от $\Z$-представления, 2-представления или представления в нормальной эрмитовой форме к любому из них.
+% 	Таким образом, за полиномиальное время можно переходить от $\mathbb{Z}$-представления, 2-представления или представления в нормальной эрмитовой форме к любому из них.
 % \end{corollary}
 
 % \begin{definition}
-% 	Пусть дан идеал $\a$, зафиксирован целый базис $E$ кольца $\O_K$ и $\Z$-представление идеала $\a = (e_1,\dots,e_n)_{\Z}$. Тогда введём абсолютное значение идеала $\a$ как
+% 	Пусть дан идеал $\a$, зафиксирован целый базис $E$ кольца $\mathcal{O}_K$ и $\mathbb{Z}$-представление идеала $\a = (e_1,\dots,e_n)_{\mathbb{Z}}$. Тогда введём абсолютное значение идеала $\a$ как
 % 	\begin{equation}
 % 		l(\a) = \max\limits_{i = \overline{1,n}, j = \overline{1,n}} |a_{ij}|, 
 % 	\end{equation}
-% 	где $A = (a_{ij}) \in \Z^{n \times n}$ -- матрица соответствующая указанному $\Z$-представлению.
+% 	где $A = (a_{ij}) \in \mathbb{Z}^{n \times n}$ -- матрица соответствующая указанному $\mathbb{Z}$-представлению.
 % \end{definition}
 
-% Нетрудно видеть, что логарифм абсолютного значения идеала характеризует количество памяти необходимое для того, чтобы закодировать его $\Z$-представление.
+% Нетрудно видеть, что логарифм абсолютного значения идеала характеризует количество памяти необходимое для того, чтобы закодировать его $\mathbb{Z}$-представление.
 
-% В случае, когда кольцо $\O_K$ факториально, любой идеал является главным, а значит любой идеал может быть задан с помощью порождающего его элемента. Поэтому в таких кольцах идеал, как и любой элемент, будет кодироваться в виде вектора $\Z^n$ коэффициентов разложения в целый базис кольца $\O_K$.
+% В случае, когда кольцо $\mathcal{O}_K$ факториально, любой идеал является главным, а значит любой идеал может быть задан с помощью порождающего его элемента. Поэтому в таких кольцах идеал, как и любой элемент, будет кодироваться в виде вектора $\mathbb{Z}^n$ коэффициентов разложения в целый базис кольца $\mathcal{O}_K$.
 
 % \subsubsection{Операции над элементами}
 
@@ -1086,7 +627,7 @@
 % 	Для любого $a \in \mathcal{O}_K^*$ обозначим через $\overline{a}\in \mathcal{O}_K^*$ сопряжённый элемент определяемый как $\overline{a}=\Nm(a)/a.$
 % \end{definition}
 
-% Далее предполагаем, что элементы заданы с помощью коэффициентов своего разложения в целый базис $\O_K$.
+% Далее предполагаем, что элементы заданы с помощью коэффициентов своего разложения в целый базис $\mathcal{O}_K$.
 
 % \begin{statement}\label{statement:operations}
 % 	Пусть $a,b \in \mathcal{O}_K^*$ и $l(a)\leq L,\,l(b)\leq L$, тогда $a+b$, $ab,$ $b/a$ (включая проверку условия $a|b$), $\Nm(a),$ $\overline{a}$ могут быть  вычислены за $\tilde{O}(\log L)$ бинарных операций.
@@ -1094,7 +635,7 @@
 
 % \begin{proof}
 	
-% 	Рассмотрим произвольные элементы $a = \sum_{i = 1}^n \alpha_ie_i$, $b = \sum_{i = 1}^n \beta_i e_i \in \mathcal{O}_K$, такие что $l(a)\leq L,\,l(b)\leq L$. Утверждение для суммы $a+b$ очевидно. Используя алгоритм Шанхаге-Штрассена быстрого перемножения чисел, нетрудно получить необходимое утверждение для произведения $ab$. Известно, что $\Nm(a) = |\mathrm{det}A|$, где $A = (a_{ij}) \in \Z^{n \times n}$ матрица, такая что $a e_i = \sum_{j = 1}^n a_{ij}e_j$ ($i=1,\ldots,n$). Определитель $\mathrm{det} A$ может быть найден с помощью операций сложения и умножения за $\tilde{O}(\log L)$ бинарных операций. Пусть $\overline{a}=\sum_{i = 1}^n x_ie_i,$ где $x_i$ неизвестные целые коэффициенты. Пусть \begin{equation}\Nm(a)=\sum_{i,j=1}^n  \alpha_i x_j e_i e_j=\sum_{k=1}^n \biggl( \sum_{i = 1}^n\sum_{j = 1}^n \alpha_i x_j \alpha_k^{i,j}\biggr)e_k,\end{equation}
+% 	Рассмотрим произвольные элементы $a = \sum_{i = 1}^n \alpha_ie_i$, $b = \sum_{i = 1}^n \beta_i e_i \in \mathcal{O}_K$, такие что $l(a)\leq L,\,l(b)\leq L$. Утверждение для суммы $a+b$ очевидно. Используя алгоритм Шанхаге-Штрассена быстрого перемножения чисел, нетрудно получить необходимое утверждение для произведения $ab$. Известно, что $\Nm(a) = |\mathrm{det}A|$, где $A = (a_{ij}) \in \mathbb{Z}^{n \times n}$ матрица, такая что $a e_i = \sum_{j = 1}^n a_{ij}e_j$ ($i=1,\ldots,n$). Определитель $\mathrm{det} A$ может быть найден с помощью операций сложения и умножения за $\tilde{O}(\log L)$ бинарных операций. Пусть $\overline{a}=\sum_{i = 1}^n x_ie_i,$ где $x_i$ неизвестные целые коэффициенты. Пусть \begin{equation}\Nm(a)=\sum_{i,j=1}^n  \alpha_i x_j e_i e_j=\sum_{k=1}^n \biggl( \sum_{i = 1}^n\sum_{j = 1}^n \alpha_i x_j \alpha_k^{i,j}\biggr)e_k,\end{equation}
 % 	где $e_ie_j=\sum_{k=1}^n \alpha_k^{i, j} e_k,$ тогда выполнено соотношение
 % 	\begin{equation}
 % 	H (x_1,x_2,\ldots, x_n)^T= (\Nm(a),0,\ldots,0)^T,
@@ -1106,7 +647,7 @@
 % \end{proof}
 
 % \begin{remark}
-% 	В доказательстве утверждения было показано, что существует константа $D$, такая что $\Nm(a) \leq Dl(a)^n$ для любого $a \in \O_K$. Из предыдущего утверждения и правила Крамера следует, что существуют константы $R$ и $q$, такие что $l(\overline{a}) \leq RL^q$ для любого $a \in \O_K$.
+% 	В доказательстве утверждения было показано, что существует константа $D$, такая что $\Nm(a) \leq Dl(a)^n$ для любого $a \in \mathcal{O}_K$. Из предыдущего утверждения и правила Крамера следует, что существуют константы $R$ и $q$, такие что $l(\overline{a}) \leq RL^q$ для любого $a \in \mathcal{O}_K$.
 % \end{remark}
 
 % \begin{statement}\label{statement:mod}
@@ -1140,33 +681,28 @@
 % 	Пусть $k \in \mathbb{N},$ и для $a,$ $b,$ $m \in \mathcal{O}_K^*$ выполнено $l(a)\leq L,$ $l(b)\leq L$, $l(m)\leq L.$ Элементы $z_1,$ $z_2\in \mathcal{O}_K$ такие что $a+b\equiv z_1(\modul\,m),$ $a^k\equiv z_2(\modul\,m),$ $l(z_1)\leq Ml(m)$, $l(z_2)\leq Ml(m)$, могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
 % \end{corollary}
 
-
 % \subsubsection{Операции над идеалами}
 
-% В данной секции будут исследованы алгоритмические аспекты таких операций над идеалами, как сравнение, проверка делимости, вычисление нормы.
+% Далее будут доказаны утверждения, связанные с вычислительной сложностью различных операций над идеалами.
 
 % \begin{statement}\label{equality}
-	
-% 	Пусть идеалы $\a$ и $\b$ заданы в виде нормальной эрмитовой формы и $l(\a), l(\b) \leq L$, то проверка указанных идеалов на равенство может быть выполнена за $O(\log L)$ бинарных операций.
-	
+% 	Пусть идеалы $\ideal{a}$ и $\ideal{b}$ заданы в виде нормальной эрмитовой формы и $l(\ideal{a}), l(\ideal{b}) \leq L$, то проверка указанных идеалов на равенство может быть выполнена за $O(\log L)$ бинарных операций.
 % \end{statement}
-
 % \begin{proof}
-	
-% 	Как было указано ранее, любой идеал однозначно задаётся своей нормально эрмитовой формой. Таким образом, достаточно проверить на поэлементное равенство две целочисленные матрицы $n \times n$ с коэффициентами размера $O(L)$.
-	
+% 	Как было указано ранее, любой идеал однозначно задаётся своей нормально эрмитовой формой.
+% 	Таким образом, достаточно проверить на поэлементнffое равенство две целочисленные матрицы $n \times n$ с коэффициентами размера $O(L)$.
 % \end{proof}
 
 % \begin{statement}\label{particular_equality}
 	
-% 	Пусть $\p$ -- простой идеал, заданный в виде 2-представления, а $\n$ произвольный идеал заданный в виде $\Z$-представления, причём $l(\p), l(\n) \leq L$.
-% 	Тогда проверка равенства $\p$ и $\n$ может быть выполнена за $\tilde{O}(\log L)$ операций.
+% 	Пусть $\p$ -- простой идеал, заданный в виде 2-представления, а $\ideal{n}$ произвольный идеал заданный в виде $\mathbb{Z}$-представления, причём $l(\p), l(\ideal{n}) \leq L$.
+% 	Тогда проверка равенства $\p$ и $\ideal{n}$ может быть выполнена за $\tilde{O}(\log L)$ операций.
 	
 % \end{statement}
 
 % \begin{proof}
 	
-% 	Пусть $\p = (\alpha, a)_2$ -- 2-представление простого идеала. Нетрудно видеть, что проверка равенства $\p = \n$ равносильна проверке того, что $\p$ делится на $\n$, что по Утверждению \ref{inclusion} равносильно включению $\p$ в $\n$. Последнее выполнено тогда и только тогда, когда $\alpha, a \in \n$ и проверка сводится к проверке разрешимости систем линейных уравнений $n \times n$ с коэффициентами размера $O(L)$, что может быть выполнено за $\tilde{O}(\log L)$ операций
+% 	Пусть $\p = (\alpha, a)_2$ -- 2-представление простого идеала. Нетрудно видеть, что проверка равенства $\p = \ideal{n}$ равносильна проверке того, что $\p$ делится на $\ideal{n}$, что по Утверждению \ref{inclusion} равносильно включению $\p$ в $\ideal{n}$. Последнее выполнено тогда и только тогда, когда $\alpha, a \in \ideal{n}$ и проверка сводится к проверке разрешимости систем линейных уравнений $n \times n$ с коэффициентами размера $O(L)$, что может быть выполнено за $\tilde{O}(\log L)$ операций
 	
 % \end{proof}
 
@@ -1174,27 +710,27 @@
 
 % \begin{statement}\label{norm}
 	
-% 	Пусть идеал $\a$ задан в виде $\Z$-представления и $l(\a) \leq L$, то $\Nm(\a)$ может быть вычислено за $\tilde{O}(\log L)$ бинарных операций.
+% 	Пусть идеал $\a$ задан в виде $\mathbb{Z}$-представления и $l(\a) \leq L$, то $\Nm(\a)$ может быть вычислено за $\tilde{O}(\log L)$ бинарных операций.
 	
 	
 % \end{statement}
 
 % \begin{proof}
 	
-% 	 Исходя из утверждения описанного в $\cite{Post}$ выполнено равенство $\Nm(\a) = |\mathrm{det}(A)|$, где $A$ - матрица соответствующая $\Z$-представлению. Нетрудно видеть, что определитель целочисленной матрицы $n \times n$ с коэффициентами размера $O(L)$  может быть вычислен за указанное число операций.
+% 	 Исходя из утверждения описанного в $\cite{Post}$ выполнено равенство $\Nm(\a) = |\mathrm{det}(A)|$, где $A$ - матрица соответствующая $\mathbb{Z}$-представлению. Нетрудно видеть, что определитель целочисленной матрицы $n \times n$ с коэффициентами размера $O(L)$  может быть вычислен за указанное число операций.
 	
 % \end{proof}
 
 % \begin{statement}\label{congruence}
 		
-% 	Пусть идеал $\a$ задан в виде $\Z$-представления и $l(\a), l(a), l(b) \leq L$, то проверка сравнения $a \equiv b(\modul \a)$ может быть выполнена за $\tilde{O}(\log L)$ бинарных операций.
+% 	Пусть идеал $\a$ задан в виде $\mathbb{Z}$-представления и $l(\a), l(a), l(b) \leq L$, то проверка сравнения $a \equiv b(\modul \a)$ может быть выполнена за $\tilde{O}(\log L)$ бинарных операций.
 	
 % \end{statement}
 
 
 % \begin{proof}
 	
-% 	Пусть изначально $\a$ задан в виде $\Z$-представления и $l(\a), l(a), l(b) \leq L$.
+% 	Пусть изначально $\a$ задан в виде $\mathbb{Z}$-представления и $l(\a), l(a), l(b) \leq L$.
 % 	Требуется проверить делимость главного идеала $(a - b)$ на идеал $\a$. Исходя из  Утверждения \ref{inclusion} это эквивалентно проверке включения главного идеала $(a - b)$ в идеал $\a$. А это, в свою очередь, равносильно тому, что $a - b \in \a$. То есть проверка сравнения сводится к проверке разложимости $a - b$ по базису идеала $\a$, то есть проверке разрешимости системы линейных уравнений $n \times n$ с коэффициентами размера $O(L)$. Нетрудно видеть, что это может быть сделано за $\tilde{O}(\log L)$ бинарных операций.
 	
 	
@@ -1202,27 +738,27 @@
 
 % \begin{statement}\label{residue_modulo_ideal}
 	
-% 	Пусть $\n$ -- нетривиальный идеал отличный и $a \in \O_K$. Тогда существует $z \in \O_K$, такое что $z \equiv a (\modul \n)$ и $l(z) \leq N l(\n)^n$. 
+% 	Пусть $\ideal{n}$ -- нетривиальный идеал отличный и $a \in \mathcal{O}_K$. Тогда существует $z \in \mathcal{O}_K$, такое что $z \equiv a (\modul \ideal{n})$ и $l(z) \leq N l(\ideal{n})^n$. 
 	
-% 	Если $\n$ задан с помощью $\Z$-представления, причём $l(\n), l(a) \leq L$, то такой элемент $z$ может быть вычислен за $\tilde{O}(\log L)$ бинарных операций.
+% 	Если $\ideal{n}$ задан с помощью $\mathbb{Z}$-представления, причём $l(\ideal{n}), l(a) \leq L$, то такой элемент $z$ может быть вычислен за $\tilde{O}(\log L)$ бинарных операций.
 	
 % \end{statement}
 
 % \begin{proof}
 	
-% 	Пусть $E = (e_1,\dots,e_n)$ -- целый базис в $\O_K$, $\n = (\omega_1,\dots,\omega_n)_{\Z}$ -- $\Z$-представление идеала $\n$.
+% 	Пусть $E = (e_1,\dots,e_n)$ -- целый базис в $\mathcal{O}_K$, $\ideal{n} = (\omega_1,\dots,\omega_n)_{\mathbb{Z}}$ -- $\mathbb{Z}$-представление идеала $\ideal{n}$.
 	
 % 	Пусть далее $a = \sum\limits_{i = 1}^n \alpha_i e_i$ и $\theta = \mathrm{\text{НОК}}(\Nm(\omega_1),\dots,\Nm(\omega_n))$.
 	
-% 	Нетрудно видеть, что $\theta \in \n$, в следствии чего $\theta\equiv 0(\modul \n)$.
-% 	Отсюда следует, что $a \equiv a - \beta\theta(\modul \n)$ для любого $\beta \in \O_K$.
+% 	Нетрудно видеть, что $\theta \in \ideal{n}$, в следствии чего $\theta\equiv 0(\modul \ideal{n})$.
+% 	Отсюда следует, что $a \equiv a - \beta\theta(\modul \ideal{n})$ для любого $\beta \in \mathcal{O}_K$.
 	
 % 	Положим $\beta = \sum\limits_{i = 1}^n \beta_ie_i,$ где $\alpha_i = \theta \beta_i + r_i$, $r_i < \theta,\,i = \overline{1,n}$, а также $z = a - \beta\theta$.
 	
 % 	Тогда
 	
 % 	\begin{equation}
-% 		l(z)  = \max\limits_{i = \overline{1,n}} |r_i| \leq |\theta| \leq \prod\limits_{i = 1}^n \Nm(\omega_i) \leq D^n \prod\limits_{i = 1}^n l(\omega_i) \leq D^n l(\n)^n = N l(\n)^n.
+% 		l(z)  = \max\limits_{i = \overline{1,n}} |r_i| \leq |\theta| \leq \prod\limits_{i = 1}^n \Nm(\omega_i) \leq D^n \prod\limits_{i = 1}^n l(\omega_i) \leq D^n l(\ideal{n})^n = N l(\ideal{n})^n.
 % 	\end{equation}
 	
 % 	Нетрудно видеть, что рассмотренные операции могут быть выполнены за $\tilde{O}(\log L)$ бинарных операций.
@@ -1231,142 +767,142 @@
 
 
 % \begin{corollary}
-% 	Пусть $k \in \mathbb{N}$ и $a,$ $b,$ $ \in \mathcal{O}_K^*$, $\n$ -- нетривиальный идеал заданный с помощью $\Z$-представления. Пусть выполнено $l(a)\leq L,$ $l(b)\leq L$, $l(\n)\leq L.$ Элементы $z_1,$ $z_2\in \mathcal{O}_K$ такие что $a+b\equiv z_1(\modul\,\n),$ $a^k\equiv z_2(\modul\,\n),$ $l(z_1)\leq Nl(\n)^n$, $l(z_2)\leq Nl(\n)^n$, могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
+% 	Пусть $k \in \mathbb{N}$ и $a,$ $b,$ $ \in \mathcal{O}_K^*$, $\ideal{n}$ -- нетривиальный идеал заданный с помощью $\mathbb{Z}$-представления. Пусть выполнено $l(a)\leq L,$ $l(b)\leq L$, $l(\ideal{n})\leq L.$ Элементы $z_1,$ $z_2\in \mathcal{O}_K$ такие что $a+b\equiv z_1(\modul\,\ideal{n}),$ $a^k\equiv z_2(\modul\,\ideal{n}),$ $l(z_1)\leq Nl(\ideal{n})^n$, $l(z_2)\leq Nl(\ideal{n})^n$, могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
 % \end{corollary}
 
 % \begin{remark}
 	
-% 	Отметим, что все указанные операции могут быть выполнены за полиномиальное время в случае, когда идеалы заданы с помощью одного из представлений: $\Z$-представление, 2-представление, нормальная эрмитовая форма; в силу того, что из одного представления может быть получено другое за полиномиальное время.
+% 	Отметим, что все указанные операции могут быть выполнены за полиномиальное время в случае, когда идеалы заданы с помощью одного из представлений: $\mathbb{Z}$-представление, 2-представление, нормальная эрмитовая форма; в силу того, что из одного представления может быть получено другое за полиномиальное время.
 	
 % \end{remark}
 
 % \subsubsection{Вероятностное тестирование на простоту}
 
-% В параграфах ранее нами были исследованы все необходимые операции для реализации Алгоритма \ref{miller_alg}. В данной секции мы оценим его сложность, а также уточним оценки вероятности на случай факториального $\O_K$. 
+% В параграфах ранее нами были исследованы все необходимые операции для реализации Алгоритма \ref{miller_alg}. В данной секции мы оценим его сложность, а также уточним оценки вероятности на случай факториального $\mathcal{O}_K$. 
 
 % \begin{statement}\label{comp_alg_miller}
 	
-% 	Алгоритм \ref{miller_alg} имеет сложность равную $\tilde{O}(\log^2 l(\n))$ бинарных операций.
+% 	Алгоритм \ref{miller_alg} имеет сложность равную $\tilde{O}(\log^2 l(\ideal{n}))$ бинарных операций.
 	
 % \end{statement}
 
 % \begin{proof}
 	
-% 	Очевидным образом следует из оценок сложностей операций над элементами и идеалами в $\O_K$, которые были описаны ранее.
+% 	Очевидным образом следует из оценок сложностей операций над элементами и идеалами в $\mathcal{O}_K$, которые были описаны ранее.
 	
 % \end{proof}
 
-% Рассмотрим случай факториального $\O_K$ и оценим вероятность успеха.
-% Далее оценим вероятность ответа '$\n$ не является простым' предполагая, что $\n$ не является простым идеалом в $\mathcal{O}_K$, $\Nm(\n)$ нечётна, при случайном выборе $a.$
+% Рассмотрим случай факториального $\mathcal{O}_K$ и оценим вероятность успеха.
+% Далее оценим вероятность ответа '$\ideal{n}$ не является простым' предполагая, что $\ideal{n}$ не является простым идеалом в $\mathcal{O}_K$, $\Nm(\ideal{n})$ нечётна, при случайном выборе $a.$
 
-% Пусть $\mathcal{S}_{\n}$ -- множество всех $a\in \mathcal{O}_{K,\n}^\times$, таких что Алгоритм \ref{miller_alg} даёт ответ 'неизвестно', то есть $\mathcal{S}_\n$ состоит из всех $a \in \mathcal{O}_{K,\n}^\times$, таких что одно из следующих условий выполняется:
-% 1) $a^u\equiv 1(\modul \n)$;
-% 2) $\exists k \in \{0,\ldots, t-1\}$, такое что $a^{2^ku}\equiv -1(\modul \n),$ где $\Nm(\n)-1=2^tu,$ $(u,2)=1.$
+% Пусть $\mathcal{S}_{\ideal{n}}$ -- множество всех $a\in \mathcal{O}_{K,\ideal{n}}^\times$, таких что Алгоритм \ref{miller_alg} даёт ответ 'неизвестно', то есть $\mathcal{S}_\ideal{n}$ состоит из всех $a \in \mathcal{O}_{K,\ideal{n}}^\times$, таких что одно из следующих условий выполняется:
+% 1) $a^u\equiv 1(\modul \ideal{n})$;
+% 2) $\exists k \in \{0,\ldots, t-1\}$, такое что $a^{2^ku}\equiv -1(\modul \ideal{n}),$ где $\Nm(\ideal{n})-1=2^tu,$ $(u,2)=1.$
 
-% Пусть $\mathcal{A}_\n$ -- множество всех $a \in \mathcal{O}_{K,\n}^\times$, таких что выполняется хотя бы одно из следующих условий:
-% 1) $a^{\Nm(\n)-1}\not\equiv 1(\modul \n)$;
-% 2) существует простой делитель $p$ идеала $\n$, такой что $a$ является первообразным корнем в группе $\mathcal{O}_{K,p}^\times$ и $ a^z\not\equiv-1(\modul \n)$ для любого $z\in\mathbb{Z}$.
+% Пусть $\mathcal{A}_\ideal{n}$ -- множество всех $a \in \mathcal{O}_{K,\ideal{n}}^\times$, таких что выполняется хотя бы одно из следующих условий:
+% 1) $a^{\Nm(\ideal{n})-1}\not\equiv 1(\modul \ideal{n})$;
+% 2) существует простой делитель $p$ идеала $\ideal{n}$, такой что $a$ является первообразным корнем в группе $\mathcal{O}_{K,p}^\times$ и $ a^z\not\equiv-1(\modul \ideal{n})$ для любого $z\in\mathbb{Z}$.
 
-% Обозначим множество $\mathcal{G}_{\n,\p}=\{1+k\n/\p| k \in\mathcal{O}_{K,\p}\}$ для любого простого делителя $\p$ идеала $\n$, такого что $\p^2|\n.$
+% Обозначим множество $\mathcal{G}_{\ideal{n},\p}=\{1+k\ideal{n}/\p| k \in\mathcal{O}_{K,\p}\}$ для любого простого делителя $\p$ идеала $\ideal{n}$, такого что $\p^2|\ideal{n}.$
 
 % \begin{statement} \label{statement_aS}
 	
-% 	Для любого $a\in\mathcal{A}_\n$ выполнено $a\mathcal{S}_\n\cap\mathcal{S}_\n=\varnothing$.
+% 	Для любого $a\in\mathcal{A}_\ideal{n}$ выполнено $a\mathcal{S}_\ideal{n}\cap\mathcal{S}_\ideal{n}=\varnothing$.
 	
 % \end{statement}
 
 % \begin{proof}
 	
-% 	Пусть $s\in\mathcal{S}_\n$ и $a\in\mathcal{A}_\n$.
-% 	Требуется доказать, что $as \notin \mathcal{S}_\n.$
+% 	Пусть $s\in\mathcal{S}_\ideal{n}$ и $a\in\mathcal{A}_\ideal{n}$.
+% 	Требуется доказать, что $as \notin \mathcal{S}_\ideal{n}.$
 	
 % 	Рассмотрим следующие случаи:
 	
 % 	Случай 1.
-% 	$a^{\Nm(\n)-1}\not\equiv 1(\modul \n).$
-% 	Так как $s \in \mathcal{S}_\n,$ то $s^{\Nm(\n)-1}\equiv 1(\modul \n).$
-% 	Следовательно, $(as)^{\Nm(\n)-1}\not\equiv 1(\modul \n).$
+% 	$a^{\Nm(\ideal{n})-1}\not\equiv 1(\modul \ideal{n}).$
+% 	Так как $s \in \mathcal{S}_\ideal{n},$ то $s^{\Nm(\ideal{n})-1}\equiv 1(\modul \ideal{n}).$
+% 	Следовательно, $(as)^{\Nm(\ideal{n})-1}\not\equiv 1(\modul \ideal{n}).$
 % 	Поэтому $as \notin \mathcal{S}_N.$
 	
 % 	Случай 2.
-% 	Существует простой делитель $p$ элемента $\n$, такой что $a$ является первообразным корнем в $\mathcal{O}_{K,p}^\times$ и
+% 	Существует простой делитель $p$ элемента $\ideal{n}$, такой что $a$ является первообразным корнем в $\mathcal{O}_{K,p}^\times$ и
 % 	\begin{eqnarray} \label{statement_aS_1}
-% 	a^z\not\equiv-1(\modul \n) \ \forall  z\in\mathbb{Z}.
+% 	a^z\not\equiv-1(\modul \ideal{n}) \ \forall  z\in\mathbb{Z}.
 % 	\end{eqnarray}
 	
-% 	Предположим, что $as \in \mathcal{S}_\n.$  Рассмотрим следующие четыре подслучая:
+% 	Предположим, что $as \in \mathcal{S}_\ideal{n}.$  Рассмотрим следующие четыре подслучая:
 	
 % 	Случай 2a.
-% 	$s^u\equiv 1 (\modul \n)$ и $(as)^u\equiv 1 (\modul \n).$ Получаем, что $a^u\equiv 1 (\modul \n).$
+% 	$s^u\equiv 1 (\modul \ideal{n})$ и $(as)^u\equiv 1 (\modul \ideal{n}).$ Получаем, что $a^u\equiv 1 (\modul \ideal{n}).$
 % 	Так как $a^u\equiv 1 (\modul p)$ и $a$ - первообразный корень в группе $\mathcal{O}_{K,p}^\times,$ то $(\Nm(p)-1)|u.$
 % 	Последнее невозможно, так как $u$ и $\Nm(p)$ нечётны.
 	
 % 	Случай 2b.
-% 	$s^u\equiv 1 (\modul \n)$ и  $(as)^{2^lu}\equiv -1(\modul \n),$ где $l \in \{0,\ldots,t-1\}$.
-% 	Таким образом, $a^{2^lu}\equiv -1(\modul \n).$
+% 	$s^u\equiv 1 (\modul \ideal{n})$ и  $(as)^{2^lu}\equiv -1(\modul \ideal{n}),$ где $l \in \{0,\ldots,t-1\}$.
+% 	Таким образом, $a^{2^lu}\equiv -1(\modul \ideal{n}).$
 % 	Это противоречит соотношению (\ref{statement_aS_1}).
 	
 % 	Случай 2c.
-% 	$s^{2^ku}\equiv -1 (\modul \n)$ для некоторого $k\in \{0,\ldots,t-1\}$ и $(as)^u\equiv 1 (\modul \n)$.
-% 	Следовательно $a^{-2^ku}\equiv -1(\modul \n)$, что противоречит соотношению (\ref{statement_aS_1}).
+% 	$s^{2^ku}\equiv -1 (\modul \ideal{n})$ для некоторого $k\in \{0,\ldots,t-1\}$ и $(as)^u\equiv 1 (\modul \ideal{n})$.
+% 	Следовательно $a^{-2^ku}\equiv -1(\modul \ideal{n})$, что противоречит соотношению (\ref{statement_aS_1}).
 	
 % 	Случай 2d.
-% 	$s^{2^ku}\equiv -1 (\modul \n)$ и $(as)^{2^lu}\equiv -1 (\modul \n)$ для некоторых $k,$ $l\in \{0,\ldots,t-1\}$.
+% 	$s^{2^ku}\equiv -1 (\modul \ideal{n})$ и $(as)^{2^lu}\equiv -1 (\modul \ideal{n})$ для некоторых $k,$ $l\in \{0,\ldots,t-1\}$.
 % 	Рассмотрим следующие три подслучая:
 	
 % 	Случай 2d1. $k=l.$
-% 	Получаем, что $a^{2^ku}\equiv1(\modul \n)$.
+% 	Получаем, что $a^{2^ku}\equiv1(\modul \ideal{n})$.
 % 	Так  как $a^{2^ku}\equiv1(\modul p)$ и $a$ - первообразный корень по модулю $p$, то $(\Nm(p)-1)|2^ku$.
-% 	Согласно Утверждению \ref{statement_Euler} мы получаем, что $s^{2^ku}\equiv1(\modul p)$, что противоречит с $s^{2^ku}\equiv -1 (\modul \n)$.
+% 	Согласно Утверждению \ref{statement_Euler} мы получаем, что $s^{2^ku}\equiv1(\modul p)$, что противоречит с $s^{2^ku}\equiv -1 (\modul \ideal{n})$.
 	
 % 	Случай 2d2. $k<l$.
-% 	Мы получаем, что $a^{2^lu}\equiv -1(\modul \n),$ что противоречит соотношению (\ref{statement_aS_1}).
+% 	Мы получаем, что $a^{2^lu}\equiv -1(\modul \ideal{n}),$ что противоречит соотношению (\ref{statement_aS_1}).
 	
 % 	Случай 2d3. $k>l$.
-% 	Мы получаем, что $a^{-2^{k}u}\equiv -1(\modul \n),$ что противоречит соотношению (\ref{statement_aS_1}).
+% 	Мы получаем, что $a^{-2^{k}u}\equiv -1(\modul \ideal{n}),$ что противоречит соотношению (\ref{statement_aS_1}).
 	
-% 	Таким образом, $as \notin \mathcal{S}_\n.$
-% 	Следовательно $a\mathcal{S}_\n\cap\mathcal{S}_\n=\varnothing.$
+% 	Таким образом, $as \notin \mathcal{S}_\ideal{n}.$
+% 	Следовательно $a\mathcal{S}_\ideal{n}\cap\mathcal{S}_\ideal{n}=\varnothing.$
 	
 % \end{proof}
 
 % \begin{statement}\label{statement_aS_bS}
 	
-% 	Пусть $a\in\mathcal{A}_\n,$ $b \in \mathcal{O}_{K,\n}^\times,$ $a\ne b$ и $\left(ab^{-1}\right)\in\mathcal{A}_\n$.
-% 	Тогда $a\mathcal{S}_\n\cap b\mathcal{S}_\n=\varnothing$.
+% 	Пусть $a\in\mathcal{A}_\ideal{n},$ $b \in \mathcal{O}_{K,\ideal{n}}^\times,$ $a\ne b$ и $\left(ab^{-1}\right)\in\mathcal{A}_\ideal{n}$.
+% 	Тогда $a\mathcal{S}_\ideal{n}\cap b\mathcal{S}_\ideal{n}=\varnothing$.
 	
 % \end{statement}
 
 % \begin{proof}
 	
-% 	Предположим, что существуют $s_1,$ $s_2 \in \mathcal{S}_\n$, такие что $as_1\equiv bs_2(\modul \n).$
-% 	Тогда $s_2\equiv ab^{-1}s_1(\modul \n),$ что противоречит Утверждению \ref{statement_aS}.
-% 	Следовательно, $a\mathcal{S}_\n\cap b\mathcal{S}_\n=\varnothing$.
+% 	Предположим, что существуют $s_1,$ $s_2 \in \mathcal{S}_\ideal{n}$, такие что $as_1\equiv bs_2(\modul \ideal{n}).$
+% 	Тогда $s_2\equiv ab^{-1}s_1(\modul \ideal{n}),$ что противоречит Утверждению \ref{statement_aS}.
+% 	Следовательно, $a\mathcal{S}_\ideal{n}\cap b\mathcal{S}_\ideal{n}=\varnothing$.
 	
 % \end{proof}
 
 % \begin{statement}\label{statement_G}
 	
-% 	$(\mathcal{G}_{\n,\p},\cdot)$ является подгруппой $\mathcal{O}_{K,\n}^\times$.
+% 	$(\mathcal{G}_{\ideal{n},\p},\cdot)$ является подгруппой $\mathcal{O}_{K,\ideal{n}}^\times$.
 	
 % \end{statement}
 
 % \begin{proof}
 	
-% 	Нетрудно видеть, что данная группа является образом эндоморфизма $\tau$ группы $\mathcal{O}_{K,\n}^{\times}$, такого что $\tau(k) = 1 + k\n/\p$.
+% 	Нетрудно видеть, что данная группа является образом эндоморфизма $\tau$ группы $\mathcal{O}_{K,\ideal{n}}^{\times}$, такого что $\tau(k) = 1 + k\ideal{n}/\p$.
 	
 % \end{proof}
 
 % \begin{statement}\label{statement_PQ}
 	
-% 	Пусть $\n\in\mathcal{O}_K$ -- идеал, такой что $\n=\p\q$, где $\p,$ $\q$ -- различные простые идеалы,нечётной нормы, причём $\Nm(\N)-1=2^tu,$ $\Nm(\p)-1=\Nm(\q)-1=2^{t_1}u_1$, $t,$ $u,$ $t_1,$ $u_1$ - целые, $(u,2)=(u_1,2)=1$.
-% 	Тогда $|\mathcal{S}_\n|=(4^{t_1}+2)(u,u_1)^2/3. $
+% 	Пусть $\ideal{n}\in\mathcal{O}_K$ -- идеал, такой что $\ideal{n}=\p\q$, где $\p,$ $\q$ -- различные простые идеалы,нечётной нормы, причём $\Nm(\N)-1=2^tu,$ $\Nm(\p)-1=\Nm(\q)-1=2^{t_1}u_1$, $t,$ $u,$ $t_1,$ $u_1$ - целые, $(u,2)=(u_1,2)=1$.
+% 	Тогда $|\mathcal{S}_\ideal{n}|=(4^{t_1}+2)(u,u_1)^2/3. $
 	
 % \end{statement}
 
 % \begin{proof}
 	
-% 	Заметим, что $|\mathcal{S}_\n|$ равно числу элементов $s\in\mathcal{O}_{K,\n}^\times$ для которых одно из сравнений $s^u\equiv1(\modul \n),$ $s^{2^ku}\equiv-1(\modul \n),$ $k \in \{0,\ldots,t-1\}$ выполнено.
+% 	Заметим, что $|\mathcal{S}_\ideal{n}|$ равно числу элементов $s\in\mathcal{O}_{K,\ideal{n}}^\times$ для которых одно из сравнений $s^u\equiv1(\modul \ideal{n}),$ $s^{2^ku}\equiv-1(\modul \ideal{n}),$ $k \in \{0,\ldots,t-1\}$ выполнено.
 % 	Преобразовав, первое сравнение можно записать в виде следующей эквивалентной системы:
 % 	\begin{eqnarray}
 % 	\left\{
@@ -1378,7 +914,7 @@
 % 	где $\alpha$ и $\beta$ -- первообразные корни в группах $\mathcal{O}_{K,\p}^\times$ и $\mathcal{O}_{K,\q}^\times$ соответственно.
 % 	Исходя из Утверждения \ref{crt} получаем, что эта система имеет ровно  $(u,\varphi_K(\p))(u,\varphi_K(\q))=(u,u_1)^2$ решений.
 	
-% 	Для любого числа $k \in \{0,\ldots,t-1\}$ сравнение $s^{2^ku}\equiv-1(\modul \n)$ равносильно системе:
+% 	Для любого числа $k \in \{0,\ldots,t-1\}$ сравнение $s^{2^ku}\equiv-1(\modul \ideal{n})$ равносильно системе:
 % 	\begin{eqnarray}
 % 	\left\{
 % 	\begin{aligned}
@@ -1393,95 +929,91 @@
 % 	решений.
 % 	Таким образом,
 % 	\begin{eqnarray}
-% 	|\mathcal{S}_\n|=(u,u_1)^2+\sum_{i=0}^{t_1-1}4^i(u,u_1)^2=(4^{t_1}+2)(u,u_1)^2/3.
+% 	|\mathcal{S}_\ideal{n}|=(u,u_1)^2+\sum_{i=0}^{t_1-1}4^i(u,u_1)^2=(4^{t_1}+2)(u,u_1)^2/3.
 % 	\end{eqnarray}
 	
 % \end{proof}
 
 % \begin{theorem}\label{Theorem_prob}
 	
-% 	Пусть $\n$ -- нетривиальный идеал не являющийся простым в  $\mathcal{O}_K$, $\Nm(\n)$ нечётна.
+% 	Пусть $\ideal{n}$ -- нетривиальный идеал не являющийся простым в  $\mathcal{O}_K$, $\Nm(\ideal{n})$ нечётна.
 % 	Тогда выполнены следующие утверждения:
 % 	\begin{enumerate}
-% 		\item Если существует простой идеал $\p$, такой что $\p^2|N$, тогда $|S_{\n}| \leq |\O_{K,\n}^{\times}|/\Nm(\p)$.
+% 		\item Если существует простой идеал $\p$, такой что $\p^2|N$, тогда $|S_{\ideal{n}}| \leq |\mathcal{O}_{K,\ideal{n}}^{\times}|/\Nm(\p)$.
 		
-% 		\item Если $\n$ имеет три различных делителя, то $|S_{\n}|\leq |\O_{K,\n}|/4$.
+% 		\item Если $\ideal{n}$ имеет три различных делителя, то $|S_{\ideal{n}}|\leq |\mathcal{O}_{K,\ideal{n}}|/4$.
 		
-% 		\item Если $\n = \p\q$, причём $\Nm(\p) \neq \Nm(\q)$, то $|S_{\n}|\leq |\O_{K,\n}|/4$.
+% 		\item Если $\ideal{n} = \p\q$, причём $\Nm(\p) \neq \Nm(\q)$, то $|S_{\ideal{n}}|\leq |\mathcal{O}_{K,\ideal{n}}|/4$.
 		
-% 		\item Если $\n = \p\q$, причём $\p$ и $\q$ -- различные идеалы и $\Nm(\p) = \Nm(\q)$, тогда $|S_{\n}| = \frac{2 + 4^m}{3\cdot4^m}|\O_{K,\n}^{\times}|$, где $m$ -- максимальная степень двойки делящая $\Nm(\p) - 1$.
+% 		\item Если $\ideal{n} = \p\q$, причём $\p$ и $\q$ -- различные идеалы и $\Nm(\p) = \Nm(\q)$, тогда $|S_{\ideal{n}}| = \frac{2 + 4^m}{3\cdot4^m}|\mathcal{O}_{K,\ideal{n}}^{\times}|$, где $m$ -- максимальная степень двойки делящая $\Nm(\p) - 1$.
 % 	\end{enumerate}
 	
 % \end{theorem}
 
 % \begin{proof}
 	
-% 	Отметим, что исходя из факториальности $\O_K$ все идеалы являются главными и их можно отождествлять с элементами порождающими их.
+% 	Отметим, что исходя из факториальности $\mathcal{O}_K$ все идеалы являются главными и их можно отождествлять с элементами порождающими их.
 	
 	
 % 	Поочерёдно рассмотрим все четыре случая: 
 	
 % 	Случай 1.
 % 	Пусть существует простой идеал $\p\in\mathcal{O}_K$, такой что $\p^2|N.$
-% 	Покажем, что для любого $g \in \mathcal{G}_{\n,\p},$ $g\ne 1,$ выполнено $g\in \mathcal{A}_\n.$
-% 	Рассмотрим произвольное $g \in \mathcal{G}_{\n,\p},$ $g\ne 1.$
-% 	Тогда для любого $k \in \mathcal{O}_{K,\p}$ выполнено $g^{\Nm(\n)-1} \equiv \left(1+k\n/\p\right)^{\Nm(\n)-1} \equiv 1+k(\Nm(\n)-1)\n/\p(\modul \n).$
-% 	Заметим, что $g^{\Nm(\n)-1}\not\equiv 1(\modul \n)$.
-% 	Значит, $g\in\mathcal{A}_\n$.
-% 	Из Утверждений \ref{statement_aS_bS} и \ref{statement_G} получаем, что $g_1\mathcal{S}_\n\cap g_2\mathcal{S}_\n=\varnothing$ для различных $g_1,$ $g_2 \in \mathcal{G}_{\n,p}.$
-% 	Следовательно, $\bigcup_{g\in\mathcal{G}_{\n,p}}(g\mathcal{S}_\n) \subseteq \mathcal{O}_{K,\n}^\times.$
-% 	Окончательно получаем, $|\mathcal{O}_{K,\n}^\times| \geq \sum_{g\in\mathcal{G}_{\n,p}}|g\mathcal{S}_\n| = |\mathcal{G}_{\n,\p}||S_\n| = \Nm(\p)|\mathcal{S}_\n|\geq3|\mathcal{S}_\n|.$
+% 	Покажем, что для любого $g \in \mathcal{G}_{\ideal{n},\p},$ $g\ne 1,$ выполнено $g\in \mathcal{A}_\ideal{n}.$
+% 	Рассмотрим произвольное $g \in \mathcal{G}_{\ideal{n},\p},$ $g\ne 1.$
+% 	Тогда для любого $k \in \mathcal{O}_{K,\p}$ выполнено $g^{\Nm(\ideal{n})-1} \equiv \left(1+k\ideal{n}/\p\right)^{\Nm(\ideal{n})-1} \equiv 1+k(\Nm(\ideal{n})-1)\ideal{n}/\p(\modul \ideal{n}).$
+% 	Заметим, что $g^{\Nm(\ideal{n})-1}\not\equiv 1(\modul \ideal{n})$.
+% 	Значит, $g\in\mathcal{A}_\ideal{n}$.
+% 	Из Утверждений \ref{statement_aS_bS} и \ref{statement_G} получаем, что $g_1\mathcal{S}_\ideal{n}\cap g_2\mathcal{S}_\ideal{n}=\varnothing$ для различных $g_1,$ $g_2 \in \mathcal{G}_{\ideal{n},p}.$
+% 	Следовательно, $\bigcup_{g\in\mathcal{G}_{\ideal{n},p}}(g\mathcal{S}_\ideal{n}) \subseteq \mathcal{O}_{K,\ideal{n}}^\times.$
+% 	Окончательно получаем, $|\mathcal{O}_{K,\ideal{n}}^\times| \geq \sum_{g\in\mathcal{G}_{\ideal{n},p}}|g\mathcal{S}_\ideal{n}| = |\mathcal{G}_{\ideal{n},\p}||S_\ideal{n}| = \Nm(\p)|\mathcal{S}_\ideal{n}|\geq3|\mathcal{S}_\ideal{n}|.$
 	
 % 	Случай 2.
-% 	Существует по крайней мере три простых идеала $\p_i,$ $i\in \{1,2,3\}$ в $\mathcal{O}_K$, таких что $\p_i|\n$ для любых $i=1,2,3$ и $(\p_i,\p_j)=1$ для любых $i,$ $j\in \{1,2,3\},$ $i \ne j.$
-% 	Согласно Утверждению \ref{crt}, для любых $i\in \{1,2,3\}$ существуют $c_i\in \mathcal{O}_{K,\n}^\times$, такие что $c_i\equiv a_i(\modul \p_i)$ и $c_i\equiv 1(\modul \p_k),$ $k\in \{1,2,3\},$ $k \ne i,$ где $a_i$ -- первообразный корень по модулю $\p_i$.
-% 	Нетрудно видеть, что $c_i,$ $c_i^{-1},$ $c_ic_j,$ $c_ic_j^{-1}\in \mathcal{A}_\n$ для любых $i,$ $j\in \{1,2,3\},$ $i \ne j$ (все эти элементы удовлетворяют условию (2) определения $\mathcal{A}_\n$).
-% 	Используя Утверждение \ref{statement_aS_bS}, получаем, что $|\mathcal{O}_{K,\n}^\times|\geq|\mathcal{S}_\n|+|c_1\mathcal{S}_\n|+|c_2\mathcal{S}_\n|+|c_1c_2\mathcal{S}_\n|=4|\mathcal{S}_\n|.$
+% 	Существует по крайней мере три простых идеала $\p_i,$ $i\in \{1,2,3\}$ в $\mathcal{O}_K$, таких что $\p_i|\ideal{n}$ для любых $i=1,2,3$ и $(\p_i,\p_j)=1$ для любых $i,$ $j\in \{1,2,3\},$ $i \ne j.$
+% 	Согласно Утверждению \ref{crt}, для любых $i\in \{1,2,3\}$ существуют $c_i\in \mathcal{O}_{K,\ideal{n}}^\times$, такие что $c_i\equiv a_i(\modul \p_i)$ и $c_i\equiv 1(\modul \p_k),$ $k\in \{1,2,3\},$ $k \ne i,$ где $a_i$ -- первообразный корень по модулю $\p_i$.
+% 	Нетрудно видеть, что $c_i,$ $c_i^{-1},$ $c_ic_j,$ $c_ic_j^{-1}\in \mathcal{A}_\ideal{n}$ для любых $i,$ $j\in \{1,2,3\},$ $i \ne j$ (все эти элементы удовлетворяют условию (2) определения $\mathcal{A}_\ideal{n}$).
+% 	Используя Утверждение \ref{statement_aS_bS}, получаем, что $|\mathcal{O}_{K,\ideal{n}}^\times|\geq|\mathcal{S}_\ideal{n}|+|c_1\mathcal{S}_\ideal{n}|+|c_2\mathcal{S}_\ideal{n}|+|c_1c_2\mathcal{S}_\ideal{n}|=4|\mathcal{S}_\ideal{n}|.$
 	
 % 	Случай 3.
-% 	Пусть $\n=\p_1\p_2$, где $\p_1,$ $\p_2$ простые идеалы $\mathcal{O}_K$, не нарушая общности пусть $\Nm(\p_1)<\Nm(\p_2).$
-% 	Согласно Утверждению \ref{crt}, для любого $i\in \{1,2\}$ существуют $c_i\in\mathcal{O}_{K,\n}^\times$, такие что  $c_i\equiv a_i(\modul \p_i)$ и $c_i\equiv 1(\modul \p_k),$ $k\in\{1,2\},$ $k \ne i,$ где $a_i$ -- первообразные корни по модулю $\p_i$.
-% 	Аналогично случаю 3 получаем, что $c_1,$ $c_2 \in \mathcal{A}_\n.$
-% 	Покажем, что $d=c_1c_2 \in \mathcal{A}_\n.$
-% 	Предположим, что $d^{\Nm(\n)-1}\equiv1(\modul \n)$.
-% 	Следовательно, $d^{\Nm(\n)-1}\equiv1(\modul \p_2).$
-% 	Так как $d$ является первообразным корнем по модулю $\p_2,$ то $(\Nm(\p_2)-1)|(\Nm(\n)-1)=\Nm(\p_1)(\Nm(\p_2)-1)+\Nm(\p_1)-1$.
+% 	Пусть $\ideal{n}=\p_1\p_2$, где $\p_1,$ $\p_2$ простые идеалы $\mathcal{O}_K$, не нарушая общности пусть $\Nm(\p_1)<\Nm(\p_2).$
+% 	Согласно Утверждению \ref{crt}, для любого $i\in \{1,2\}$ существуют $c_i\in\mathcal{O}_{K,\ideal{n}}^\times$, такие что  $c_i\equiv a_i(\modul \p_i)$ и $c_i\equiv 1(\modul \p_k),$ $k\in\{1,2\},$ $k \ne i,$ где $a_i$ -- первообразные корни по модулю $\p_i$.
+% 	Аналогично случаю 3 получаем, что $c_1,$ $c_2 \in \mathcal{A}_\ideal{n}.$
+% 	Покажем, что $d=c_1c_2 \in \mathcal{A}_\ideal{n}.$
+% 	Предположим, что $d^{\Nm(\ideal{n})-1}\equiv1(\modul \ideal{n})$.
+% 	Следовательно, $d^{\Nm(\ideal{n})-1}\equiv1(\modul \p_2).$
+% 	Так как $d$ является первообразным корнем по модулю $\p_2,$ то $(\Nm(\p_2)-1)|(\Nm(\ideal{n})-1)=\Nm(\p_1)(\Nm(\p_2)-1)+\Nm(\p_1)-1$.
 % 	Получаем противоречие, так как $\Nm(\p_1)<\Nm(\p_2)$ и $\Nm(\p_2)\ge 3.$
-% 	Таким образом, $c_1c_2 \in \mathcal{A}_\n.$
-% 	Аналогичным образом можно доказать, что $c_1c_2^{-1} \in \mathcal{A}_\n.$
-% 	Как и в случае 3, получаем неравенство $|\mathcal{O}_{K,\n}^\times|\geq4|\mathcal{S}_\n|.$
+% 	Таким образом, $c_1c_2 \in \mathcal{A}_\ideal{n}.$
+% 	Аналогичным образом можно доказать, что $c_1c_2^{-1} \in \mathcal{A}_\ideal{n}.$
+% 	Как и в случае 3, получаем неравенство $|\mathcal{O}_{K,\ideal{n}}^\times|\geq4|\mathcal{S}_\ideal{n}|.$
 	
 % 	Случай 4.
-% 	Пусть $\n=\p\q,$ где $\p,$ $\q$ простые идеалы в $\mathcal{O}_K$ такие, что $(\p,\q)=1$ и $\Nm(\p)=\Nm(\q).$
-% 	Пусть $\Nm(\n)-1=2^tu,$ $\Nm(\p)-1=\Nm(\q)-1=2^{t_1}u_1$, $t,$ $u,$ $t_1,$ $u_1$ целые числа такие, что, $(u,2)=(u_1,2)=1$.
-% 	Тогда $\varphi_K(\n)=\varphi_K(\p)\varphi_K(\q)=2^{2t_1}u_1^2$.
+% 	Пусть $\ideal{n}=\p\q,$ где $\p,$ $\q$ простые идеалы в $\mathcal{O}_K$ такие, что $(\p,\q)=1$ и $\Nm(\p)=\Nm(\q).$
+% 	Пусть $\Nm(\ideal{n})-1=2^tu,$ $\Nm(\p)-1=\Nm(\q)-1=2^{t_1}u_1$, $t,$ $u,$ $t_1,$ $u_1$ целые числа такие, что, $(u,2)=(u_1,2)=1$.
+% 	Тогда $\varphi_K(\ideal{n})=\varphi_K(\p)\varphi_K(\q)=2^{2t_1}u_1^2$.
 % 	Используя Утверждение \ref{statement_PQ}, получаем, что
-% 	\begin{eqnarray}\frac{|\mathcal{S}_\n|}{|\mathcal{O}_{K,\n}^\times|}=\frac{(2+4^{t_1})(u,u_1)^2}{3u_1^2 4^{t_1}}\leq\frac{2+4^{t_1}}{3\cdot4^{t_1}}\leq\frac{1}{2}.\end{eqnarray}
+% 	\begin{eqnarray}\frac{|\mathcal{S}_\ideal{n}|}{|\mathcal{O}_{K,\ideal{n}}^\times|}=\frac{(2+4^{t_1})(u,u_1)^2}{3u_1^2 4^{t_1}}\leq\frac{2+4^{t_1}}{3\cdot4^{t_1}}\leq\frac{1}{2}.\end{eqnarray}
 % \end{proof}
 
 % \begin{remark}\label{miller_prob}
+% 	Отметим, что в первых трех случаях теоремы верна оценка $|\mathcal{S}_{\ideal{n}}| \leq 1/3 |\mathcal{O}_{K,\ideal{n}}^{\times}|$.
 	
-% 	Отметим, что в первых трех случаях теоремы верна оценка $|\mathcal{S}_{\n}| \leq 1/3 |\O_{K,\n}^{\times}|$.
+% 	Если рассматривать идеалы, свободные от делителей нормы 2 и 3(то есть, некоторого конечного множества делителей), то в первых трёх случаях теоремы верна оценка $|\mathcal{S}_{\ideal{n}}| \leq 1/4 |\mathcal{O}_{K,\ideal{n}}^{\times}|$.
 	
-% 	Если рассматривать идеалы, свободные от делителей нормы 2 и 3(то есть, некоторого конечного множества делителей), то в первых трёх случаях теоремы верна оценка $|\mathcal{S}_{\n}| \leq 1/4 |\O_{K,\n}^{\times}|$.
+% 	Минимальное соотношение $|S_{\ideal{n}}|$ и $|\mathcal{O}_{K,\ideal{n}}^{\times}|$ достигается в случае $\ideal{n} = \p\q$, где $\p,\q$ различные идеалы, $\Nm(\p) = \Nm(\q)$ и $\Nm(p) - 1 = 2u,\,(u,2) = 1$. В этом случае, $|S_{\ideal{n}}| = 1/2|\mathcal{O}_{K,\ideal{n}}^{\times}|$. Таким образом, в общем случае $|S_{\ideal{n}}|/|\mathcal{O}_{K,\ideal{n}}^{\times}| \leq 1/2$.
 	
-% 	Минимальное соотношение $|S_{\n}|$ и $|\O_{K,\n}^{\times}|$ достигается в случае $\n = \p\q$, где $\p,\q$ различные идеалы, $\Nm(\p) = \Nm(\q)$ и $\Nm(p) - 1 = 2u,\,(u,2) = 1$. В этом случае, $|S_{\n}| = 1/2|\O_{K,\n}^{\times}|$. Таким образом, в общем случае $|S_{\n}|/|\O_{K,\n}^{\times}| \leq 1/2$.
+% 	В некоторых кольцах можно несколько улучшить данную оценку, например, при в $\mathbb{Z}[i]$, если $\Nm(
+% 	\ideal{n})$ чётна, то $\Nm(\ideal{n})$ кратна 4, а значит $|S_{\ideal{n}}|/|\mathcal{O}_{K,\ideal{n}}^{\times}| \leq 3/8$.
 	
-% 	В некоторых кольцах можно несколько улучшить данную оценку, например, при в $\Z[i]$, если $\Nm(
-% 	\n)$ чётна, то $\Nm(\n)$ кратна 4, а значит $|S_{\n}|/|\O_{K,\n}^{\times}| \leq 3/8$.
-	
-% 	Тем не менее, в некоторых кольцах доказанная оценка достигается. Рассмотрим кольцо $\Z[\sqrt{-2}]$. Положительное нечётное число может быть представлено в виде $x^2 + 2y^2,x,y\in\N,(x,y) = 1$ в случае, если оно свободно от простых делителей вида $8n+5, 8n+7$\cite{buhshtab}. Рассмотрим последовательность чисел $N_l, l\in\mathbb{N}$ - простых чисел вида $8k + 3$. Так как $\left(\frac{\Delta_K}{8n + 3}\right) = \left(\frac{-8}{8n + 3}\right) = 1$, получаем, что $N_l$ -- составное в $\Z[\sqrt{-2}]$(\cite{dekker}), а значит $N_l = z_l\cdot \overline{z_l}$, где $z_l$ -- простые в $\O_K$ и $(z_l,\overline{z_l}) = 1$. Пусть $\n_l = (z_l)$ -- главный простой идеал. Тогда $|S_{\n_l}|/|\O_{K,\n_l}^{\times}| = 1/2$
-	
+% 	Тем не менее, в некоторых кольцах доказанная оценка достигается. Рассмотрим кольцо $\mathbb{Z}[\sqrt{-2}]$. Положительное нечётное число может быть представлено в виде $x^2 + 2y^2,x,y\in\N,(x,y) = 1$ в случае, если оно свободно от простых делителей вида $8n+5, 8n+7$\cite{buhshtab}. Рассмотрим последовательность чисел $N_l, l\in\mathbb{N}$ - простых чисел вида $8k + 3$. Так как $\left(\frac{\Delta_K}{8n + 3}\right) = \left(\frac{-8}{8n + 3}\right) = 1$, получаем, что $N_l$ -- составное в $\mathbb{Z}[\sqrt{-2}]$(\cite{dekker}), а значит $N_l = z_l\cdot \overline{z_l}$, где $z_l$ -- простые в $\mathcal{O}_K$ и $(z_l,\overline{z_l}) = 1$. Пусть $\n_l = (z_l)$ -- главный простой идеал. Тогда $|S_{\n_l}|/|\mathcal{O}_{K,\n_l}^{\times}| = 1/2$
 % \end{remark}
 
 % \begin{remark}\label{prob_rem}
 % 	Результат схожий с Теоремой \ref{Theorem_prob} для теста Миллера-Рабина в кольце целых чисел был доказан Рабиным.%тут была ссылка [19]
-% 	Пусть $\O_K$ факториально.
+% 	Пусть $\mathcal{O}_K$ факториально.
 % 	Если элемент $N\notin \mathcal{O}_K^\times$ не является простым в  $\mathcal{O}_K$  и имеет нечётную норму, тогда, согласно Теореме \ref{Theorem_prob}, Алгоритм \ref{miller_alg} позволяет доказать, что $N$ не является простым с вероятностью $\mathbb{P}\ge1-2^{-M},$ где $M$ - это число итераций Алгоритма \ref{miller_alg}.
 	
-% 	Рассмотрим случай факториального $\O_K$. Заметим, что для любого $a \in \O_{K,\n}^{\times}$, свидетельствующего о простоте $\n$, верно $a^{\Nm(\n) - 1}\equiv 1(\modul \n)$, то есть вероятность успеха не хуже, чем в тесте Ферма, а значит оценка $\mathbb{P} \geq 1/2$ выполнена для всех идеалов, не являющихся аналогами идеалов Кармайкла.
-	
-	
+% 	Рассмотрим случай факториального $\mathcal{O}_K$. Заметим, что для любого $a \in \mathcal{O}_{K,\ideal{n}}^{\times}$, свидетельствующего о простоте $\ideal{n}$, верно $a^{\Nm(\ideal{n}) - 1}\equiv 1(\modul \ideal{n})$, то есть вероятность успеха не хуже, чем в тесте Ферма, а значит оценка $\mathbb{P} \geq 1/2$ выполнена для всех идеалов, не являющихся аналогами идеалов Кармайкла.
 % \end{remark}
 
 \onlyinsubfile{

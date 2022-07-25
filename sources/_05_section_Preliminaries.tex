@@ -14,78 +14,37 @@
     \addcontentsline{toc}{chapter}{ГЛАВА \arabic{section}. ПРЕДВАРИТЕЛЬНЫЕ СВЕДЕНИЯ}
 \end{center}
 
-Пусть $R$ -- дедекиндово кольцо.
+Пусть $R$ дедекиндово кольцо.
+Идеалом кольца $R$ называется его подкольцо $\ideal{n}$, замкнутое относительно умножения на элементы $R$.
+А именно для любого $a \in R$ выполнено $a\ideal{n} \subseteq \ideal{n}$.
+Идеал $\ideal{n}$ называется  тривиальным, если он совпадает с $R$ или нулевым идеалом $0$.
+Идеал $\ideal{n}$ называется собственным, если он не совпадает с $R$.
+
+Во всей работе будем предполагать, что для любого максимального идеала $\ideal{n} \subseteq R$ факторкольцо $R/\ideal{n}$ конечно.
 Нормой $\Nm{\ideal{n}}$ идеала $\ideal{n} \subset R$ называется мощность факторкольца $R/\ideal{n}$.
 
-% \begin{definition}
-%     Идеал $\mathfrak{p}$ называется простым, если выполняются следующие два условия
-
-%     \begin{enumerate}
-%         \item Для любых двух $a, b\in R$, если $ab\in \mathfrak{p}$, то $a\in\mathfrak{p}$ или $b\in\mathfrak{p}$.
-
-%         \item Идеал $\mathfrak{p}$ не совпадает с $R$.
-%     \end{enumerate}
-% \end{definition}
-
-% \begin{definition}
-%     Идеал $\mathfrak{m}$ называется максимальным, если выполняются следующие условия
-
-%     \begin{enumerate}
-%         \item Это собственный идеал, т.е. $\mathfrak{m}$ собственное подмножество $R$.
-
-%         \item Не существует собственных идеалов, для которых $\mathfrak{m}$ является собственным подмножеством.
-%     \end{enumerate}
-% \end{definition}
-
-Идеал $\ideal{n} \subset R$ называется простым, если факторкольцо $R/\ideal{n}$ является областью целостности.
+Собственный идеал $\ideal{n} \subset R$ называется простым, если факторкольцо $R/\ideal{n}$ является областью целостности.
 Собственный идеал $\ideal{n} \subset R$ называется максимальным, если он не содержится ни в каком другом собственном идеале.
 Любой максимальный идеал является простым.
 
-Далее предполагаем, что для любого  максимального идеала $\ideal{n} \subset R$ факторкольцо $R/\ideal{n}$ конечно.
-
-Для любого кольца $K$ через $\multiplicative{K}$ обозначим множество обратимых элементов кольца $K$ с нулем.
-
-\begin{definition}
+\begin{definition}\cite{source:Petukhova}
     Функцией Эйлера идеала $\ideal{n} \subset R$ называется функция
     \begin{equation*}
-        \varphi(\ideal{n}) = |\multiplicative{(R/\ideal{n})}|.
+        \varphi(\ideal{n}) = \left|
+            \invertible{(R/\ideal{n})}
+        \right|.
     \end{equation*}
 \end{definition}
 
-% \begin{statement}\cite{source:Petukhova}
-%     Для функции Эйлера в абстрактном числовом кольце выполнено свойство мультипликативности:
-%     \begin{eqnarray}
-%         \varphi\left(
-%             \prod\limits_{i=1}^k \mathfrak{m}^{\alpha_i}
-%         \right) = \prod\limits_{i=1}^k \varphi(\mathfrak{m}^{\alpha_i})\nonumber
-%     \end{eqnarray}
-    
-%     Для максимального идеала $\mathfrak{m}$ значение функции Эйлера можно вычислить по формуле:
-%     \begin{eqnarray}
-%         \varphi(\mathfrak{m}^{\alpha}) = \mathcal{N}(\mathfrak{m})^{\alpha} - \mathcal{N}(\mathfrak{m})^{\alpha-1}.\nonumber
-%     \end{eqnarray}
-% \end{statement}
-
-% \begin{statement}[Обобщенная теорема Эйлера]\cite{Petukhova}
-%   Пусть $R$ --- дедекиндово кольцо, обладающее свойствами, описанными выше.
-%   Пусть $m\in R$, $\mathfrak{U}\subset R$ --- идеал.
-%   Если $Rm+\mathfrak{U} = R$, то $m^{\varphi(\mathfrak{U})}\equiv 1(\modul \mathfrak{U})$.
-% \end{statement}
-
-\begin{statement}\cite{Narkiewicz}\label{statement:euler_function}
-    Пусть $\ideal{n}$ -- идеал кольца $R$.
-    Тогда
+\begin{statement}[Обобщенная теорема Эйлера]\cite{source:Petukhova}
+    Пусть $m \in R$ и $\ideal{n} \subset R$ --- идеал.
+    Если $Rm + \ideal{n} = R$, то
     \begin{equation*}
-        \varphi(\ideal{n}) = \Nm{\ideal{n}} \prod_{\ideal{p} | \ideal{n}} \left(
-            1 - \frac{1}{\Nm{\ideal{p}}}
-        \right),
-    \end{equation*}
-    где произведение берется по всем простым идеалам $\ideal{p}$, делящим $\ideal{n}$.
-    Если $x \in R$ и $(xR, \ideal{n}) = 1$, то
-    \begin{equation*}
-        x^{\varphi(\ideal{n})} \equiv 1 (\modul \ideal{n})
+        m^{\varphi(\ideal{n})}\equiv 1 \pmod{\ideal{n}}.
     \end{equation*}
 \end{statement}
+
+Первообразным корнем по модулю идеала $\ideal{n}$ будем называть такой элемент $g \in R$, что $g^{\varphi (\ideal{n})}\equiv 1 \pmod{\ideal{n}}$ и $g^{l} \not\equiv 1 \pmod{\ideal{n}}$ при $1 \leq l < \varphi(\ideal{n})$.
 
 \begin{statement}\label{statement:cauchy}(Теорема Коши)
     Если порядок конечной группы $G$ делится на простое число $p$, то $G$ содержит элементы порядка $p$.
@@ -102,10 +61,28 @@
     \begin{equation*}
         \begin{split}
             R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k) \cong & (R/\ideal{n}_1) \times (R/\ideal{n}_2) \times \dots \times (R/\ideal{n}_k)\\
-            \multiplicative{(R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k))} \cong & \multiplicative{(R/\ideal{n}_1)} \times \multiplicative{(R/\ideal{n}_2)} \times \dots \times \multiplicative{(R/\ideal{n}_k)}
+            \invertible{(R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k))} \cong & \invertible{(R/\ideal{n}_1)} \times \invertible{(R/\ideal{n}_2)} \times \dots \times \invertible{(R/\ideal{n}_k)}
         \end{split}
     \end{equation*}
 \end{statement}
+
+Пусть $a, b \in R$ элементы дедекиндового кольца, а $\ideal{n} \subseteq R$ идеал дедекиндового кольца.
+Будем говорить, что $a$ сравнимо с $b$ по модулю $\ideal{n}$ и писать $a \equiv b \pmod{\ideal{n}}$, если $a - b \in \ideal{n}$.
+
+Элемент $a \in R$ будем называть квадратичным вычетом по модулю идеала $\ideal{n}$, если существует $b \in R$, что $b^2 \equiv a \pmod{\ideal{n}}$.
+
+Для простого идеала $\ideal{p}$ и $a \in \invertible{R/\ideal{p}}$ определим символ Лежандра следующим образом
+\begin{equation*}
+    \jacobi{a}{\ideal{p}} = \begin{cases}
+        1, \textrm{ если } a \textrm{ квадратичный вычет по модулю } \ideal{p}\\
+        -1, \textrm{ иначе}.
+    \end{cases}
+\end{equation*}
+
+Для идеала $\ideal{n} = \ideal{p}_1  \dots \ideal{p}_k$ и $a \in \invertible{R/\ideal{n}}$ определим символ Якоби следующим образом
+\begin{equation*}
+    \jacobi{a}{\ideal{n}} = \left(\frac{a}{\ideal{p}_1}\right) \dots \left(\frac{a}{\ideal{p}_k}\right)
+\end{equation*}
 
 \onlyinsubfile{
     \subfile{_10_bibliography}
