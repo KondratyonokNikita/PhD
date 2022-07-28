@@ -10,11 +10,53 @@
 \newpage
 \begin{center}
     \refstepcounter{section}
-    \section*{ГЛАВА \arabic{section}.\\ АЛГЕБРАИЧЕСКИЕ ОПЕРАЦИИ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}\label{ch:Primality}
-    \addcontentsline{toc}{chapter}{ГЛАВА \arabic{section}. АЛГЕБРАИЧЕСКИЕ ОПЕРАЦИИ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}
+    \section*{ГЛАВА \arabic{section}.\\ ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}\label{section:Primality}
+    \addcontentsline{toc}{chapter}{ГЛАВА \arabic{section}. ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}
 \end{center}
 
-\subsection{Вероятностное тестирование идеалов на простоту}
+\begin{proposition}\label{proposition:condition_A_with_any_homomorphism}
+    Пусть кольцо $R$ удовлетворяет условию A.
+    Пусть $\chi: \invertible{R/\ideal{n}} \to G$ нетривиальный гомоморфизм.
+    Тогда существует идеал $a$ взаимнопростой с $\ideal{n}$ и такой, что $\chi(a) \neq 1$ и
+    \begin{equation*}
+        \Nm{a} \le f(\log{\Nm{\ideal{n}}}).
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Из условия предложения следует, что подгруппа $\chi(\invertible{R/\ideal{n}}) \subseteq G$ нетривиальная.
+    Рассмотрим нетривиальный характер $\xi: \chi(\invertible{R/\ideal{n}}) \to \invertible{\mathbb{C}}$.
+    Очевидно, что $\xi \circ \chi: \invertible{R/\ideal{n}} \to \invertible{\mathbb{C}}$ является нетривиальным характером группы $\invertible{R/\ideal{n}}$.
+    
+    Из определения условия A следует, что существует простой $a$ взаимнопростой с $\ideal{n}$ и такой, что $(\xi \circ \chi)(a) \neq 1$ и
+    \begin{equation*}
+        \Nm{a} \le f(\log{\Nm{\ideal{n}}}).
+    \end{equation*}
+    
+    Из того, что $(\xi \circ \chi)(a) \neq 1$ следует, что $\chi(a) \neq 1$.
+\end{proof}
+
+\begin{proposition}\label{proposition:miller_criteria_character}
+    Пусть идеал $\ideal{p}$ простой с нечетной нормой.
+    Тогда сравнение
+    \begin{equation*}
+        \ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}
+    \end{equation*}
+    имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}^2}$.
+\end{proposition}
+\begin{proof}
+    Из утверждения~\ref{statement:euler_function} следует, что сравнение $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$ имеет ровно $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}}$.
+    
+    Заметим, что все решения сравнения $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}$ имеют вид $a + \ideal{p}\ideal{t}$, где $a \in \invertible{R/\ideal{p}}$, $\ideal{t} \in R/\ideal{p}$ и $a$ является решением сравнения $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$.
+    Подставим этот вид в сравнение, раскроем скобки и получим сравнение
+    \begin{equation*}
+        \ideal{p}\ideal{t}(\Nm{\ideal{p}} - 1)a^{\Nm{\ideal{p}} - 2} \equiv 1 - a^{\Nm{\ideal{p}} - 1} \pmod{\ideal{p}^2}.
+    \end{equation*}
+    
+    Так как $((\Nm{\ideal{p}} - 1)a^{\Nm{\ideal{p}} - 2}, \ideal{p}) = 1$, то это сравнение имеет ровно одно решение при фиксированном $a$.
+    Следовательно, исходное сравнение имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}^2}$.
+\end{proof}
+
+\subsection{Критерий Эйлера}
 
 \begin{theorem}\label{theorem:euler_criteria}
     Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
@@ -22,8 +64,14 @@
     \begin{equation*}
         a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
     \end{equation*}
+
+    Если кольцо $R$ удовлетворяет условию A, то $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$ выполнено
+    \begin{equation*}
+        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
+    \end{equation*}
 \end{theorem}
 \begin{proof}
+    Докажем первую часть теоремы.
     Предположим, что $\ideal{n}$ -- простой идеал.
     Рассмотрим произвольный $a \in \invertible{R/\ideal{n}}$.
     Пусть $g$ -- первообразный корень по модулю $\ideal{n}$.
@@ -49,7 +97,26 @@
     Из условия теоремы следует, что $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv -1 \pmod{\ideal{n}}$, что противоречит условию $a \equiv 1 \pmod{\ideal{p}_2}$.
     Это завершает доказательство достаточности.
 
-    Теорема доказана.
+    Теперь докажем вторую часть.
+    Необходимость следует из доказанного ранее.
+    Идеал $\ideal{n}$ не может быть простым, если существует $a \in \invertible{R/\ideal{n}}$, для которого
+    \begin{equation*}
+        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \not\equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
+    \end{equation*}
+
+    Предположим, что $\ideal{n} \in \zeroless{R} \setminus \invertible{R}$ составной идеал нечетной нормы и для любого и идеала $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$ выполнено
+    \begin{equation*}
+        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
+    \end{equation*}
+    
+    Рассмотрим такое отображение $\chi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $a \in \invertible{R/\ideal{n}}$ выполнено $\chi(a) = a^{(\Nm{\ideal{n}} - 1)/2}\jacobi{a}{\ideal{n}}$.
+    Из теоремы~\ref{theorem:euler_criteria} следует, что $\chi$ нетривиальный гомоморфизм.
+    
+    Тогда, используя предложение~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $a \in \invertible{R/\ideal{n}}$, что
+    \begin{equation*}
+        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \jacobi{a}{\ideal{n}} \not\equiv 1 \pmod{\ideal{n}}.
+    \end{equation*}
+    Получили противоречие.
 \end{proof}
 
 \begin{algorithm}\label{algorithm:solovay_strassen}
@@ -98,12 +165,18 @@
     Если $\ideal{n}$ -- составной, то при выполнении алгоритма \ref{algorithm:miller_rabin} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
 \end{remark}
 
+\subsection{Критерий Миллера}
+
 \begin{theorem}\label{theorem:miller_criteria}
     Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
     Пусть $\Nm{\ideal{n}} - 1 = 2^t u$, $(u, 2) = 1$.
     Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+
+    Пусть колько $R$ удовлетворяет условию A.
+    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$, $(a, \ideal{n}) = 1$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
 \end{theorem}
 \begin{proof}
+    Докажем первую часть теоремы.
     Предположим, что $\ideal{n}$ -- простой идеал.
     Рассмотрим произвольный $a \in \invertible{R/\ideal{n}}$, $a^u \not\equiv 1 \pmod{\ideal{n}}$.
     Из теоремы Эйлера \ref{statement:euler_function} следует, что:
@@ -140,7 +213,64 @@
     Это противоречит тому, что порядок $a$ равен $2$.
     Это завершает доказательство достаточности.
 
-    Теорема доказана.
+    Теперь докажем вторую часть теоремы.
+    Необходимость следует из доказанного ранее.
+
+    Предположим, что $\ideal{n} \in \zeroless{R} \setminus \invertible{R}$ составной идеал нечетной нормы и для любого идеала $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$, $(a, \ideal{n}) = 1$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+
+    Предположим, что существует такой простой идеал $\ideal{p}$, что $\ideal{p}^2 | \ideal{n}$.
+    Рассмотрим такое отображение $\chi: \invertible{R/\ideal{p}^2} \to \invertible{R/\ideal{p}^2}$, что для всех $a \in \invertible{R/\ideal{p}^2}$ выполнено $\chi(a) = a^{\Nm{\ideal{p}} - 1}$.
+    Из предложения~\ref{proposition:miller_criteria_character} следует, что это нетривиальный гомоморфизм.
+    Тогда, из предложения~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $a \in \invertible{R/\ideal{p}^2}$, что
+    \begin{equation*}
+        a^{\Nm{\ideal{p}} - 1} \not\equiv 1 \pmod{\ideal{p}^2}.
+    \end{equation*}
+
+    Предположим, что $a^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}$.
+    Тогда $a^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{p}^2}$.
+    Тогда $\textrm{ord}_{R/\ideal{p}^2}(a) | \Nm{\ideal{n}} - 1$ и $\textrm{ord}_{R/\ideal{p}^2}(a) | \varphi(\ideal{p}^2)$.
+    Из этого следует, что $\textrm{ord}_{R/\ideal{p}^2}(a) | \Nm{\ideal{p}} - 1$.
+    Это противоречит выражению $a^{\Nm{\ideal{p}} - 1} \not\equiv 1 \pmod{\ideal{p}^2}$.
+
+    Следовательно, не существует такой простой идеал $\ideal{p}$, что $\ideal{p}^2 | \ideal{n}$.
+    Пусть $\ideal{p}$ и $\ideal{q}$ различные простые делители $\ideal{n}$.
+    
+    Обозначим $v_2(n)$ максимальную степень двойки, делящую $n \in \mathbb{Z}$.
+    Не нарушая общности, предположим, что $v_2(\Nm{\ideal{p}} - 1) \ge v_2(\Nm{\ideal{q}} - 1)$.
+    Пусть
+    \begin{equation*}
+        \ideal{d} = \begin{cases}
+            \ideal{p}\ideal{q} &\textrm{ если } v_2(\Nm{\ideal{p}} - 1) = v_2(\Nm{\ideal{q}} - 1)\\
+            \ideal{p} &\textrm{ если } v_2(\Nm{\ideal{p}} - 1) > v_2(\Nm{\ideal{q}} - 1).
+        \end{cases}
+    \end{equation*}
+    Рассмотрим такое отображение $\xi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $a \in \invertible{R/\ideal{n}}$ выполнено $\xi(a) = \jacobi{a}{\ideal{d}}$.
+    Это отображение является нетривиальным гомоморфизмом.
+    Тогда, из предложения~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $a \in \invertible{R/\ideal{n}}$, что
+    \begin{equation*}
+        \jacobi{a}{\ideal{d}} \not\equiv 1 \pmod{\ideal{n}}.
+    \end{equation*}
+    
+    Положим $\ideal{b} = a^u$.
+    Тогда $\jacobi{b}{\ideal{d}} = -1$.
+    Следовательно, $\ideal{b} \not\equiv 1 \pmod{\ideal{d}}$.
+    Пусть $j \in \mathbb{Z}$ минимальное число, для которого $a^{2^j u} \equiv -1 \pmod{\ideal{n}}$.
+    Тогда $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = \textrm{ord}_{R/\ideal{q}}(\ideal{b}) = 2^{j+1}$.
+    
+    Рассмотрим два случая.
+    Пусть $v_2(\Nm{\ideal{p}} - 1) > v_2(\Nm{\ideal{q}} - 1)$.
+    Тогда $\textrm{ord}_{R/\ideal{q}}(\ideal{b}) = 2^{j+1} | \varphi(\ideal{q}) = \Nm{\ideal{q}} - 1$.
+    Следовательно, $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = 2^{j+1} | (\Nm{\ideal{p}} - 1)/2$.
+    Получаем, что $\jacobi{b}{\ideal{d}} = \jacobi{a}{\ideal{p}} = -1$ и $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$.
+    Это противоречит теореме~\ref{theorem:euler_criteria}.
+    
+    Пусть $v_2(\Nm{\ideal{p}} - 1) = v_2(\Nm{\ideal{q}} - 1)$.
+    Тогда $\jacobi{b}{\ideal{d}} = \jacobi{b}{\ideal{p}}\jacobi{b}{\ideal{q}} = -1$.
+    Следовательно, один из множителей равен $-1$.
+    Пусть $\jacobi{b}{\ideal{p}} = -1$ и $\jacobi{b}{\ideal{q}} = 1$.
+    Из теоремы~\ref{theorem:euler_criteria} следует, что $\ideal{b}^{(\Nm{\ideal{q}} - 1)/2} \equiv 1 \pmod{\ideal{q}}$ и $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = \textrm{ord}_{R/\ideal{q}}(\ideal{b}) | (\Nm{\ideal{q}} - 1)/2$.
+    Тогда $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) | (\Nm{\ideal{p}} - 1)/2$.
+    Следовательно, $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$, что противоречит предположению $\jacobi{b}{\ideal{p}} = -1$.
 \end{proof}
 
 \begin{algorithm}\label{algorithm:miller_rabin}
@@ -262,249 +392,27 @@
     Если $\ideal{n}$ -- составной, то при выполнении алгоритма \ref{algorithm:miller_rabin} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
 \end{remark}
 
-\subsection{Детерминированное тестирование идеалов на простоту}
-
-% Исходное определение и утверждение для числовых колец
-% 
-% https://math.mit.edu/classes/18.785/2017fa/LectureNotes5.pdf
-% https://math.mit.edu/classes/18.785/2017fa/LectureNotes7.pdf
-% 
-% \begin{efinition}
-%     Пусть $E$ конечное расширение алгебраического числового поля $K$, для которого группа Галуа (группа гомоморфизмов $\xi: E/K \to E/K$, фиксирующих $K$ поэлементно) является абелевой.
-%     Пусть $\ideal{p} \in O_K$ простой идеал, не ветвящийся в $E$.
-%     Символом Артина $((E/K), \ideal{p})$ называется единственный элемент $\sigma \in \Gal{E/K}$, что для любого $\alpha \in E$
-%     \begin{equation*}
-%         \sigma(\alpha) \equiv \alpha^{\Nm{\ideal{p}}} \pmod{\ideal{p}}.
-%     \end{equation*}
-    
-%     Пусть $\phi: \Gal{E/K} \to \invertible{\mathbb{C}}$ гомоморфизм.
-%     Рассмотрим функцию
-%     \begin{equation*}
-%         \chi(\ideal{p}) = \begin{cases}
-%             \phi\left(((E/K), \ideal{p})\right), & \ideal{p} \textrm{ если не ветвится}\\
-%             0, & \textrm{ иначе}
-%         \end{cases}
-%     \end{equation*}
-%     где $\ideal{p}$ простой.
-%     Используя мультипликативность, эту функцию можно определить для всех идеалов $K$.
-%     Полученная функция $\chi$ называется характером.
-%     Характер принимающий только значения $0$ и $1$ называется главным.
-    
-%     Элемент $t \in K$ называется полностью положительным, если он положителен во всех действительных вложениях.
-%     Для любого характера $\chi$ существует идеал $\ideal{f} \subset O_K$, что $\chi((t)) = 1$ для всех таких полностью положительных $t$, что $(t) \equiv 1 \pmod{\ideal{f}}$.
-%     В этом случае говорят, что характер $\chi$ задан по модулю $\ideal{f}$.
-% \end{definition}
-
-% \begin{theorem}
-%     Для $i = 1, 2, \dots$ пусть $K_i$ числовое кольцо с дискриминантом $\Delta_i$.
-%     Пусть $\xi_i$ характер $K_i$, не являющийся главным и определенный по модулю $f_i$.
-%     Пусть $\ideal{p}_i$ идеал минимальной нормы, для которого $\xi_i(\ideal{p}_i) \neq 0, 1$ и $deg(\ideal{p}_i) = 1$.
-%     Если $\Delta_i \Nm{\ideal{f}_i} \to \infty$ при $i \to \infty$, то
-%     \begin{equation*}
-%         \Nm{\ideal{p}_i} \le (1 + o(1))\log^2(\Delta_i^2 \Nm{\ideal{f}_i})
-%     \end{equation*}
-% \end{theorem}
-
-\begin{definition}
-    Пусть $R$ дедекиндово кольцо с полем частных $K$.
-    Пусть расширение $L/K$ конечное, сепарабельное и нормальное.
-    Пусть группа Галуа этого расширения абелева.
-    Пусть $S$ замыкание $R$ в $L$.
-
-    Пусть $\ideal{p}$ простой идеал кольца $R$, не ветвящийся в $L$ и пусть $\ideal{P} = \ideal{p}S$ соответствующий идеал в $S$.
-    Тогда существует единственный такой элемент $((L/K), \ideal{p})$, что для любого $\alpha \in L$
-    \begin{equation*}
-        \sigma(\alpha) \equiv \alpha^{\Nm{\ideal{p}}} \pmod{\ideal{P}}
-    \end{equation*}
-
-    Пусть $\phi: Gal(L/K) \to \invertible{\mathbb{C}}$ гомоморфизм.
-    Рассмотрим функцию
-    \begin{equation*}
-        \chi(\ideal{p}) = \begin{cases}
-            \phi(((L/K), \ideal{p})), & \textrm{если } \ideal{p} \textrm{ не ветвится}\\
-            0, & \textrm{иначе}
-        \end{cases}
-    \end{equation*}
-    где $\ideal{p}$ простой.
-    Используя мультипликативность, эту функцию можно определить для всех идеалов $R$.
-    Полученную функцию $\chi$ будем называть характером.
-    Характер принимающий только значения $0$ и $1$ называется главным.
-    
-    Будем говорить, что характер $\chi$ задан по модулю идеала $\ideal{f} \subset R$
-    Если для характера $\chi$ существует такой идеал $\ideal{f} \subset R$, что для всех идеалов $\ideal{x} \subseteq R$, если $\ideal{x} \equiv 1 \pmod{\ideal{f}}$, то $\chi(\ideal{x}) = 1$.
-\end{definition}
-
-\begin{definition}
-    Пусть $\chi: R \to \invertible{\mathbb{C}}$ характер, не являющийся главным и определенный по модулю идеала $\ideal{f} \subset R$.
-    Пусть $\ideal{p}$ идеал минимальной нормы, для которого $\chi(\ideal{p}) \neq 0, 1$.
-    Предположим, что существует расширения поля частных кольца $R$, используя которое можно получить идеал, не являющийся главным.
-    
-    Будем говорить, что кольцо $R$ удовлетворяет условию A, если существует многочлен $f_R$, что для любого характера $\chi$, не являющегося главным, выполнено
-    \begin{equation*}
-        \Nm{\ideal{p}_i} \le f_R(\log{\Nm{\ideal{n}}}).
-    \end{equation*}
-\end{definition}
-
 \begin{remark}
-    Пусть $K$ числовое поле с кольцом целых алгебраических чисел $\mathcal{O}_K$.
-    Расширенная гипотеза Римана гласит, что для любого $s \in \mathbb{C}$ такого, что $\zeta_K(s) = 0$ выполняется: если $\Re{s} \in [0, 1]$, то $\Re{s} = \frac{1}{2}$.
-
-    Из работы Баха~\cite{source:Bach} следует, что, если расширенная гипотеза Римана выполнена, то условие A выполнено для всех колец целых алгебраических чисел и $f_{\mathcal{O}_K}(x) = 12x^2 + 12\log^2 \Delta$.
+    Доказанные критерии и алгоритмы можно использовать при генерации простых идеалов.
+    Генерация простых идеалов является обязательной частью в RSA-криптосистеме в дедекиндовых кольцах.
+    Такая криптосистема будет рассмотрена в главе~\ref{section:RSA-cryptosystem}.
 \end{remark}
 
-\begin{remark}
-    Обобщенная гипотеза Римана гласит, что для любого характера Дирихле $\chi$ и любого $s \in \mathbb{C}$ такого, что $L(\chi, s) = 0$ выполняется: если $s \not\in \mathbb{R}_{-}$, то $s = \frac{1}{2}$.
+\subsection{Вычислительная сложность алгоритма Миллера-Рабина}
 
-    Из работы Анкени~\cite{source:Ankeny} следует, что, если обобщенная гипотеза Римана выполнена, то условие A выполнено для кольца целых чисел и $f_{\mathbb{Z}}(x) = 2x^2$.
-\end{remark}
-
-\begin{proposition}\label{proposition:condition_A_with_any_homomorphism}
-    Пусть кольцо $R$ удовлетворяет условию A.
-    Пусть $\chi: \invertible{R/\ideal{n}} \to G$ нетривиальный гомоморфизм.
-    Тогда существует идеал $\ideal{a}$ взаимнопростой с $\ideal{n}$ и такой, что $\chi(\ideal{a}) \neq 1$ и
-    \begin{equation*}
-        \Nm{\ideal{a}} \le f(\log{\Nm{\ideal{n}}}).
-    \end{equation*}
-\end{proposition}
+\begin{statement}
+    Пусть $\ideal{n} \subseteq R$ идеал дедекиндового кольца.
+    Для того, чтобы использовать алгоритм~\ref{algorithm:miller_rabin} для $\ideal{n}$ требуется $O(\log \Nm{\ideal{n}})$ арифметических операций.
+\end{statement}
 \begin{proof}
-    Из условия предложения следует, что подгруппа $\chi(\invertible{R/\ideal{n}}) \subseteq G$ нетривиальная.
-    Рассмотрим нетривиальный характер $\xi: \chi(\invertible{R/\ideal{n}}) \to \invertible{\mathbb{C}}$.
-    Очевидно, что $\xi \circ \chi: \invertible{R/\ideal{n}} \to \invertible{\mathbb{C}}$ является нетривиальным характером группы $\invertible{R/\ideal{n}}$.
-    
-    Из определения условия A следует, что существует простой идеал $\ideal{a}$ взаимнопростой с $\ideal{n}$ и такой, что $(\xi \circ \chi)(\ideal{a}) \neq 1$ и
-    \begin{equation*}
-        \Nm{\ideal{a}} \le f(\log{\Nm{\ideal{n}}}).
-    \end{equation*}
-    
-    Из того, что $(\xi \circ \chi)(\ideal{a}) \neq 1$ следует, что $\chi(\ideal{a}) \neq 1$.
+    Пусть $\Nm{\ideal{n}} = 2^t u$, где $(2, u) = 1$.
+    В алгоритме~\ref{algorithm:miller_rabin} выбирается произвольный $a \in R$ и вычисляется $r_0 = a^u \pmod{\ideal{n}}$.
+    Это требует $O(\log u)$ арифметических операций.
+    Далее не более $t$ раз для $r_i$ вычисляется $r_i^2 \pmod{\ideal{n}}$.
+    Это требует не более $O(t)$ арифметических операций.
+
+    Итого требуется $O(\log u) + O(t) = O(\log \Nm{\ideal{n}})$ арифметических операций.
 \end{proof}
-
-\begin{theorem}\label{theorem:euler_criteria_deterministic}
-    Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$, удовлетворяющего условию A.
-    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in \invertible{R/\ideal{n}}$, $\Nm{\ideal{a}} \le f_R(\Nm{\ideal{n}})$ выполнено
-    \begin{equation*}
-        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
-    \end{equation*}
-\end{theorem}
-\begin{proof}
-    Необходимость следует из теоремы~\ref{theorem:euler_criteria}.
-    
-    Предположим, что $\ideal{n} \in \zeroless{R} \setminus \invertible{R}$ составной идеал нечетной нормы и для любого и идеала $\ideal{a} \in \invertible{R/\ideal{n}}$, $\Nm{\ideal{a}} \le f_R(\Nm{\ideal{n}})$ выполнено
-    \begin{equation*}
-        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
-    \end{equation*}
-    
-    Рассмотрим такое отображение $\chi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено $\chi(\ideal{a}) = \ideal{a}^{(\Nm{\ideal{n}} - 1)/2}\jacobi{a}{\ideal{n}}$.
-    Из теоремы~\ref{theorem:euler_criteria} следует, что $\chi$ нетривиальный гомоморфизм.
-    
-    Тогда, используя предложение~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $\ideal{a} \in \invertible{R/\ideal{n}}$, что
-    \begin{equation*}
-        \ideal{a}^{\frac{\Nm{\ideal{n}} - 1}{2}} \jacobi{a}{\ideal{n}} \not\equiv 1 \pmod{\ideal{n}}.
-    \end{equation*}
-    Получили противоречие.
-\end{proof}
-
-\begin{proposition}\label{proposition:miller_criteria_character}
-    Пусть идеал $\ideal{p}$ простой с нечетной нормой.
-    Тогда сравнение
-    \begin{equation*}
-        \ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}
-    \end{equation*}
-    имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}^2}$.
-\end{proposition}
-\begin{proof}
-    Из утверждения~\ref{statement:euler_function} следует, что сравнение $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$ имеет ровно $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}}$.
-    
-    Заметим, что все решения сравнения $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}$ имеют вид $\ideal{a} + \ideal{p}\ideal{t}$, где $\ideal{a} \in \invertible{R/\ideal{p}}$, $\ideal{t} \in R/\ideal{p}$ и $a$ является решением сравнения $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$.
-    Подставим этот вид в сравнение, раскроем скобки и получим сравнение
-    \begin{equation*}
-        \ideal{p}\ideal{t}(\Nm{\ideal{p}} - 1)\ideal{a}^{\Nm{\ideal{p}} - 2} \equiv 1 - \ideal{a}^{\Nm{\ideal{p}} - 1} \pmod{\ideal{p}^2}.
-    \end{equation*}
-    
-    Так как $((\Nm{\ideal{p}} - 1)a^{\Nm{\ideal{p}} - 2}, \ideal{p}) = 1$, то это сравнение имеет ровно одно решение при фиксированном $\ideal{a}$.
-    Следовательно, исходное сравнение имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}^2}$.
-\end{proof}
-
-\begin{theorem}\label{theorem:miller_criteria_deterministic}
-    Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$, удовлетворяющего условию A.
-    Пусть $\Nm{\ideal{n}} - 1 = 2^t u$, $(u, 2) = 1$.
-    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого идеала $\ideal{a} \in \invertible{R/\ideal{n}}$, $\Nm{\ideal{a}} \le f_R(\Nm{\ideal{n}})$, $(\ideal{a}, \ideal{n}) = 1$, $\ideal{a}^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $\ideal{a}^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
-\end{theorem}
-\begin{proof}
-    Необходимость следует из теоремы~\ref{theorem:euler_criteria}.
-
-    Предположим, что $\ideal{n} \in \zeroless{R} \setminus \invertible{R}$ составной идеал нечетной нормы и для любого идеала $\ideal{a} \in \invertible{R/\ideal{n}}$, $\Nm{\ideal{a}} \le f_R(\Nm{\ideal{n}})$, $(\ideal{a}, \ideal{n}) = 1$, $\ideal{a}^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $\ideal{a}^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
-
-    Предположим, что существует такой простой идеал $\ideal{p}$, что $\ideal{p}^2 | \ideal{n}$.
-    Рассмотрим такое отображение $\chi: \invertible{R/\ideal{p}^2} \to \invertible{R/\ideal{p}^2}$, что для всех $\ideal{a} \in \invertible{R/\ideal{p}^2}$ выполнено $\chi(\ideal{a}) = \ideal{a}^{\Nm{\ideal{p}} - 1}$.
-    Из предложения~\ref{proposition:miller_criteria_character} следует, что это нетривиальный гомоморфизм.
-    Тогда, из предложения~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $\ideal{a} \in \invertible{R/\ideal{p}^2}$, что
-    \begin{equation*}
-        \ideal{a}^{\Nm{\ideal{p}} - 1} \not\equiv 1 \pmod{\ideal{p}^2}.
-    \end{equation*}
-
-    Предположим, что $\ideal{a}^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}$.
-    Тогда $\ideal{a}^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{p}^2}$.
-    Тогда $\textrm{ord}_{R/\ideal{p}^2}(\ideal{a}) | \Nm{\ideal{n}} - 1$ и $\textrm{ord}_{R/\ideal{p}^2}(\ideal{a}) | \varphi(\ideal{p}^2)$.
-    Из этого следует, что $\textrm{ord}_{R/\ideal{p}^2}(\ideal{a}) | \Nm{\ideal{p}} - 1$.
-    Это противоречит выражению $\ideal{a}^{\Nm{\ideal{p}} - 1} \not\equiv 1 \pmod{\ideal{p}^2}$.
-
-    Следовательно, не существует такой простой идеал $\ideal{p}$, что $\ideal{p}^2 | \ideal{n}$.
-    Пусть $\ideal{p}$ и $\ideal{q}$ различные простые делители $\ideal{n}$.
-    
-    Обозначим $v_2(n)$ максимальную степень двойки, делящую $n \in \mathbb{Z}$.
-    Не нарушая общности, предположим, что $v_2(\Nm{\ideal{p}} - 1) \ge v_2(\Nm{\ideal{q}} - 1)$.
-    Пусть
-    \begin{equation*}
-        \ideal{d} = \begin{cases}
-            \ideal{p}\ideal{q} &\textrm{ если } v_2(\Nm{\ideal{p}} - 1) = v_2(\Nm{\ideal{q}} - 1)\\
-            \ideal{p} &\textrm{ если } v_2(\Nm{\ideal{p}} - 1) > v_2(\Nm{\ideal{q}} - 1).
-        \end{cases}
-    \end{equation*}
-    Рассмотрим такое отображение $\xi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $\ideal{a} \in \invertible{R/\ideal{n}}$ выполнено $\xi(\ideal{a}) = \jacobi{a}{\ideal{d}}$.
-    Это отображение является нетривиальным гомоморфизмом.
-    Тогда, из предложения~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $\ideal{a} \in \invertible{R/\ideal{n}}$, что
-    \begin{equation*}
-        \jacobi{a}{\ideal{d}} \not\equiv 1 \pmod{\ideal{n}}.
-    \end{equation*}
-    
-    Положим $\ideal{b} = \ideal{a}^u$.
-    Тогда $\jacobi{b}{\ideal{d}} = -1$.
-    Следовательно, $\ideal{b} \not\equiv 1 \pmod{\ideal{d}}$.
-    Пусть $j \in \mathbb{Z}$ минимальное число, для которого $\ideal{a}^{2^j u} \equiv -1 \pmod{\ideal{n}}$.
-    Тогда $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = \textrm{ord}_{R/\ideal{q}}(\ideal{b}) = 2^{j+1}$.
-    
-    Рассмотрим два случая.
-    Пусть $v_2(\Nm{\ideal{p}} - 1) > v_2(\Nm{\ideal{q}} - 1)$.
-    Тогда $\textrm{ord}_{R/\ideal{q}}(\ideal{b}) = 2^{j+1} | \varphi(\ideal{q}) = \Nm{\ideal{q}} - 1$.
-    Следовательно, $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = 2^{j+1} | (\Nm{\ideal{p}} - 1)/2$.
-    Получаем, что $\jacobi{b}{\ideal{d}} = \jacobi{a}{\ideal{p}} = -1$ и $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$.
-    Это противоречит теореме~\ref{theorem:euler_criteria}.
-    
-    Пусть $v_2(\Nm{\ideal{p}} - 1) = v_2(\Nm{\ideal{q}} - 1)$.
-    Тогда $\jacobi{b}{\ideal{d}} = \jacobi{b}{\ideal{p}}\jacobi{b}{\ideal{q}} = -1$.
-    Следовательно, один из множителей равен $-1$.
-    Пусть $\jacobi{b}{\ideal{p}} = -1$ и $\jacobi{b}{\ideal{q}} = 1$.
-    Из теоремы~\ref{theorem:euler_criteria} следует, что $\ideal{b}^{(\Nm{\ideal{q}} - 1)/2} \equiv 1 \pmod{\ideal{q}}$ и $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = \textrm{ord}_{R/\ideal{q}}(\ideal{b}) | (\Nm{\ideal{q}} - 1)/2$.
-    Тогда $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) | (\Nm{\ideal{p}} - 1)/2$.
-    Следовательно, $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$, что противоречит предположению $\jacobi{b}{\ideal{p}} = -1$.
-\end{proof}
-
-\subsection{Вычислительная сложность алгебраических операций}
-
-% \begin{statement}
-%     Пусть $\ideal{n} \subseteq R$ идеал дедекиндового кольца.
-%     Для того, чтобы использовать алгоритм~\ref{algorithm:miller_rabin} для $\ideal{n}$ требуется $O(\log \Nm{\ideal{n}})$ арифметических операций.
-% \end{statement}
-% \begin{proof}
-%     Пусть $\Nm{\ideal{n}} = 2^t u$, где $(2, u) = 1$.
-%     В алгоритме~\ref{algorithm:miller_rabin} выбирается произвольный идеал $\ideal{a} \subseteq R$ и вычисляется $\ideal{r}_0 = \ideal{a}^u \pmod{\ideal{n}}$.
-%     Это требует $O(\log u)$ арифметических операций.
-%     Далее не более $t$ раз для $\ideal{r}_i$ вычисляется $\ideal{r}_i^2 \pmod{\ideal{n}}$.
-%     Это требует не более $O(t)$ арифметических операций.
-
-%     Итого требуется $O(\log u) + O(t) = O(\log \Nm{\ideal{n}})$ арифметических операций.
-% \end{proof}
 
 % \subsubsection{Способы представления идеалов}
 

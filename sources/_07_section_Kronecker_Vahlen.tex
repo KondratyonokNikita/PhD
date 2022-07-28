@@ -10,71 +10,9 @@
 \newpage
 \begin{center}
     \refstepcounter{section}
-    \section*{ГЛАВА \arabic{section}.\\ ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}\label{ch:Kronecker-Vahlen theorem}
+    \section*{ГЛАВА \arabic{section}.\\ ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}\label{section:Kronecker-Vahlen theorem}
     \addcontentsline{toc}{chapter}{ГЛАВА \arabic{section}. ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}
 \end{center}
-
-\subsection{Предварительные сведения}
-
-\begin{definition}
-    Пусть $R$ факториальное кольцо.
-    Функцию $\elementnorm{\cdot}: R \to \mathbb{N} \cup \{0, -\infty\}$ будем называть нормой в $R$, если
-    \begin{itemize}
-        \item $\elementnorm{x} = -\infty$ тогда и только тогда, когда $x = 0$;
-
-        \item $\elementnorm{xy} \ge \elementnorm{x}$;
-
-        \item для $x, y \in \zeroless{R}$ равенство $\elementnorm{xy} = \elementnorm{x}$ выполнено тогда и только тогда, когда $y \in \invertible{K}$.
-    \end{itemize}
-\end{definition}
-
-\begin{remark}
-    Для любого факториального кольца $R$ можно определить норму.
-    Рассмотрим разложение элемента $x$ на простые множители $x = \varepsilon p_1^{\alpha_1} \dots p_k^{\alpha_k}$, где $\varepsilon \in \invertible{R}$, $p_1, \dots, p_k$ -- простые элементы $R$.
-    Тогда функция
-    \begin{equation*}
-        \elementnorm{x} = \left\{\begin{split}
-            \sum_{i=1}^k \alpha_{i}, & \textrm{ если } x \neq 0\\
-            -\infty, & \textrm{ если } x = 0
-        \end{split}\right.
-    \end{equation*}
-    является нормой в $R$.
-\end{remark}
-
-Далее в этой главе будем считать, что факториальное кольцо $R$ задано вместе с нормой $\elementnorm{\cdot}$.
-
-\begin{definition}
-    Пусть $R$ факториальное кольцо и $F$ его поле частных.
-    Функцию $\fr{\cdot}: F \to F$ будем называть дробной частью в $F$, если
-    \begin{itemize}
-        \item $\fr{\alpha + q} = \fr{\alpha}$ для любых $\alpha \in F$, $q \in R$;
-
-        \item если $m \in R$, $n \in \zeroless{R}$ и $(m, n) = 1$, то $\fr{m/n} = r/n$, где $r \in R$, $(m-r)/n \in R$ и $\elementnorm{r} = \min \{\elementnorm{s} | s \in R, (m-s)/n \in R\}$.
-    \end{itemize}
-    Функцию $\int{\cdot}: F \to R$ будем называть целой частью, если
-    \begin{equation*}
-        \int{\alpha} = \alpha - \fr{\alpha}.
-    \end{equation*}
-\end{definition}
-
-\begin{remark}\label{remark:easy_fr}
-    Для любого факториального кольца $R$ существует дробная и целая часть.
-    Рассмотрим произвольный элемент $X \in F/R$.
-    Этот элемент можно представить в виде $X = \{m/n + t | t \in R\}$, где $m \in R$, $n \in \zeroless{R}$ $(m, n) = 1$.
-    Существует элемент $t_0 \in R$, минимизирующий норму $\elementnorm{m + n t_0}$.
-    Тогда для любого элемента $x \in X$ положим
-    \begin{equation*}
-        \fr{x} = m/n + t_0.
-    \end{equation*}
-
-    Несложно заметить, что эта функция является дробной частью.
-    Целую часть определим следующим образом
-    \begin{equation*}
-        \int{x} = x - \fr{x}.
-    \end{equation*}
-\end{remark}
-
-Далее в этой главе будем считать, что факториальное кольцо $R$ задано вместе дробной частью $\fr{\cdot}$ и целой частью $\int{\cdot}$.
 
 \begin{definition}
     Пусть $a$ и $b$ ненулевые элементы факториального кольца $R$.
