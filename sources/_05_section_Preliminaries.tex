@@ -77,7 +77,7 @@
     \begin{equation*}
         \begin{split}
             R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k) \cong & (R/\ideal{n}_1) \times (R/\ideal{n}_2) \times \dots \times (R/\ideal{n}_k)\\
-            \invertible{(R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k))} \cong & \invertible{(R/\ideal{n}_1)} \times \invertible{(R/\ideal{n}_2)} \times \dots \times \invertible{(R/\ideal{n}_k)}
+            \invertible{R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k)} \cong & \invertible{R/\ideal{n}_1} \times \invertible{R/\ideal{n}_2} \times \dots \times \invertible{R/\ideal{n}_k}
         \end{split}
     \end{equation*}
 \end{statement}
@@ -115,11 +115,10 @@
     Если $e_{\ideal{q}} > 0$ для некоторого $\ideal{q}$, то говорят, что $\ideal{q}$ лежит над (lie over, lie above) простым идеалом $\ideal{p}$.
 
     Число $e_{\ideal{q}}$ из разложения $\ideal{p}S = \prod_{\ideal{q}} \ideal{q}^{e_{\ideal{q}}}$ называется индексом разветвления (ramification index) $\ideal{q}$.
-    Число $f_{\ideal{q}} = [S/\ideal{q} : R/\ideal{p}]$ называется степенью инертности $\ideal{q}$.
 
     Если для простого идеала $\ideal{p} \subseteq R$ выполнено $e_{\ideal{q}} > 1$ для некоторого $\ideal{q} \subseteq S$, то говорят, что идеал $\ideal{p}$ ветвится в $L$.
     Если идеал $\ideal{p}S$ простой в $S$, то говорят, что $\ideal{p}$ инертный (inert).
-    Если $e_{\ideal{q}} = 0$ или $e_{\ideal{q}} = 1$ для всех $\ideal{q}$, то говорят, что $\ideal{p}$ разлагается полностью (splits completely) в $L$.
+    Если для всех $\ideal{q}$ выполняется или $e_{\ideal{q}} = 0$, или $e_{\ideal{q}} = 1$, то говорят, что $\ideal{p}$ полностью разлагается (splits completely) в $L$.
 \end{definition}
 
 \begin{definition}
@@ -147,38 +146,15 @@
 \end{definition}
 
 \begin{definition}
-    Будем говорить, что характер $\chi$ задан по модулю идеала $\ideal{f} \subset R$
-    Если для характера $\chi$ существует такой идеал $\ideal{f} \subset R$, что для всех идеалов $\ideal{x} \subseteq R$, если $\ideal{x} \equiv 1 \pmod{\ideal{f}}$, то $\chi(\ideal{x}) = 1$.
+    Будем говорить, что характер $\chi$ задан по модулю идеала $\ideal{f} \subset R$, если для всех идеалов $\ideal{x} \subseteq R$, из сравнения $\ideal{x} \equiv 1 \pmod{\ideal{f}}$ следует равенство $\chi(\ideal{x}) = 1$.
 \end{definition}
-
-\begin{definition}
-    Для произвольного характера $\chi: R \to \invertible{\mathbb{C}}$, не являющегося главным и определенного по модулю идеала $\ideal{f} \subset R$, рассмотрим идеал $\ideal{p}_{\chi}$ минимальной нормы, для которого $\chi(\ideal{p}) \neq 0, 1$.
-
-    Будем говорить, что кольцо $R$ удовлетворяет условию A, если существует многочлен $f_R$, что для любого характера $\chi$, не являющегося главным, выполнено
-    \begin{equation*}
-        \Nm{\ideal{p}} \le f_R(\log{\Nm{\ideal{n}}}).
-    \end{equation*}
-\end{definition}
-
-\begin{remark}
-    Пусть $K$ числовое поле с кольцом целых алгебраических чисел $\mathcal{O}_K$.
-    Расширенная гипотеза Римана гласит, что для любого $s \in \mathbb{C}$ такого, что $\zeta_K(s) = 0$ выполняется: если $\Re{s} \in [0, 1]$, то $\Re{s} = \frac{1}{2}$.
-
-    Из работы Баха~\cite{source:Bach} следует, что, если расширенная гипотеза Римана выполнена, то условие A выполнено для всех колец целых алгебраических чисел и $f_{\mathcal{O}_K}(x) = 12x^2 + 12\log^2 \Delta$.
-\end{remark}
-
-\begin{remark}
-    Обобщенная гипотеза Римана гласит, что для любого характера Дирихле $\chi$ и любого $s \in \mathbb{C}$ такого, что $L(\chi, s) = 0$ выполняется: если $s \not\in \mathbb{R}_{-}$, то $s = \frac{1}{2}$.
-
-    Из работы Анкени~\cite{source:Ankeny} следует, что, если обобщенная гипотеза Римана выполнена, то условие A выполнено для кольца целых чисел и $f_{\mathbb{Z}}(x) = 2x^2$.
-\end{remark}
 
 \subsection{Факториальные кольца}
 
 Идеал $\ideal{n}$ дедекиндового кольца $R$ называется главным, если его можно представить в виде $nR$ для некоторого $n \in R$.
 Дедекиндово кольцо, у которого все идеалы являются главными называется кольцом главных идеалов или факториальным кольцом.
 В кольце главных идеалов можно построить биективное отображение между элементами кольца и идеалами.
-Далее в работе при рассмотрении факториальных колец будем писать вместо идеалов элементы кольца.
+Далее в работе при рассмотрении факториальных колец будем писать вместо идеалов элементы кольца, если из контекста понятно о чем именно идет речь.
 
 \begin{definition}
     Пусть $R$ факториальное кольцо.

@@ -14,6 +14,25 @@
     \addcontentsline{toc}{chapter}{ГЛАВА \arabic{section}. ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}
 \end{center}
 
+\begin{definition}
+    Пусть характер $\chi$ задан на множестве идеалов кольца $R$, не является главным и определен по модулю идеала $\ideal{n} \subset R$.
+    Рассмотрим идеал $\ideal{p}_{\chi}$ минимальной нормы, для которого $\chi(\ideal{p}) \neq 0, 1$.
+
+    Пусть $R$ дедекиндово кольцо с полем частных $K$ и $L$ расширение поля $K$.
+    Будем говорить, что кольцо $R$ удовлетворяет условию A, если существует многочлен $f_R$, что для любого характера $\chi$, не являющегося главным, выполнено
+    \begin{equation*}
+        \Nm{\ideal{p}_{\chi}} \le f_R(\log{\Nm{\ideal{n}}}).
+    \end{equation*}
+\end{definition}
+
+\begin{remark}
+    Из работы Баха~\cite{source:Bach} следует, что, если расширенная гипотеза Римана выполнена, то условие A выполнено для всех колец целых алгебраических чисел и $f_{\mathcal{O}_K}(x) = 12x^2 + 12\log^2 \Delta$.
+\end{remark}
+
+\begin{remark}
+    Из работы Анкени~\cite{source:Ankeny} следует, что, если обобщенная гипотеза Римана выполнена, то условие A выполнено для кольца целых чисел и $f_{\mathbb{Z}}(x) = 2x^2$.
+\end{remark}
+
 \begin{proposition}\label{proposition:condition_A_with_any_homomorphism}
     Пусть кольцо $R$ удовлетворяет условию A.
     Пусть $\chi: \invertible{R/\ideal{n}} \to G$ нетривиальный гомоморфизм.
@@ -216,12 +235,12 @@
     Теперь докажем вторую часть теоремы.
     Необходимость следует из доказанного ранее.
 
-    Предположим, что $\ideal{n} \in \zeroless{R} \setminus \invertible{R}$ составной идеал нечетной нормы и для любого идеала $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$, $(a, \ideal{n}) = 1$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+    Предположим, что $\ideal{n} \in \zeroless{R} \setminus \invertible{R}$ составной идеал нечетной нормы и для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$, $(a, \ideal{n}) = 1$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
 
     Предположим, что существует такой простой идеал $\ideal{p}$, что $\ideal{p}^2 | \ideal{n}$.
     Рассмотрим такое отображение $\chi: \invertible{R/\ideal{p}^2} \to \invertible{R/\ideal{p}^2}$, что для всех $a \in \invertible{R/\ideal{p}^2}$ выполнено $\chi(a) = a^{\Nm{\ideal{p}} - 1}$.
     Из предложения~\ref{proposition:miller_criteria_character} следует, что это нетривиальный гомоморфизм.
-    Тогда, из предложения~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $a \in \invertible{R/\ideal{p}^2}$, что
+    Тогда, из предложения~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой элемент $a \in \invertible{R/\ideal{p}^2}$, что
     \begin{equation*}
         a^{\Nm{\ideal{p}} - 1} \not\equiv 1 \pmod{\ideal{p}^2}.
     \end{equation*}
@@ -246,7 +265,7 @@
     \end{equation*}
     Рассмотрим такое отображение $\xi: \invertible{R/\ideal{n}} \to \invertible{R/\ideal{n}}$, что для всех $a \in \invertible{R/\ideal{n}}$ выполнено $\xi(a) = \jacobi{a}{\ideal{d}}$.
     Это отображение является нетривиальным гомоморфизмом.
-    Тогда, из предложения~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой идеал $a \in \invertible{R/\ideal{n}}$, что
+    Тогда, из предложения~\ref{proposition:condition_A_with_any_homomorphism}, получаем, что существует такой элемент $a \in \invertible{R/\ideal{n}}$, что
     \begin{equation*}
         \jacobi{a}{\ideal{d}} \not\equiv 1 \pmod{\ideal{n}}.
     \end{equation*}
