@@ -219,10 +219,10 @@
 \begin{statement}[Теорема Копперсмита]\label{statement:coppersmith}
   Пусть
   \begin{equation*}
-      f(x, y) = \sum\limits_{i, j} p_{i, j} x^i y^j
+      f(x, y) = \sum\limits_{i, j = 0}^{\delta} p_{i, j} x^i y^j
   \end{equation*}
-  неприводимый многочлен от двух переменных над $\mathbb{Z}$ со степенью $\delta$ по каждой переменной отдельно.
-  Пусть $X$, $Y$ границы предполагаемого решения $(x_0, y_0)$.
+  неприводимый многочлен от двух переменных над $\mathbb{Z}$.
+  Пусть $X, Y \ge 0$ такие, что $|x_0| \le X$ и $|y_0| \le Y$, где $(x_0, y_0)$ решение уравнения $f(x, y) = 0$.
   Обозначим
   \begin{equation*}
       W = \max_{i, j} |p_{i, j}| X^i Y^j.
