@@ -448,59 +448,59 @@
     Следовательно, $\mathbb{Z} \in \mathcal{S}$.
 \end{example}
 
-% TODO переписать
-\begin{example}\label{example:thm1:P[t]}
-    Пусть $R = \mathbb{P}[t]$, где $\mathbb{P}$ -- поле.
+\begin{example}\label{example:P[t]}
+    Пусть $P$ поле.
+    Положим $R = \mathbb{P}[t]$.
     Норма задана функцией $\upsilon(f)=\deg f$, $f \in \mathbb{P}[t]$.
-    Дробная часть $\textrm{fr}(m(t)/n(t))=r(t)/n(t)$, $m(t)\equiv r(t)(\textrm{mod}\ n(t))$, $\deg r<\deg n$, $m(t)/n(t) \in \mathbb{P}(t).$
+    Дробная часть $\textrm{fr}(m(t)/n(t))=r(t)/n(t)$, $m(t)\equiv r(t)(\textrm{mod}\ n(t))$, $\deg r < \deg n$, $m(t)/n(t) \in \mathbb{P}(t).$
 
-    \begin{enumerate}
+    \begin{itemize}
         \item $\mathbb{J}=\mathbb{K}_{*}$;
 
         \item $\mathbb{K}_{*}\backslash\mathbb{J} = \emptyset$;
-    \end{enumerate}
+    \end{itemize}
 
     Следовательно, $\mathbb{P}[t] \in \mathcal{S}$.
 \end{example}
 
-\begin{example}\label{example:thm1:coordinate_ring_of_circle}
-	Пусть $R$ это координатное кольцо $\mathbb{Q}[i][x, y]/(x^2 + y^2 + 1)$.
-	Известно, что это кольцо изоморфно $\mathbb{Q}[i][t,  t^{-1}]$, где отображение задано следующим образом
-	\begin{equation*}
-		X \to \cos \theta \to \frac{e^{ix} + e^{-ix}}{2} \to \frac{t + t^{-1}}{2}\\
-		Y \to \sin \theta \to \frac{-ie^{ix} + ie^{-ix}}{2} \to \frac{-it + it^{-1}}{2}
-	\end{equation*}
-	Так же известно, что $Q[i][t, t^{-1}]$ -- факториальное.
-	
-	Обратимыми элементами в этом кольце  являются одночлены вида $\alpha t^k$, где $\alpha\in\mathbb{Q}[i]$, $k\in\mathbb{Z}$.
-	Введем норму в этом кольце следующим образом
-	\begin{equation*}
-		 \upsilon(x) = \upsilon\left(
-		 	\sum_{i=k_1}^{k_2} \alpha_i t^i
-		 \right) = k_2 - k_1
-	\end{equation*}
+\begin{example}\label{example:coordinate_ring_of_circle}
+    Пусть $R$ координатное кольцо $\mathbb{Q}[i][x, y]/(x^2 + y^2 + 1)$.
+    Известно, что $R$ изоморфно $\mathbb{Q}[i][t,  t^{-1}]$, где отображение задано следующим образом
+    \begin{equation*}
+        X \to \cos \theta \to \frac{e^{ix} + e^{-ix}}{2} \to \frac{t + t^{-1}}{2}\\
+        Y \to \sin \theta \to \frac{-ie^{ix} + ie^{-ix}}{2} \to \frac{-it + it^{-1}}{2}
+    \end{equation*}
+    Так же известно, что $Q[i][t, t^{-1}]$ является факториальным кольцом.
+    
+    Обратимыми элементами в этом кольце  являются одночлены вида $\alpha t^k$, где $\alpha\in\mathbb{Q}[i]$, $k\in\mathbb{Z}$.
+    Введем норму в этом кольце следующим образом
+    \begin{equation*}
+        \upsilon(x) = \upsilon\left(
+            \sum_{i=k_1}^{k_2} \alpha_i t^i
+        \right) = k_2 - k_1
+    \end{equation*}
     где $\alpha_i\in\mathbb{Q}[i]$, если $x \neq 0$ и $\upsilon(0) = -\infty$.
     Проверим критерии.
     Рассмотрим два элемента кольца
     \begin{equation*}
-    	x = \sum_{i=k_1}^{k_2} \alpha_i t^i\\
-    	y = \sum_{i=l_1}^{l_2} \beta_i t^i
+        x = \sum_{i=k_1}^{k_2} \alpha_i t^i\\
+        y = \sum_{i=l_1}^{l_2} \beta_i t^i
     \end{equation*}
-	При  умножении максимальная степень будет равна $k_2 + l_2$, а минимальная $k_1 + l_1$.
-	Тогда $\upsilon(xy) = k_2 + l_2 - k_1 - l_1 \ge k_2 - k_1$.
-	Это равенство будет выполняться только если $l_2 - l_1 = 0$.
-	А это будет означать, что $y\in\mathbb{I}$.
-	
-	Покажем, что $\textrm{fr}(\alpha) = \varepsilon^{-1}\textrm{fr}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
-	Предположим, что $\textrm{fr}\left(\frac{m}{n}\right) = \frac{r}{n}$.
-	Это означает, что $n | (m-r)$ и $r$ имеет минимальную норму из возможных.
-	Так как норма не меняется при умножении на обратимый элемент, то $\varepsilon r$ будет иметь минимальную норму, а так же $n | (\varepsilon m - \varepsilon r)$.
-	Следовательно, имеем $\textrm{fr}(\alpha) = \varepsilon^{-1}\textrm{fr}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
-	Тогда $\textrm{int}(\alpha) = \varepsilon^{-1}\textrm{int}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
-	
-	Заметим, что умножив $\textrm{int}((\alpha-x)^{-1})$ на некоторый обратимый элемент можно сделать так, что $\alpha$ принадлежит полю частных кольца многочленов, а $x$ это многочлен.
-	Тогда этот пример будет аналогичным примеру с многочленами.
-	Следовательно, для данного координатного кольца выполнен аналог теоремы Кронекера-Валена.
+    При  умножении максимальная степень будет равна $k_2 + l_2$, а минимальная $k_1 + l_1$.
+    Тогда $\upsilon(xy) = k_2 + l_2 - k_1 - l_1 \ge k_2 - k_1$.
+    Это равенство будет выполняться только если $l_2 - l_1 = 0$.
+    А это будет означать, что $y\in\mathbb{I}$.
+    
+    Покажем, что $\textrm{fr}(\alpha) = \varepsilon^{-1}\textrm{fr}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
+    Предположим, что $\textrm{fr}\left(\frac{m}{n}\right) = \frac{r}{n}$.
+    Это означает, что $n | (m-r)$ и $r$ имеет минимальную норму из возможных.
+    Так как норма не меняется при умножении на обратимый элемент, то $\varepsilon r$ будет иметь минимальную норму, а так же $n | (\varepsilon m - \varepsilon r)$.
+    Следовательно, имеем $\textrm{fr}(\alpha) = \varepsilon^{-1}\textrm{fr}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
+    Тогда $\textrm{int}(\alpha) = \varepsilon^{-1}\textrm{int}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
+    
+    Заметим, что умножив $\textrm{int}((\alpha-x)^{-1})$ на некоторый обратимый элемент можно сделать так, что $\alpha$ принадлежит полю частных кольца многочленов, а $x$ это многочлен.
+    Тогда этот пример будет аналогичным примеру с многочленами.
+    Следовательно, для данного координатного кольца выполнен аналог теоремы Кронекера-Валена.
 \end{example}
 
 \begin{example}\label{example:Z[t]}
@@ -525,7 +525,7 @@
 
     Докажем, что
     \begin{equation*}
-    	\mathbb{J}\supseteq\{f\in\mathbb{Z}[t]|\deg f>0\ \textrm{или}\ |f(t)|\equiv|x_{0}|>2\}.
+        \mathbb{J}\supseteq\{f\in\mathbb{Z}[t]|\deg f>0\ \textrm{или}\ |f(t)|\equiv|x_{0}|>2\}.
     \end{equation*}
     Рассмотрим произвольные $\mathbb{A}\in\mathbb{F}/\mathbb{K}$ и $\alpha=m(t)/n(t)\in\mathbb{A}$, $\alpha=\textrm{fr}(\alpha)$.
 
@@ -533,15 +533,15 @@
     Предположим, что $\deg m > \deg n$.
     Из того, что $\alpha=\textrm{fr}(\alpha)$ и определения дробной части следует, что
     \begin{equation*}
-    	1 \ge \lim_{t\to+\infty}\left|\frac{\frac{m(t)}{n(t)}}{\frac{m(t)}{n(t)} - p(t)}\right| = \lim_{t\to+\infty}\left|\frac{m(t)}{m(t) - n(t)p(t)}\right|.
+        1 \ge \lim_{t\to+\infty}\left|\frac{\frac{m(t)}{n(t)}}{\frac{m(t)}{n(t)} - p(t)}\right| = \lim_{t\to+\infty}\left|\frac{m(t)}{m(t) - n(t)p(t)}\right|.
     \end{equation*}
-	Следовательно, получаем, что для любых $p(t)\in \mathbb{Z}[t]$ выполнено $\deg m(t) \le \deg(m(t) - n(t)p(t))$.
+    Следовательно, получаем, что для любых $p(t)\in \mathbb{Z}[t]$ выполнено $\deg m(t) \le \deg(m(t) - n(t)p(t))$.
     Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0}(t)\in\mathbb{Z}[t]$.
     Тогда
     \begin{equation*}
-    	\textrm{fr}((\alpha - x_{0})^{-1}) = (\alpha - x_0)^{-1} - r =\\
-    	= \left(\frac{m}{n} - x_0\right)^{-1} - r = \frac{n}{m - x_0 n} - r =\\
-    	= \frac{n - r(m - nx_{0})}{m - nx_{0}}.
+        \textrm{fr}((\alpha - x_{0})^{-1}) = (\alpha - x_0)^{-1} - r =\\
+        = \left(\frac{m}{n} - x_0\right)^{-1} - r = \frac{n}{m - x_0 n} - r =\\
+        = \frac{n - r(m - nx_{0})}{m - nx_{0}}.
     \end{equation*}
     Из того, что $\deg n < \deg m\le \deg(m-nx_{0})$ следует, что $\deg(n-r(m-nx_{0})) > \deg n$.
     Однако выше показано, что $\deg(n-r(m-nx_{0})) < \deg n$, исходя из определения дробной части.
@@ -554,8 +554,8 @@
     Следовательно, имеем $\deg(n-r(m-nx_{0})) > \deg n$.
     А это противоречит определению дробной части.
     Следовательно, если $\deg m \le \deg n$, то для любого $x_{0}\in\mathbb{Z}[t]$, $\deg x_{0} > 0$ выполнено $\textrm{int}((\alpha-x_{0})^{-1}) = 0$.
-
-	Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0} = c \in \mathbb{Z}\setminus\{0, \pm 1, \pm 2\}$.
+    
+    Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0} = c \in \mathbb{Z}\setminus\{0, \pm 1, \pm 2\}$.
     Если $\deg m < \deg n$, то $\deg n < \deg(n-r(m-nc))$ или $r=const$.
     Первый вариант противоречит определению дробной части.
     Если $r=const$, то $\lim_{t\to+\infty}\left|\frac{n(t)-r(m(t)-n(t)c)}{n(t)}\right|=|1+rc|\ge2$, но это противоречит определению дробной части.
@@ -598,8 +598,8 @@
     Из последнего следует, что $\alpha-x=b^{-1}-x\in\mathbb{K}$, но это противоречит условию $\alpha\in\mathbb{F}_{1}^{*}$.
     Итого получаем $1-bx\in\mathbb{I}$.
     Следовательно, $x\ \textrm{int}((\alpha-x)^{-1})+1\in\mathbb{I}$.
-
-	Тогда $\mathbb{K}_{*}\backslash\mathbb{J} = \emptyset$.
+    
+    Тогда $\mathbb{K}_{*}\backslash\mathbb{J} = \emptyset$.
     Следовательно, $\mathbb{K}\in \mathcal{S}$.
 \end{example}
 
@@ -743,7 +743,6 @@
     Получаем противоречие с приведенным примером.
     Аналогично можно показать, что лемма \ref{lem:1} не выполняется для $\mathbb{Z}[\sqrt{-11}].$
 \end{example}
-% end TODO
 
 \subsubsection{Общий метод проверки $R \in \mathcal{T}$}
 
@@ -897,11 +896,11 @@
 Пусть $\sigma_i$ для $1 \le i \le r_1$ является действительным, а для $r_1 < i < r_1 + r_2$ мнимым и $\sigma_{i+r_2} = \overline{\sigma_{i}}$.
 Определим функцию $\Phi(x): K \to \mathbb{R}^n$ следующим образом
 \begin{equation*}
-	\Phi(x) = \left(
-		\sigma_1(x), \ldots, \sigma_{r_1}(x),
-		\mathcal{R}\sigma_{r_1 + 1}(x), \ldots, \mathcal{R}\sigma_{r_1 + r_2}(x),
-		\mathcal{I}\sigma_{r_1 + 1}(x), \ldots, \mathcal{I}\sigma_{r_1 + r_2}(x)
-	\right)
+    \Phi(x) = \left(
+        \sigma_1(x), \ldots, \sigma_{r_1}(x),
+        \mathcal{R}\sigma_{r_1 + 1}(x), \ldots, \mathcal{R}\sigma_{r_1 + r_2}(x),
+        \mathcal{I}\sigma_{r_1 + 1}(x), \ldots, \mathcal{I}\sigma_{r_1 + r_2}(x)
+    \right)
 \end{equation*}
 
 Пусть $x, y \in \mathbb{R}^n$, $x = (x_i)_{1 \le i \le n}$ и $y = (y_i)_{1 \le i \le n}$.
@@ -958,10 +957,6 @@
 
 \subsubsection{Метод деления с выбором минимального по норме остатка}
 
-Рассмотрим группу единиц $\invertible{\mathbb{Z}_K}$.
-Будем считать, что она задается $r$ фундаментальными единицами и корнями из $1$ в $K$.
-Фундаментальные единицы будем обозначать $\{\varepsilon_1, \dots, \varepsilon_r\}$, а корень из $1$ будем обозначать $\upsilon$.
-
 \begin{definition}
     Под фундаментальной областью поля $K$ будем понимать
     \begin{equation*}
@@ -975,9 +970,9 @@
     Пусть $x\in \mathbb{R}^n$.
     Определим орбиту элемента $x$ следующим образом 
     \begin{equation*}
-    	\textrm{Orb}(x) = \left\{
-    		\Phi(\varepsilon)x - z \in \mathcal{F} \Big| \varepsilon \in \invertible{\mathbb{Z}_K}, z \in \mathbb{Z}_K
-    	\right\}.
+        \textrm{Orb}(x) = \left\{
+        \Phi(\varepsilon)x - z \in \mathcal{F} \Big| \varepsilon \in \invertible{\mathbb{Z}_K}, z \in \mathbb{Z}_K
+    \right\}.
     \end{equation*}
 \end{definition}
 
@@ -1062,7 +1057,7 @@
     
     Для каждого $1 \le i \le r$ существует положительное число $m$ такое, что $\overline{\varepsilon_i}^m\overline{\xi} = \overline{\xi}$.
     Обозначим $l_i$ наименьшее такое число.
-    Для $\upsilon$ наименьшее такое число обозначим $l$.
+    Для $\nu$ наименьшее такое число обозначим $l$.
     Далее будем полагать, что $l$ и $l_i$ известны для $K$.
     
     С этими обозначениями, из \cite{source:Lezowski} следует, что
