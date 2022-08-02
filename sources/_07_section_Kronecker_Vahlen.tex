@@ -68,12 +68,6 @@
 \subsection{Теорема Кронекера-Валена в специальном классе факториальных колец}
 
 \begin{definition}
-    Обозначим через $F_1$ множество всех несократимых дробей $F$
-    \begin{equation*}
-        F_1 = \{
-            \alpha \in F \big| \alpha = \fr{\alpha}
-        \}.
-    \end{equation*}
     Определим функцию $\omega: F_1 \to F_1$ следующим образом
     \begin{equation*}
         \omega(\alpha) = \left\{\begin{split}
@@ -1209,11 +1203,9 @@
 В работе ~\cite{source:Cooke} было показано, что для колец целых алгебраических чисел с бесконечной группой единиц длина кратчайшей цепочки делений с выбором минимального по норме остатка ограничена константой.
 Следовательно, важным вопросом является исследование асимптотического поведения длины кратчайшей цепочки делений.
 
-В работе~\cite{source:Selfridge} доказано следующее полезное утверждение.
-
-\begin{proposition}\label{proposition:fundamental_in_circle}
+\begin{definition}
     Пусть $d \neq 1$ -- целое число свободное от квадратов.
-    Обозначим
+    Под \emph{фундаментальной областью поля} $\mathbb{Q}[\sqrt{d}]$ понимают множество, заданное следующим образом
     \begin{equation*}
         F(d) = \left\{\begin{split}
             \left(
@@ -1226,21 +1218,47 @@
             \right) \cap \left(
                 \mathbb{Q} \times \mathbb{Q}
             \right), \textrm{ если } d \equiv 1 \pmod 4
-        \end{split}\right.
+        \end{split}\right..
     \end{equation*}
-    
-    Для $r > 0$ и $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$
+\end{definition}
+
+\begin{definition}
+    Пусть $d \neq 1$ -- целое число свободное от квадратов.
+    Под окрестностью точки $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$ радиуса $r > 0$ понимают множество заданное следующим образом
     \begin{equation*}
         U(\lambda, r) = \left\{
             q_1 + q_2 \sqrt{d} \in Q[\sqrt{d}] \big| |(q_1 - \lambda_1)^2 - d(q_2 - \lambda_2)^2| < r
         \right\}.
     \end{equation*}
 
-    Тогда кольцо $\mathbb{Z}[\sqrt{d}]$ является евклидовым относительно нормы числового поля $\mathbb{Q}[\sqrt{d}]$ тогда и только тогда, когда существует $\lambda \in \mathbb{Z}[\sqrt{d}]$, что $F(d) \subseteq U(\lambda, 1)$.
+    Под окрестностью множества точек $\Lambda \subseteq \mathbb{Z}[\sqrt{d}]$ радиуса $r > 0$ понимают множество заданное следующим образом
+    \begin{equation*}
+        U(\Lambda, r) = \bigcup_{\lambda \in \Lambda} U(\lambda, r).
+    \end{equation*}
+\end{definition}
+
+В работе~\cite{source:Selfridge} доказано следующее утверждение.
+
+\begin{proposition}\label{proposition:fundamental_in_circle}\cite{source:Selfridge}
+    Пусть $d \neq 1$ -- целое число свободное от квадратов.
+    Тогда кольцо $\mathbb{Z}[\sqrt{d}]$ является евклидовым относительно нормы числового поля $\mathbb{Q}[\sqrt{d}]$ тогда и только тогда, когда существует множество $\Lambda \subseteq \mathbb{Z}[\sqrt{d}]$, что
+    \begin{equation*}
+        F(d) \subseteq U(\Lambda, 1).
+    \end{equation*}
 \end{proposition}
 
 \begin{definition}\label{definition:euclidean_lambda}
-    Обозначим $\Lambda_K = \sup_{m/n \in F_1} |m/n|$, где $|m/n| = \frac{\elementnorm{m}}{\elementnorm{n}}$ для $m/n \in \zeroless{F_1}$, $(m, n) = 1$ и $|0| = 0$.
+    Для $m/n \in F_1$ рассмотрим функцию
+    \begin{equation*}
+        |m/n| = \begin{cases}
+            \frac{\elementnorm{m}}{\elementnorm{n}}, & m \neq 0, (m, n) = 1\\
+            0, & m = 0
+        \end{cases}.
+    \end{equation*}
+    Обозначим
+    \begin{equation*}
+        \Lambda_K = \sup_{m/n \in F_1} |m/n|.
+    \end{equation*}
 \end{definition}
 
 \begin{theorem}\label{theorem:euclidean_and_lambda}
@@ -1270,7 +1288,6 @@
     Если кольцо $\mathbb{Z}[\sqrt{d}]$ евклидово относительно нормы числового поля $\elementnorm{\cdot}$, то $l_n(\mathbb{Z}[\sqrt{d}]) = O(\log n)$.
 \end{theorem}
 \begin{proof}
-    Из предложения~\ref{proposition:fundamental_in_circle} следует, что существует $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$, что $F(d) \subseteq U(\lambda, 1)$.
     Обозначим
     \begin{equation*}
         E(d) = \left\{\begin{split}
@@ -1278,34 +1295,54 @@
             \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{4}\right], \textrm{ если } d \equiv 1 \pmod 4
         \end{split}\right..
     \end{equation*}
-    Для $r > 0$ определим множество
+
+    Для $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$ и $r > 0$ обозначим
     \begin{equation*}
         V(\lambda, r) = \left\{
             (x, y) \in R \times R \Big| \left|(x - \lambda_1)^2 - d(y - \lambda_2)^2\right| < r
         \right\}.
     \end{equation*}
-    Докажем, что $E(d) \subseteq V(\lambda, 1)$.
-    Предположим, что $(x_0, y_0) \in E(d) \setminus V(\lambda, 1)$.
-    Так как $F(d) \setminus U(\lambda, 1) = \emptyset$, то или $x_0 \not\in \mathbb{Q}$, или $y_0 \not\in \mathbb{Q}$.
+
+    Для множества точек $\Lambda \subseteq \mathbb{Z}[\sqrt{d}]$ и $r > 0$ обозначим
+    \begin{equation*}
+        V(\Lambda, r) = \bigcup_{\lambda \in \Lambda} V(\lambda, r).
+    \end{equation*}
+
+    Из предложения~\ref{proposition:fundamental_in_circle} следует, что существует множество $\Lambda \subseteq \mathbb{Z}[\sqrt{d}]$, что $F(d) \subseteq U(\Lambda, 1)$.
+    Докажем, что $E(d) \subseteq V(\Lambda, 1)$.
+
+    Предположим, что $(x_0, y_0) \in E(d) \setminus V(\Lambda, 1)$.
+    Так как $F(d) \setminus U(\Lambda, 1) = \emptyset$, то или $x_0 \not\in \mathbb{Q}$, или $y_0 \not\in \mathbb{Q}$.
 
     Предположим, что $x_0 \not\in \mathbb{Q}$.
-    Тогда существует $\varepsilon_x > 0$ и $x \in [x_0 - \varepsilon_x, x_0 + \varepsilon_x] \cap \mathbb{Q}$, что $(x, y_0) \in E(d) \setminus V(\lambda, 1)$.
+    Тогда существует $\varepsilon_x > 0$ и $x \in [x_0 - \varepsilon_x, x_0 + \varepsilon_x] \cap \mathbb{Q}$, что $(x, y_0) \in E(d) \setminus V(\Lambda, 1)$.
     Следовательно, можно считать, что $x_0 \in \mathbb{Q}$ и $y_0 \not\in \mathbb{Q}$.
-    Тогда существует $\varepsilon_y > 0$ и $y \in [y_0 - \varepsilon_y, y_0 + \varepsilon_y] \cap \mathbb{Q}$, что $(x_0, y) \in E(d) \setminus V(\lambda, 1)$.
-    Получаем противоречие с условием $F(d) \setminus U(\lambda, 1) = \emptyset$.
-    Следовательно, выполнено $E(d) \subseteq V(\lambda, 1)$.
+    Тогда существует $\varepsilon_y > 0$ и $y \in [y_0 - \varepsilon_y, y_0 + \varepsilon_y] \cap \mathbb{Q}$, что $(x_0, y) \in E(d) \setminus V(\Lambda, 1)$.
+    Получаем противоречие с условием $F(d) \setminus U(\Lambda, 1) = \emptyset$.
+    Следовательно, выполнено $E(d) \subseteq V(\Lambda, 1)$.
 
-    Докажем, что существует $r_0 < 1$, что $F(d) \subseteq U(\lambda, r_0)$.
-    Используя рассуждения выше, заметим, что для этого достаточно показать, что $E(d) \subseteq V(\lambda, r_0)$ для некоторого $r_0 < 1$.
+    Докажем, что существует $r_0 < 1$, что $F(d) \subseteq U(\Lambda, r_0)$.
+    Используя рассуждения выше, заметим, что для этого достаточно показать, что $E(d) \subseteq V(\Lambda, r_0)$ для некоторого $r_0 < 1$.
     
     Множество $E(d)$ замкнутое.
     Следовательно, существует такая точка $(x_0, y_0) \in E(d)$, что
     \begin{equation*}
-        r_{x_0} = \left|(x_0 - \lambda_1)^2 - d(y_0 - \lambda_2)^2\right| = \min_{x \in E(d)} \left|(x - \lambda_1)^2 - d(y - \lambda_2)^2\right|.
+        r_{x_0} = \min_{\substack{
+            \lambda \in V(\Lambda, 1),\\
+            \lambda = \lambda_1 + \lambda_2 \sqrt{d}
+        }} \left|
+            (x_0 - \lambda_1)^2 - d(y_0 - \lambda_2)^2
+        \right| = \min_{\substack{
+            x \in E(d),\\
+            \lambda \in V(\Lambda, 1),\\
+            \lambda = \lambda_1 + \lambda_2 \sqrt{d}
+        }} \left|
+            (x - \lambda_1)^2 - d(y - \lambda_2)^2
+        \right|.
     \end{equation*}
-    Заметим, что $r_{x_0} < 1$, так как $E(d) \subseteq V(\lambda, 1)$.
+    Заметим, что $r_{x_0} < 1$, так как $E(d) \subseteq V(\Lambda, 1)$.
 
-    Следовательно, существует $r_0 < 1$, что $F(d) \subseteq U(\lambda, r_0)$.
+    Следовательно, существует $r_0 < 1$, что $F(d) \subseteq U(\Lambda, r_0)$.
     Рассмотрим произвольные $\gamma, \delta \in \mathbb{Z}[\sqrt{d}]$, $\delta \neq 0$.
     Из доказанного выше следует, что существует $q \in \mathbb{Z}[\sqrt{d}]$, что $\elementnorm{\frac{\gamma}{\delta} - q} \le r_0$.
     Так как $\elementnorm{\frac{\gamma}{\delta} - q} = \frac{\elementnorm{\gamma - q\delta}}{\elementnorm{\delta}}$, то получаем, что существуют $q, r \in \mathbb{Z}[\sqrt{d}]$, что $\gamma = q\delta + r$ и $\elementnorm{r} \le r_0 \elementnorm{\delta}$.
