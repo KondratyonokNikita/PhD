@@ -307,3 +307,15 @@
   commentstyle=\color{YellowGreen},   % comment style
   stringstyle=\color{ForestGreen}      % string literal style
 }
+
+% чтобы номера частей были в номерах секций
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\makeatletter
+\def\@seccntformat#1{%
+  \protect\textup{\protect\@secnumfont
+    \csname the#1\endcsname\enspace
+  }%
+}
+\renewcommand{\tocsection}[3]{%
+  \indentlabel{\@ifnotempty{#2}{\ignorespaces#1 #2\quad}}#3}
+\makeatother

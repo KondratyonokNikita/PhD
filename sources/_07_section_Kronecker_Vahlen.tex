@@ -7,11 +7,10 @@
     \tableofcontents
 }
 
-\newpage
 \begin{center}
-    \refstepcounter{section}
-    \section*{ГЛАВА \arabic{section}.\\ ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}\label{section:Kronecker-Vahlen theorem}
-    \addcontentsline{toc}{chapter}{ГЛАВА \arabic{section}. ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}
+    \refstepcounter{chapter}
+    \chapter*{ГЛАВА \arabic{chapter}.\\ ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}\label{chapter:Kronecker-Vahlen theorem}
+    \addcontentsline{toc}{chapter}{ГЛАВА \arabic{chapter}. ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}
 \end{center}
 
 \begin{definition}
@@ -65,7 +64,7 @@
     Далее в этой главе определяются достаточные условия на факториальное кольцо $R$ с заданной нормой и дробной частью, при которых теорема Кронекера-Валена будет выполняться в этом кольце.
 \end{remark}
 
-\subsection{Теорема Кронекера-Валена в специальном классе факториальных колец}
+\section{Теорема Кронекера-Валена в специальном классе факториальных колец}
 
 \begin{definition}
     Определим функцию $\omega: F_1 \to F_1$ следующим образом
@@ -78,7 +77,7 @@
 \end{definition}
 
 \begin{definition}
-    Тройку $(x_0, \alpha, n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$ будем называть регулярной, если существуют
+    Будем говорить, что $(x_0, \alpha, n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$ \emph{регулярная тройка}, если существуют
     \begin{itemize}
         \item $p, l \in \mathbb{N}$, $p \le n$ и $l \le p+1$,
 
@@ -97,7 +96,7 @@
 \end{definition}
 
 \begin{definition}
-    Через $\mathcal{T}$ обозначим множество всех таких факориальных колец $R$, для которых существует $D_R \in \mathbb{N}$, что выполнено
+    Через $\mathcal{T}$ обозначим множество всех таких факториальных колец $R$, для которых существует $D_R \in \mathbb{N}$, что выполнено
     \begin{itemize}
         \item для всех $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ тройка $(x_0, \alpha, D_R - 1)$ регулярная;
 
@@ -250,7 +249,7 @@
     Следовательно, получаем $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$.
 \end{proof}
 
-\subsubsection{Упрощенный метод проверки $R \in \mathcal{T}$}
+\subsection{Упрощенный метод проверки $R \in \mathcal{T}$}
 
 Пусть дано некоторое факториальное кольцо $R$.
 Рассмотрим алгоритм проверки принадлежности этого кольца классу $T$.
@@ -422,7 +421,7 @@
     Значит выполнено второе условие определения множества $\mathcal{S}$.
 \end{proof}
 
-\subsubsection{Примеры проверки $R \in \mathcal{T}$}
+\subsection{Примеры проверки $R \in \mathcal{T}$}
 
 \begin{example}\label{example:Z}
     Пусть $R = \mathbb{Z}$.
@@ -533,9 +532,11 @@
     Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0}(t)\in\mathbb{Z}[t]$.
     Тогда
     \begin{equation*}
-        \textrm{fr}((\alpha - x_{0})^{-1}) = (\alpha - x_0)^{-1} - r =\\
-        = \left(\frac{m}{n} - x_0\right)^{-1} - r = \frac{n}{m - x_0 n} - r =\\
-        = \frac{n - r(m - nx_{0})}{m - nx_{0}}.
+        \begin{split}
+            \textrm{fr}((\alpha - x_{0})^{-1}) = (\alpha - x_0)^{-1} - r =\\
+            = \left(\frac{m}{n} - x_0\right)^{-1} - r = \frac{n}{m - x_0 n} - r =\\
+            = \frac{n - r(m - nx_{0})}{m - nx_{0}}.
+        \end{split}
     \end{equation*}
     Из того, что $\deg n < \deg m\le \deg(m-nx_{0})$ следует, что $\deg(n-r(m-nx_{0})) > \deg n$.
     Однако выше показано, что $\deg(n-r(m-nx_{0})) < \deg n$, исходя из определения дробной части.
@@ -557,10 +558,12 @@
     Учитывая то, что $\alpha=\textrm{fr}(\alpha)$ и $\deg m=\deg n$ получаем $\lim_{t\to+\infty}\left|\frac{m(t)}{n(t)}\right|\le 0.5$.
     Если $\deg r>0,$ то $ \deg n<\deg(n-r(m-nc)),$ но это противоречие.
     Таким образом $r=const$ и
-    \begin{eqnarray}
-        \lim_{t\to+\infty}\left|\frac{n(t)-r(m(t)-n(t)c)}{n(t)}\right| \ge |1+rc|-|r|/2 \ge\\
-        \ge |r|(|c|-1/2)-1 \ge \frac{3}{2},
-    \end{eqnarray}
+    \begin{eqnarray*}
+        \begin{split}
+            \lim_{t\to+\infty}\left|\frac{n(t)-r(m(t)-n(t)c)}{n(t)}\right| \ge |1+rc|-|r|/2 \ge\\
+            \ge |r|(|c|-1/2)-1 \ge \frac{3}{2},
+        \end{split}
+    \end{eqnarray*}
     но это противоречит определению дробной части.
 
     Таким образом $\mathbb{J}\supseteq\{f\in\mathbb{Z}[t]|\deg f>0\ \textrm{или}\ |f(t)|\equiv|x_{0}|>2\}$.
@@ -738,7 +741,7 @@
     Аналогично можно показать, что лемма \ref{lem:1} не выполняется для $\mathbb{Z}[\sqrt{-11}].$
 \end{example}
 
-\subsubsection{Общий метод проверки $R \in \mathcal{T}$}
+\subsection{Общий метод проверки $R \in \mathcal{T}$}
 
 Приведем общий метод проверки включения $R \in \mathcal{T}$.
 
@@ -871,146 +874,9 @@
     Если $D_R \ge 3$, тот доказательство проводится аналогично.
 \end{proof}
 
-\subsection{Теорема Кронекера-Валена в кольце алгебраических целых чисел числового поля}
+\section{Теорема Кронекера-Валена в кольце алгебраических целых чисел числового поля}
 
-\subsubsection{Норма и дробная часть}
-
-Пусть $K$ -- числовое поле со степенью расширения равной $n$.
-Пусть $R = \mathbb{Z}_K$ -- кольцо алгебраических целых чисел поля $K$.
-И пусть $(e_i)_{1 \le i \le n}$ -- базис $\mathbb{Z}_K$.
-Будем считать, что группа $\invertible{\mathbb{Z}_K}$ бесконечна и образована $r$ фундаментальными единицами и корнями единицы в $K$.
-Будем обозначать их через $\{\varepsilon_1, \dots, \varepsilon_r\}$ и считать, что они известны.
-Обозначим $\nu$ -- генератор корней из единицы в $K$ порядка $l$.
-
-Введем норму $\elementnorm{\cdot}$ в кольце $R$.
-Обозначим через $N_{K/\mathbb{Q}}$ норму в числовом поле $K$.
-Далее в этой части будем полагать, что $\mathbb{Z}_K$ евклидово по отношению к норме $N_{K/\mathbb{Q}}$.
-
-Через $(\sigma_i)_{1 \le i \le n}$ обозначим вложения $K$ в $\mathbb{C}$.
-Пусть $\sigma_i$ для $1 \le i \le r_1$ является действительным, а для $r_1 < i < r_1 + r_2$ мнимым и $\sigma_{i+r_2} = \overline{\sigma_{i}}$.
-Определим функцию $\Phi(x): K \to \mathbb{R}^n$ следующим образом
-\begin{equation*}
-    \Phi(x) = \left(
-        \sigma_1(x), \ldots, \sigma_{r_1}(x),
-        \mathcal{R}\sigma_{r_1 + 1}(x), \ldots, \mathcal{R}\sigma_{r_1 + r_2}(x),
-        \mathcal{I}\sigma_{r_1 + 1}(x), \ldots, \mathcal{I}\sigma_{r_1 + r_2}(x)
-    \right)
-\end{equation*}
-
-Пусть $x, y \in \mathbb{R}^n$, $x = (x_i)_{1 \le i \le n}$ и $y = (y_i)_{1 \le i \le n}$.
-Определим произведение в $\mathbb{R}^n$ следующим образом
-\begin{equation*}
-    (xy)_i =
-    \begin{cases}
-        x_i y_i                       & \textrm{ если } 1 \le i \le r_1,\\
-        x_i y_i - x_{i+r_2} y_{i+r_2} & \textrm{ если } r_1 < i \le r_1+r_2,\\
-        x_{i-r_2} y_i - x_i y_{i-r_2} & \textrm{ если } r_1+r_2 < i \le n.
-    \end{cases}
-\end{equation*}
-
-Обозначим через $\mathcal{N}:\mathbb{R}^n \to \mathbb{R}$ норму в $\mathbb{R}^n$.
-По определению считаем, что
-\begin{equation*}
-    \mathcal{N}(x) = \prod\limits_{i=1}^{r_1} x_i \prod\limits_{i=r_1+1}^{r_1+r_2} (x_i^2 + x_{i+r_2}^2).
-\end{equation*}
-
-Заметим, что для любых $x, y\in \mathbb{R}^n$ выполнено $\mathcal{N}(xy) = \mathcal{N}(x)\mathcal{N}(y)$.
-А так же для любых $\xi\in K$ выполнено $N_{K/\mathbb{Q}}(\xi) = \mathcal{N}(\Phi(\xi))$.
-Далее можно определить $\elementnorm{\cdot}: \mathbb{Z}_K \to \mathbb{N} \cup \{0, -\infty\}$ следующим образом.
-\begin{equation*}
-    \elementnorm{\xi} = \begin{cases}
-        -\infty & \textrm{ если } x = 0,\\
-        \mathcal{N}(\Phi(\xi)) & \textrm{ если } x \in \zeroless{R},\\
-    \end{cases}
-\end{equation*}
-Заметим, что тогда $\mathbb{Z}_K$ является евклидовым относительно нормы $\elementnorm{\cdot}$.
-
-Дробную часть $\fr{\cdot}$ в $K$ введем аналогично замечанию~\ref{remark:easy_fr}.
-
-\begin{definition}
-    Для $\xi \in K$ обозначим через $\int{\xi} \in \mathbb{Z}_K$ такой элемент, что
-    \begin{equation*}
-        \inf\limits_{z\in\mathbb{Z}_K} |\mathcal{N}(\Phi(\xi) - \Phi(z))| = |\mathcal{N}(\Phi(\xi) - \Phi(\int{\xi}))|.
-    \end{equation*}
-    Для $\xi \in K$ обозначим через $\fr{\xi} = \xi - \int{\xi}$.
-\end{definition}
-
-Из доказанного в работе~\cite{source:Lezowski} следует, что получающееся определение дробной части корректно.
-
-\begin{proposition}\label{proposition:orbit}\cite{source:Lezowski}
-    Пусть $x \in \mathbb{R}^n$.
-    Обозначим
-    \begin{equation*}
-        m_{\overline{K}}(x) = \inf_{z\in\mathbb{Z}_K} |\mathcal{N}(x - \Phi(z))|.
-    \end{equation*}
-    Тогда для любого $\varepsilon \in \invertible{\mathbb{Z}_K}$, $Z \in \Phi(\mathbb{Z}_K)$ выполнено
-    \begin{equation*}
-        m_{\overline{K}}(\Phi(\varepsilon)x - Z) = m_{\overline{K}}(x).
-    \end{equation*}
-\end{proposition}
-
-\subsubsection{Метод деления с выбором минимального по норме остатка}
-
-\begin{definition}
-    Под фундаментальной областью поля $K$ будем понимать
-    \begin{equation*}
-        \mathcal{F} = \left\{
-            \sum\limits_{i=1}^n x_i\Phi(e_i) \Big| x_i \in \mathbb{Q}\cap[0, 1)
-        \right\}
-    \end{equation*}
-\end{definition}
-
-\begin{definition}
-    Пусть $x\in \mathbb{R}^n$.
-    Определим орбиту элемента $x$ следующим образом 
-    \begin{equation*}
-        \textrm{Orb}(x) = \left\{
-        \Phi(\varepsilon)x - z \in \mathcal{F} \Big| \varepsilon \in \invertible{\mathbb{Z}_K}, z \in \mathbb{Z}_K
-    \right\}.
-    \end{equation*}
-\end{definition}
-
-Из утверждения \ref{proposition:orbit} следует, что функция $m_{\overline{K}}$ принимает одно значение на всех элементах орбиты.
-
-\begin{proposition}\cite{source:Lezowski}
-    Для любого элемента $x\in \mathbb{R}^n$ орбита $\textrm{Orb}(x)$ конечна тогда и только тогда, когда $x \in \Phi(K)$.
-\end{proposition}
-
-\begin{definition}
-    Для всех $1 \le i \le n$ обозначим
-    \begin{equation*}
-        \Gamma_i = \prod\limits_{j=1}^r \max\left\{
-            |\sigma_i(\varepsilon_j)|, \frac{1}{|\sigma_i(\varepsilon_j)}
-        \right\}.
-    \end{equation*}
-
-    А так же определим
-    \begin{equation*}
-        \Gamma(k) =
-        \begin{cases}
-            \left(
-                \prod\limits_{j=1}^{n-1} \Gamma_j
-            \right)^{\frac{1}{n}} k^{\frac{1}{n}}\ \textrm{если}\ K\ \textrm{действительное},\\
-            \left(
-                \prod\limits_{j=1}^{r_1} \Gamma_j \prod\limits_{j=1}^{r_1+r_2-1} \Gamma_j \Gamma_{j+r_2}
-            \right)^{\frac{1}{n}} k^{\frac{1}{n}}\ \textrm{иначе},
-        \end{cases}
-    \end{equation*}
-    где $k>0$.
-\end{definition}
-
-\begin{proposition}\label{proposition:division_with_least_norm_remainder}\cite{source:Lezowski}
-    Пусть $x \in \Phi(K)$ и $k > 0$.
-    Для каждого $z \in \textrm{Orb}(x)$ обозначим
-    \begin{equation*}
-        \mathcal{I}_{z, k} = \{Z \in \Phi(\mathbb{Z}_K): |z_i-Z_i| \le \Gamma(k) \forall i, 1 \le i \le n\},
-    \end{equation*}
-    \begin{equation*}
-        \mathcal{M}_k = \min\limits_{z \in \textrm{Orb}(x)} \min\limits_{Z \in \mathcal{I}_{z, k}} |\mathcal{N}(z-Z)|.
-    \end{equation*}
-
-    Тогда, если $\mathcal{M}_k \le k$, то $m_{\overline{K}}(x) = \mathcal{M}_k$.
-\end{proposition}
+\subsection{Метод деления с выбором минимального по норме остатка}
 
 \begin{lemma}
     Пусть $\xi \in K$ и $k > 0$.
@@ -1055,12 +921,12 @@
     Далее будем полагать, что $l$ и $l_i$ известны для $K$.
     
     С этими обозначениями, из \cite{source:Lezowski} следует, что
-    \begin{equation}\label{equation:orbit}
+    \begin{equation*}
         \mathcal{O}(\xi) = \left\{
             \overline{\nu}^m \prod\limits_{i=1}^r \overline{\varepsilon_i}^{m_i} \overline{\xi}:
                 0 \le m < l, 0 \le m_i < l_i, 1 \le i \le r
         \right\}
-    \end{equation}
+    \end{equation*}
     и $\textrm{Orb}(\Phi(\xi)) = \{\Phi(\zeta):\zeta \in \mathcal{O}(\xi)\}$ для любого $\xi\in K$.
 
     Предположим, что мы знаем такие $m$ и $m_i$ что $\varepsilon = \nu^m\prod_{i=1}^r \varepsilon_i^{m_i}$.
@@ -1080,7 +946,7 @@
     \begin{enumerate}
         \item Вычислить $x = \Phi(a/b) \in \Phi(K)$;
         
-        \item Вычислить $\textrm{Orb}(x)$, используя~\ref{equation:orbit};
+        \item Вычислить $\textrm{Orb}(x)$;
 
         \item Выбрать произвольное действительное $k > 0$;
 
@@ -1122,7 +988,7 @@
     Таким образом, можно заключить, что наименьший по норме остаток при делении $a$ на $b$ можно найти за $O(1)$ арифметических операций в $K$.
 \end{proof}
 
-\subsubsection{Метод доказательства невыполнимости теоремы Кронекера-Валена}
+\subsection{Метод доказательства невыполнимости теоремы Кронекера-Валена}
 
 В этой части работы будет представлен метод автоматического доказательства невыполнимости теоремы Кронекера-Валена в кольце целых алгебраических чисел числового поля $K$.
 Метод доказательства приведен в алгоритме \ref{algorithm:kronecker_vahlen_common}.
@@ -1144,7 +1010,7 @@
     \end{enumerate}
 \end{algorithm}
 
-\subsubsection{Теорема Кронекера-Валена в действительных квадратичных норменно-евклидовых кольцах}
+\subsection{Теорема Кронекера-Валена в действительных квадратичных норменно-евклидовых кольцах}
 
 Применим описанный выше метод в частном случае.
 Предположим, что поле $K$ такое, что $\mathbb{Z}_K$ действительное квадратичное норменно-евклидово кольцо.
@@ -1195,7 +1061,7 @@
     Если $d<0$, то утверждение следует из работы~\cite{Rolletschek_1990}.
 \end{proof}
 
-\subsection{Теорема Ламе в факториальных кольцах}
+\section{Теорема Ламе в факториальных кольцах}
 
 Ранее было показано, что при определенных условиях на кольцо цепочка делений с выбором минимального по норме остатка является кратчайшей.
 Однако существуют кольца, для которых эти условия не выполняются и в которых цепочка делений с выбором минимального по норме остатка не является кратчайшей.
@@ -1350,6 +1216,9 @@
 
     Тогда, из теоремы~\ref{theorem:euclidean_and_lambda} следует, что $l_n(\mathbb{Z}[\sqrt{d}]) \le [\log_{r_0^{-1}} n] + 2$.
 \end{proof}
+
+\section*{Выводы по главе \ref{chapter:Kronecker-Vahlen theorem}}
+\addcontentsline{toc}{section}{Выводы по главе \ref{chapter:Kronecker-Vahlen theorem}}
 
 \onlyinsubfile{
     \subfile{_10_bibliography}

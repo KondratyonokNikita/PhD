@@ -7,19 +7,776 @@
     \tableofcontents
 }
 
-\newpage
 \begin{center}
-    \refstepcounter{section}
-    \section*{ГЛАВА \arabic{section}.\\ ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}\label{section:Primality}
-    \addcontentsline{toc}{chapter}{ГЛАВА \arabic{section}. ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}
+    \refstepcounter{chapter}
+    \chapter*{ГЛАВА \arabic{chapter}.\\ ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}\label{chapter:Primality}
+    \addcontentsline{toc}{chapter}{ГЛАВА \arabic{chapter}. ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}
 \end{center}
+
+\section{Предварительные сведения}
+
+\subsection{Дедекиндовы кольца}
+
+\begin{definition}
+    \emph{Идеалом} кольца $R$ называется его подкольцо $\ideal{n}$, замкнутое относительно умножения на элементы $R$.
+    А именно для любого $a \in R$ выполнено включение $a\ideal{n} \subseteq \ideal{n}$.
+    Идеал $\ideal{n}$ называется \emph{тривиальным}, если он совпадает с $R$ или нулевым идеалом $0$.
+    Идеал $\ideal{n}$ называется \emph{собственным}, если он не совпадает с $R$.
+\end{definition}
+
+\begin{definition}
+    Собственный идеал $\ideal{n} \subset R$ называется \emph{простым}, если факторкольцо $R/\ideal{n}$ является областью целостности.
+\end{definition}
+
+\begin{definition}
+    Собственный идеал $\ideal{n} \subset R$ называется \emph{максимальным}, если он не содержится ни в каком другом собственном идеале.
+\end{definition}
+
+\begin{remark}
+    Любой максимальный идеал является простым.
+\end{remark}
+
+\begin{definition}
+    Кольцо $R$ называется \emph{дедекиндовым}, если любой нетривиальный идеал раскладывается в произведение простых идеалов иденственным способом с точностью до порядка множителей.
+\end{definition}
+
+\begin{definition}
+    \emph{Нормой} $\Nm{\ideal{n}}$ идеала $\ideal{n} \subset R$ называется мощность факторкольца $R/\ideal{n}$.
+
+    Говорят, что дедекиндово кольцо $R$ является \emph{дедекиндовым кольцом с конечной нормой} (finite norm property), если для любого собственного идеала $\ideal{n} \subseteq R$ факторкольцо $R/\ideal{n}$ конечно.
+\end{definition}
+
+Далее в работе будем рассматривать только дедекиндовы кольца с конечной нормой.
+
+\begin{example}
+    Рассмотрим примеры дедекиндовых колец с конечной нормой.
+    \begin{itemize}
+        \item Пусть $K$ -- числовое поле.
+        Кольцо $\mathbb{Z}_K$, образованное алгебраическими целыми элементами этого поля является дедекиндовым с конечным полем остатков.
+        Частными случаями этого примера являются кольцо целых чисел и гауссовых чисел.
+        
+        \item Пусть $f(x, y) = y - mx - b$ -- прямая.
+        Тогда $K[x, y]/(f(x, y)) \cong K[x]$.
+        Следовательно, это координатное кольцо является факториальным.
+        
+        \item Пусть $f(x, y) = y - x^2$ -- парабола.
+        Тогда $K[x, y]/(f(x, y)) \cong K[x]$.
+        Следовательно, это координатное кольцо является факториальным.
+    
+        \item Пусть $f(x, y) = x^2 + y^2 - 1$.
+        Если $K = \mathbb{Q}$, то координатное кольцо $\mathbb{Q}[x, y]/(f)$ не изоморфно $K[x]$, так как первое не является факториальным кольцом.
+        Это можно показать, рассмотрев элементы $y^2 = yy$ и $1-x^2 = (1-x)(1+x)$.
+        Однако, если $K = \mathbb{C}$, то координатное кольцо $\mathbb{C}[x, y]/(f) \cong \mathbb{C}[x, x^{-1}]$ уже будет факториальным, так как это локализация факториального кольца.
+    \end{itemize}
+\end{example}
+
+\begin{definition}
+    Идеал $\ideal{n}$ называется \emph{главным}, если $\ideal{n} = aR$, где $a \in R$.
+    Если все идеалы кольца $R$ являются главными, то говорят, что $R$ \emph{кольцо главных идеалов}.
+\end{definition}
+
+\subsection{Операции над идеалами}
+
+\begin{definition}
+    \emph{Произведением} двух идеалов $\ideal{a}$ и $\ideal{b}$ называется идеал, порожденный всеми произведениями $ab$, где $a \in \ideal{a}$, $b \in \ideal{b}$.
+\end{definition}
+
+\begin{definition}
+    Пусть $a, b \in R$ и $\ideal{n} \subseteq R$.
+    Будем говорить, что $a$ \emph{сравнимо} с $b$ по модулю $\ideal{n}$ и писать $a \equiv b \pmod{\ideal{n}}$, если $a - b \in \ideal{n}$.
+\end{definition}
+
+\begin{definition}\cite{source:Petukhova}
+    Функцией Эйлера нетривиального идеала $\ideal{n} \subset R$ называется функция
+    \begin{equation*}
+        \varphi(\ideal{n}) = \left|
+            \invertible{(R/\ideal{n})}
+        \right|.
+    \end{equation*}
+\end{definition}
+
+\begin{statement}[Обобщенная теорема Эйлера]\cite{source:Petukhova}
+    Пусть $m \in R$ и $\ideal{n} \subset R$ --- идеал.
+    Если $Rm + \ideal{n} = R$, то
+    \begin{equation*}
+        m^{\varphi(\ideal{n})}\equiv 1 \pmod{\ideal{n}}.
+    \end{equation*}
+\end{statement}
+
+\begin{definition}
+    \emph{Первообразным корнем по модулю идеала} $\ideal{n}$ будем называть такой элемент $g \in R$, что $g^{\varphi (\ideal{n})} \equiv 1 \pmod{\ideal{n}}$ и $g^{l} \not\equiv 1 \pmod{\ideal{n}}$ при $1 \leq l < \varphi(\ideal{n})$.
+\end{definition}
+
+\begin{statement}[Обобщенная китайская теорема об остатках]\label{statement:chinese_remainder_theorem}
+    Пусть $\ideal{n}_1, \ideal{n}_2, \dots, \ideal{n}_k$ -- попарно взаимнопростые идеалы кольца $R$.
+    Тогда
+    \begin{equation*}
+        \begin{split}
+            R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k) \cong & (R/\ideal{n}_1) \times (R/\ideal{n}_2) \times \dots \times (R/\ideal{n}_k)\\
+            \invertible{R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k)} \cong & \invertible{R/\ideal{n}_1} \times \invertible{R/\ideal{n}_2} \times \dots \times \invertible{R/\ideal{n}_k}
+        \end{split}
+    \end{equation*}
+\end{statement}
+
+\begin{definition}
+    Элемент $a \in R$ будем называть \emph{квадратичным вычетом по модулю идеала} $\ideal{n}$, если существует $b \in R$, что $b^2 \equiv a \pmod{\ideal{n}}$.
+
+    Для простого идеала $\ideal{p}$ и $a \in \invertible{R/\ideal{p}}$ определим \emph{символ Лежандра} следующим образом
+    \begin{equation*}
+        \jacobi{a}{\ideal{p}} = \begin{cases}
+            1, \textrm{ если } a \textrm{ квадратичный вычет по модулю } \ideal{p}\\
+            -1, \textrm{ иначе}.
+        \end{cases}
+    \end{equation*}
+
+    Для нетривиального идеала $\ideal{n} = \ideal{p}_1  \dots \ideal{p}_k$ и $a \in \invertible{R/\ideal{n}}$ определим \emph{символ Якоби} следующим образом
+    \begin{equation*}
+        \jacobi{a}{\ideal{n}} = \left(\frac{a}{\ideal{p}_1}\right) \dots \left(\frac{a}{\ideal{p}_k}\right)
+    \end{equation*}
+\end{definition}
+
+\subsection{Характер дедекиндового кольца}
+
+\begin{definition}
+    \emph{Расширение поля} $K$ это такое поле $E$, которое содержит поле $K$ в качестве подполя.
+    Для любого расширения $E \supset K$ поле $E$ является векторным пространством над полем $K$.
+    Размерность этого векторного пространства называется \emph{степенью расширения} и обозначается $[E:K]$.
+    Говорят, что $E \supset K$ \emph{конечное расширение}, если его степень конечна.
+\end{definition}
+
+\begin{definition}
+    Пусть $E$ расширение поля $K$.
+    Элемент $E$ называется \emph{алгебраическим} над $K$, если он является корнем ненулевого многочлена с коэффициентами в $K$.
+    Элементы, не являющиеся алгебраическими, называются \emph{трансцендентными}.
+    
+    Если каждый элемент расширения $E \supset K$ является алгебраическим над $K$, то $E \supset K$ называется \emph{алгебраическим расширением}. 
+\end{definition}
+
+\begin{definition}
+    Алгебраическое расширение $E \supset K$ называется \emph{нормальным}, если каждый неприводимый многочлен $f(x)$ над $K$, имеющий хотя бы один корень в $E$, разлагается в $E$ на линейные множители.
+
+    Алгебраическое расширение $E \supset K$ называется \emph{сепарабельным}, если каждый элемент $E$ является сепарабельным, то есть его минимальный многочлен не имеет кратных корней.
+    В частности, теорема о примитивном элементе утверждает, что любое конечное сепарабельное расширение имеет примитивный элемент.
+    
+    Расширение $E \supset K$ называется \emph{расширением Галуа}, если оно одновременно сепарабельное и нормальное.
+
+    Для любого расширения $E \supset K$ можно рассмотреть группу автоморфизмов поля $E$, действующих тождественно на поле $K$.
+    Когда расширение является расширением Галуа, эта группа называется \emph{группой Галуа} данного расширения и обозначается $\Gal{L/K}$.
+\end{definition}
+
+Пусть $R$ дедекиндово кольцо с полем частных $K$.
+Пусть расширение $L \supset K$ конечное, сепарабельное и нормальное расширение, а $\Gal{L/K}$ является абелевой.
+Положим $S$ алгебраическое замыкание $R$ в $L$.
+
+\begin{definition}
+    Пусть $\ideal{p}$ простой идеал кольца $R$.
+    Рассмотрим идеал $\ideal{p}S$, который он генерирует в кольце $S$.
+    Этот идеал не обязан быть простым, но существует единственная факторизация его на простые идеалы
+    \begin{equation*}
+        \ideal{p}S = \prod_{\ideal{q}} \ideal{q}^{e_{\ideal{q}}},
+    \end{equation*}
+    где произведение берется по всем простым идеалам кольца $S$ и $e_{\ideal{q}} > 0$ только для конечного количества простых $\ideal{q}$.
+    Если $e_{\ideal{q}} > 0$ для некоторого $\ideal{q}$, то говорят, что $\ideal{q}$ лежит над (lie over, lie above) простым идеалом $\ideal{p}$.
+
+    Число $e_{\ideal{q}}$ из разложения $\ideal{p}S = \prod_{\ideal{q}} \ideal{q}^{e_{\ideal{q}}}$ называется \emph{индексом разветвления} (ramification index) $\ideal{q}$.
+
+    Если для простого идеала $\ideal{p} \subseteq R$ выполнено $e_{\ideal{q}} > 1$ для некоторого $\ideal{q} \subseteq S$, то говорят, что идеал $\ideal{p}$ \emph{ветвится} в $L$.
+    Если идеал $\ideal{p}S$ простой в $S$, то говорят, что $\ideal{p}$ \emph{инертный} (inert).
+    Если для всех $\ideal{q}$ выполняется или $e_{\ideal{q}} = 0$, или $e_{\ideal{q}} = 1$, то говорят, что $\ideal{p}$ \emph{полностью разлагается} (splits completely) в $L$.
+\end{definition}
+
+\begin{definition}
+    Пусть $\ideal{p}$ простой идеал кольца $R$, не ветвящийся в $L$ и пусть $\ideal{P} = \ideal{p}S$ соответствующий идеал в $S$.
+    Тогда существует единственный такой элемент $\sigma \in \Gal{L/K}$, что для любого $\alpha \in L$
+    \begin{equation*}
+        \sigma(\alpha) \equiv \alpha^{\Nm{\ideal{p}}} \pmod{\ideal{P}}.
+    \end{equation*}
+    Этот элемент называют \emph{символом Артина} идеала $\ideal{p}$.
+\end{definition}
+
+\begin{definition}
+    Пусть $\phi: \Gal{L/K} \to \invertible{\mathbb{C}}$ гомоморфизм.
+    Рассмотрим функцию
+    \begin{equation*}
+        \chi(\ideal{p}) = \begin{cases}
+            \phi(\sigma_{\ideal{p}}), & \textrm{если } \ideal{p} \textrm{ не ветвится}\\
+            0, & \textrm{иначе}
+        \end{cases}
+    \end{equation*}
+    где $\ideal{p}$ простой и $\sigma_{\ideal{p}}$ символ Артина идеала $\ideal{p}$.
+    Используя мультипликативность, эту функцию можно определить для всех идеалов $R$.
+    Полученную функцию $\chi$ будем называть \emph{характером}.
+    Характер принимающий только значения $0$ и $1$ называется \emph{главным}.
+\end{definition}
+
+\begin{definition}
+    Будем говорить, что характер $\chi$ \emph{задан по модулю идеала} $\ideal{f} \subset R$, если для всех идеалов $\ideal{n} \subseteq R$, из сравнения $\ideal{n} \equiv 1 \pmod{\ideal{f}}$ следует равенство $\chi(\ideal{n}) = 1$.
+\end{definition}
+
+\subsection{Факториальные кольца}
+
+\begin{definition}
+    Кольцо $R$ называется \emph{факториальным}, если каждый его ненулевой элемент $x \in R$ либо обратим, либо однозначно представляется в виде произведения неприводимых элементов с точностью до перестановки множителей.
+
+    Факториальное кольцо является кольцом главных идеалов.
+    Далее рассматривая идеалы факториальных колец будем писать элементы, порождающие эти идеалы.
+\end{definition}
+
+\begin{definition}
+    Пусть $R$ факториальное кольцо.
+    Функцию $\elementnorm{\cdot}: R \to \mathbb{N} \cup \{0, -\infty\}$ будем называть нормой в $R$, если
+    \begin{itemize}
+        \item $\elementnorm{x} = -\infty$ тогда и только тогда, когда $x = 0$;
+
+        \item $\elementnorm{xy} \ge \elementnorm{x}$;
+
+        \item для $x, y \in \zeroless{R}$ равенство $\elementnorm{xy} = \elementnorm{x}$ выполнено тогда и только тогда, когда $y \in \invertible{K}$.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    Для любого факториального кольца $R$ можно определить норму.
+    Рассмотрим разложение элемента $x$ на простые множители $x = \varepsilon p_1^{\alpha_1} \dots p_k^{\alpha_k}$, где $\varepsilon \in \invertible{R}$, $p_1, \dots, p_k$ -- простые элементы $R$.
+    Тогда функция
+    \begin{equation*}
+        \elementnorm{x} = \left\{\begin{split}
+            \sum_{i=1}^k \alpha_{i}, & \textrm{ если } x \neq 0\\
+            -\infty, & \textrm{ если } x = 0
+        \end{split}\right.
+    \end{equation*}
+    является нормой в $R$.
+\end{remark}
+
+Далее будем считать, что факториальное кольцо $R$ задано вместе с нормой $\elementnorm{\cdot}$.
+
+\begin{definition}
+    Пусть $R$ факториальное кольцо и $F$ его поле частных.
+    Функцию $\fr{\cdot}: F \to F$ будем называть дробной частью в $F$, если
+    \begin{itemize}
+        \item $\fr{\alpha + q} = \fr{\alpha}$ для любых $\alpha \in F$, $q \in R$;
+
+        \item если $m \in R$, $n \in \zeroless{R}$ и $(m, n) = 1$, то $\fr{m/n} = r/n$, где $r \in R$, $(m-r)/n \in R$ и $\elementnorm{r} = \min \{\elementnorm{s} | s \in R, (m-s)/n \in R\}$.
+    \end{itemize}
+    Функцию $\int{\cdot}: F \to R$ будем называть целой частью, если
+    \begin{equation*}
+        \int{\alpha} = \alpha - \fr{\alpha}.
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Обозначим через $F_1$ множество всех несократимых дробей $F$
+    \begin{equation*}
+        F_1 = \{
+            \alpha \in F \big| \alpha = \fr{\alpha}
+        \}.
+    \end{equation*}
+\end{definition}
+
+\begin{remark}\label{remark:easy_fr}
+    Для любого факториального кольца $R$ можно определить дробную и целую часть.
+    Рассмотрим произвольный элемент $X \in F/R$.
+    Этот элемент можно представить в виде $X = \{m/n + t | t \in R\}$, где $m \in R$, $n \in \zeroless{R}$ $(m, n) = 1$.
+    Существует элемент $t_0 \in R$, минимизирующий норму $\elementnorm{m + n t_0}$.
+    Тогда для любого элемента $x \in X$ положим
+    \begin{equation*}
+        \fr{x} = m/n + t_0.
+    \end{equation*}
+
+    Несложно заметить, что эта функция является дробной частью.
+    Целую часть определим следующим образом
+    \begin{equation*}
+        \int{x} = x - \fr{x}.
+    \end{equation*}
+\end{remark}
+
+Далее будем считать, что факториальное кольцо $R$ задано вместе дробной частью $\fr{\cdot}$ и целой частью $\int{\cdot}$.
+
+\subsection{Числовые кольца}
+
+Пусть $K$ -- числовое поле со степенью расширения равной $n$.
+Пусть $R = \mathbb{Z}_K$ -- кольцо алгебраических целых чисел поля $K$.
+И пусть $(e_i)_{1 \le i \le n}$ -- базис $\mathbb{Z}_K$.
+Будем считать, что группа $\invertible{\mathbb{Z}_K}$ бесконечна и образована $r$ фундаментальными единицами и корнями единицы в $K$.
+Будем обозначать их через $\{\varepsilon_1, \dots, \varepsilon_r\}$ и считать, что они известны.
+Обозначим $\nu$ -- генератор корней из единицы в $K$ порядка $l$.
+
+Введем норму $\elementnorm{\cdot}$ в кольце $R$.
+Обозначим через $N_{K/\mathbb{Q}}$ норму в числовом поле $K$.
+Далее в этой части будем полагать, что $\mathbb{Z}_K$ евклидово по отношению к норме $N_{K/\mathbb{Q}}$.
+
+Через $(\sigma_i)_{1 \le i \le n}$ обозначим вложения $K$ в $\mathbb{C}$.
+Пусть $\sigma_i$ для $1 \le i \le r_1$ является действительным, а для $r_1 < i < r_1 + r_2$ мнимым и $\sigma_{i+r_2} = \overline{\sigma_{i}}$.
+Определим функцию $\Phi(x): K \to \mathbb{R}^n$ следующим образом
+\begin{equation*}
+    \Phi(x) = \left(
+        \sigma_1(x), \ldots, \sigma_{r_1}(x),
+        \mathcal{R}\sigma_{r_1 + 1}(x), \ldots, \mathcal{R}\sigma_{r_1 + r_2}(x),
+        \mathcal{I}\sigma_{r_1 + 1}(x), \ldots, \mathcal{I}\sigma_{r_1 + r_2}(x)
+    \right)
+\end{equation*}
+
+Пусть $x, y \in \mathbb{R}^n$, $x = (x_i)_{1 \le i \le n}$ и $y = (y_i)_{1 \le i \le n}$.
+Определим произведение в $\mathbb{R}^n$ следующим образом
+\begin{equation*}
+    (xy)_i =
+    \begin{cases}
+        x_i y_i                       & \textrm{ если } 1 \le i \le r_1,\\
+        x_i y_i - x_{i+r_2} y_{i+r_2} & \textrm{ если } r_1 < i \le r_1+r_2,\\
+        x_{i-r_2} y_i - x_i y_{i-r_2} & \textrm{ если } r_1+r_2 < i \le n.
+    \end{cases}
+\end{equation*}
+
+Обозначим через $\mathcal{N}:\mathbb{R}^n \to \mathbb{R}$ норму в $\mathbb{R}^n$.
+По определению считаем, что
+\begin{equation*}
+    \mathcal{N}(x) = \prod\limits_{i=1}^{r_1} x_i \prod\limits_{i=r_1+1}^{r_1+r_2} (x_i^2 + x_{i+r_2}^2).
+\end{equation*}
+
+Заметим, что для любых $x, y\in \mathbb{R}^n$ выполнено $\mathcal{N}(xy) = \mathcal{N}(x)\mathcal{N}(y)$.
+А так же для любых $\xi\in K$ выполнено $N_{K/\mathbb{Q}}(\xi) = \mathcal{N}(\Phi(\xi))$.
+Далее можно определить $\elementnorm{\cdot}: \mathbb{Z}_K \to \mathbb{N} \cup \{0, -\infty\}$ следующим образом.
+\begin{equation*}
+    \elementnorm{\xi} = \begin{cases}
+        -\infty & \textrm{ если } x = 0,\\
+        \mathcal{N}(\Phi(\xi)) & \textrm{ если } x \in \zeroless{R},\\
+    \end{cases}
+\end{equation*}
+Заметим, что тогда $\mathbb{Z}_K$ является евклидовым относительно нормы $\elementnorm{\cdot}$.
+
+Дробную часть $\fr{\cdot}$ в $K$ введем аналогично замечанию~\ref{remark:easy_fr}.
+
+\begin{definition}
+    Для $\xi \in K$ обозначим через $\int{\xi} \in \mathbb{Z}_K$ такой элемент, что
+    \begin{equation*}
+        \inf\limits_{z\in\mathbb{Z}_K} |\mathcal{N}(\Phi(\xi) - \Phi(z))| = |\mathcal{N}(\Phi(\xi) - \Phi(\int{\xi}))|.
+    \end{equation*}
+    Для $\xi \in K$ обозначим через $\fr{\xi} = \xi - \int{\xi}$.
+\end{definition}
+
+Из доказанного в работе~\cite{source:Lezowski} следует, что получающееся определение дробной части корректно.
+
+\begin{proposition}\label{proposition:orbit}\cite{source:Lezowski}
+    Пусть $x \in \mathbb{R}^n$.
+    Обозначим
+    \begin{equation*}
+        m_{\overline{K}}(x) = \inf_{z\in\mathbb{Z}_K} |\mathcal{N}(x - \Phi(z))|.
+    \end{equation*}
+    Тогда для любого $\varepsilon \in \invertible{\mathbb{Z}_K}$, $Z \in \Phi(\mathbb{Z}_K)$ выполнено
+    \begin{equation*}
+        m_{\overline{K}}(\Phi(\varepsilon)x - Z) = m_{\overline{K}}(x).
+    \end{equation*}
+\end{proposition}
+
+\begin{definition}
+    Пусть $x\in \mathbb{R}^n$.
+    Обозначим
+    \begin{equation*}
+        \mathcal{F} = \left\{
+            \sum\limits_{i=1}^n x_i\Phi(e_i) \Big| x_i \in \mathbb{Q}\cap[0, 1)
+        \right\}
+    \end{equation*}
+    Определим \emph{орбиту элемента} $x$ следующим образом 
+    \begin{equation*}
+        \textrm{Orb}(x) = \left\{
+        \Phi(\varepsilon)x - z \in \mathcal{F} \Big| \varepsilon \in \invertible{\mathbb{Z}_K}, z \in \mathbb{Z}_K
+    \right\}.
+    \end{equation*}
+\end{definition}
+
+Из утверждения \ref{proposition:orbit} следует, что функция $m_{\overline{K}}$ принимает одно значение на всех элементах орбиты.
+
+\begin{proposition}\cite{source:Lezowski}
+    Для любого элемента $x\in \mathbb{R}^n$ орбита $\textrm{Orb}(x)$ конечна тогда и только тогда, когда $x \in \Phi(K)$.
+\end{proposition}
+
+\begin{definition}
+    Для всех $1 \le i \le n$ обозначим
+    \begin{equation*}
+        \Gamma_i = \prod\limits_{j=1}^r \max\left\{
+            |\sigma_i(\varepsilon_j)|, \frac{1}{|\sigma_i(\varepsilon_j)}
+        \right\}.
+    \end{equation*}
+
+    А так же определим
+    \begin{equation*}
+        \Gamma(k) =
+        \begin{cases}
+            \left(
+                \prod\limits_{j=1}^{n-1} \Gamma_j
+            \right)^{\frac{1}{n}} k^{\frac{1}{n}}\ \textrm{если}\ K\ \textrm{действительное},\\
+            \left(
+                \prod\limits_{j=1}^{r_1} \Gamma_j \prod\limits_{j=1}^{r_1+r_2-1} \Gamma_j \Gamma_{j+r_2}
+            \right)^{\frac{1}{n}} k^{\frac{1}{n}}\ \textrm{иначе},
+        \end{cases}
+    \end{equation*}
+    где $k>0$.
+\end{definition}
+
+\begin{proposition}\label{proposition:division_with_least_norm_remainder}\cite{source:Lezowski}
+    Пусть $x \in \Phi(K)$ и $k > 0$.
+    Для каждого $z \in \textrm{Orb}(x)$ обозначим
+    \begin{equation*}
+        \mathcal{I}_{z, k} = \{Z \in \Phi(\mathbb{Z}_K): |z_i-Z_i| \le \Gamma(k) \forall i, 1 \le i \le n\},
+    \end{equation*}
+    \begin{equation*}
+        \mathcal{M}_k = \min\limits_{z \in \textrm{Orb}(x)} \min\limits_{Z \in \mathcal{I}_{z, k}} |\mathcal{N}(z-Z)|.
+    \end{equation*}
+
+    Тогда, если $\mathcal{M}_k \le k$, то $m_{\overline{K}}(x) = \mathcal{M}_k$.
+\end{proposition}
+
+\begin{statement}\cite{source:Wikstrom}
+    Пусть $R$ кольцо целых алгебраических элементов числового поля.
+    Тогда для любых $a, b \in R$ наибольший общий делитель $(a, b)$ можно вычислить на $O(n^2)$ арифметических операций в $\mathbb{Z}$, где $n$ длина бинарной записи $a$ и $b$.
+\end{statement}
+
+\subsection{Способы представления идеалов}
+
+Рассмотрим способы представления идеалов.
+
+\begin{definition}
+    Пусть $\ideal{n} \subseteq R$ произвольный идеал дедекиндового кольца $R$.
+    Тогда существуют элементы $\alpha_1, \dots, \alpha_r \in R$ для $r \leq n$, что
+    \begin{equation*}
+        \ideal{n} = \{\xi_1 \alpha_1 + \dots + \xi_r \alpha_r | \xi_i \in R\}.
+    \end{equation*}
+    
+    Такое представление будем обозначать $\ideal{n} = (\alpha_1, \dots, \alpha_r)$ и называть базисным представлением идеала.
+\end{definition}
+
+\begin{definition}
+    Пусть $\ideal{n} \subseteq R$ произвольный идеал дедекиндового кольца $R$.
+    Тогда существуют элементы $e_1, \dots, e_r \in R$ для $r \leq n$, что
+    \begin{equation*}
+        \ideal{n} = \{x_1 e_1 + \dots + x_m e_m | x_i \in \mathbb{Z}\}.
+    \end{equation*}
+
+    Такое представление будем обозначать $\ideal{n} = (e_1, \dots, e_n)_{\mathbb{Z}}$ и называть $\mathbb{Z}$-представлением идеала.
+\end{definition}
+
+Далее под $\mathbb{Z}$-представлением будем понимать матрицу $A \in \mathbb{\mathbb{Z}}^{n \times n}$, такую что её столбец под номером $i$ - это коэффициенты разложения $e_i$ в фиксированный целый базис $\mathcal{O}_K$.
+
+В источниках \cite{source:Cohen}, \cite{source:Post} может быть найдено следующее утверждение.
+
+\begin{statement}
+    Любой идеал имеет $\mathbb{Z}$-представление.
+\end{statement}
+
+$\mathbb{Z}$-представление требует не меньше памяти для хранения по сравнению с базисным представлением.
+
+\begin{definition}
+    Представление 
+    \begin{equation}
+        \ideal{a} = (a, \alpha)_2 = \{a\xi_1 + \alpha \xi_2 | \xi_1, \xi_2 \in \mathcal{O}_K\},
+    \end{equation}
+    где $a \in \mathbb{N}_0, \alpha \in \mathcal{O}_K$, будет называть 2-представление идеала $\ideal{a}$.
+\end{definition}
+
+В источниках \cite{Cohen}, \cite{Post} может быть найдено следующее утверждение.
+
+\begin{statement}
+    Любой идеал имеет 2-представление.
+\end{statement}
+
+Далее под 2-представлением будем понимать вектор $\mathbb{Z}^n$ -- коэффициенты разложения $\alpha$ в целый базис и целое неотрицательное число $a$.
+
+2-представление является частным случаем базисного представления и любое 2-представление задаёт идеал. Отметим, что оно требует меньше памяти для хранения по сравнению с $\mathbb{Z}$-представлением и базисным представлением.   
+
+В \cite{Post} приведены соответствующие алгоритмы.
+
+\begin{statement}
+    Существует полиномиальный алгоритм перехода от 2 - представления к $\mathbb{Z}$-представлению и обратно.
+\end{statement}
+
+К сожалению, не смотря на полиномиальность алгоритма, он может оказаться достаточно трудоёмким.
+
+Рассмотрим один важный частный случай $\mathbb{Z}$-представления.
+
+\begin{definition}
+    Будем говорить, что матрица $A \in \mathbb{Z}^{n \times n}$ записана в нормальной эрмитовой форме, если выполнены следующие условия:
+	
+    \begin{enumerate}
+        \item $m_{i,j} = 0$, если $i > j$.
+        
+        \item $m_{i,i} > 0$ для любого $i$.
+        
+        \item Для любого $i > j$ выполнено $0\leq m_{i,j}\leq m_{i,i}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Представление идеала $\ideal{a}$ в нормальной эрмитовой форме будем называть такое его $\mathbb{Z}$-представление
+    \begin{equation}
+        \ideal{a} = (e_1,\dots,e_n)_{\mathbb{Z}},
+    \end{equation}
+    что соответствующая матрица является матрицей в эрмитовой нормальной форме.
+\end{definition}
+
+В источниках \cite{Cohen}, \cite{Post} может быть найдено следующее утверждение.
+
+\begin{statement}
+    Любой идеал может быть записан в нормальной эрмитовой форме, причём такое представление единственно.
+\end{statement}
+
+В статье \cite{PolynomialHermitForm} был построен необходимый алгоритм:
+
+\begin{statement}
+    Существует полиномиальный алгоритм получения представления идеала в нормальной эрмитовой форме из его $\mathbb{Z}$-представления.
+\end{statement}
+
+\begin{corollary}
+    Таким образом, за полиномиальное время можно переходить от $\mathbb{Z}$-представления, 2-представления или представления в нормальной эрмитовой форме к любому из них.
+\end{corollary}
+
+\begin{definition}
+    Пусть дан идеал $\ideal{a}$, зафиксирован целый базис $E$ кольца $\mathcal{O}_K$ и $\mathbb{Z}$-представление идеала $\ideal{a} = (e_1,\dots,e_n)_{\mathbb{Z}}$. Тогда введём абсолютное значение идеала $\ideal{a}$ как
+    \begin{equation}
+        l(\ideal{a}) = \max\limits_{i = \overline{1,n}, j = \overline{1,n}} |a_{ij}|, 
+    \end{equation}
+    где $A = (a_{ij}) \in \mathbb{Z}^{n \times n}$ -- матрица соответствующая указанному $\mathbb{Z}$-представлению.
+\end{definition}
+
+Нетрудно видеть, что логарифм абсолютного значения идеала характеризует количество памяти необходимое для того, чтобы закодировать его $\mathbb{Z}$-представление.
+
+В случае, когда кольцо $\mathcal{O}_K$ факториально, любой идеал является главным, а значит любой идеал может быть задан с помощью порождающего его элемента. Поэтому в таких кольцах идеал, как и любой элемент, будет кодироваться в виде вектора $\mathbb{Z}^n$ коэффициентов разложения в целый базис кольца $\mathcal{O}_K$.
+
+\subsubsection{Операции над элементами}
+
+В данном параграфе исследуем некоторые арифметические и модулярные операции над элементами колец целых алгебраических элементов и сложности их выполнения.
+
+Пусть $f(L),$ $g(L)$ две различные функции натурального аргумента $L.$ Мы будем писать $f(L)=\tilde O(g(L))$, если существует положительная функция $h(L)$, такая что $f(L)\le h(L)g(L)$ для любых $L\in \mathbb{N},$ и $h(L)=O(\log g(L)\log \log g(L))$. Данное обозначение вводится в связи с известной оценкой сложности перемножения двух натуральных чисел по алгоритму Шaнхаге-Штрассена. Любое положительная действительное число $C$ будет называться эффективно вычислимой константной (или просто константой), если оно зависит только от инвариантов поля $K$ (например, степени, дискриминанта, интегрального базиса, системы фундаментальных единиц) и существует алгоритм нахождения данного числа.
+
+\begin{definition}
+    Для любого $a \in \mathcal{O}_K^*$ обозначим через $\overline{a}\in \mathcal{O}_K^*$ сопряжённый элемент определяемый как $\overline{a}=\Nm(a)/a.$
+\end{definition}
+
+Далее предполагаем, что элементы заданы с помощью коэффициентов своего разложения в целый базис $\mathcal{O}_K$.
+
+\begin{statement}\label{statement:operations}
+    Пусть $a,b \in \mathcal{O}_K^*$ и $l(a)\leq L,\,l(b)\leq L$, тогда $a+b$, $ab,$ $b/a$ (включая проверку условия $a|b$), $\Nm(a),$ $\overline{a}$ могут быть  вычислены за $\tilde{O}(\log L)$ бинарных операций.
+\end{statement}
+\begin{proof}
+    Рассмотрим произвольные элементы $a = \sum_{i = 1}^n \alpha_ie_i$, $b = \sum_{i = 1}^n \beta_i e_i \in \mathcal{O}_K$, такие что $l(a)\leq L,\,l(b)\leq L$.
+    Утверждение для суммы $a+b$ очевидно.
+    Используя алгоритм Шанхаге-Штрассена быстрого перемножения чисел, нетрудно получить необходимое утверждение для произведения $ab$.
+    Известно, что $\Nm(a) = |\mathrm{det}A|$, где $A = (a_{ij}) \in \mathbb{Z}^{n \times n}$ матрица, такая что $a e_i = \sum_{j = 1}^n a_{ij}e_j$ ($i=1,\ldots,n$).
+    Определитель $\mathrm{det} A$ может быть найден с помощью операций сложения и умножения за $\tilde{O}(\log L)$ бинарных операций.
+    Пусть $\overline{a}=\sum_{i = 1}^n x_ie_i,$ где $x_i$ неизвестные целые коэффициенты.
+    Пусть
+    \begin{equation}
+        \Nm(a)=\sum_{i,j=1}^n  \alpha_i x_j e_i e_j=\sum_{k=1}^n \biggl( \sum_{i = 1}^n\sum_{j = 1}^n \alpha_i x_j \alpha_k^{i,j}\biggr)e_k,
+    \end{equation}
+    где $e_ie_j=\sum_{k=1}^n \alpha_k^{i, j} e_k,$ тогда выполнено соотношение
+    \begin{equation}
+        H (x_1,x_2,\ldots, x_n)^T= (\Nm(a),0,\ldots,0)^T,
+    \end{equation}
+    где $H$ матрица элементов $h_{ij} \in \mathbb{Z}$ ($i,j = 1,\ldots,n$), такая что $h_{ij} = O(L)$ ($i,j = 1,\ldots,n$).
+    Тогда существует константа $D$, такая что $\Nm(a)\le D l(a)^n.$
+    Следовательно решение $(x_1,x_2,\ldots, x_n)^T$ может быть найдено за $\tilde{O}(\log L)$ бинарных операций.
+    Пусть $b\overline{a}=\sum_{i=1}^n y_i e_i,$ $y_i \in \mathbb{Z}.$ Тогда $b/a=\frac{b\overline{a}}{\Nm(a)},$ условие $a|b$ эквивалентно условию $\Nm(a)|y_i$ для любых $i=1,\ldots,n.$ Элемент $b/a$ может быть определён за $\tilde{O}(\log L)$ используя произведение в $\mathcal{O}_K$ и деление рациональных чисел. 
+\end{proof}
+
+\begin{remark}
+    В доказательстве утверждения было показано, что существует константа $D$, такая что $\Nm(a) \leq Dl(a)^n$ для любого $a \in \mathcal{O}_K$. Из предыдущего утверждения и правила Крамера следует, что существуют константы $R$ и $q$, такие что $l(\overline{a}) \leq RL^q$ для любого $a \in \mathcal{O}_K$.
+\end{remark}
+
+\begin{statement}\label{statement:mod}
+    Существует константа $M$, такая что для любых $a, m \in \mathcal{O}_K^*$ может быть найдено $z \in \mathcal{O}_K$ удовлетворяющее условию $a\equiv z(\modul\,m)$ and $l(z)\leq Ml(m)$. Если $l(a)\leq L, l(m)\leq L$, тогда такой элемент $z$ может быть определён за $\tilde{O}(\log L)$ бинарных операций.
+\end{statement}
+
+\begin{proof}
+    Пусть $a = \sum_{i=1}^n a_i e_i$, $m = \sum_{i=1}^n m_i e_i \in \mathcal{O}_K^*$. Тогда мы получаем
+    \begin{equation}
+        \frac{a}{m} = \frac{a\overline{m}}{\Nm(m)} = \frac{1}{\Nm(m)}\sum\limits_{i=1}^n b_i e_i = \sum\limits_{i=1}^n \left\lfloor\frac{b_i}{\Nm(m)}\right\rfloor e_i + \sum\limits_{i=1}^n \frac{b_i'}{\Nm(m)} e_i,
+    \end{equation}
+    где $b_i' \in \mathbb{Z},$ $|b_i'| < \Nm(m)$, $i=1,\ldots,n$.
+    Так как $a\overline{m} \equiv \sum_{i=1}^n b_i' e_i(\modul\,\Nm(m))$, мы получаем $\overline{m}\big|\sum_{i=1}^n b_i' e_i$.
+    Тогда $a\equiv z(\modul\,m)$, где $z = \frac{1}{\overline{m}}\sum_{i=1}^n b_i' e_i$.
+    Так как
+    \begin{equation} \label{eq_z}
+        z= \frac{1}{\Nm(m)}\sum\limits_{k=1}^n e_k\biggl(\sum\limits_{i, j = 1}^n b_i' m_j \alpha_k^{i, j}\biggr),
+    \end{equation}
+    получаем
+    \begin{equation}
+        l(z) = \max_{k = \overline{1, n}} \biggl|\frac{1}{\Nm(m)}\sum\limits_{i, j = 1}^n b_i' m_j \alpha_k^{i, j}\biggr| < \max_{k = \overline{1, n}} \sum_{i, j = 1}^n |m_j \alpha_k^{i, j}| \le \nonumber
+    \end{equation}
+    \begin{equation}
+        \le l(m) \max_{k = \overline{1, n}} \sum_{i, j = 1}^n |\alpha_k^{i, j}|= Ml(m).
+    \end{equation}
+    Предположим, что $l(a)\leq L, l(m)\leq L$. Тогда $l(\overline{m}) \le RL^q,$ где $q$ и $R$ эффективно вычислимые константы.
+    Так как существует константа $D$, такая что $\Nm(m)\le D l(m)^n$, числа $b_i,$ $b_i'$ могут быть найдены за $\tilde{O}(\log L)$ бинарных операций.
+    Поэтому элемент $z$ может быть определён в $K$ по формуле (\ref{eq_z}) используя не более $\tilde{O}(\log L)$ бинарных операций.
+\end{proof}
+
+\begin{corollary}\label{corollary_mod}
+    Пусть $k \in \mathbb{N},$ и для $a,$ $b,$ $m \in \mathcal{O}_K^*$ выполнено $l(a)\leq L,$ $l(b)\leq L$, $l(m)\leq L$.
+    Элементы $z_1,$ $z_2\in \mathcal{O}_K$ такие что $a+b\equiv z_1(\modul\,m),$ $a^k\equiv z_2(\modul\,m),$ $l(z_1)\leq Ml(m)$, $l(z_2)\leq Ml(m)$, могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
+\end{corollary}
+
+\subsubsection{Операции над идеалами}
+
+Далее будут доказаны утверждения, связанные с вычислительной сложностью различных операций над идеалами.
+
+\begin{statement}\label{equality}
+    Пусть идеалы $\ideal{a}$ и $\ideal{b}$ заданы в виде нормальной эрмитовой формы и $l(\ideal{a}), l(\ideal{b}) \leq L$, то проверка указанных идеалов на равенство может быть выполнена за $O(\log L)$ бинарных операций.
+\end{statement}
+\begin{proof}
+    Как было указано ранее, любой идеал однозначно задаётся своей нормально эрмитовой формой.
+    Таким образом, достаточно проверить на поэлементнffое равенство две целочисленные матрицы $n \times n$ с коэффициентами размера $O(L)$.
+\end{proof}
+
+\begin{statement}\label{particular_equality}
+    Пусть $\ideal{p}$ -- простой идеал, заданный в виде 2-представления, а $\ideal{n}$ произвольный идеал заданный в виде $\mathbb{Z}$-представления, причём $l(\ideal{p}), l(\ideal{n}) \leq L$.
+    Тогда проверка равенства $\ideal{p}$ и $\ideal{n}$ может быть выполнена за $\tilde{O}(\log L)$ операций.
+\end{statement}
+\begin{proof}
+    Пусть $\ideal{p} = (\alpha, a)_2$ -- 2-представление простого идеала. Нетрудно видеть, что проверка равенства $\ideal{p} = \ideal{n}$ равносильна проверке того, что $\ideal{p}$ делится на $\ideal{n}$, что по Утверждению \ref{inclusion} равносильно включению $\ideal{p}$ в $\ideal{n}$. Последнее выполнено тогда и только тогда, когда $\alpha, a \in \ideal{n}$ и проверка сводится к проверке разрешимости систем линейных уравнений $n \times n$ с коэффициентами размера $O(L)$, что может быть выполнено за $\tilde{O}(\log L)$ операций
+\end{proof}
+
+\begin{statement}\label{norm}
+    Пусть идеал $\ideal{a}$ задан в виде $\mathbb{Z}$-представления и $l(\ideal{a}) \leq L$, то $\Nm(\ideal{a})$ может быть вычислено за $\tilde{O}(\log L)$ бинарных операций.
+\end{statement}
+\begin{proof}
+    Исходя из утверждения описанного в \cite{Post} выполнено равенство $\Nm{\ideal{a}} = |\mathrm{det}(A)|$, где $A$ - матрица соответствующая $\mathbb{Z}$-представлению.
+    Нетрудно видеть, что определитель целочисленной матрицы $n \times n$ с коэффициентами размера $O(L)$  может быть вычислен за указанное число операций.
+\end{proof}
+
+\begin{statement}\label{congruence}
+    Пусть идеал $\ideal{a}$ задан в виде $\mathbb{Z}$-представления и $l(\ideal{a}), l(a), l(b) \leq L$, то проверка сравнения $a \equiv b(\modul \ideal{a})$ может быть выполнена за $\tilde{O}(\log L)$ бинарных операций.
+\end{statement}
+\begin{proof}
+    Пусть изначально $\ideal{a}$ задан в виде $\mathbb{Z}$-представления и $l(\ideal{a}), l(a), l(b) \leq L$.
+    Требуется проверить делимость главного идеала $(a - b)$ на идеал $\ideal{a}$. Исходя из  Утверждения \ref{inclusion} это эквивалентно проверке включения главного идеала $(a - b)$ в идеал $\ideal{a}$. А это, в свою очередь, равносильно тому, что $a - b \in \ideal{a}$. То есть проверка сравнения сводится к проверке разложимости $a - b$ по базису идеала $\ideal{a}$, то есть проверке разрешимости системы линейных уравнений $n \times n$ с коэффициентами размера $O(L)$. Нетрудно видеть, что это может быть сделано за $\tilde{O}(\log L)$ бинарных операций.
+\end{proof}
+
+\begin{statement}\label{residue_modulo_ideal}
+    Пусть $\ideal{n}$ -- нетривиальный идеал отличный и $a \in \mathcal{O}_K$. Тогда существует $z \in \mathcal{O}_K$, такое что $z \equiv a (\modul \ideal{n})$ и $l(z) \leq N l(\ideal{n})^n$. 
+    
+    Если $\ideal{n}$ задан с помощью $\mathbb{Z}$-представления, причём $l(\ideal{n}), l(a) \leq L$, то такой элемент $z$ может быть вычислен за $\tilde{O}(\log L)$ бинарных операций.
+\end{statement}
+\begin{proof}
+    Пусть $E = (e_1,\dots,e_n)$ -- целый базис в $\mathcal{O}_K$, $\ideal{n} = (\omega_1,\dots,\omega_n)_{\mathbb{Z}}$ -- $\mathbb{Z}$-представление идеала $\ideal{n}$.
+    
+    Пусть далее $a = \sum\limits_{i = 1}^n \alpha_i e_i$ и $\theta = \mathrm{\text{НОК}}(\Nm(\omega_1),\dots,\Nm(\omega_n))$.
+    
+    Нетрудно видеть, что $\theta \in \ideal{n}$, в следствии чего $\theta\equiv 0(\modul \ideal{n})$.
+    Отсюда следует, что $a \equiv a - \beta\theta(\modul \ideal{n})$ для любого $\beta \in \mathcal{O}_K$.
+    
+    Положим $\beta = \sum\limits_{i = 1}^n \beta_ie_i,$ где $\alpha_i = \theta \beta_i + r_i$, $r_i < \theta,\,i = \overline{1,n}$, а также $z = a - \beta\theta$.
+    
+    Тогда
+    \begin{equation}
+        l(z)  = \max\limits_{i = \overline{1,n}} |r_i| \leq |\theta| \leq \prod\limits_{i = 1}^n \Nm(\omega_i) \leq D^n \prod\limits_{i = 1}^n l(\omega_i) \leq D^n l(\ideal{n})^n = N l(\ideal{n})^n.
+    \end{equation}
+    
+    Нетрудно видеть, что рассмотренные операции могут быть выполнены за $\tilde{O}(\log L)$ бинарных операций.
+\end{proof}
+
+\begin{corollary}
+    Пусть $k \in \mathbb{N}$ и $a,$ $b,$ $ \in \mathcal{O}_K^*$, $\ideal{n}$ -- нетривиальный идеал заданный с помощью $\mathbb{Z}$-представления. Пусть выполнено $l(a)\leq L,$ $l(b)\leq L$, $l(\ideal{n})\leq L.$ Элементы $z_1,$ $z_2\in \mathcal{O}_K$ такие что $a+b\equiv z_1(\modul\,\ideal{n}),$ $a^k\equiv z_2(\modul\,\ideal{n}),$ $l(z_1)\leq Nl(\ideal{n})^n$, $l(z_2)\leq Nl(\ideal{n})^n$, могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
+\end{corollary}
+
+\begin{remark}
+    Отметим, что все указанные операции могут быть выполнены за полиномиальное время в случае, когда идеалы заданы с помощью одного из представлений: $\mathbb{Z}$-представление, 2-представление, нормальная эрмитовая форма; в силу того, что из одного представления может быть получено другое за полиномиальное время.
+\end{remark}
+
+\subsection{Вспомогательные утверждения}
+
+\begin{statement}[Теорема Копперсмита]\label{statement:coppersmith}
+  Пусть
+  \begin{equation*}
+      f(x, y) = \sum\limits_{i, j = 0}^{\delta} p_{i, j} x^i y^j
+  \end{equation*}
+  неприводимый многочлен от двух переменных над $\mathbb{Z}$.
+  Пусть $X, Y \ge 0$ такие, что $|x_0| \le X$ и $|y_0| \le Y$, где $(x_0, y_0)$ решение уравнения $f(x, y) = 0$.
+  Обозначим
+  \begin{equation*}
+      W = \max_{i, j} |p_{i, j}| X^i Y^j.
+  \end{equation*}
+  Пусть $XY < W^{\frac{3}{2\delta}}$, то существует полиномиальный относительно $\log W$ и $2^\delta$ алгоритм, который позволяет найти такую пару $(x_0, y_0)$, что $f(x_0, y_0) = 0$, $|x_0| \le X$ и $|y_0| \le Y$.
+\end{statement}
+
+\begin{statement}\label{statement:cauchy}(Теорема Коши)
+    Если порядок конечной группы $G$ делится на простое число $p$, то $G$ содержит элементы порядка $p$.
+\end{statement}
+
+\begin{statement}\label{statement:lagrange}(Теорема Лагранжа)
+    Пусть группа $G$ конечна, и $H$ -- её подгруппа.
+    Тогда порядок $G$ равен порядку $H$, умноженному на индекс подгруппы.
+\end{statement}
+
+
+Рассмотрим представления идеалов.
+Существует два способа представить идеал
+
+\begin{enumerate}
+    \item Через целый базис.
+    \begin{equation}\label{eq:Z_basis}
+        \mathfrak{p} = \oplus_{i=1}^{n} \mathbb{Z}\alpha_i,
+    \end{equation}
+    где $\alpha_i\in\mathcal{O}_K$.
+
+    \item Через два элемента $\mathcal{O}_K$.
+    Для любого $\alpha\in\mathfrak{p}$ существует $\beta\in\mathfrak{p}$ такой, что
+    \begin{equation}\label{eq:2_element}
+        \mathfrak{p} = \alpha\mathcal{O}_K + \beta\mathcal{O}_K.
+    \end{equation}
+
+    Будем обозначать идеалы в таком представлении через $(\alpha, \beta)$.
+    Идеал, который генерируется одним элементом $\alpha\in\mathcal{O}_K$ будем обозначать $(\alpha) = \alpha\mathcal{O}_K$.
+\end{enumerate}
+
+Будем предполагать, что поле $K$ фиксировано и, следовательно, известен индекс $[\mathcal{O}_K:\mathbb{Z}[\theta]]$.
+А так же разложение на простые идеалы всех простых делителей индекса.
+
+\begin{statement}[Теорема Дедекинда]\label{statement:dedekind}
+    Пусть $f(T)$ минимальный многочлен алгебраического числа $\theta$ в $\mathbb{Z}[\theta]$.
+    Для простого рационального числа $p$, не делящего индекс $[\mathcal{O}_K:\mathbb{Z}[\theta]]$, запишем
+    \begin{equation}
+        f(T) \equiv \pi_1(T)^{e_1}\dots \pi_g(T)^{e_g} \modul p,\nonumber
+    \end{equation}
+    где $\pi_i(T)$ --- различные монические неприводимые многочлены в $\mathbb{F}_p[T]$.
+    Тогда
+    \begin{equation}
+        (p) = \mathfrak{p}_1^{e_1}\dots \mathfrak{p}_g^{e_g},\nonumber
+    \end{equation}
+    где $\mathfrak{p}_i = (p_i, T_i(\theta))$, $T_i(T) \equiv \pi_i(T)(\modul p)$.
+\end{statement}
+
+\begin{proposition}
+    Для вычисления нормы идеала $(N)$ необходимо $O(n^3 \log^2 |N|)$ бинарных операций, где $|N|$ обозначает максимальный по модулю элемент матричного представления $N$.
+\end{proposition}
+\begin{proof}
+    Для вычисления нормы идеала $(N)$ необходимо найти определитель матрицы, которая получается при матричном представлении элемента $N$.
+    Для этого необходимо $O(n^3 \log^2 |N|)$ бинарных операций.
+\end{proof}
+
+\begin{proposition}
+    Преобразовать $2$-представление идеала $(p, \alpha)$ из теоремы Дедекинда в $\mathbb{Z}$-представление можно $O(P(n)Q(\log p))$ бинарных операций, где $P(T)$ и $Q(T)$ некоторые полиномы.
+\end{proposition}
+\begin{proof}
+    В книге \cite{Pohst} описан алгоритм преобразования $2$-представления в $\mathbb{Z}$-представление.
+    Необходимо найти Эрмитову нормальную форму блочной матрицы
+    \begin{equation*}
+        \begin{pmatrix}
+            A\\
+            B
+        \end{pmatrix},
+    \end{equation*}
+    где $A = diag(p, \dots, p)$, а $B$ является матричным представлением элемента $\alpha$.
+    В 1979 году было доказано, что эрмитову нормальную форму матрицу можно найти за строго полиномиальное время \cite{Kannan}.
+    Это означает, что алгоритму необходимо полиномиальное, относительно размеров матрицы, количество арифметических операций над числами не превосходящими полинома от бинарного представления элементов матрицы.
+    Таким образом эрмитову нормальную форму можно вычислить за $O(P(n)Q(\log p))$ бинарных операций, где $P(T)$ и $Q(T)$ некоторые полиномы.
+\end{proof}
 
 \begin{definition}
     Пусть характер $\chi$ задан на множестве идеалов кольца $R$, не является главным и определен по модулю идеала $\ideal{n} \subset R$.
-    Рассмотрим идеал $\ideal{p}_{\chi}$ минимальной нормы, для которого $\chi(\ideal{p}_{\chi}) \neq 0, 1$.
+    Через $\ideal{p}_{\chi}$ обозначим идеал минимальной нормы, для которого $\chi(\ideal{p}_{\chi}) \neq 0, 1$.
+\end{definition}
 
-    Пусть $R$ дедекиндово кольцо с полем частных $K$ и $L$ расширение поля $K$.
-    Будем говорить, что кольцо $R$ удовлетворяет условию A, если существует многочлен $f_R$, что для любого характера $\chi$, не являющегося главным, выполнено
+\begin{definition}
+    Пусть $R$ дедекиндово кольцо с полем частных $K$ и $L$ расширение поля $K$ степени не меньше $2$.
+    Будем говорить, что кольцо $R$ \emph{удовлетворяет условию A для идеала $\ideal{n}$}, если существует многочлен $f_R$, что для любого характера $\chi$, не являющегося главным и определенного по модулю $\ideal{n}$, выполнено
     \begin{equation*}
         \Nm{\ideal{p}_{\chi}} \le f_R(\log{\Nm{\ideal{n}}}).
     \end{equation*}
@@ -75,7 +832,7 @@
     Следовательно, исходное сравнение имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}^2}$.
 \end{proof}
 
-\subsection{Критерий Эйлера}
+\section{Аналог критерия Эйлера}
 
 \begin{theorem}\label{theorem:euler_criteria}
     Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
@@ -84,7 +841,7 @@
         a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
     \end{equation*}
 
-    Если кольцо $R$ удовлетворяет условию A, то $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$ выполнено
+    Если кольцо $R$ факториальное и удовлетворяет условию A, то $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$ выполнено
     \begin{equation*}
         a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
     \end{equation*}
@@ -184,14 +941,14 @@
     Если $\ideal{n}$ -- составной, то при выполнении алгоритма \ref{algorithm:miller_rabin} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
 \end{remark}
 
-\subsection{Критерий Миллера}
+\section{Аналог критерия Миллера}
 
 \begin{theorem}\label{theorem:miller_criteria}
     Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
     Пусть $\Nm{\ideal{n}} - 1 = 2^t u$, $(u, 2) = 1$.
     Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
 
-    Пусть колько $R$ удовлетворяет условию A.
+    Пусть кольцо $R$ факториальное и удовлетворяет условию A.
     Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$, $(a, \ideal{n}) = 1$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
 \end{theorem}
 \begin{proof}
@@ -413,11 +1170,12 @@
 
 \begin{remark}
     Доказанные критерии и алгоритмы можно использовать при генерации простых идеалов.
+    В частности для кольца целых чисел они используются в алгоритме Гордона построения сильных простых чисел.
     Генерация простых идеалов является обязательной частью в RSA-криптосистеме в дедекиндовых кольцах.
     Такая криптосистема будет рассмотрена в главе~\ref{section:RSA-cryptosystem}.
 \end{remark}
 
-\subsection{Вычислительная сложность алгоритма Миллера-Рабина}
+\section{Вычислительная сложность алгоритма Миллера-Рабина}
 
 \begin{statement}
     Пусть $\ideal{n} \subseteq R$ идеал дедекиндового кольца.
@@ -642,6 +1400,9 @@
 	
 % 	Рассмотрим случай факториального $\mathcal{O}_K$. Заметим, что для любого $a \in \mathcal{O}_{K,\ideal{n}}^{\times}$, свидетельствующего о простоте $\ideal{n}$, верно $a^{\Nm(\ideal{n}) - 1}\equiv 1(\modul \ideal{n})$, то есть вероятность успеха не хуже, чем в тесте Ферма, а значит оценка $\mathbb{P} \geq 1/2$ выполнена для всех идеалов, не являющихся аналогами идеалов Кармайкла.
 % \end{remark}
+
+\section*{Выводы по главе \ref{chapter:Primality}}
+\addcontentsline{toc}{section}{Выводы по главе \ref{chapter:Primality}}
 
 \onlyinsubfile{
     \subfile{_10_bibliography}
