@@ -15,6 +15,8 @@
 
 \section{Предварительные сведения}
 
+\subsection{Дедекиндовы кольца}
+
 \begin{definition}
     \emph{Идеалом} кольца $R$ называется его подкольцо $\ideal{n}$, замкнутое относительно умножения на элементы $R$.
     А именно для любого $a \in R$ выполнено включение $a\ideal{n} \subseteq \ideal{n}$.
@@ -207,6 +209,8 @@
     Будем говорить, что характер $\chi$ \emph{задан по модулю идеала} $\ideal{f} \subset R$, если для всех идеалов $\ideal{n} \subseteq R$, из сравнения $\ideal{n} \equiv 1 \pmod{\ideal{f}}$ следует равенство $\chi(\ideal{n}) = 1$.
 \end{definition}
 
+\subsection{Факториальные кольца}
+
 \begin{definition}
     Кольцо $R$ называется \emph{факториальным}, если каждый его ненулевой элемент $x \in R$ либо обратим, либо однозначно представляется в виде произведения неприводимых элементов с точностью до перестановки множителей.
 
@@ -283,6 +287,8 @@
 
 Далее будем считать, что факториальное кольцо $R$ задано вместе дробной частью $\fr{\cdot}$ и целой частью $\int{\cdot}$.
 
+\subsection{Числовые кольца}
+
 Пусть $K$ -- числовое поле со степенью расширения равной $n$.
 Пусть $R = \mathbb{Z}_K$ -- кольцо алгебраических целых элементов поля $K$.
 И пусть $(e_i)_{1 \le i \le n}$ -- базис $\mathbb{Z}_K$.
@@ -293,6 +299,10 @@
 Введем норму $\elementnorm{\cdot}$ в кольце $R$.
 Обозначим через $N_{K/\mathbb{Q}}$ норму в числовом поле $K$.
 Далее будем полагать, что $\mathbb{Z}_K$ евклидово по отношению к норме $N_{K/\mathbb{Q}}$.
+
+\begin{definition}
+    Для любого $a \in \zeroless{R}$ обозначим через $\overline{a} \in \zeroless{R}$ сопряжённый элемент определяемый как $\overline{a} = \elementnorm(a)/a$.
+\end{definition}
 
 Через $(\sigma_i)_{1 \le i \le n}$ обозначим вложения $K$ в $\mathbb{C}$.
 Пусть $\sigma_i$ для $1 \le i \le r_1$ является действительным, а для $r_1 < i < r_1 + r_2$ мнимым и $\sigma_{i+r_2} = \overline{\sigma_{i}}$.
@@ -415,10 +425,8 @@
     Тогда, если $\mathcal{M}_k \le k$, то $m_{\overline{K}}(x) = \mathcal{M}_k$.
 \end{statement}
 
-Рассмотрим способы представления идеалов.
-
 \begin{definition}
-    Пусть $\ideal{n} \subseteq R$ произвольный идеал дедекиндового кольца $R$.
+    Пусть $\ideal{n} \subseteq R$ произвольный идеал кольца $R$.
     Тогда существуют элементы $\alpha_1, \dots, \alpha_r \in R$ для $r \leq n$, что
     \begin{equation*}
         \ideal{n} = \{\xi_1 \alpha_1 + \dots + \xi_r \alpha_r | \xi_i \in R\}.
@@ -428,7 +436,7 @@
 \end{definition}
 
 \begin{definition}
-    Пусть $\ideal{n} \subseteq R$ произвольный идеал дедекиндового кольца $R$.
+    Пусть $\ideal{n} \subseteq R$ произвольный идеал кольца $R$.
     Тогда существуют элементы $e_1, \dots, e_r \in R$ для $r \leq n$, что
     \begin{equation*}
         \ideal{n} = \{x_1 e_1 + \dots + x_m e_m | x_i \in \mathbb{Z}\}.
@@ -443,7 +451,7 @@
 \end{statement}
 
 \begin{definition}
-    Пусть $\ideal{n} \subseteq R$ произвольный идеал дедекиндового кольца $R$.
+    Пусть $\ideal{n} \subseteq R$ произвольный идеал кольца $R$.
     Тогда существуют элементы $a \in \mathbb{N} \cup \{0\}$ и $\alpha \in R$, что 
     \begin{equation*}
         \ideal{n} = \{a \xi_1 + \alpha \xi_2 | \xi_1, \xi_2 \in \mathcal{O}_K\}.
@@ -499,10 +507,10 @@
 \begin{definition}
     Пусть $\ideal{n}$ идеал кольца $R$ с целым базисом $E$.
     Пусть $\ideal{n} = (e_1, \dots, e_n)_{\mathbb{Z}}$.
-    Рассмотрим
-    \begin{equation}
+    Обозначим
+    \begin{equation*}
         l(\ideal{n}) = \max\limits_{i = \overline{1,n}, j = \overline{1,n}} |a_{ij}|, 
-    \end{equation}
+    \end{equation*}
     где $A = (a_{ij}) \in \mathbb{Z}^{n \times n}$ матрица соответствующая указанному $\mathbb{Z}$-представлению.
     Значение $l(\ideal{n})$ будем называть \emph{абсолютным значением идеала}.
     Логарифм абсолютного значения идеала характеризует количество памяти необходимое для того, чтобы закодировать его $\mathbb{Z}$-представление.
@@ -514,173 +522,191 @@
 \end{remark}
 
 \begin{remark}
-    В работе используется оценка сложности перемножения двух натуральных чисел, получаемая из алгоритма Шaнхаге-Штрассена.
-    Для упрощения записи оценки сложности алгориитмов в работе введем следующее обозначение.
+    В работе используется оценка сложности перемножения двух натуральных чисел, получаемая из алгоритма Шенхаге-Штрассена~\cite{source:Schonhage}.
+    Для упрощения записи оценки сложности алгоритмов в работе введем следующее обозначение.
     Пусть $f(L),$ $g(L)$ две различные функции натурального аргумента $L$.
     Будем писать $f(L) = \tilde O(g(L))$, если существует положительная функция $h(L)$, такая что $f(L) \le h(L)g(L)$ для любых $L \in \mathbb{N}$, и $h(L) = O(\log g(L)\log \log g(L))$.
     
     Любое положительная действительное число $C$ будем называть эффективно вычислимой константной, если оно зависит только от инвариантов поля $K$ и существует алгоритм нахождения данного числа.
 \end{remark}
 
-\begin{definition}
-    Для любого $a \in \zeroless{R}$ обозначим через $\overline{a} \in \zeroless{R}$ сопряжённый элемент определяемый как $\overline{a} = \Nm(a)/a$.
-\end{definition}
-
 Далее предполагаем, что элементы заданы с помощью коэффициентов своего разложения в целый базис $R$.
 
-\begin{proposition}\label{statement:operations}
-    Пусть $a,b \in \zeroless{R}$ и $l(a) \leq L$, $l(b) \leq L$, тогда $a + b$, $a b,$ $b/a$ (включая проверку условия $a|b$), $\Nm(a)$, $\overline{a}$ могут быть  вычислены за $\tilde{O}(\log L)$ бинарных операций.
+\begin{proposition}\label{proposition:operations}
+    Пусть $a, b \in \zeroless{R}$ и $l(a) \leq L$, $l(b) \leq L$, тогда $a + b$, $a b,$ $b/a$ (включая проверку условия $a|b$), $\elementnorm{a}$, $\overline{a}$ могут быть  вычислены за $\tilde{O}(\log L)$ бинарных операций.
 \end{proposition}
 \begin{proof}
-    Рассмотрим произвольные элементы $a = \sum_{i = 1}^n \alpha_i e_i$, $b = \sum_{i = 1}^n \beta_i e_i \in \mathcal{O}_K$, такие что $l(a)\leq L,\,l(b)\leq L$.
-    Утверждение для суммы $a + b$ очевидно.
-    Используя алгоритм Шанхаге-Штрассена быстрого перемножения чисел, нетрудно получить необходимое утверждение для произведения $ab$.
-    Известно, что $\Nm(a) = |\mathrm{det}A|$, где $A = (a_{ij}) \in \mathbb{Z}^{n \times n}$ матрица, такая что $a e_i = \sum_{j = 1}^n a_{ij}e_j$ ($i=1,\ldots,n$).
-    Определитель $\mathrm{det} A$ может быть найден с помощью операций сложения и умножения за $\tilde{O}(\log L)$ бинарных операций.
-    Пусть $\overline{a}=\sum_{i = 1}^n x_ie_i,$ где $x_i$ неизвестные целые коэффициенты.
     Пусть
-    \begin{equation}
-        \Nm(a)=\sum_{i,j=1}^n  \alpha_i x_j e_i e_j=\sum_{k=1}^n \biggl( \sum_{i = 1}^n\sum_{j = 1}^n \alpha_i x_j \alpha_k^{i,j}\biggr)e_k,
-    \end{equation}
-    где $e_ie_j=\sum_{k=1}^n \alpha_k^{i, j} e_k,$ тогда выполнено соотношение
-    \begin{equation}
-        H (x_1,x_2,\ldots, x_n)^T= (\Nm(a),0,\ldots,0)^T,
-    \end{equation}
-    где $H$ матрица элементов $h_{ij} \in \mathbb{Z}$ ($i,j = 1,\ldots,n$), такая что $h_{ij} = O(L)$ ($i,j = 1,\ldots,n$).
-    Тогда существует константа $D$, такая что $\Nm(a)\le D l(a)^n.$
-    Следовательно решение $(x_1,x_2,\ldots, x_n)^T$ может быть найдено за $\tilde{O}(\log L)$ бинарных операций.
-    Пусть $b\overline{a}=\sum_{i=1}^n y_i e_i,$ $y_i \in \mathbb{Z}.$ Тогда $b/a=\frac{b\overline{a}}{\Nm(a)},$ условие $a|b$ эквивалентно условию $\Nm(a)|y_i$ для любых $i=1,\ldots,n.$ Элемент $b/a$ может быть определён за $\tilde{O}(\log L)$ используя произведение в $\mathcal{O}_K$ и деление рациональных чисел. 
+    \begin{equation*}
+        \begin{split}
+            a = \sum_{i = 1}^n \alpha_i e_i\\
+            b = \sum_{i = 1}^n \beta_i e_i.
+        \end{split}
+    \end{equation*}
+
+    Утверждение для суммы $a + b$ следует из того факта, что
+    \begin{equation*}
+        a + b = \sum_{i = 1}^n (\alpha_i + \beta_i) e_i.
+    \end{equation*}
+
+    Аналогично получаем, что утверждение верно для произведения $ab$.
+    Для перемножения чисел используем алгоритм Шанхаге-Штрассена быстрого перемножения чисел.
+
+    Пусть $A = (a_{ij}) \in \mathbb{Z}^{n \times n}$ матрица, такая что $a e_i = \sum_{j = 1}^n a_{ij}e_j$ ($i=1,\ldots,n$).
+    Из того, что $\elementnorm{a} = |\det{A}|$ следует, что норма $\elementnorm{a}$ может быть найдена с помощью операций сложения и умножения за $\tilde{O}(\log L)$ бинарных операций.
+
+    Рассмотрим разложение сопряженного элемента по целому базису $\overline{a} = \sum_{i = 1}^n x_i e_i,$ где $x_i$ неизвестные целые коэффициенты.
+    Тогда
+    \begin{equation*}
+        \elementnorm{a} = a \overline{a} = \sum_{i, j = 1}^n  \alpha_i x_j e_i e_j =
+            \sum_{k = 1}^n \left(
+                \sum_{i = 1}^n \sum_{j = 1}^n \alpha_i x_j \alpha_{k, i, j}
+            \right) e_k,
+    \end{equation*}
+    где $e_i e_j = \sum_{k=1}^n \alpha_{k, i, j} e_k$.
+    Тогда выполнено соотношение
+    \begin{equation*}
+        H(x_1, x_2, \ldots, x_n)^T = (\elementnorm{a}, 0, \ldots, 0)^T,
+    \end{equation*}
+    где $H \in \mathbb{Z}^{n \times n}$ матрица элементов $h_{i, j} \in \mathbb{Z}$, такая что $h_{i, j} = O(L)$.
+    Тогда существует константа $D$, такая что $\elementnorm(a) \le D l(a)^n$.
+    Следовательно, решение $(x_1, x_2, \ldots, x_n)^T$ может быть найдено за $\tilde{O}(\log L)$ бинарных операций.
+
+    Из определения сопряженного следует, что $b/a = \frac{b\overline{a}}{\elementnorm(a)}$.
+    Тогда $a|b$ тогда и только тогда, когда $\elementnorm(a)|y_i$ для любых $i = 1, \ldots, n$, где $b\overline{a} = \sum_{i=1}^n y_i e_i$, $y_i \in \mathbb{Z}$.
+    Следовательно, элемент $b/a$ может быть определён за $\tilde{O}(\log L)$ используя произведение в $\mathcal{O}_K$ и деление рациональных чисел. 
 \end{proof}
 
 \begin{remark}
-    В доказательстве утверждения было показано, что существует константа $D$, такая что $\Nm(a) \leq Dl(a)^n$ для любого $a \in \mathcal{O}_K$. Из предыдущего утверждения и правила Крамера следует, что существуют константы $R$ и $q$, такие что $l(\overline{a}) \leq RL^q$ для любого $a \in \mathcal{O}_K$.
+    Из доказательства предложения~\ref{proposition:operations} следует, что существует константа $D$, такая что $\elementnorm(a) \leq D l(a)^n$ для любого $a \in R$.
+    Следовательно, по правилу Крамера, существуют константы $E$ и $q$, такие что $l(\overline{a}) \leq E L^q$ для любого $a \in R$.
 \end{remark}
 
-\begin{proposition}\label{statement:mod}
-    Существует константа $M$, такая что для любых $a, m \in \mathcal{O}_K^*$ может быть найдено $z \in \mathcal{O}_K$ удовлетворяющее условию $a\equiv z(\modul\,m)$ and $l(z)\leq Ml(m)$. Если $l(a)\leq L, l(m)\leq L$, тогда такой элемент $z$ может быть определён за $\tilde{O}(\log L)$ бинарных операций.
+\begin{proposition}\label{proposition:mod}
+    Существует константа $M$, такая что для любых $a, m \in \zeroless{R}$, $l(a) \leq L, l(m) \leq L$ за $\tilde{O}(\log L)$ бинарных операций может быть найдено $z \in R$, удовлетворяющее условию $a \equiv z \pmod{m}$ и $l(z) \leq M l(m)$.
+    Такое $z$ будем обозначать $a \pmod{m}$.
 \end{proposition}
 \begin{proof}
-    Пусть $a = \sum_{i=1}^n a_i e_i$, $m = \sum_{i=1}^n m_i e_i \in \mathcal{O}_K^*$. Тогда мы получаем
-    \begin{equation}
-        \frac{a}{m} = \frac{a\overline{m}}{\Nm(m)} = \frac{1}{\Nm(m)}\sum\limits_{i=1}^n b_i e_i = \sum\limits_{i=1}^n \left\lfloor\frac{b_i}{\Nm(m)}\right\rfloor e_i + \sum\limits_{i=1}^n \frac{b_i'}{\Nm(m)} e_i,
-    \end{equation}
-    где $b_i' \in \mathbb{Z},$ $|b_i'| < \Nm(m)$, $i=1,\ldots,n$.
-    Так как $a\overline{m} \equiv \sum_{i=1}^n b_i' e_i(\modul\,\Nm(m))$, мы получаем $\overline{m}\big|\sum_{i=1}^n b_i' e_i$.
-    Тогда $a\equiv z(\modul\,m)$, где $z = \frac{1}{\overline{m}}\sum_{i=1}^n b_i' e_i$.
-    Так как
-    \begin{equation} \label{eq_z}
-        z= \frac{1}{\Nm(m)}\sum\limits_{k=1}^n e_k\biggl(\sum\limits_{i, j = 1}^n b_i' m_j \alpha_k^{i, j}\biggr),
-    \end{equation}
-    получаем
-    \begin{equation}
-        l(z) = \max_{k = \overline{1, n}} \biggl|\frac{1}{\Nm(m)}\sum\limits_{i, j = 1}^n b_i' m_j \alpha_k^{i, j}\biggr| < \max_{k = \overline{1, n}} \sum_{i, j = 1}^n |m_j \alpha_k^{i, j}| \le \nonumber
-    \end{equation}
-    \begin{equation}
-        \le l(m) \max_{k = \overline{1, n}} \sum_{i, j = 1}^n |\alpha_k^{i, j}|= Ml(m).
-    \end{equation}
-    Предположим, что $l(a)\leq L, l(m)\leq L$. Тогда $l(\overline{m}) \le RL^q,$ где $q$ и $R$ эффективно вычислимые константы.
-    Так как существует константа $D$, такая что $\Nm(m)\le D l(m)^n$, числа $b_i,$ $b_i'$ могут быть найдены за $\tilde{O}(\log L)$ бинарных операций.
-    Поэтому элемент $z$ может быть определён в $K$ по формуле (\ref{eq_z}) используя не более $\tilde{O}(\log L)$ бинарных операций.
-\end{proof}
-
-\begin{corollary}\label{corollary_mod}
-    Пусть $k \in \mathbb{N},$ и для $a,$ $b,$ $m \in \mathcal{O}_K^*$ выполнено $l(a)\leq L,$ $l(b)\leq L$, $l(m)\leq L$.
-    Элементы $z_1,$ $z_2\in \mathcal{O}_K$ такие что $a+b\equiv z_1(\modul\,m),$ $a^k\equiv z_2(\modul\,m),$ $l(z_1)\leq Ml(m)$, $l(z_2)\leq Ml(m)$, могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
-\end{corollary}
-
-Далее будут доказаны утверждения, связанные с вычислительной сложностью различных операций над идеалами.
-
-\begin{proposition}\label{equality}
-    Пусть идеалы $\ideal{a}$ и $\ideal{b}$ заданы в виде нормальной эрмитовой формы и $l(\ideal{a}), l(\ideal{b}) \leq L$, то проверка указанных идеалов на равенство может быть выполнена за $O(\log L)$ бинарных операций.
-\end{proposition}
-\begin{proof}
-    Как было указано ранее, любой идеал однозначно задаётся своей нормально эрмитовой формой.
-    Таким образом, достаточно проверить на поэлементнffое равенство две целочисленные матрицы $n \times n$ с коэффициентами размера $O(L)$.
-\end{proof}
-
-\begin{proposition}\label{particular_equality}
-    Пусть $\ideal{p}$ -- простой идеал, заданный в виде 2-представления, а $\ideal{n}$ произвольный идеал заданный в виде $\mathbb{Z}$-представления, причём $l(\ideal{p}), l(\ideal{n}) \leq L$.
-    Тогда проверка равенства $\ideal{p}$ и $\ideal{n}$ может быть выполнена за $\tilde{O}(\log L)$ операций.
-\end{proposition}
-\begin{proof}
-    Пусть $\ideal{p} = (\alpha, a)_2$ -- 2-представление простого идеала. Нетрудно видеть, что проверка равенства $\ideal{p} = \ideal{n}$ равносильна проверке того, что $\ideal{p}$ делится на $\ideal{n}$, что по Утверждению \ref{inclusion} равносильно включению $\ideal{p}$ в $\ideal{n}$. Последнее выполнено тогда и только тогда, когда $\alpha, a \in \ideal{n}$ и проверка сводится к проверке разрешимости систем линейных уравнений $n \times n$ с коэффициентами размера $O(L)$, что может быть выполнено за $\tilde{O}(\log L)$ операций
-\end{proof}
-
-\begin{proposition}\label{norm}
-    Пусть идеал $\ideal{a}$ задан в виде $\mathbb{Z}$-представления и $l(\ideal{a}) \leq L$, то $\Nm(\ideal{a})$ может быть вычислено за $\tilde{O}(\log L)$ бинарных операций.
-\end{proposition}
-\begin{proof}
-    Исходя из утверждения описанного в \cite{Post} выполнено равенство $\Nm{\ideal{a}} = |\mathrm{det}(A)|$, где $A$ - матрица соответствующая $\mathbb{Z}$-представлению.
-    Нетрудно видеть, что определитель целочисленной матрицы $n \times n$ с коэффициентами размера $O(L)$  может быть вычислен за указанное число операций.
-\end{proof}
-
-\begin{proposition}\label{congruence}
-    Пусть идеал $\ideal{a}$ задан в виде $\mathbb{Z}$-представления и $l(\ideal{a}), l(a), l(b) \leq L$, то проверка сравнения $a \equiv b(\modul \ideal{a})$ может быть выполнена за $\tilde{O}(\log L)$ бинарных операций.
-\end{proposition}
-\begin{proof}
-    Пусть изначально $\ideal{a}$ задан в виде $\mathbb{Z}$-представления и $l(\ideal{a}), l(a), l(b) \leq L$.
-    Требуется проверить делимость главного идеала $(a - b)$ на идеал $\ideal{a}$. Исходя из  Утверждения \ref{inclusion} это эквивалентно проверке включения главного идеала $(a - b)$ в идеал $\ideal{a}$. А это, в свою очередь, равносильно тому, что $a - b \in \ideal{a}$. То есть проверка сравнения сводится к проверке разложимости $a - b$ по базису идеала $\ideal{a}$, то есть проверке разрешимости системы линейных уравнений $n \times n$ с коэффициентами размера $O(L)$. Нетрудно видеть, что это может быть сделано за $\tilde{O}(\log L)$ бинарных операций.
-\end{proof}
-
-\begin{proposition}\label{residue_modulo_ideal}
-    Пусть $\ideal{n}$ -- нетривиальный идеал отличный и $a \in \mathcal{O}_K$. Тогда существует $z \in \mathcal{O}_K$, такое что $z \equiv a (\modul \ideal{n})$ и $l(z) \leq N l(\ideal{n})^n$. 
-    
-    Если $\ideal{n}$ задан с помощью $\mathbb{Z}$-представления, причём $l(\ideal{n}), l(a) \leq L$, то такой элемент $z$ может быть вычислен за $\tilde{O}(\log L)$ бинарных операций.
-\end{proposition}
-\begin{proof}
-    Пусть $E = (e_1,\dots,e_n)$ -- целый базис в $\mathcal{O}_K$, $\ideal{n} = (\omega_1,\dots,\omega_n)_{\mathbb{Z}}$ -- $\mathbb{Z}$-представление идеала $\ideal{n}$.
-    
-    Пусть далее $a = \sum\limits_{i = 1}^n \alpha_i e_i$ и $\theta = \mathrm{\text{НОК}}(\Nm(\omega_1),\dots,\Nm(\omega_n))$.
-    
-    Нетрудно видеть, что $\theta \in \ideal{n}$, в следствии чего $\theta\equiv 0(\modul \ideal{n})$.
-    Отсюда следует, что $a \equiv a - \beta\theta(\modul \ideal{n})$ для любого $\beta \in \mathcal{O}_K$.
-    
-    Положим $\beta = \sum\limits_{i = 1}^n \beta_ie_i,$ где $\alpha_i = \theta \beta_i + r_i$, $r_i < \theta,\,i = \overline{1,n}$, а также $z = a - \beta\theta$.
+    Пусть
+    \begin{equation*}
+        \begin{split}
+            a = \sum_{i=1}^n a_i e_i\\
+            m = \sum_{i=1}^n m_i e_i.
+        \end{split}
+    \end{equation*}
     
     Тогда
-    \begin{equation}
-        l(z)  = \max\limits_{i = \overline{1,n}} |r_i| \leq |\theta| \leq \prod\limits_{i = 1}^n \Nm(\omega_i) \leq D^n \prod\limits_{i = 1}^n l(\omega_i) \leq D^n l(\ideal{n})^n = N l(\ideal{n})^n.
-    \end{equation}
+    \begin{equation*}
+        \frac{a}{m} = \frac{a\overline{m}}{\elementnorm{m}} =
+            \frac{1}{\elementnorm{m}}\sum\limits_{i=1}^n b_i e_i =
+            \sum\limits_{i=1}^n \left\lfloor
+                \frac{b_i}{\elementnorm{m}}
+            \right\rfloor e_i + \sum\limits_{i=1}^n \frac{b_i'}{\elementnorm{m}} e_i,
+    \end{equation*}
+    где $b_i' \in \mathbb{Z}$, $|b_i'| < \elementnorm{m}$, $i = 1, \ldots, n$.
+    Из того, что
+    \begin{equation*}
+        a\overline{m} \equiv \sum_{i=1}^n b_i' e_i \pmod{\elementnorm{m}}
+    \end{equation*}
+    следует, что $\overline{m} \big| \sum_{i=1}^n b_i' e_i$.
+    Тогда $a \equiv z \pmod{m}$, где
+    \begin{equation*}
+        z = \frac{1}{\overline{m}}\sum_{i=1}^n b_i' e_i = \frac{1}{\elementnorm{m}}\sum_{k=1}^n e_k\left(
+            \sum_{i, j = 1}^n b_i' m_j \alpha_k^{i, j}
+        \right)
+    \end{equation*}
+
+    Получаем
+    \begin{equation*}
+        \begin{split}
+            l(z) = \max_{k = \overline{1, n}} \left|
+                \frac{1}{\elementnorm{m}}\sum_{i, j = 1}^n b_i' m_j \alpha_k^{i, j}
+            \right| < \max_{k = \overline{1, n}} \sum_{i, j = 1}^n |m_j \alpha_k^{i, j}| \le\\
+            \le l(m) \max_{k = \overline{1, n}} \sum_{i, j = 1}^n |\alpha_k^{i, j}| = M l(m).
+        \end{split}
+    \end{equation*}
+
+    Из того, что $l(a) \leq L, l(m) \leq L$ следует, что $l(\overline{m}) \le E L^q,$ где $q$ и $E$ эффективно вычислимые константы.
+    Так как существует константа $D$, такая что $\elementnorm{m} \le D l(m)^n$, числа $b_i$, $b_i'$ могут быть найдены за $\tilde{O}(\log L)$ бинарных операций.
+    Поэтому элемент $z$ может быть найден используя не более $\tilde{O}(\log L)$ бинарных операций.
+\end{proof}
+
+\begin{corollary}\label{corollary:mod}
+    Пусть $k \in \mathbb{N}$, и для $a, b, m \in \zeroless{R}$ выполнено $l(a) \leq L$, $l(b) \leq L$, $l(m) \leq L$.
+    Тогда $a + b \pmod{m}$ и $a^k \pmod{m}$ могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
+\end{corollary}
+
+\begin{proposition}\label{proposition:equality}
+    Пусть идеалы $\ideal{a}$ и $\ideal{b}$ заданы в виде нормальной эрмитовой формы и $l(\ideal{a}), l(\ideal{b}) \leq L$.
+    Тогда проверка равенства $\ideal{a} = \ideal{b}$ может быть выполнена за $O(\log L)$ бинарных операций.
+\end{proposition}
+\begin{proof}
+    Из того, что любой идеал однозначно задаётся своей нормально эрмитовой формой следует, что достаточно проверить на поэлементное равенство две целочисленные матрицы размера $n \times n$ с коэффициентами размера $O(L)$.
+\end{proof}
+
+\begin{proposition}\label{proposition:particular_equality}
+    Пусть $\ideal{p} = (\alpha, a)_2$ -- простой идеал, заданный в виде 2-представления, а $\ideal{n}$ произвольный идеал заданный в виде $\mathbb{Z}$-представления, причём $l(\ideal{p}), l(\ideal{n}) \leq L$.
+    Тогда проверка равенства $\ideal{p} = \ideal{n}$ может быть выполнена за $\tilde{O}(\log L)$ операций.
+\end{proposition}
+\begin{proof}
+    Равенство $\ideal{p} = \ideal{n}$ выполняется тогда и только тогда, когда $\ideal{p}$ делится на $\ideal{n}$, что равносильно включению $\ideal{p}$ в $\ideal{n}$.
+    Для проверки включения достаточно  и необходимо проверить, что $\alpha, a \in \ideal{n}$.
+    Эта проверка сводится к проверке разрешимости систем линейных уравнений размера $n \times n$ с коэффициентами размера $O(L)$, что может быть выполнено за $\tilde{O}(\log L)$ бинарных операций.
+\end{proof}
+
+\begin{proposition}\label{proposition:norm}
+    Пусть идеал $\ideal{a}$ задан в виде $\mathbb{Z}$-представления и $l(\ideal{a}) \leq L$.
+    Тогда норма $\Nm(\ideal{a})$ может быть вычислена за $\tilde{O}(\log L)$ бинарных операций.
+\end{proposition}
+\begin{proof}
+    В работе Поста~\cite{Post}, доказано, что $\Nm{\ideal{a}} = |\mathrm{det}(A)|$, где $A$ матрица соответствующая $\mathbb{Z}$-представлению $\ideal{a}$.
+    Определитель целочисленной матрицы размера $n \times n$ с коэффициентами размера $O(L)$ может быть вычислен за $\tilde{O}(\log L)$ бинарных операций.
+\end{proof}
+
+\begin{proposition}\label{proposition:congruence}
+    Пусть идеал $\ideal{a}$ задан в виде $\mathbb{Z}$-представления и $l(\ideal{a}), l(a), l(b) \leq L$, то проверка сравнения $a \equiv b \pmod{\ideal{a}}$ может быть выполнена за $\tilde{O}(\log L)$ бинарных операций.
+\end{proposition}
+\begin{proof}
+    Сравнение $a \equiv b \pmod{\ideal{a}}$ выполняется тогда и только тогда, когда $\ideal{a} | (a - b)$.
+    Это эквивалентно проверке включения главного идеала $(a - b)$ в идеал $\ideal{a}$, что выполняется тогда и только тогда, когда $a - b \in \ideal{a}$.
+    Эта проверка сводится к проверке разрешимости систем линейных уравнений размера $n \times n$ с коэффициентами размера $O(L)$, что может быть выполнено за $\tilde{O}(\log L)$ бинарных операций.
+\end{proof}
+
+\begin{proposition}\label{proposition:residue_modulo_ideal}
+    Пусть нетривиальный идеал $\ideal{n}$ задан с помощью $\mathbb{Z}$-представления и $l(\ideal{n}) \leq L$.
+    Пусть $a \in R$ и $l(a) \leq L$.
+    Тогда за $\tilde{O}(\log L)$ бинарных операций можно найти $z \in R$, такое что $z \equiv a \pmod{\ideal{n}}$ и $l(z) \leq N l(\ideal{n})^n$.
+    Такое $z$ будем обозначать $a \pmod{m}$.
+\end{proposition}
+\begin{proof}
+    Пусть $\ideal{n} = (\omega_1, \dots, \omega_n)_{\mathbb{Z}}$ и $a = \sum\limits_{i = 1}^n \alpha_i e_i$.
+    Обозначим $\theta = \textrm{НОК}(\elementnorm{\omega_1}, \dots, \elementnorm{\omega_n})$.
+    Нетрудно видеть, что $\theta \in \ideal{n}$.
+    Следовательно, $\theta \equiv 0 \pmod{\ideal{n}}$.
+    Тогда $a \equiv a - \beta\theta \pmod{\ideal{n}}$ для любого $\beta \in R$.
+    Положим
+    \begin{equation*}
+        \beta = \sum\limits_{i = 1}^n \beta_i e_i,
+    \end{equation*}
+    где $\alpha_i = \theta \beta_i + r_i$, $r_i < \theta,\,i = \overline{1,n}$, а также $z = a - \beta\theta$.
+    
+    Тогда
+    \begin{equation*}
+        l(z) = \max\limits_{i = \overline{1,n}} |r_i| \leq |\theta| \leq \prod\limits_{i = 1}^n \elementnorm{\omega_i} \leq D^n \prod\limits_{i = 1}^n l(\omega_i) \leq D^n l(\ideal{n})^n = N l(\ideal{n})^n.
+    \end{equation*}
     
     Нетрудно видеть, что рассмотренные операции могут быть выполнены за $\tilde{O}(\log L)$ бинарных операций.
 \end{proof}
 
 \begin{corollary}
-    Пусть $k \in \mathbb{N}$ и $a,$ $b,$ $ \in \mathcal{O}_K^*$, $\ideal{n}$ -- нетривиальный идеал заданный с помощью $\mathbb{Z}$-представления. Пусть выполнено $l(a)\leq L,$ $l(b)\leq L$, $l(\ideal{n})\leq L.$ Элементы $z_1,$ $z_2\in \mathcal{O}_K$ такие что $a+b\equiv z_1(\modul\,\ideal{n}),$ $a^k\equiv z_2(\modul\,\ideal{n}),$ $l(z_1)\leq Nl(\ideal{n})^n$, $l(z_2)\leq Nl(\ideal{n})^n$, могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
+    Пусть $k \in \mathbb{N}$ и $a, b \in \zeroless{R}$, $\ideal{n}$ -- нетривиальный идеал заданный с помощью $\mathbb{Z}$-представления.
+    Пусть выполнено $l(a) \leq L$, $l(b) \leq L$, $l(\ideal{n}) \leq L$.
+    Элементы $a + b \pmod{\ideal{n}}$ и $a^k \pmod{\ideal{n}}$, $l(z_1) \leq N l(\ideal{n})^n$, $l(z_2) \leq N l(\ideal{n})^n$, могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
 \end{corollary}
 
 \begin{remark}
     Отметим, что все указанные операции могут быть выполнены за полиномиальное время в случае, когда идеалы заданы с помощью одного из представлений: $\mathbb{Z}$-представление, 2-представление, нормальная эрмитовая форма; в силу того, что из одного представления может быть получено другое за полиномиальное время.
 \end{remark}
-
-Будем предполагать, что поле $K$ фиксировано и, следовательно, известен индекс $[\mathcal{O}_K:\mathbb{Z}[\theta]]$.
-А так же разложение на простые идеалы всех простых делителей индекса.
-
-\begin{proposition}
-    Для вычисления нормы идеала $(N)$ необходимо $O(n^3 \log^2 |N|)$ бинарных операций, где $|N|$ обозначает максимальный по модулю элемент матричного представления $N$.
-\end{proposition}
-\begin{proof}
-    Для вычисления нормы идеала $(N)$ необходимо найти определитель матрицы, которая получается при матричном представлении элемента $N$.
-    Для этого необходимо $O(n^3 \log^2 |N|)$ бинарных операций.
-\end{proof}
-
-\begin{proposition}
-    Преобразовать $2$-представление идеала $(p, \alpha)$ из теоремы Дедекинда в $\mathbb{Z}$-представление можно $O(P(n)Q(\log p))$ бинарных операций, где $P(T)$ и $Q(T)$ некоторые полиномы.
-\end{proposition}
-\begin{proof}
-    В книге \cite{Pohst} описан алгоритм преобразования $2$-представления в $\mathbb{Z}$-представление.
-    Необходимо найти Эрмитову нормальную форму блочной матрицы
-    \begin{equation*}
-        \begin{pmatrix}
-            A\\
-            B
-        \end{pmatrix},
-    \end{equation*}
-    где $A = diag(p, \dots, p)$, а $B$ является матричным представлением элемента $\alpha$.
-    В 1979 году было доказано, что эрмитову нормальную форму матрицу можно найти за строго полиномиальное время \cite{Kannan}.
-    Это означает, что алгоритму необходимо полиномиальное, относительно размеров матрицы, количество арифметических операций над числами не превосходящими полинома от бинарного представления элементов матрицы.
-    Таким образом эрмитову нормальную форму можно вычислить за $O(P(n)Q(\log p))$ бинарных операций, где $P(T)$ и $Q(T)$ некоторые полиномы.
-\end{proof}
 
 \begin{statement}\cite{source:Wikstrom}
     Пусть $R$ кольцо целых алгебраических элементов числового поля.
