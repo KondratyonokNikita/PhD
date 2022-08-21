@@ -1,11 +1,8 @@
-\begin{center}
-    \chapter*{БИБЛИОГРАФИЧЕСКИЙ СПИСОК}
-    \addcontentsline{toc}{chapter}{БИБЛИОГРАФИЧЕСКИЙ СПИСОК}
-\end{center}
-
-\section*{Список использованных источников}
+\renewcommand{\bibname}{БИБЛИОГРАФИЧЕСКИЙ СПИСОК}
 
 \begin{thebibliography}{99}
+\labelsep=5pt
+\section*{Список использованных источников}
 \vspace{-12pt}
 
     \bibitem{source:Adleman}
@@ -194,9 +191,13 @@
 % \textit{Narkiewicz W.} Elementary and Analytic Theory of Algebraic Numbers / W.~Narkiewicz // Springer. --- 2004.
 % \end{thebibliography}
 
+\newpage
 \section*{Список публикаций соискателя ученой степени}
 
-\begin{enumerate}[label=\arabic*–A., ref=\arabic*–A]
+\renewcommand{\labelenumi}{\arabic{enumi}--A}
+\renewcommand{\theenumi}{\arabic{enumi}--A}
+\begin{enumerate}
+
     \item \label{source:JNT_2016}
     \textit{Vaskouski M.} Primes in quadratic unique factorization domains / M. Vaskouski, N. Kondratyonok, N. Prochorov // Journal of Number Theory. — 2016. — V.~168. — P.~101-116.
 

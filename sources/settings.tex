@@ -1,5 +1,3 @@
-% \input glyphtounicode.tex    % копирование и поиск русских букв в pdf
-% \pdfgentounicode=1
 
 \usepackage{lastpage}
 \usepackage{caption2}
@@ -19,85 +17,44 @@
 \babelfont{rm}{Times New Roman}
 \babelfont{sf}{Times New Roman}
 
-\ProvidesPackage{literat}[1999/05/20 v0.2
-  ParaGraph Literaturnaya as default upright]
 \renewcommand{\rmdefault}{tli}
 
 \usepackage[pdftex]{graphicx}
 \usepackage{wrapfig}
 \usepackage{euscript}
-% \usepackage{lmodern}
 
-\usepackage{amsfonts} %Математические шрифты
+\usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{enumitem} % Для списка публикаций
-\usepackage{totcount} % Подсчет кол-ва источников для списка литературы
-\newtotcounter{citnum} %From the package documentation
+
+% \usepackage{enumitem}
+% \setlist[itemize,1]{label=\textcolor{halfgray}{\textbullet}}
+\renewcommand\labelitemi{{\textbullet}}
+
+\usepackage{totcount}
+\newtotcounter{citnum}
 \def\oldbibitem{} \let\oldbibitem=\bibitem
 \def\bibitem{\stepcounter{citnum}\oldbibitem}
-
-%\usepackage{pscyr}
-
-% Для точки как аргумента функции
-\newcommand*{\Cdot}[1][1.25]{%
-  \mathpalette{\CdotAux{#1}}\cdot%
-}
-\newdimen\CdotAxis
-\newcommand*{\CdotAux}[3]{%
-  {%
-    \settoheight\CdotAxis{$#2\vcenter{}$}%
-    \sbox0{%
-      \raisebox\CdotAxis{%
-        \scalebox{#1}{%
-          \raisebox{-\CdotAxis}{%
-            $\mathsurround=0pt #2#3$%
-          }%
-        }%
-      }%
-    }%
-    % Remove depth that arises from scaling.
-    \dp0=0pt %
-    % Decrease scaled height.
-    \sbox2{$#2\bullet$}%
-    \ifdim\ht2<\ht0 %
-      \ht0=\ht2 %
-    \fi
-    % Use the same width as the original \cdot.
-    \sbox2{$\mathsurround=0pt #2#3$}%
-    \hbox to \wd2{\hss\usebox{0}\hss}%
-  }%
-}
-
-
-\renewcommand{\thesection}{\arabic{section}}
-\renewcommand{\rmdefault}{ftm}
-
 
 \sloppy\clubpenalty4000\widowpenalty4000
 
 % Размеры страницы мои для формата А4
-%%\setlength{\hoffset}{-1in}% убираем отступ слева в 1 дюйм
-%%\setlength{\voffset}{-1in}% убираем отступ сверху в 1 дюйм
-\setlength{\hoffset}{0mm} \setlength{\voffset}{-11mm}
-\setlength{\textheight}{247mm}% размеры текста по высоте без колонтитула
+\setlength{\hoffset}{0mm} \setlength{\voffset}{-8mm}
+\setlength{\textheight}{245mm}% размеры текста по высоте без колонтитула
 \setlength{\textwidth}{170mm}% размеры текста по ширине
-\setlength{\topmargin}{0mm}% высота над верхним колонтитулом
+\setlength{\topmargin}{2mm}% высота над верхним колонтитулом
 \setlength{\oddsidemargin}{1.9mm}% отступ слева
 \setlength{\evensidemargin}{-4.0mm}
 \addtolength{\evensidemargin}{8.0mm}% отступ  слева на четных страницах при двусторонней печати
 \addtolength{\oddsidemargin}{1.9mm}%отступ слева на (нечетной при двусторонней)всех страницах при односторонней печати
-%\setlength{\headheight}{17pt}% высота верхнего колонтитула( прописана отдельно в стилевом файле)
-\setlength{\headsep}{0mm}% высота между верхним колонтитулом и текстом
+\setlength{\headsep}{4mm}% высота между верхним колонтитулом и текстом
 \setlength{\footskip}{10mm}% высота между текстом и нижним колонтитулом
 \setlength{\marginparwidth}{0mm}% ширина заметок на полях
 \setlength{\marginparpush}{0mm}
 \setlength{\marginparsep}{0mm}% ширина между заметками на полях и текстом
-%
 
 \setlength{\parindent}{9mm} \setlength{\linespread}{1}
 
-%\pagestyle{empty}
 \pagestyle{plain}
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0mm}
@@ -116,10 +73,10 @@
 
 
 % Нумерация формул
-\makeatletter \@addtoreset {equation}{section}
+\makeatletter \@addtoreset {equation}{chapter}
 %\renewcommand\theequation{\@arabic\c@section.\@arabic\c@equation}%первая section в пределах section
 %\renewcommand{\theequation}{\thechapter.\arabic{equation}}%первая chapter в пределах section
-\renewcommand\theequation{\thesection.\@arabic\c@equation}%первые chapter и section
+\renewcommand\theequation{\thechapter.\@arabic\c@equation}%первые chapter и section
 
 %После названия точка
 \makeatletter
@@ -246,24 +203,26 @@
 \theoremstyle{plain}
 
 \makeatother
-\newtheorem{lemma}{Лемма}[section]
-\newtheorem{statement}{Утверждение}[section]
-\newtheorem{proposition}{Предложение}[section]
-\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}{Лемма}[chapter]
+\newtheorem{statement}{Утверждение}[chapter]
+\newtheorem{proposition}{Предложение}[chapter]
+\newtheorem{theorem}{Теорема}[chapter]
 
 {\theoremstyle{exes}\newtheorem{exes}{У\,п\,р\,а\,ж\,н\,е\,н\,и\,е}}
 
 {\theoremstyle{defn}\theorembodyfont{\rmfamily}
-\newtheorem{definition}{О\,п\,р\,е\,д\,е\,л\,е\,н\,и\,е}[section]
-\newtheorem{example}{\bfseries{Пример}}[section]
-\newtheorem{algorithm}{А\,л\,г\,о\,р\,и\,т\,м}[section]
-\newtheorem{remark}{\itshape {Замечание}}[section]
-\newtheorem{property}{\bfseries{С\,в\,о\,й\,с\,т\,в\,о}}[section]
-\newtheorem{corollary}{\itshape{Следствие}}[section]}
+\newtheorem{definition}{О\,п\,р\,е\,д\,е\,л\,е\,н\,и\,е}[chapter]
+\newtheorem{example}{\bfseries{Пример}}[chapter]
+\newtheorem{algorithm}{А\,л\,г\,о\,р\,и\,т\,м}[chapter]
+\newtheorem{remark}{\itshape {Замечание}}[chapter]
+\newtheorem{property}{\bfseries{С\,в\,о\,й\,с\,т\,в\,о}}[chapter]
+\newtheorem{corollary}{\itshape{Следствие}}[chapter]}
 
 \newlength\eqnparsize \setlength\eqnparsize{12cm}
 
 \PicInChaper
+
+\linespread{1.13}
 
 %\usepackage{titlesec}
 %\titlelabel{\thetitle.\quad}
@@ -272,8 +231,20 @@
 
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
-\usepackage{subfiles}
+% page number at the top of the page
+\usepackage{fancyhdr}
 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyheadoffset{0cm}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+\fancyhf{}%
+\fancyhead[C]{\fontsize{13pt}{13pt}\selectfont\thepage}%
+}
+
+\usepackage{subfiles}
 \newcommand{\onlyinsubfile}[1]{#1}
 \newcommand{\notinsubfile}[1]{}
 
