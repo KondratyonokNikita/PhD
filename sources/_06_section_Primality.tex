@@ -37,7 +37,7 @@
 \end{remark}
 
 \begin{definition}
-    Кольцо $R$ называется \emph{дедекиндовым}, если любой нетривиальный идеал раскладывается в произведение простых идеалов иденственным способом с точностью до порядка множителей.
+    Кольцо $R$ называется \emph{дедекиндовым}, если любой нетривиальный идеал раскладывается в произведение простых идеалов единственным способом с точностью до порядка множителей.
 \end{definition}
 
 \begin{definition}
@@ -202,7 +202,7 @@
     где $\ideal{p}$ простой и $\sigma_{\ideal{p}}$ символ Артина идеала $\ideal{p}$.
     Используя мультипликативность, эту функцию можно определить для всех идеалов $R$.
     Полученную функцию $\chi$ будем называть \emph{характером}.
-    Характер принимающий только значения $0$ и $1$ называется \emph{главным}.
+    Характер, принимающий только значения $0$ и $1$, называется \emph{главным}.
 \end{definition}
 
 \begin{definition}
@@ -766,9 +766,9 @@
 \begin{proposition}\label{proposition:condition_A_with_any_homomorphism}
     Пусть кольцо $R$ удовлетворяет условию A.
     Пусть $\chi: \invertible{R/\ideal{n}} \to G$ нетривиальный гомоморфизм.
-    Тогда существует идеал $a$ взаимнопростой с $\ideal{n}$ и такой, что $\chi(a) \neq 1$ и
+    Тогда существует идеал $\ideal{a}$ взаимнопростой с $\ideal{n}$ и такой, что $\chi(\ideal{a}) \neq 1$ и
     \begin{equation*}
-        \Nm{a} \le f(\log{\Nm{\ideal{n}}}).
+        \Nm{\ideal{a}} \le f_R(\log{\Nm{\ideal{n}}}).
     \end{equation*}
 \end{proposition}
 \begin{proof}
@@ -776,33 +776,33 @@
     Рассмотрим нетривиальный характер $\xi: \chi(\invertible{R/\ideal{n}}) \to \invertible{\mathbb{C}}$.
     Очевидно, что $\xi \circ \chi: \invertible{R/\ideal{n}} \to \invertible{\mathbb{C}}$ является нетривиальным характером группы $\invertible{R/\ideal{n}}$.
     
-    Из определения условия A следует, что существует простой $a$ взаимнопростой с $\ideal{n}$ и такой, что $(\xi \circ \chi)(a) \neq 1$ и
+    Из определения условия A следует, что существует простой $\ideal{a}$ взаимнопростой с $\ideal{n}$ и такой, что $(\xi \circ \chi)(\ideal{a}) \neq 1$ и
     \begin{equation*}
-        \Nm{a} \le f(\log{\Nm{\ideal{n}}}).
+        \Nm{\ideal{a}} \le f_R(\log{\Nm{\ideal{n}}}).
     \end{equation*}
     
-    Из того, что $(\xi \circ \chi)(a) \neq 1$ следует, что $\chi(a) \neq 1$.
+    Из того, что $(\xi \circ \chi)(\ideal{a}) \neq 1$ следует, что $\chi(\ideal{a}) \neq 1$.
 \end{proof}
 
 \begin{proposition}\label{proposition:miller_criteria_character}
     Пусть идеал $\ideal{p}$ простой с нечетной нормой.
     Тогда сравнение
     \begin{equation*}
-        \ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}
+        x^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}
     \end{equation*}
-    имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}^2}$.
+    имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $x \in \invertible{R/\ideal{p}^2}$.
 \end{proposition}
 \begin{proof}
-    Из утверждения~\ref{statement:euler_function} следует, что сравнение $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$ имеет ровно $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}}$.
+    Из утверждения~\ref{statement:euler_function} следует, что сравнение $x^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$ имеет ровно $\Nm{\ideal{p}} - 1$ решений относительно $x \in \invertible{R/\ideal{p}}$.
     
-    Заметим, что все решения сравнения $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}$ имеют вид $a + \ideal{p}\ideal{t}$, где $a \in \invertible{R/\ideal{p}}$, $\ideal{t} \in R/\ideal{p}$ и $a$ является решением сравнения $\ideal{x}^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$.
+    Заметим, что все решения сравнения $x^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}$ имеют вид $a + \ideal{p}\ideal{t}$, где $a \in \invertible{R/\ideal{p}}$, $\ideal{t} \in R/\ideal{p}$ и $a$ является решением сравнения $x^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}}$.
     Подставим этот вид в сравнение, раскроем скобки и получим сравнение
     \begin{equation*}
         \ideal{p}\ideal{t}(\Nm{\ideal{p}} - 1)a^{\Nm{\ideal{p}} - 2} \equiv 1 - a^{\Nm{\ideal{p}} - 1} \pmod{\ideal{p}^2}.
     \end{equation*}
     
     Так как $((\Nm{\ideal{p}} - 1)a^{\Nm{\ideal{p}} - 2}, \ideal{p}) = 1$, то это сравнение имеет ровно одно решение при фиксированном $a$.
-    Следовательно, исходное сравнение имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $\ideal{x} \in \invertible{R/\ideal{p}^2}$.
+    Следовательно, исходное сравнение имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $x \in \invertible{R/\ideal{p}^2}$.
 \end{proof}
 
 \begin{theorem}\label{theorem:euler_criteria}
@@ -875,7 +875,7 @@
         
         \item Выбрать случайное $a \in \invertible{R/\ideal{n}}$;
 
-        \item Вычислить $r_0 = a^{\frac{\Nm{\ideal{n}} - 1}{2}} \pmod{\ideal{n}}$, $r_1 = \jacobi{a}{\ideal{n}}$;
+        \item Вычислить $r_0 \equiv a^{\frac{\Nm{\ideal{n}} - 1}{2}} \pmod{\ideal{n}}$, $r_1 = \jacobi{a}{\ideal{n}}$;
 
         \item Если $r_0 \equiv r_1 \pmod{\ideal{n}}$, то вернуть ''неизвестно'' и завершить алгоритм;
 
@@ -998,26 +998,26 @@
         \jacobi{a}{\ideal{d}} \not\equiv 1 \pmod{\ideal{n}}.
     \end{equation*}
     
-    Положим $\ideal{b} = a^u$.
+    Положим $b = a^u$.
     Тогда $\jacobi{b}{\ideal{d}} = -1$.
-    Следовательно, $\ideal{b} \not\equiv 1 \pmod{\ideal{d}}$.
+    Следовательно, $b \not\equiv 1 \pmod{\ideal{d}}$.
     Пусть $j \in \mathbb{Z}$ минимальное число, для которого $a^{2^j u} \equiv -1 \pmod{\ideal{n}}$.
-    Тогда $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = \textrm{ord}_{R/\ideal{q}}(\ideal{b}) = 2^{j+1}$.
+    Тогда $\textrm{ord}_{R/\ideal{p}}(b) = \textrm{ord}_{R/\ideal{q}}(b) = 2^{j+1}$.
     
     Рассмотрим два случая.
     Пусть $v_2(\Nm{\ideal{p}} - 1) > v_2(\Nm{\ideal{q}} - 1)$.
-    Тогда $\textrm{ord}_{R/\ideal{q}}(\ideal{b}) = 2^{j+1} | \varphi(\ideal{q}) = \Nm{\ideal{q}} - 1$.
-    Следовательно, $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = 2^{j+1} | (\Nm{\ideal{p}} - 1)/2$.
-    Получаем, что $\jacobi{b}{\ideal{d}} = \jacobi{a}{\ideal{p}} = -1$ и $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$.
+    Тогда $\textrm{ord}_{R/\ideal{q}}(b) = 2^{j+1} | \varphi(\ideal{q}) = \Nm{\ideal{q}} - 1$.
+    Следовательно, $\textrm{ord}_{R/\ideal{p}}(b) = 2^{j+1} | (\Nm{\ideal{p}} - 1)/2$.
+    Получаем, что $\jacobi{b}{\ideal{d}} = \jacobi{a}{\ideal{p}} = -1$ и $b^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$.
     Это противоречит теореме~\ref{theorem:euler_criteria}.
     
     Пусть $v_2(\Nm{\ideal{p}} - 1) = v_2(\Nm{\ideal{q}} - 1)$.
     Тогда $\jacobi{b}{\ideal{d}} = \jacobi{b}{\ideal{p}}\jacobi{b}{\ideal{q}} = -1$.
     Следовательно, один из множителей равен $-1$.
     Пусть $\jacobi{b}{\ideal{p}} = -1$ и $\jacobi{b}{\ideal{q}} = 1$.
-    Из теоремы~\ref{theorem:euler_criteria} следует, что $\ideal{b}^{(\Nm{\ideal{q}} - 1)/2} \equiv 1 \pmod{\ideal{q}}$ и $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) = \textrm{ord}_{R/\ideal{q}}(\ideal{b}) | (\Nm{\ideal{q}} - 1)/2$.
-    Тогда $\textrm{ord}_{R/\ideal{p}}(\ideal{b}) | (\Nm{\ideal{p}} - 1)/2$.
-    Следовательно, $\ideal{b}^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$, что противоречит предположению $\jacobi{b}{\ideal{p}} = -1$.
+    Из теоремы~\ref{theorem:euler_criteria} следует, что $b^{(\Nm{\ideal{q}} - 1)/2} \equiv 1 \pmod{\ideal{q}}$ и $\textrm{ord}_{R/\ideal{p}}(b) = \textrm{ord}_{R/\ideal{q}}(b) | (\Nm{\ideal{q}} - 1)/2$.
+    Тогда $\textrm{ord}_{R/\ideal{p}}(b) | (\Nm{\ideal{p}} - 1)/2$.
+    Следовательно, $b^{(\Nm{\ideal{p}} - 1)/2} \equiv 1 \pmod{\ideal{p}}$, что противоречит предположению $\jacobi{b}{\ideal{p}} = -1$.
 \end{proof}
 
 \begin{algorithm}\label{algorithm:miller_rabin}
@@ -1029,7 +1029,7 @@
         
         \item Выбрать случайный $a \in \invertible{R/\ideal{n}}$;
 
-        \item Вычислить $r_0 = a^u \pmod{\ideal{n}}$;
+        \item Вычислить $r_0 \equiv a^u \pmod{\ideal{n}}$;
 
         \item Если $r_0 = 1$, то вернуть ''неизвестно'' и завершить алгоритм;
 
