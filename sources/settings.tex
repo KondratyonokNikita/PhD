@@ -55,7 +55,6 @@
 
 \setlength{\parindent}{9mm} \setlength{\linespread}{1}
 
-\pagestyle{plain}
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0mm}
 
@@ -234,7 +233,6 @@
 % page number at the top of the page
 \usepackage{fancyhdr}
 
-\pagestyle{fancy}
 \fancyhf{}
 \fancyheadoffset{0cm}
 \renewcommand{\headrulewidth}{0pt}
@@ -243,6 +241,7 @@
 \fancyhf{}%
 \fancyhead[C]{\fontsize{13pt}{13pt}\selectfont\thepage}%
 }
+\pagestyle{plain}
 
 \usepackage{subfiles}
 \newcommand{\onlyinsubfile}[1]{#1}
