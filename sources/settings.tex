@@ -1,18 +1,15 @@
 
 \usepackage{lastpage}
 \usepackage{caption2}
-\usepackage{epstopdf}
 
 \usepackage{lscape}
 
 \usepackage{makeidx}
 \usepackage{soul}
 \usepackage{mathrsfs}
-\usepackage[utf8]{inputenc}
-\usepackage[russian, english]{babel}
+\usepackage[english, russian]{babel}
 \usepackage{longtable}
 \usepackage{comment}
-\usepackage[toc,page]{appendix}
 
 \babelfont{rm}{Times New Roman}
 \babelfont{sf}{Times New Roman}
@@ -27,8 +24,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-% \usepackage{enumitem}
-% \setlist[itemize,1]{label=\textcolor{halfgray}{\textbullet}}
 \renewcommand\labelitemi{{\textbullet}}
 
 \usepackage{totcount}
@@ -290,3 +285,7 @@
 % \makeatother
 
 \usepackage{pdfpages}
+
+% remove all underfull box notes
+\vbadness=1000000
+\hbadness=1000000

@@ -40,10 +40,10 @@
 \begin{definition}
     Обозначим через $\mathpzc{l}_{a, b}$ длину кратчайшей цепочки делений для $a, b \in \zeroless{R}$.
     \begin{equation*}
-        \mathpzc{l}_{a, b} = \left\{\begin{split}
+        \mathpzc{l}_{a, b} = \begin{cases}
             \min_{\mathcal{D}_{a, b}(q_1, \dots, q_k) \in \mathcal{E}_{a, b}} k, & \textrm{ если } \mathcal{E}_{a, b} \neq \emptyset\\
             \infty, & \textrm{ если } \mathcal{E}_{a, b} = \emptyset
-        \end{split}\right..
+        \end{cases}.
     \end{equation*}
 \end{definition}
 
@@ -69,10 +69,10 @@
 \begin{definition}
     Определим функцию $\omega: F_1 \to F_1$ следующим образом
     \begin{equation*}
-        \omega(\alpha) = \left\{\begin{split}
+        \omega(\alpha) = \begin{cases}
             \fr{\alpha^{-1}}, \textrm{ если } \alpha \neq 0\\
             0, \textrm{ если } \alpha = 0
-        \end{split}\right.
+        \end{cases}
     \end{equation*}
 \end{definition}
 
@@ -133,7 +133,7 @@
 
     Пусть $k = 2$.
     Заметим, что имеет место $(\alpha, 2)$-разрешимость тогда и только тогда, когда $m \equiv \varepsilon \pmod{n}$ для некоторого $\varepsilon \in \invertible{R}$.
-    Пусть $q \in R$ и $m = qn + \varepsilon$, тогда $m/n = \fr{m/n} = \fr{\varepsilon/n}$.
+    Пусть $q \in R$ и $m = q n + \varepsilon$, тогда $m/n = \fr{m/n} = \fr{\varepsilon/n}$.
     Если $n \in \invertible{R}$, то $\fr{\varepsilon/n} = 0$ и утверждение леммы очевидно.
     Если $n \not\in \invertible{R}$, то $\fr{\varepsilon/n} = \varepsilon/n$ и $\omega(m/n) = \fr{n/\varepsilon} = 0$.
 
@@ -148,7 +148,7 @@
     Если $D_R \ge 3$ и $k \le D_R$, то обозначим $X = k-2$, иначе $X = D_R - 1$.
     Заметим, что $X \le k-2$.
     Из определения класса $\mathcal{T}$ следует, что тройка $(z, \alpha, X)$ регулярная.
-    Следовательно, сущесвуют $p, l \in \mathbb{N}$, $p \le X$, $l \le p+1$, $\varepsilon \in \{0, 1\}$, $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$, $i = 1, \dots, l-1$, что
+    Следовательно, существуют $p, l \in \mathbb{N}$, $p \le X$, $l \le p+1$, $\varepsilon \in \{0, 1\}$, $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$, $i = 1, \dots, l-1$, что
     \begin{equation*}
         \begin{split}
             \beta_1 = \omega^{(p)}\left(\fr{(\alpha - z)^{-1}}\right)\\
@@ -558,12 +558,10 @@
     Учитывая то, что $\alpha=\textrm{fr}(\alpha)$ и $\deg m=\deg n$ получаем $\lim_{t\to+\infty}\left|\frac{m(t)}{n(t)}\right|\le 0.5$.
     Если $\deg r>0,$ то $ \deg n<\deg(n-r(m-nc)),$ но это противоречие.
     Таким образом $r=const$ и
-    \begin{eqnarray*}
-        \begin{split}
-            \lim_{t\to+\infty}\left|\frac{n(t)-r(m(t)-n(t)c)}{n(t)}\right| \ge |1+rc|-|r|/2 \ge\\
-            \ge |r|(|c|-1/2)-1 \ge \frac{3}{2},
-        \end{split}
-    \end{eqnarray*}
+    \begin{align*}
+        \lim_{t\to+\infty}\left|\frac{n(t)-r(m(t)-n(t)c)}{n(t)}\right| \ge |1+rc|-|r|/2 \ge\\
+        \ge |r|(|c|-1/2)-1 \ge \frac{3}{2},
+    \end{align*}
     но это противоречит определению дробной части.
 
     Таким образом $\mathbb{J}\supseteq\{f\in\mathbb{Z}[t]|\deg f>0\ \textrm{или}\ |f(t)|\equiv|x_{0}|>2\}$.
@@ -583,18 +581,18 @@
     Докажем, что $\mathbb{J}=\mathbb{K}_{*}$.
     Рассмотрим произвольный $\alpha\in\mathbb{F}_{1}^{*}$, тогда существует $b\in\mathbb{K}_{*}\backslash\mathbb{I}$ такой, что $\alpha=1/b$.
     Пусть $x\in\mathbb{K}_{*}$.
-    Покажем, что $\textrm{int}((\alpha-x)^{-1})=(\alpha-x)^{-1}$.
+    Покажем, что $\textrm{int}((\alpha-x)^{-1}) = (\alpha-x)^{-1}$.
     Имеем $(\alpha-x)^{-1}=\frac{b}{1-bx}$.
-    Предположим, что $\textrm{fr}(\frac{b}{1-bx})\neq0$, что эквивалентно утверждению, что $\frac{b}{1-bx}=\frac{1}{c}$ для некоторого $c\in\mathbb{K}_{*}\backslash\mathbb{I}$.
-    Так как $b$ и $1-bx$ взаимнопростые, то $b\in\mathbb{I}$.
-    Следовательно, имеем $\alpha-x=b^{-1}-x\in\mathbb{K}$, это означает, что $\alpha\in\mathbb{K}$, но это противоречит условию $\alpha\in\mathbb{F}_{1}^{*}$.
+    Предположим, что $\textrm{fr}(\frac{b}{1-bx}) \neq 0$, что эквивалентно утверждению, что $\frac{b}{1 - b x} = \frac{1}{c}$ для некоторого $c\in\mathbb{K}_{*}\backslash\mathbb{I}$.
+    Так как $b$ и $1 - b x$ взаимнопростые, то $b\in\mathbb{I}$.
+    Следовательно, имеем $\alpha-x=b^{-1}-x\in\mathbb{K}$, это означает, что $\alpha\in\mathbb{K}$, но это противоречит условию $\alpha \in \mathbb{F}_{1}^{*}$.
     Таким образом имеем $x\ \textrm{int}((\alpha-x)^{-1})+1=\frac{1}{1-bx}$.
-    Предположим, что $1-bx\in\mathbb{K}_{*}\backslash\mathbb{I}$.
+    Предположим, что $1 - b x \in \mathbb{K}_{*}\backslash\mathbb{I}$.
     Так как $b$ и $1-bx$ взаимнопростые, то $b|(1-bx)$.
     Следовательно, $b\in\mathbb{I}$.
     Из последнего следует, что $\alpha-x=b^{-1}-x\in\mathbb{K}$, но это противоречит условию $\alpha\in\mathbb{F}_{1}^{*}$.
     Итого получаем $1-bx\in\mathbb{I}$.
-    Следовательно, $x\ \textrm{int}((\alpha-x)^{-1})+1\in\mathbb{I}$.
+    Следовательно, $x\ \textrm{int}((\alpha-x)^{-1}) + 1 \in \mathbb{I}$.
     
     Тогда $\mathbb{K}_{*}\backslash\mathbb{J} = \emptyset$.
     Следовательно, $\mathbb{K}\in \mathcal{S}$.
@@ -735,10 +733,10 @@
     \end{equation*}
     
     Из этого следует, что $\mathpzc{l}_{a,b}\le 4\le \mathcal{L}_{a,b}$.
-    Следовательно, теорема \ref{thm:kronecker_vahlen_ufd} не выполняется.
-    Предположим, что $\mathbb{Z}[i\sqrt{11}]\in\mathcal{T}$, но тогда по теореме \ref{thm:kronecker_vahlen_ufd} получаем, что для любой пары $(c,d)\in\mathbb{K}_* \times\mathbb{K}_*$ выполнено $\mathpzc{l}_{c,d}=\mathcal{L}_{c,d}$.
+    Следовательно, теорема \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} не выполняется.
+    Предположим, что $\mathbb{Z}[i\sqrt{11}]\in\mathcal{T}$, но тогда по теореме \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} получаем, что для любой пары $(c,d)\in\mathbb{K}_* \times\mathbb{K}_*$ выполнено $\mathpzc{l}_{c,d}=\mathcal{L}_{c,d}$.
     Получаем противоречие с приведенным примером.
-    Аналогично можно показать, что лемма \ref{lem:1} не выполняется для $\mathbb{Z}[\sqrt{-11}].$
+    Аналогично можно показать, что лемма \ref{lemma:omega_and_euclidean_algorithm} не выполняется для $\mathbb{Z}[\sqrt{-11}].$
 \end{example}
 
 \subsection{Общий метод проверки $R \in \mathcal{T}$}
@@ -1229,7 +1227,7 @@
 \end{proposition}
 \begin{proof}
     Если $d>=0$, то утверждение следует из теоремы~\ref{theorem:kronecker}.
-    Если $d<0$, то утверждение следует из работы~\cite{Rolletschek_1990}.
+    Если $d<0$, то утверждение следует из работы~\cite{source:Rolletschek_1990}.
 \end{proof}
 
 \section{Теорема Ламе в факториальных кольцах}
@@ -1237,14 +1235,14 @@
 Ранее было показано, что при определенных условиях на кольцо цепочка делений с выбором минимального по норме остатка является кратчайшей.
 Однако существуют кольца, для которых эти условия не выполняются и в которых цепочка делений с выбором минимального по норме остатка не является кратчайшей.
 Например, в работе~\cite{source:Rolletschek_1990} было показано, что теорема Кронекера-Валена не выполняется в кольце $\mathbb{Z}[\sqrt{-11}]$.
-В работе ~\cite{source:Cooke} было показано, что для колец целых алгебраических чисел с бесконечной группой единиц длина кратчайшей цепочки делений с выбором минимального по норме остатка ограничена константой.
+В работе~\cite{source:Cooke} было показано, что для колец целых алгебраических чисел с бесконечной группой единиц длина кратчайшей цепочки делений с выбором минимального по норме остатка ограничена константой.
 Следовательно, важным вопросом является исследование асимптотического поведения длины кратчайшей цепочки делений.
 
 \begin{definition}
     Пусть $d \neq 1$ -- целое число свободное от квадратов.
     Под \emph{фундаментальной областью поля} $\mathbb{Q}[\sqrt{d}]$ понимают множество, заданное следующим образом
     \begin{equation*}
-        F(d) = \left\{\begin{split}
+        F(d) = \begin{cases}
             \left(
                 \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{2}\right]
             \right) \cap \left(
@@ -1255,7 +1253,7 @@
             \right) \cap \left(
                 \mathbb{Q} \times \mathbb{Q}
             \right), \textrm{ если } d \equiv 1 \pmod 4
-        \end{split}\right..
+        \end{cases}
     \end{equation*}
 \end{definition}
 
@@ -1327,10 +1325,10 @@
 \begin{proof}
     Обозначим
     \begin{equation*}
-        E(d) = \left\{\begin{split}
+        E(d) = \begin{cases}
             \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{2}\right], \textrm{ если } d \not\equiv 1 \pmod 4\\
             \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{4}\right], \textrm{ если } d \equiv 1 \pmod 4
-        \end{split}\right..
+        \end{cases}
     \end{equation*}
 
     Для $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$ и $r > 0$ обозначим

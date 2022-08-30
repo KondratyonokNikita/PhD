@@ -232,13 +232,17 @@
 
 \begin{remark}
     Для любого факториального кольца $R$ можно определить норму.
-    Рассмотрим разложение элемента $x$ на простые множители $x = \varepsilon p_1^{\alpha_1} \dots p_k^{\alpha_k}$, где $\varepsilon \in \invertible{R}$, $p_1, \dots, p_k$ -- простые элементы $R$.
+    Рассмотрим разложение элемента $x$ на простые множители
+    \begin{equation*}
+        x = \varepsilon p_1^{\alpha_1} \dots p_k^{\alpha_k},
+    \end{equation*}
+    где $\varepsilon \in \invertible{R}$, $p_1, \dots, p_k$ -- простые элементы $R$.
     Тогда функция
     \begin{equation*}
-        \elementnorm{x} = \left\{\begin{split}
+        \elementnorm{x} = \begin{cases}
             \sum_{i=1}^k \alpha_{i}, & \textrm{ если } x \neq 0\\
             -\infty, & \textrm{ если } x = 0
-        \end{split}\right.
+        \end{cases}
     \end{equation*}
     является нормой в $R$.
 \end{remark}
@@ -246,7 +250,7 @@
 Далее будем считать, что факториальное кольцо $R$ задано вместе с нормой $\elementnorm{\cdot}$.
 
 \begin{definition}
-    Пусть $R$ факториальное кольцо и $F$ его поле частных.
+    Пусть $R$ факториальное кольцо с полем частных $F$.
     Функцию $\fr{\cdot}: F \to F$ будем называть дробной частью в $F$, если
     \begin{itemize}
         \item $\fr{\alpha + q} = \fr{\alpha}$ для любых $\alpha \in F$, $q \in R$;
@@ -465,12 +469,12 @@
     Любой идеал имеет 2-представление.
 \end{statement}
 
-\begin{statement}\cite{Post}
+\begin{statement}\cite{source:Post}
     Существует полиномиальный алгоритм перехода от $2$-представления к $\mathbb{Z}$-представлению и обратно.
 \end{statement}
 
 \begin{remark}
-    Несмотря на полиномиальность алгоритма, он может оказаться достаточно трудоёмким.
+    Несмотря на то, что алгоритм полиномиальный, он может оказаться достаточно трудоёмким.
 \end{remark}
 
 Важной операцией над идеалами является их сравнение.
@@ -491,11 +495,11 @@
     Будем говорить, что $\mathbb{Z}$-представление идеала $\ideal{a} = (e_1,\dots,e_n)_{\mathbb{Z}}$ находится в нормальной эрмитовой форме, если соответствующая матрица является матрицей в эрмитовой нормальной форме.
 \end{definition}
 
-\begin{statement}\cite{Cohen, Post}
+\begin{statement}\cite{source:Cohen, source:Post}
     Любой идеал может быть записан в нормальной эрмитовой форме, причём такое представление единственно.
 \end{statement}
 
-\begin{statement}\cite{PolynomialHermitForm}
+\begin{statement}\cite{source:Kannan}
     Существует полиномиальный алгоритм получения представления идеала в нормальной эрмитовой форме из его $\mathbb{Z}$-представления.
 \end{statement}
 
@@ -658,7 +662,7 @@
     Тогда норма $\Nm(\ideal{a})$ может быть вычислена за $\tilde{O}(\log L)$ бинарных операций.
 \end{proposition}
 \begin{proof}
-    В работе Поста~\cite{Post}, доказано, что $\Nm{\ideal{a}} = |\mathrm{det}(A)|$, где $A$ матрица соответствующая $\mathbb{Z}$-представлению $\ideal{a}$.
+    В работе Поста~\cite{source:Post}, доказано, что $\Nm{\ideal{a}} = |\mathrm{det}(A)|$, где $A$ матрица соответствующая $\mathbb{Z}$-представлению $\ideal{a}$.
     Определитель целочисленной матрицы размера $n \times n$ с коэффициентами размера $O(L)$ может быть вычислен за $\tilde{O}(\log L)$ бинарных операций.
 \end{proof}
 
@@ -704,10 +708,10 @@
 \end{corollary}
 
 \begin{remark}
-    Отметим, что все указанные операции могут быть выполнены за полиномиальное время в случае, когда идеалы заданы с помощью одного из представлений: $\mathbb{Z}$-представление, 2-представление, нормальная эрмитовая форма; в силу того, что из одного представления может быть получено другое за полиномиальное время.
+    Отметим, что все указанные операции могут быть выполнены за полиномиальное время в случае, когда идеалы заданы с помощью одного из представлений: $\mathbb{Z}$-представление, 2-представление, нормальная эрмитова форма; в силу того, что из одного представления может быть получено другое за полиномиальное время.
 \end{remark}
 
-\begin{statement}\cite{source:Wikstrom}
+\begin{statement}\cite{source:Wikstrom}\label{statement:GCD_Wikstrom}
     Пусть $R$ кольцо целых алгебраических элементов числового поля.
     Тогда для любых $a, b \in R$ наибольший общий делитель $(a, b)$ можно вычислить на $O(n^2)$ арифметических операций в $\mathbb{Z}$, где $n$ длина бинарной записи $a$ и $b$.
 \end{statement}
@@ -715,14 +719,14 @@
 \begin{statement}[Теорема Дедекинда]\label{statement:dedekind}
     Пусть $f(T)$ минимальный многочлен алгебраического числа $\theta$ в $\mathbb{Z}[\theta]$.
     Для простого рационального числа $p$, не делящего индекс $[\mathcal{O}_K:\mathbb{Z}[\theta]]$, запишем
-    \begin{equation}
-        f(T) \equiv \pi_1(T)^{e_1}\dots \pi_g(T)^{e_g} \modul p,\nonumber
-    \end{equation}
+    \begin{equation*}
+        f(T) \equiv \pi_1(T)^{e_1}\dots \pi_g(T)^{e_g} \modul p,
+    \end{equation*}
     где $\pi_i(T)$ --- различные монические неприводимые многочлены в $\mathbb{F}_p[T]$.
     Тогда
-    \begin{equation}
-        (p) = \mathfrak{p}_1^{e_1}\dots \mathfrak{p}_g^{e_g},\nonumber
-    \end{equation}
+    \begin{equation*}
+        (p) = \mathfrak{p}_1^{e_1}\dots \mathfrak{p}_g^{e_g},
+    \end{equation*}
     где $\mathfrak{p}_i = (p_i, T_i(\theta))$, $T_i(T) \equiv \pi_i(T)(\modul p)$.
 \end{statement}
 
@@ -833,7 +837,7 @@
     Пусть для любого $a \in \invertible{R/\ideal{n}}$ выполнено $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{a}{\ideal{n}}\right] \pmod{\ideal{n}}$.
 
     Пусть существует такой $j \in \{1, \dots, r\}$, что $\alpha_j > 1$ в разложении $\ideal{n}$ на множители.
-    Из теоремы Коши для групп \ref{statement:cauchy} и свойств функции Эйлера \ref{statement:euler_function} следует, что существует $a \in \invertible{R/\ideal{n}}$ порядка $q_j$.
+    Из теоремы Коши для групп и свойств функции Эйлера \ref{statement:euler_function} следует, что существует $a \in \invertible{R/\ideal{n}}$ порядка $q_j$.
     Тогда $q_j | \Nm{\ideal{n}} - 1$, что невозможно.
 
     Следовательно, $\alpha_j = 1$ для любого $j \in \{1, \ldots, r\}$.
@@ -901,11 +905,11 @@
     \end{equation*}
     Алгоритм~\ref{algorithm:solovay_strassen} возвращает ответ ''неизвестно'' только для элементов из множества $G$.
 
-    Заметим, что если алгоритм~\ref{algorithm:solovay_strassen} возвращает ответ ''неизвестно'' для $a$ и $b$, то он вернет ответ ''неизвестно'' и для $ab$.
+    Заметим, что если алгоритм~\ref{algorithm:solovay_strassen} возвращает ответ ''неизвестно'' для $a$ и $b$, то он вернет ответ ''неизвестно'' и для $a b$.
     Следовательно, $G$ образует подгруппу группы $\invertible{R/\ideal{n}}$.
 
     Из теоремы~\ref{theorem:euler_criteria} следует, что $G$ собственная подгруппа.
-    Тогда из теоремы Лагранжа~\ref{statement:lagrange} следует, что $|G|/|\invertible{R/\ideal{n}}| \le \frac{1}{2}$.
+    Тогда из теоремы Лагранжа следует, что $|G|/|\invertible{R/\ideal{n}}| \le \frac{1}{2}$.
 \end{proof}
 
 \begin{remark}
@@ -944,7 +948,7 @@
     Так как норма простого идеала примарная, то обозначим $\Nm{\ideal{p}_i} = q_i^{f_i}$, где $q_i$ -- простой в $\mathbb{Z}$.
 
     Пусть существует такой $j \in \{1, \dots, r\}$, что $\alpha_j > 1$ в разложении $\ideal{n}$ на множители.
-    Из теоремы Коши для групп \ref{statement:cauchy} и свойств функции Эйлера~\ref{statement:euler_function} следует, что существует $a \in \invertible{R/\ideal{n}}$ порядка $q_j$.
+    Из теоремы Коши для групп и свойств функции Эйлера~\ref{statement:euler_function} следует, что существует $a \in \invertible{R/\ideal{n}}$ порядка $q_j$.
     Так как $u \not\equiv 0 \pmod{q_j}$, то $a^u \not\equiv 1 \pmod{\ideal{n}}$.
     Следовательно, существует число $k \in \{1, \dots, t-1\}$, такое что выполнено сравнение $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
     Тогда $a^{2^{k+1}u} \equiv 1 \pmod{\ideal{n}}$.
@@ -1078,7 +1082,7 @@
 
     Предположим, что существует такой $j \in \{1, \dots, r\}$, что $\alpha_i > 1$ в разложении $\ideal{n}$ на множители.
     Тогда $\Nm{\ideal{p}_j} | \varphi(\ideal{n})$, следовательно $q_j | \varphi(\ideal{n})$.
-    Из теоремы Коши для групп~\ref{statement:cauchy} следует, что в группе $\invertible{R/\ideal{n}}$ существует элемент $a$ порядка $q_j$.
+    Из теоремы Коши для групп следует, что в группе $\invertible{R/\ideal{n}}$ существует элемент $a$ порядка $q_j$.
     Из теоремы Эйлера~\ref{statement:euler_function} следует, что $a^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}$, следовательно, $a^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{p}}$.
     Из утверждений выше получаем, что $q_j | \Nm{\ideal{n}} - 1$.
     Это противоречит тому, что $q_j | \Nm{\ideal{n}}$.
@@ -1142,8 +1146,8 @@
 \begin{remark}
     Доказанные критерии и алгоритмы можно использовать при генерации простых идеалов.
     В частности для кольца целых чисел они используются в алгоритме Гордона построения сильных простых чисел.
-    Генерация простых идеалов является обязательной частью в RSA-криптосистеме в дедекиндовых кольцах.
-    Такая криптосистема будет рассмотрена в главе~\ref{section:RSA-cryptosystem}.
+    Генерация простых идеалов является обязательной частью в криптосистеме RSA в дедекиндовых кольцах.
+    Такая криптосистема будет рассмотрена в главе~\ref{chapter:RSA-cryptosystem}.
 \end{remark}
 
 \section{Вычислительная сложность алгоритма Миллера-Рабина}
