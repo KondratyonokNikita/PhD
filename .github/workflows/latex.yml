@@ -8,7 +8,7 @@ jobs:
 
       - uses: actions/checkout@v2
 
-      - name: Build document
+      - name: Build dissertation
         uses: xu-cheng/latex-action@v2
         with:
           root_file: _00_dissertation.tex
@@ -20,11 +20,29 @@ jobs:
             update-ms-fonts
             fc-cache -f
 
-      - name: Upload pdf document
+      - name: Upload dissertation pdf
         uses: actions/upload-artifact@v2
         with:
           name: dissertation
           path: sources/_00_dissertation.pdf
+
+      - name: Build autoref
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: _00_autoref.tex
+          working_directory: autoref/
+          latexmk_use_xelatex: true
+          latexmk_shell_escape: true
+          pre_compile: |
+            apk add msttcorefonts-installer fontconfig
+            update-ms-fonts
+            fc-cache -f
+
+      - name: Upload autoref pdf
+        uses: actions/upload-artifact@v2
+        with:
+          name: autoref
+          path: autoref/_00_autoref.pdf
 
       - name: Variables
         id: vars
@@ -32,10 +50,15 @@ jobs:
           echo "::set-output name=date::$(date +'%d-%m-%Y')"
           echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
 
-      - name: Download artifacts
+      - name: Download dissertation
         uses: actions/download-artifact@v2
         with:
           name: dissertation
+
+      - name: Download autoref
+        uses: actions/download-artifact@v2
+        with:
+          name: autoref
 
       - name: Create Release
         uses: actions/create-release@v1
@@ -48,7 +71,7 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload pdf asset
+      - name: Upload dissertation pdf
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -56,4 +79,14 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./_00_dissertation.pdf
           asset_name: Kondratyonok_PhD.pdf
+          asset_content_type: application/pdf
+
+      - name: Upload autoref pdf
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./_00_autoref.pdf
+          asset_name: Kondratyonok_Autoref.pdf
           asset_content_type: application/pdf
