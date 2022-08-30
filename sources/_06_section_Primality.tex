@@ -51,15 +51,15 @@
 \begin{example}
     Рассмотрим примеры дедекиндовых колец с конечной нормой.
     \begin{itemize}
-        \item Пусть $K$ -- числовое поле.
+        \item Пусть $K$~-- числовое поле.
         Кольцо $\mathbb{Z}_K$, образованное алгебраическими целыми элементами этого поля является дедекиндовым с конечным полем остатков.
         Частными случаями этого примера являются кольцо целых чисел и гауссовых чисел.
         
-        \item Пусть $f(x, y) = y - mx - b$ -- прямая.
+        \item Пусть $f(x, y) = y - mx - b$~-- прямая.
         Тогда $K[x, y]/(f(x, y)) \cong K[x]$.
         Следовательно, это координатное кольцо является факториальным.
         
-        \item Пусть $f(x, y) = y - x^2$ -- парабола.
+        \item Пусть $f(x, y) = y - x^2$~-- парабола.
         Тогда $K[x, y]/(f(x, y)) \cong K[x]$.
         Следовательно, это координатное кольцо является факториальным.
     
@@ -84,7 +84,7 @@
     Будем говорить, что $a$ \emph{сравнимо} с $b$ по модулю $\ideal{n}$ и писать $a \equiv b \pmod{\ideal{n}}$, если $a - b \in \ideal{n}$.
 \end{definition}
 
-\begin{definition}\cite{source:Petukhova}
+\begin{definition}[\cite{source:Petukhova}]
     Функцией Эйлера нетривиального идеала $\ideal{n} \subset R$ называется функция
     \begin{equation*}
         \varphi(\ideal{n}) = \left|
@@ -94,7 +94,7 @@
 \end{definition}
 
 \begin{statement}[Обобщенная теорема Эйлера]\cite{source:Petukhova}\label{statement:euler_function}
-    Пусть $m \in R$ и $\ideal{n} \subset R$ --- идеал.
+    Пусть $m \in R$ и $\ideal{n} \subset R$~-- идеал.
     Если $Rm + \ideal{n} = R$, то
     \begin{equation*}
         m^{\varphi(\ideal{n})}\equiv 1 \pmod{\ideal{n}}.
@@ -106,7 +106,7 @@
 \end{definition}
 
 \begin{statement}[Обобщенная китайская теорема об остатках]\label{statement:chinese_remainder_theorem}
-    Пусть $\ideal{n}_1, \ideal{n}_2, \dots, \ideal{n}_k$ -- попарно взаимнопростые идеалы кольца $R$.
+    Пусть $\ideal{n}_1, \ideal{n}_2, \dots, \ideal{n}_k$~-- попарно взаимнопростые идеалы кольца $R$.
     Тогда
     \begin{equation*}
         \begin{split}
@@ -236,7 +236,7 @@
     \begin{equation*}
         x = \varepsilon p_1^{\alpha_1} \dots p_k^{\alpha_k},
     \end{equation*}
-    где $\varepsilon \in \invertible{R}$, $p_1, \dots, p_k$ -- простые элементы $R$.
+    где $\varepsilon \in \invertible{R}$, $p_1, \dots, p_k$~-- простые элементы $R$.
     Тогда функция
     \begin{equation*}
         \elementnorm{x} = \begin{cases}
@@ -293,12 +293,12 @@
 
 \subsection{Числовые кольца}
 
-Пусть $K$ -- числовое поле со степенью расширения равной $n$.
-Пусть $R = \mathbb{Z}_K$ -- кольцо алгебраических целых элементов поля $K$.
-И пусть $(e_i)_{1 \le i \le n}$ -- базис $\mathbb{Z}_K$.
+Пусть $K$~-- числовое поле со степенью расширения равной $n$.
+Пусть $R = \mathbb{Z}_K$~-- кольцо алгебраических целых элементов поля $K$.
+И пусть $(e_i)_{1 \le i \le n}$~-- базис $\mathbb{Z}_K$.
 Будем считать, что группа $\invertible{\mathbb{Z}_K}$ бесконечна и образована $r$ фундаментальными единицами и корнями единицы в $K$.
 Будем обозначать их через $\{\varepsilon_1, \dots, \varepsilon_r\}$ и считать, что они известны.
-Обозначим $\nu$ -- генератор корней из единицы в $K$ порядка $l$.
+Обозначим $\nu$~-- генератор корней из единицы в $K$ порядка $l$.
 
 Обозначим через $N_{K/\mathbb{Q}}$ норму в числовом поле $K$.
 Далее будем полагать, что $\mathbb{Z}_K$ евклидово по отношению к норме $N_{K/\mathbb{Q}}$.
@@ -358,7 +358,7 @@
 
 Из доказанного в работе~\cite{source:Lezowski} следует, что получающееся определение дробной части корректно.
 
-\begin{statement}\label{statement:orbit}\cite{source:Lezowski}
+\begin{statement}[\cite{source:Lezowski}]\label{statement:orbit}
     Пусть $x \in \mathbb{R}^n$.
     Обозначим
     \begin{equation*}
@@ -388,7 +388,7 @@
 
 Из утверждения \ref{statement:orbit} следует, что функция $m_{\overline{K}}$ принимает одно значение на всех элементах орбиты.
 
-\begin{statement}\cite{source:Lezowski}
+\begin{statement}[\cite{source:Lezowski}]
     Для любого элемента $x\in \mathbb{R}^n$ орбита $\textrm{Orb}(x)$ конечна тогда и только тогда, когда $x \in \Phi(K)$.
 \end{statement}
 
@@ -415,7 +415,7 @@
     где $k>0$.
 \end{definition}
 
-\begin{statement}\label{proposition:division_with_least_norm_remainder}\cite{source:Lezowski}
+\begin{statement}[\cite{source:Lezowski}]\label{proposition:division_with_least_norm_remainder}
     Пусть $x \in \Phi(K)$ и $k > 0$.
     Для каждого $z \in \textrm{Orb}(x)$ обозначим
     \begin{equation*}
@@ -449,7 +449,7 @@
     Для оценки трудоемкости операций над идеалами $\mathbb{Z}$-представление будем записывать как матрицу $A \in \mathbb{\mathbb{Z}}^{n \times n}$, такую что её столбец под номером $i$ - это коэффициенты разложения $e_i$ в фиксированный целый базис $R$.
 \end{definition}
 
-\begin{statement}\cite{source:Cohen, source:Post}
+\begin{statement}[\cite{source:Cohen, source:Post}]
     Любой идеал имеет $\mathbb{Z}$-представление.
 \end{statement}
 
@@ -465,11 +465,11 @@
     $2$-представление является частным случаем базисного представления и любое $2$-представление задаёт идеал.
 \end{definition}
 
-\begin{statement}\cite{source:Cohen, source:Post}
+\begin{statement}[\cite{source:Cohen, source:Post}]
     Любой идеал имеет 2-представление.
 \end{statement}
 
-\begin{statement}\cite{source:Post}
+\begin{statement}[\cite{source:Post}]
     Существует полиномиальный алгоритм перехода от $2$-представления к $\mathbb{Z}$-представлению и обратно.
 \end{statement}
 
@@ -495,11 +495,11 @@
     Будем говорить, что $\mathbb{Z}$-представление идеала $\ideal{a} = (e_1,\dots,e_n)_{\mathbb{Z}}$ находится в нормальной эрмитовой форме, если соответствующая матрица является матрицей в эрмитовой нормальной форме.
 \end{definition}
 
-\begin{statement}\cite{source:Cohen, source:Post}
+\begin{statement}[\cite{source:Cohen, source:Post}]
     Любой идеал может быть записан в нормальной эрмитовой форме, причём такое представление единственно.
 \end{statement}
 
-\begin{statement}\cite{source:Kannan}
+\begin{statement}[\cite{source:Kannan}]
     Существует полиномиальный алгоритм получения представления идеала в нормальной эрмитовой форме из его $\mathbb{Z}$-представления.
 \end{statement}
 
@@ -572,7 +572,7 @@
         H(x_1, x_2, \ldots, x_n)^T = (\elementnorm{a}, 0, \ldots, 0)^T,
     \end{equation*}
     где $H \in \mathbb{Z}^{n \times n}$ матрица элементов $h_{i, j} \in \mathbb{Z}$, такая что $h_{i, j} = O(L)$.
-    Тогда существует константа $D$, такая что $\elementnorm(a) \le D l(a)^n$.
+    Тогда существует константа $D$, такая что $\elementnorm(a) \le D (l(a))^n$.
     Следовательно, решение $(x_1, x_2, \ldots, x_n)^T$ может быть найдено за $\tilde{O}(\log L)$ бинарных операций.
 
     Из определения сопряженного следует, что $b/a = \frac{b\overline{a}}{\elementnorm(a)}$.
@@ -581,7 +581,7 @@
 \end{proof}
 
 \begin{remark}
-    Из доказательства предложения~\ref{proposition:operations} следует, что существует константа $D$, такая что $\elementnorm(a) \leq D l(a)^n$ для любого $a \in R$.
+    Из доказательства предложения~\ref{proposition:operations} следует, что существует константа $D$, такая что $\elementnorm(a) \leq D (l(a))^n$ для любого $a \in R$.
     Следовательно, по правилу Крамера, существуют константы $E$ и $q$, такие что $l(\overline{a}) \leq E L^q$ для любого $a \in R$.
 \end{remark}
 
@@ -630,7 +630,7 @@
     \end{equation*}
 
     Из того, что $l(a) \leq L, l(m) \leq L$ следует, что $l(\overline{m}) \le E L^q,$ где $q$ и $E$ эффективно вычислимые константы.
-    Так как существует константа $D$, такая что $\elementnorm{m} \le D l(m)^n$, числа $b_i$, $b_i'$ могут быть найдены за $\tilde{O}(\log L)$ бинарных операций.
+    Так как существует константа $D$, такая что $\elementnorm{m} \le D (l(m))^n$, числа $b_i$, $b_i'$ могут быть найдены за $\tilde{O}(\log L)$ бинарных операций.
     Поэтому элемент $z$ может быть найден используя не более $\tilde{O}(\log L)$ бинарных операций.
 \end{proof}
 
@@ -648,7 +648,7 @@
 \end{proof}
 
 \begin{proposition}\label{proposition:particular_equality}
-    Пусть $\ideal{p} = (\alpha, a)_2$ -- простой идеал, заданный в виде 2-представления, а $\ideal{n}$ произвольный идеал заданный в виде $\mathbb{Z}$-представления, причём $l(\ideal{p}), l(\ideal{n}) \leq L$.
+    Пусть $\ideal{p} = (\alpha, a)_2$~-- простой идеал, заданный в виде 2-представления, а $\ideal{n}$ произвольный идеал заданный в виде $\mathbb{Z}$-представления, причём $l(\ideal{p}), l(\ideal{n}) \leq L$.
     Тогда проверка равенства $\ideal{p} = \ideal{n}$ может быть выполнена за $\tilde{O}(\log L)$ операций.
 \end{proposition}
 \begin{proof}
@@ -678,7 +678,7 @@
 \begin{proposition}\label{proposition:residue_modulo_ideal}
     Пусть нетривиальный идеал $\ideal{n}$ задан с помощью $\mathbb{Z}$-представления и $l(\ideal{n}) \leq L$.
     Пусть $a \in R$ и $l(a) \leq L$.
-    Тогда за $\tilde{O}(\log L)$ бинарных операций можно найти $z \in R$, такое что $z \equiv a \pmod{\ideal{n}}$ и $l(z) \leq N l(\ideal{n})^n$.
+    Тогда за $\tilde{O}(\log L)$ бинарных операций можно найти $z \in R$, такое что $z \equiv a \pmod{\ideal{n}}$ и $l(z) \leq N (l(\ideal{n}))^n$.
     Такое $z$ будем обозначать $a \pmod{m}$.
 \end{proposition}
 \begin{proof}
@@ -695,34 +695,34 @@
     
     Тогда
     \begin{equation*}
-        l(z) = \max\limits_{i = \overline{1,n}} |r_i| \leq |\theta| \leq \prod\limits_{i = 1}^n \elementnorm{\omega_i} \leq D^n \prod\limits_{i = 1}^n l(\omega_i) \leq D^n l(\ideal{n})^n = N l(\ideal{n})^n.
+        l(z) = \max\limits_{i = \overline{1,n}} |r_i| \leq |\theta| \leq \prod\limits_{i = 1}^n \elementnorm{\omega_i} \leq D^n \prod\limits_{i = 1}^n l(\omega_i) \leq D^n (l(\ideal{n}))^n = N (l(\ideal{n}))^n.
     \end{equation*}
     
     Нетрудно видеть, что рассмотренные операции могут быть выполнены за $\tilde{O}(\log L)$ бинарных операций.
 \end{proof}
 
 \begin{corollary}
-    Пусть $k \in \mathbb{N}$ и $a, b \in \zeroless{R}$, $\ideal{n}$ -- нетривиальный идеал заданный с помощью $\mathbb{Z}$-представления.
+    Пусть $k \in \mathbb{N}$ и $a, b \in \zeroless{R}$, $\ideal{n}$~-- нетривиальный идеал заданный с помощью $\mathbb{Z}$-представления.
     Пусть выполнено $l(a) \leq L$, $l(b) \leq L$, $l(\ideal{n}) \leq L$.
-    Элементы $a + b \pmod{\ideal{n}}$ и $a^k \pmod{\ideal{n}}$, $l(z_1) \leq N l(\ideal{n})^n$, $l(z_2) \leq N l(\ideal{n})^n$, могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
+    Элементы $a + b \pmod{\ideal{n}}$ и $a^k \pmod{\ideal{n}}$, $l(z_1) \leq N (l(\ideal{n}))^n$, $l(z_2) \leq N (l(\ideal{n}))^n$, могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
 \end{corollary}
 
 \begin{remark}
     Отметим, что все указанные операции могут быть выполнены за полиномиальное время в случае, когда идеалы заданы с помощью одного из представлений: $\mathbb{Z}$-представление, 2-представление, нормальная эрмитова форма; в силу того, что из одного представления может быть получено другое за полиномиальное время.
 \end{remark}
 
-\begin{statement}\cite{source:Wikstrom}\label{statement:GCD_Wikstrom}
+\begin{statement}[\cite{source:Wikstrom}]\label{statement:GCD_Wikstrom}
     Пусть $R$ кольцо целых алгебраических элементов числового поля.
     Тогда для любых $a, b \in R$ наибольший общий делитель $(a, b)$ можно вычислить на $O(n^2)$ арифметических операций в $\mathbb{Z}$, где $n$ длина бинарной записи $a$ и $b$.
 \end{statement}
 
-\begin{statement}[Теорема Дедекинда]\label{statement:dedekind}
+\begin{statement}[\cite{source:Dedekind}(Теорема Дедекинда)]\label{statement:dedekind}
     Пусть $f(T)$ минимальный многочлен алгебраического числа $\theta$ в $\mathbb{Z}[\theta]$.
     Для простого рационального числа $p$, не делящего индекс $[\mathcal{O}_K:\mathbb{Z}[\theta]]$, запишем
     \begin{equation*}
-        f(T) \equiv \pi_1(T)^{e_1}\dots \pi_g(T)^{e_g} \modul p,
+        f(T) \equiv (\pi_1(T))^{e_1}\dots (\pi_g(T))^{e_g} \modul p,
     \end{equation*}
-    где $\pi_i(T)$ --- различные монические неприводимые многочлены в $\mathbb{F}_p[T]$.
+    где $\pi_i(T)$~-- различные монические неприводимые многочлены в $\mathbb{F}_p[T]$.
     Тогда
     \begin{equation*}
         (p) = \mathfrak{p}_1^{e_1}\dots \mathfrak{p}_g^{e_g},
@@ -730,7 +730,7 @@
     где $\mathfrak{p}_i = (p_i, T_i(\theta))$, $T_i(T) \equiv \pi_i(T)(\modul p)$.
 \end{statement}
 
-\begin{statement}[Теорема Копперсмита]\label{statement:coppersmith}
+\begin{statement}[\cite{source:Coppersmith}(Теорема Копперсмита)]\label{statement:coppersmith}
     Пусть
     \begin{equation*}
         f(x, y) = \sum\limits_{i, j = 0}^{\delta} p_{i, j} x^i y^j
@@ -810,30 +810,30 @@
 \end{proof}
 
 \begin{theorem}\label{theorem:euler_criteria}
-    Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
-    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$ выполнено
+    Пусть $\ideal{n}$~-- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
+    Тогда $\ideal{n}$~-- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$ выполнено
     \begin{equation*}
         a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
     \end{equation*}
 
-    Если кольцо $R$ факториальное и удовлетворяет условию A, то $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$ выполнено
+    Если кольцо $R$ факториальное и удовлетворяет условию A, то $\ideal{n}$~-- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$ выполнено
     \begin{equation*}
         a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
     \end{equation*}
 \end{theorem}
 \begin{proof}
     Докажем первую часть теоремы.
-    Предположим, что $\ideal{n}$ -- простой идеал.
+    Предположим, что $\ideal{n}$~-- простой идеал.
     Рассмотрим произвольный $a \in \invertible{R/\ideal{n}}$.
-    Пусть $g$ -- первообразный корень по модулю $\ideal{n}$.
+    Пусть $g$~-- первообразный корень по модулю $\ideal{n}$.
 
     Так как $\Nm{\ideal{n}}$ нечетный, то $a$ является квадратичным вычетом тогда и только тогда, когда существует такое $t' = 2t \in \{0, 2, \dots, \Nm{\ideal{n}} - 1\}$, что $a \equiv g^{t'} \pmod{\ideal{n}}$.
     Так как порядок $g$ равен $\Nm{\ideal{n}} - 1$, то последнее сравнение выполняется тогда и только тогда, когда $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv 1 \pmod{\ideal{n}}$.
     Это завершает доказательство необходимости.
 
-    Предположим, что $\ideal{n}$ -- не простой идеал.
+    Предположим, что $\ideal{n}$~-- не простой идеал.
     Пусть $\ideal{n}$ раскладывается в произведение простых идеалов следующим образом $\ideal{n} = \prod_{i=1}^{r} \ideal{p}_i^{\alpha_i}$.
-    Так как норма простого идеала примарная, то обозначим $\Nm{\ideal{p}_i} = q_i^{f_i}$, где $q_i$ -- простой в $\mathbb{Z}$.
+    Так как норма простого идеала примарная, то обозначим $\Nm{\ideal{p}_i} = q_i^{f_i}$, где $q_i$~-- простой в $\mathbb{Z}$.
     Пусть для любого $a \in \invertible{R/\ideal{n}}$ выполнено $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{a}{\ideal{n}}\right] \pmod{\ideal{n}}$.
 
     Пусть существует такой $j \in \{1, \dots, r\}$, что $\alpha_j > 1$ в разложении $\ideal{n}$ на множители.
@@ -841,7 +841,7 @@
     Тогда $q_j | \Nm{\ideal{n}} - 1$, что невозможно.
 
     Следовательно, $\alpha_j = 1$ для любого $j \in \{1, \ldots, r\}$.
-    Так как $\ideal{n}$ -- составное, то $r \ge 2$.
+    Так как $\ideal{n}$~-- составное, то $r \ge 2$.
     Рассмотрим произвольный квадратичный невычет $b \in \invertible{R/\ideal{p}_1}$.
     Согласно аналогу Китайской теоремы об остатках \ref{statement:chinese_remainder_theorem} существует такой $a \in \invertible{R/\ideal{n}}$, что выполнено $a \equiv b \pmod{\ideal{p}_1}$ и $a \equiv 1 \pmod{\ideal{p}_2\dots\ideal{p}_r}$.
     Но в этом случае $\jacobi{a}{\ideal{n}} = -1$.
@@ -893,7 +893,7 @@
 \end{remark}
 
 \begin{proposition}
-    Пусть $\ideal{n}$ -- не простой идеал.
+    Пусть $\ideal{n}$~-- не простой идеал.
     Тогда вероятность ответа "$\ideal{n}$ не простой" у алгоритма \ref{algorithm:solovay_strassen} не менее $1/2$.
 \end{proposition}
 \begin{proof}
@@ -913,22 +913,22 @@
 \end{proof}
 
 \begin{remark}
-    Если $\ideal{n}$ -- составной, то при выполнении алгоритма \ref{algorithm:miller_rabin} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
+    Если $\ideal{n}$~-- составной, то при выполнении алгоритма \ref{algorithm:miller_rabin} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
 \end{remark}
 
 \section{Аналог критерия Миллера}
 
 \begin{theorem}\label{theorem:miller_criteria}
-    Пусть $\ideal{n}$ -- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
+    Пусть $\ideal{n}$~-- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
     Пусть $\Nm{\ideal{n}} - 1 = 2^t u$, $(u, 2) = 1$.
-    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+    Тогда $\ideal{n}$~-- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
 
     Пусть кольцо $R$ факториальное и удовлетворяет условию A.
-    Тогда $\ideal{n}$ -- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$, $(a, \ideal{n}) = 1$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+    Тогда $\ideal{n}$~-- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$, $(a, \ideal{n}) = 1$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
 \end{theorem}
 \begin{proof}
     Докажем первую часть теоремы.
-    Предположим, что $\ideal{n}$ -- простой идеал.
+    Предположим, что $\ideal{n}$~-- простой идеал.
     Рассмотрим произвольный $a \in \invertible{R/\ideal{n}}$, $a^u \not\equiv 1 \pmod{\ideal{n}}$.
     Из теоремы Эйлера \ref{statement:euler_function} следует, что:
     \begin{equation*}
@@ -943,9 +943,9 @@
     Из того, что $a^{u} \not\equiv 1 \pmod{\ideal{n}}$ следует, что $a^{2^{k}u} + 1 \equiv 0 \pmod{\ideal{n}}$ для некоторого $k\in \{0, \dots, t-1\}$.
     Это завершает доказательство необходимости.
 
-    Предположим, что $\ideal{n}$ -- не простой идеал.
+    Предположим, что $\ideal{n}$~-- не простой идеал.
     Пусть $\ideal{n}$ раскладывается в произведение простых идеалов следующим образом $\ideal{n} = \prod_{i=1}^{r} \ideal{p}_i^{\alpha_i}$.
-    Так как норма простого идеала примарная, то обозначим $\Nm{\ideal{p}_i} = q_i^{f_i}$, где $q_i$ -- простой в $\mathbb{Z}$.
+    Так как норма простого идеала примарная, то обозначим $\Nm{\ideal{p}_i} = q_i^{f_i}$, где $q_i$~-- простой в $\mathbb{Z}$.
 
     Пусть существует такой $j \in \{1, \dots, r\}$, что $\alpha_j > 1$ в разложении $\ideal{n}$ на множители.
     Из теоремы Коши для групп и свойств функции Эйлера~\ref{statement:euler_function} следует, что существует $a \in \invertible{R/\ideal{n}}$ порядка $q_j$.
@@ -956,7 +956,7 @@
     Из последнего сравнения следует, что $\Nm{\ideal{n}} - 1 \equiv 0 \pmod{q_j}$, что невозможно.
     
     Следовательно, $\alpha_j = 1$ для любого $j \in \{1, \ldots, r\}$.
-    Так как $\ideal{n}$ -- составное, то $r \ge 2$.
+    Так как $\ideal{n}$~-- составное, то $r \ge 2$.
     Из аналога Китайской теоремы об остатках~\ref{statement:chinese_remainder_theorem} и того, что элемент $-1$ имеет порядок $2$ в каждой группе $\invertible{R/\ideal{p}_j}$ следует, что существует по крайней мере $2^r-1 \ge 3$ элемента $\invertible{R/\ideal{n}}$ порядка $2$.
     Пусть $a \not\equiv \pm 1 \pmod{\ideal{n}}$ является произвольным элементом порядка $2$ в группе $\invertible{R/\ideal{n}}$.
     Из того, что $(u, 2) = 1$ следует, что $a^u \equiv a \not\equiv \pm 1 \pmod{\ideal{n}}$.
@@ -1058,7 +1058,7 @@
 \end{remark}
 
 \begin{proposition}
-    Пусть $\ideal{n}$ -- не простой идеал.
+    Пусть $\ideal{n}$~-- не простой идеал.
     Тогда вероятность ответа "$\ideal{n}$ не простой" у алгоритма \ref{algorithm:miller_rabin} не менее $1/2$.
 \end{proposition}
 \begin{proof}
@@ -1072,13 +1072,13 @@
             a \in \invertible{R/\ideal{n}} \big| a^{\Nm{\ideal{n}} - 1} \equiv 1 \pmod{\ideal{n}}
         \right\}.
     \end{equation*}
-    Предположим, что $G$ -- нетривиальная подгруппа.
+    Предположим, что $G$~-- нетривиальная подгруппа.
     Тогда из теоремы Лагранжа следует, что $|G| / |\invertible{R/\ideal{n}}| \le 1/2$.
     Из этого следует верность теоремы для этого случая.
 
     Предположим, что $\ideal{n}$ такой, что $G = \invertible{R/\ideal{n}}$.
     Пусть $\ideal{n}$ раскладывается в произведение простых идеалов следующим образом $\ideal{n} = \prod_{i=1}^r \ideal{p}_i^{\alpha_i}$.
-    Так как норма простого идеала примарная, то обозначим $\Nm{p_i} = q_i^{f_i}$, где $q_i$ -- простой в $\mathbb{Z}$.
+    Так как норма простого идеала примарная, то обозначим $\Nm{p_i} = q_i^{f_i}$, где $q_i$~-- простой в $\mathbb{Z}$.
 
     Предположим, что существует такой $j \in \{1, \dots, r\}$, что $\alpha_i > 1$ в разложении $\ideal{n}$ на множители.
     Тогда $\Nm{\ideal{p}_j} | \varphi(\ideal{n})$, следовательно $q_j | \varphi(\ideal{n})$.
@@ -1088,7 +1088,7 @@
     Это противоречит тому, что $q_j | \Nm{\ideal{n}}$.
 
     Следовательно, $\alpha_j = 1$ для любого $j \in \{1, \dots, r\}$.
-    Так как $\ideal{n}$ -- составное, то $r \ge 2$.
+    Так как $\ideal{n}$~-- составное, то $r \ge 2$.
     Обозначим $\Nm{\ideal{p}_i} - 1 = 2^{t_i} u_i$, где $(u_i, 2) = 1$.
     Так же обозначим $s = \min_{i=\overline{1, r}} t_i$, $P = \prod_{i=1}^r (u_i, u)$.
 
@@ -1105,7 +1105,7 @@
         \Leftrightarrow
         \lambda u \equiv 0 \pmod{\Nm{\ideal{p}_i} - 1},
     \end{equation*}
-    где $a \equiv g^\lambda \pmod{\ideal{p}_i}$ и $g$ -- первообразный корень $\invertible{R/\ideal{p}_i}$.
+    где $a \equiv g^\lambda \pmod{\ideal{p}_i}$ и $g$~-- первообразный корень $\invertible{R/\ideal{p}_i}$.
     Так как последнее сравнение имеет $(u, \Nm{\ideal{p}_i} - 1)$ решений, то количество решений сравнения $a^u \equiv 1 \pmod{\ideal{n}}$ равно
     \begin{equation*}
         \prod_{i=1}^r (u, \Nm{\ideal{p}_i} - 1) = P.
@@ -1140,7 +1140,7 @@
 \end{proof}
 
 \begin{remark}
-    Если $\ideal{n}$ -- составной, то при выполнении алгоритма \ref{algorithm:miller_rabin} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
+    Если $\ideal{n}$~-- составной, то при выполнении алгоритма \ref{algorithm:miller_rabin} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
 \end{remark}
 
 \begin{remark}

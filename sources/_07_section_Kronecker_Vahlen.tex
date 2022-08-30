@@ -613,7 +613,7 @@
     Проверим первое условие из определения $\mathcal{T}$.
     Рассмотрим произвольные $x_0\in\mathbb{Z}[i]\setminus\{0\}$ и $\alpha\in\mathbb{F}^*_1$.
     Обозначим $b=\textrm{int}((\alpha-x_0)^{-1})$.
-    Пусть $p$ --- число из первого условия определения $\mathcal{T}$.
+    Пусть $p$~-- число из первого условия определения $\mathcal{T}$.
     Если $\upsilon(x_0)>5$, то при $p=1$ имеем $\beta_1=\alpha$.
     Если $b\in\mathbb{I}\cup\{0\}$, то для $p=1$ имеем $\beta_1=\textrm{fr}((\alpha-x_0)/(bx_0+1-\alpha))$, тогда $\beta_2=\alpha$.
     Далее предполагаем, что $b\not\in\mathbb{I}\cup\{0\}$ и $\upsilon(x_0)\le 5$.
@@ -719,7 +719,7 @@
 В работе Роллетчека~\cite{source:Rolletschek_1990} приведен пример кольца, для которого цепочка делений с выбором минимального по норме остатка не является кратчайшей.
 Следовательно, это кольцо не может принадлежать классу $\mathcal{T}$.
 
-\begin{example}\label{example:Z[sqrt{-11}]}\cite{source:Rolletschek_1990}
+\begin{example}[\cite{source:Rolletschek_1990}]\label{example:Z[sqrt{-11}]}
     Пусть $R = \mathbb{Z}[\sqrt{-11}]$.
     Заметим, что множество
     \begin{equation*}
@@ -1222,7 +1222,7 @@
 \end{proof}
 
 \begin{proposition}
-    Пусть $R = \mathbb{Q}[\sqrt{d}]$ -- квадратичное норменно-евклидово кольцо.
+    Пусть $R = \mathbb{Q}[\sqrt{d}]$~-- квадратичное норменно-евклидово кольцо.
     Теорема Кронекера-Валена выполняется в $R$ тогда и только тогда, когда $d=-1, -2, -3, -7$.
 \end{proposition}
 \begin{proof}
@@ -1239,7 +1239,7 @@
 Следовательно, важным вопросом является исследование асимптотического поведения длины кратчайшей цепочки делений.
 
 \begin{definition}
-    Пусть $d \neq 1$ -- целое число свободное от квадратов.
+    Пусть $d \neq 1$~-- целое число свободное от квадратов.
     Под \emph{фундаментальной областью поля} $\mathbb{Q}[\sqrt{d}]$ понимают множество, заданное следующим образом
     \begin{equation*}
         F(d) = \begin{cases}
@@ -1258,7 +1258,7 @@
 \end{definition}
 
 \begin{definition}
-    Пусть $d \neq 1$ -- целое число свободное от квадратов.
+    Пусть $d \neq 1$~-- целое число свободное от квадратов.
     Под окрестностью точки $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$ радиуса $r > 0$ понимают множество заданное следующим образом
     \begin{equation*}
         U(\lambda, r) = \left\{
@@ -1274,13 +1274,13 @@
 
 В работе~\cite{source:Selfridge} доказано следующее утверждение.
 
-\begin{proposition}\label{proposition:fundamental_in_circle}\cite{source:Selfridge}
-    Пусть $d \neq 1$ -- целое число свободное от квадратов.
+\begin{statement}[\cite{source:Selfridge}]\label{proposition:fundamental_in_circle}
+    Пусть $d \neq 1$~-- целое число свободное от квадратов.
     Тогда кольцо $\mathbb{Z}[\sqrt{d}]$ является евклидовым относительно нормы числового поля $\mathbb{Q}[\sqrt{d}]$ тогда и только тогда, когда существует множество $\Lambda \subseteq \mathbb{Z}[\sqrt{d}]$, что
     \begin{equation*}
         F(d) \subseteq U(\Lambda, 1).
     \end{equation*}
-\end{proposition}
+\end{statement}
 
 \begin{definition}\label{definition:euclidean_lambda}
     Для $m/n \in F_1$ рассмотрим функцию
@@ -1297,25 +1297,25 @@
 \end{definition}
 
 \begin{theorem}\label{theorem:euclidean_and_lambda}
-    Если $R$ -- евклидово кольцо относительно нормы $\elementnorm{\cdot}$, то $\Lambda_R \in [0, 1]$.
+    Если $R$~-- евклидово кольцо относительно нормы $\elementnorm{\cdot}$, то $\Lambda_R \in [0, 1]$.
 
-    Если $R$ -- факториальное кольцо с мультипликативной нормой $\elementnorm{\cdot}$ и $\Lambda_R \in [0, 1)$, то $R$ -- евклидово относительно нормы $\elementnorm{\cdot}$ и $l_n(R) \le [\log_{\Lambda_R^{-1}} n] + 2$ для всех $n \in \mathbb{N}$, где $\log_{\infty} n = 0$.
+    Если $R$~-- факториальное кольцо с мультипликативной нормой $\elementnorm{\cdot}$ и $\Lambda_R \in [0, 1)$, то $R$~-- евклидово относительно нормы $\elementnorm{\cdot}$ и $l_n(R) \le [\log_{\Lambda_R^{-1}} n] + 2$ для всех $n \in \mathbb{N}$, где $\log_{\infty} n = 0$.
 \end{theorem}
 \begin{proof}
-    Пусть $R$ -- евклидово кольцо относительно нормы $\elementnorm{\cdot}$.
+    Пусть $R$~-- евклидово кольцо относительно нормы $\elementnorm{\cdot}$.
     Рассмотрим произвольный элемент $\frac{a}{b} \in \zeroless{F_1}$, где $a, b \in \zeroless{R}$, $(a, b) = 1$.
     Так как кольцо евклидово, то существуют $q, r \in R$ такие, что $a = bq + r$ и $\elementnorm{r} < \elementnorm{b}$.
     Так как $\fr{\frac{a}{b}} = \frac{a}{b}$, то $\elementnorm{a} \le \elementnorm{r}$.
     Следовательно, $\left|\frac{a}{b}\right| = \frac{\elementnorm{a}}{\elementnorm{b}} \le \frac{\elementnorm{v}}{\elementnorm{b}} < 1$.
     Из этого следует, что $\Lambda_R \in [0, 1]$.
 
-    Пусть $R$ -- факториальное кольцо и $\Lambda_R \in [0, 1)$.
+    Пусть $R$~-- факториальное кольцо и $\Lambda_R \in [0, 1)$.
     Рассмотрим произвольные $a, b \in \zeroless{K}$.
     Положим $q = \int{\frac{a}{b}}$, $r = b\fr{\frac{a}{b}}$.
     Тогда $a = bq + r$ и $\elementnorm{r} \le \Lambda_R \elementnorm{b}$ из определения $\Lambda_R$.
     Если $\elementnorm{b} > 0$, то $\elementnorm{r} \le \Lambda_R \elementnorm{b} < \elementnorm{b}$.
     Если $\elementnorm{b} = 0$, то $b$ обратимый элемент и $q = 0$ и $r = 0$, а тогда $a = 0$.
-    Следовательно, $R$ -- евклидово.
+    Следовательно, $R$~-- евклидово.
 \end{proof}
 
 \begin{theorem}
