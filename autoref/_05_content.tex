@@ -4,5 +4,1880 @@
 {\let\clearpage\relax\vspace{2.2ex}
 \chapter*{\MakeUppercase{ОСНОВНАЯ ЧАСТЬ}}\vspace{-2ex}}
 
+\section{Предварительные сведения}
+
+\subsection{Дедекиндовы кольца}
+
+\begin{definition}
+    \emph{Идеалом} кольца $R$ называется его подкольцо $\ideal{n}$, замкнутое относительно умножения на элементы $R$.
+    А именно для любого $a \in R$ выполнено включение $a\ideal{n} \subseteq \ideal{n}$.
+    Идеал $\ideal{n}$ называется \emph{тривиальным}, если он совпадает с $R$ или нулевым идеалом $0$.
+    Идеал $\ideal{n}$ называется \emph{собственным}, если он не совпадает с $R$.
+\end{definition}
+
+\begin{definition}
+    Собственный идеал $\ideal{n} \subset R$ называется \emph{простым}, если факторкольцо $R/\ideal{n}$ является областью целостности.
+\end{definition}
+
+\begin{definition}
+    Собственный идеал $\ideal{n} \subset R$ называется \emph{максимальным}, если он не содержится ни в каком другом собственном идеале.
+\end{definition}
+
+\begin{remark}
+    Любой максимальный идеал является простым.
+\end{remark}
+
+\begin{definition}
+    Кольцо $R$ называется \emph{дедекиндовым}, если любой нетривиальный идеал раскладывается в произведение простых идеалов единственным способом с точностью до порядка множителей.
+\end{definition}
+
+\begin{definition}
+    \emph{Нормой} $\Nm{\ideal{n}}$ идеала $\ideal{n} \subset R$ называется мощность факторкольца $R/\ideal{n}$.
+
+    Говорят, что дедекиндово кольцо $R$ является \emph{дедекиндовым кольцом с конечной нормой} (finite norm property), если для любого собственного идеала $\ideal{n} \subseteq R$ факторкольцо $R/\ideal{n}$ конечно.
+\end{definition}
+
+Далее в работе будем рассматривать только дедекиндовы кольца с конечной нормой.
+
+\begin{example}
+    Рассмотрим примеры дедекиндовых колец с конечной нормой.
+    \begin{itemize}
+        \item Пусть $K$~-- числовое поле.
+        Кольцо $\mathbb{Z}_K$, образованное алгебраическими целыми элементами этого поля является дедекиндовым с конечным полем остатков.
+        Частными случаями этого примера являются кольцо целых чисел и гауссовых чисел.
+        
+        \item Пусть $f(x, y) = y - mx - b$~-- прямая.
+        Тогда $K[x, y]/(f(x, y)) \cong K[x]$.
+        Следовательно, это координатное кольцо является факториальным.
+        
+        \item Пусть $f(x, y) = y - x^2$~-- парабола.
+        Тогда $K[x, y]/(f(x, y)) \cong K[x]$.
+        Следовательно, это координатное кольцо является факториальным.
+    
+        \item Пусть $f(x, y) = x^2 + y^2 - 1$.
+        Если $K = \mathbb{Q}$, то координатное кольцо $\mathbb{Q}[x, y]/(f)$ не изоморфно $K[x]$, так как первое не является факториальным кольцом.
+        Это можно показать, рассмотрев элементы $y^2 = yy$ и $1-x^2 = (1-x)(1+x)$.
+        Однако, если $K = \mathbb{C}$, то координатное кольцо $\mathbb{C}[x, y]/(f) \cong \mathbb{C}[x, x^{-1}]$ уже будет факториальным, так как это локализация факториального кольца.
+    \end{itemize}
+\end{example}
+
+\begin{definition}
+    Идеал $\ideal{n}$ называется \emph{главным}, если $\ideal{n} = aR$, где $a \in R$.
+    Если все идеалы кольца $R$ являются главными, то говорят, что $R$ \emph{кольцо главных идеалов}.
+\end{definition}
+
+\begin{definition}
+    \emph{Произведением} двух идеалов $\ideal{a}$ и $\ideal{b}$ называется идеал, порожденный всеми произведениями $ab$, где $a \in \ideal{a}$, $b \in \ideal{b}$.
+\end{definition}
+
+\begin{definition}
+    Пусть $a, b \in R$ и $\ideal{n} \subseteq R$.
+    Будем говорить, что $a$ \emph{сравнимо} с $b$ по модулю $\ideal{n}$ и писать $a \equiv b \pmod{\ideal{n}}$, если $a - b \in \ideal{n}$.
+\end{definition}
+
+\begin{definition}[\cite{source:Petukhova}]
+    Функцией Эйлера нетривиального идеала $\ideal{n} \subset R$ называется функция
+    \begin{equation*}
+        \varphi(\ideal{n}) = \left|
+            \invertible{(R/\ideal{n})}
+        \right|.
+    \end{equation*}
+\end{definition}
+
+\begin{statement}[Обобщенная теорема Эйлера]\cite{source:Petukhova}\label{statement:euler_function}
+    Пусть $m \in R$ и $\ideal{n} \subset R$~-- идеал.
+    Если $Rm + \ideal{n} = R$, то
+    \begin{equation*}
+        m^{\varphi(\ideal{n})}\equiv 1 \pmod{\ideal{n}}.
+    \end{equation*}
+\end{statement}
+
+\begin{definition}
+    \emph{Первообразным корнем по модулю идеала} $\ideal{n}$ будем называть такой элемент $g \in R$, что $g^{\varphi (\ideal{n})} \equiv 1 \pmod{\ideal{n}}$ и $g^{l} \not\equiv 1 \pmod{\ideal{n}}$ при $1 \leq l < \varphi(\ideal{n})$.
+\end{definition}
+
+\begin{statement}[Обобщенная китайская теорема об остатках]\label{statement:chinese_remainder_theorem}
+    Пусть $\ideal{n}_1, \ideal{n}_2, \dots, \ideal{n}_k$~-- попарно взаимнопростые идеалы кольца $R$.
+    Тогда
+    \begin{equation*}
+        \begin{split}
+            R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k) \cong & (R/\ideal{n}_1) \times (R/\ideal{n}_2) \times \dots \times (R/\ideal{n}_k)\\
+            \invertible{R/(\ideal{n}_1\ideal{n}_2\dots\ideal{n}_k)} \cong & \invertible{R/\ideal{n}_1} \times \invertible{R/\ideal{n}_2} \times \dots \times \invertible{R/\ideal{n}_k}
+        \end{split}
+    \end{equation*}
+\end{statement}
+
+\begin{definition}
+    Элемент $a \in R$ будем называть \emph{квадратичным вычетом по модулю идеала} $\ideal{n}$, если существует $b \in R$, что $b^2 \equiv a \pmod{\ideal{n}}$.
+
+    Для простого идеала $\ideal{p}$ и $a \in \invertible{R/\ideal{p}}$ определим \emph{символ Лежандра} следующим образом
+    \begin{equation*}
+        \jacobi{a}{\ideal{p}} = \begin{cases}
+            1, \textrm{ если } a \textrm{ квадратичный вычет по модулю } \ideal{p}\\
+            -1, \textrm{ иначе}.
+        \end{cases}
+    \end{equation*}
+
+    Для нетривиального идеала $\ideal{n} = \ideal{p}_1  \dots \ideal{p}_k$ и $a \in \invertible{R/\ideal{n}}$ определим \emph{символ Якоби} следующим образом
+    \begin{equation*}
+        \jacobi{a}{\ideal{n}} = \left(\frac{a}{\ideal{p}_1}\right) \dots \left(\frac{a}{\ideal{p}_k}\right)
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    \emph{Расширение поля} $K$ это такое поле $E$, которое содержит поле $K$ в качестве подполя.
+    Для любого расширения $E \supset K$ поле $E$ является векторным пространством над полем $K$.
+    Размерность этого векторного пространства называется \emph{степенью расширения} и обозначается $[E:K]$.
+    Говорят, что $E \supset K$ \emph{конечное расширение}, если его степень конечна.
+\end{definition}
+
+\begin{definition}
+    Пусть $E$ расширение поля $K$.
+    Элемент $E$ называется \emph{алгебраическим} над $K$, если он является корнем ненулевого многочлена с коэффициентами в $K$.
+    Элементы, не являющиеся алгебраическими, называются \emph{трансцендентными}.
+    
+    Если каждый элемент расширения $E \supset K$ является алгебраическим над $K$, то $E \supset K$ называется \emph{алгебраическим расширением}. 
+\end{definition}
+
+\begin{definition}
+    Алгебраическое расширение $E \supset K$ называется \emph{нормальным}, если каждый неприводимый многочлен $f(x)$ над $K$, имеющий хотя бы один корень в $E$, разлагается в $E$ на линейные множители.
+
+    Алгебраическое расширение $E \supset K$ называется \emph{сепарабельным}, если каждый элемент $E$ является сепарабельным, то есть его минимальный многочлен не имеет кратных корней.
+    В частности, теорема о примитивном элементе утверждает, что любое конечное сепарабельное расширение имеет примитивный элемент.
+    
+    Расширение $E \supset K$ называется \emph{расширением Галуа}, если оно одновременно сепарабельное и нормальное.
+
+    Для любого расширения $E \supset K$ можно рассмотреть группу автоморфизмов поля $E$, действующих тождественно на поле $K$.
+    Когда расширение является расширением Галуа, эта группа называется \emph{группой Галуа} данного расширения и обозначается $\Gal{L/K}$.
+\end{definition}
+
+Пусть $R$ дедекиндово кольцо с полем частных $K$.
+Пусть расширение $L \supset K$ конечное, сепарабельное и нормальное расширение, а $\Gal{L/K}$ является абелевой.
+Положим $S$ алгебраическое замыкание $R$ в $L$.
+
+\begin{definition}
+    Пусть $\ideal{p}$ простой идеал кольца $R$.
+    Рассмотрим идеал $\ideal{p}S$, который он генерирует в кольце $S$.
+    Этот идеал не обязан быть простым, но существует единственная факторизация его на простые идеалы
+    \begin{equation*}
+        \ideal{p}S = \prod_{\ideal{q}} \ideal{q}^{e_{\ideal{q}}},
+    \end{equation*}
+    где произведение берется по всем простым идеалам кольца $S$ и $e_{\ideal{q}} > 0$ только для конечного количества простых $\ideal{q}$.
+    Если $e_{\ideal{q}} > 0$ для некоторого $\ideal{q}$, то говорят, что $\ideal{q}$ лежит над (lie over, lie above) простым идеалом $\ideal{p}$.
+
+    Число $e_{\ideal{q}}$ из разложения $\ideal{p}S = \prod_{\ideal{q}} \ideal{q}^{e_{\ideal{q}}}$ называется \emph{индексом разветвления} (ramification index) $\ideal{q}$.
+
+    Если для простого идеала $\ideal{p} \subseteq R$ выполнено $e_{\ideal{q}} > 1$ для некоторого $\ideal{q} \subseteq S$, то говорят, что идеал $\ideal{p}$ \emph{ветвится} в $L$.
+    Если идеал $\ideal{p}S$ простой в $S$, то говорят, что $\ideal{p}$ \emph{инертный} (inert).
+    Если для всех $\ideal{q}$ выполняется или $e_{\ideal{q}} = 0$, или $e_{\ideal{q}} = 1$, то говорят, что $\ideal{p}$ \emph{полностью разлагается} (splits completely) в $L$.
+\end{definition}
+
+\begin{definition}
+    Пусть $\ideal{p}$ простой идеал кольца $R$, не ветвящийся в $L$ и пусть $\ideal{P} = \ideal{p}S$ соответствующий идеал в $S$.
+    Тогда существует единственный такой элемент $\sigma \in \Gal{L/K}$, что для любого $\alpha \in L$
+    \begin{equation*}
+        \sigma(\alpha) \equiv \alpha^{\Nm{\ideal{p}}} \pmod{\ideal{P}}.
+    \end{equation*}
+    Этот элемент называют \emph{символом Артина} идеала $\ideal{p}$.
+\end{definition}
+
+\begin{definition}
+    Пусть $\phi: \Gal{L/K} \to \invertible{\mathbb{C}}$ гомоморфизм.
+    Рассмотрим функцию
+    \begin{equation*}
+        \chi(\ideal{p}) = \begin{cases}
+            \phi(\sigma_{\ideal{p}}), & \textrm{если } \ideal{p} \textrm{ не ветвится}\\
+            0, & \textrm{иначе}
+        \end{cases}
+    \end{equation*}
+    где $\ideal{p}$ простой и $\sigma_{\ideal{p}}$ символ Артина идеала $\ideal{p}$.
+    Используя мультипликативность, эту функцию можно определить для всех идеалов $R$.
+    Полученную функцию $\chi$ будем называть \emph{характером}.
+    Характер, принимающий только значения $0$ и $1$, называется \emph{главным}.
+\end{definition}
+
+\begin{definition}
+    Будем говорить, что характер $\chi$ \emph{задан по модулю идеала} $\ideal{f} \subset R$, если для всех идеалов $\ideal{n} \subseteq R$, из сравнения $\ideal{n} \equiv 1 \pmod{\ideal{f}}$ следует равенство $\chi(\ideal{n}) = 1$.
+\end{definition}
+
+\subsection{Факториальные кольца}
+
+\begin{definition}
+    Кольцо $R$ называется \emph{факториальным}, если каждый его ненулевой элемент $x \in R$ либо обратим, либо однозначно представляется в виде произведения неприводимых элементов с точностью до перестановки множителей.
+
+    Факториальное кольцо является кольцом главных идеалов.
+    Далее рассматривая идеалы факториальных колец будем писать элементы, порождающие эти идеалы.
+\end{definition}
+
+\begin{definition}
+    Пусть $R$ факториальное кольцо.
+    Функцию $\elementnorm{\cdot}: R \to \mathbb{N} \cup \{0, -\infty\}$ будем называть нормой в $R$, если
+    \begin{itemize}
+        \item $\elementnorm{x} = -\infty$ тогда и только тогда, когда $x = 0$;
+
+        \item $\elementnorm{xy} \ge \elementnorm{x}$;
+
+        \item для $x, y \in \zeroless{R}$ равенство $\elementnorm{xy} = \elementnorm{x}$ выполнено тогда и только тогда, когда $y \in \invertible{K}$.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    Для любого факториального кольца $R$ можно определить норму.
+    Рассмотрим разложение элемента $x$ на простые множители
+    \begin{equation*}
+        x = \varepsilon p_1^{\alpha_1} \dots p_k^{\alpha_k},
+    \end{equation*}
+    где $\varepsilon \in \invertible{R}$, $p_1, \dots, p_k$~-- простые элементы $R$.
+    Тогда функция
+    \begin{equation*}
+        \elementnorm{x} = \begin{cases}
+            \sum_{i=1}^k \alpha_{i}, & \textrm{ если } x \neq 0\\
+            -\infty, & \textrm{ если } x = 0
+        \end{cases}
+    \end{equation*}
+    является нормой в $R$.
+\end{remark}
+
+Далее будем считать, что факториальное кольцо $R$ задано вместе с нормой $\elementnorm{\cdot}$.
+
+\begin{definition}
+    Пусть $R$ факториальное кольцо с полем частных $F$.
+    Функцию $\fr{\cdot}: F \to F$ будем называть дробной частью в $F$, если
+    \begin{itemize}
+        \item $\fr{\alpha + q} = \fr{\alpha}$ для любых $\alpha \in F$, $q \in R$;
+
+        \item если $m \in R$, $n \in \zeroless{R}$ и $(m, n) = 1$, то $\fr{m/n} = r/n$, где $r \in R$, $(m-r)/n \in R$ и $\elementnorm{r} = \min \{\elementnorm{s} | s \in R, (m-s)/n \in R\}$.
+    \end{itemize}
+    Функцию $\int{\cdot}: F \to R$ будем называть целой частью, если
+    \begin{equation*}
+        \int{\alpha} = \alpha - \fr{\alpha}.
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Обозначим через $F_1$ множество всех несократимых дробей $F$
+    \begin{equation*}
+        F_1 = \{
+            \alpha \in F \big| \alpha = \fr{\alpha}
+        \}.
+    \end{equation*}
+\end{definition}
+
+\begin{remark}\label{remark:easy_fr}
+    Для любого факториального кольца $R$ можно определить дробную и целую часть.
+    Рассмотрим произвольный элемент $X \in F/R$.
+    Этот элемент можно представить в виде $X = \{m/n + t | t \in R\}$, где $m \in R$, $n \in \zeroless{R}$ $(m, n) = 1$.
+    Существует элемент $t_0 \in R$, минимизирующий норму $\elementnorm{m + n t_0}$.
+    Тогда для любого элемента $x \in X$ положим
+    \begin{equation*}
+        \fr{x} = m/n + t_0.
+    \end{equation*}
+
+    Несложно заметить, что эта функция является дробной частью.
+    Целую часть определим следующим образом
+    \begin{equation*}
+        \int{x} = x - \fr{x}.
+    \end{equation*}
+\end{remark}
+
+Далее будем считать, что факториальное кольцо $R$ задано вместе дробной частью $\fr{\cdot}$ и целой частью $\int{\cdot}$.
+
+\subsection{Числовые кольца}
+
+Пусть $K$~-- числовое поле со степенью расширения равной $n$.
+Пусть $R = \mathbb{Z}_K$~-- кольцо алгебраических целых элементов поля $K$.
+И пусть $(e_i)_{1 \le i \le n}$~-- базис $\mathbb{Z}_K$.
+Будем считать, что группа $\invertible{\mathbb{Z}_K}$ бесконечна и образована $r$ фундаментальными единицами и корнями единицы в $K$.
+Будем обозначать их через $\{\varepsilon_1, \dots, \varepsilon_r\}$ и считать, что они известны.
+Обозначим $\nu$~-- генератор корней из единицы в $K$ порядка $l$.
+
+Обозначим через $N_{K/\mathbb{Q}}$ норму в числовом поле $K$.
+Далее будем полагать, что $\mathbb{Z}_K$ евклидово по отношению к норме $N_{K/\mathbb{Q}}$.
+
+\begin{definition}
+    Для любого $a \in \zeroless{R}$ обозначим через $\overline{a} \in \zeroless{R}$ сопряжённый элемент определяемый как $\overline{a} = \elementnorm{a}/a$.
+\end{definition}
+
+Через $(\sigma_i)_{1 \le i \le n}$ обозначим вложения $K$ в $\mathbb{C}$.
+Пусть $\sigma_i$ для $1 \le i \le r_1$ является действительным, а для $r_1 < i < r_1 + r_2$ мнимым и $\sigma_{i+r_2} = \overline{\sigma_{i}}$.
+Определим функцию $\Phi(x): K \to \mathbb{R}^n$ следующим образом
+\begin{equation*}
+    \Phi(x) = \left(
+        \sigma_1(x), \ldots, \sigma_{r_1}(x),
+        \mathcal{R}\sigma_{r_1 + 1}(x), \ldots, \mathcal{R}\sigma_{r_1 + r_2}(x),
+        \mathcal{I}\sigma_{r_1 + 1}(x), \ldots, \mathcal{I}\sigma_{r_1 + r_2}(x)
+    \right)
+\end{equation*}
+
+Пусть $x, y \in \mathbb{R}^n$, $x = (x_i)_{1 \le i \le n}$ и $y = (y_i)_{1 \le i \le n}$.
+Определим произведение в $\mathbb{R}^n$ следующим образом
+\begin{equation*}
+    (xy)_i =
+    \begin{cases}
+        x_i y_i                       & \textrm{ если } 1 \le i \le r_1,\\
+        x_i y_i - x_{i+r_2} y_{i+r_2} & \textrm{ если } r_1 < i \le r_1+r_2,\\
+        x_{i-r_2} y_i - x_i y_{i-r_2} & \textrm{ если } r_1+r_2 < i \le n.
+    \end{cases}
+\end{equation*}
+
+Обозначим через $\mathcal{N}:\mathbb{R}^n \to \mathbb{R}$ норму в $\mathbb{R}^n$.
+По определению считаем, что
+\begin{equation*}
+    \mathcal{N}(x) = \prod\limits_{i=1}^{r_1} x_i \prod\limits_{i=r_1+1}^{r_1+r_2} (x_i^2 + x_{i+r_2}^2).
+\end{equation*}
+
+Заметим, что для любых $x, y\in \mathbb{R}^n$ выполнено $\mathcal{N}(xy) = \mathcal{N}(x)\mathcal{N}(y)$.
+А так же для любых $\xi\in K$ выполнено $N_{K/\mathbb{Q}}(\xi) = \mathcal{N}(\Phi(\xi))$.
+Далее можно определить $\elementnorm{\cdot}: \mathbb{Z}_K \to \mathbb{N} \cup \{0, -\infty\}$ следующим образом.
+\begin{equation*}
+    \elementnorm{\xi} = \begin{cases}
+        -\infty & \textrm{ если } x = 0,\\
+        \mathcal{N}(\Phi(\xi)) & \textrm{ если } x \in \zeroless{R},\\
+    \end{cases}
+\end{equation*}
+Заметим, что тогда $\mathbb{Z}_K$ является евклидовым относительно нормы $\elementnorm{\cdot}$.
+
+Дробную часть $\fr{\cdot}$ в $K$ введем аналогично замечанию~\ref{remark:easy_fr}.
+
+\begin{definition}
+    Для $\xi \in K$ обозначим через $\int{\xi} \in \mathbb{Z}_K$ такой элемент, что
+    \begin{equation*}
+        \inf\limits_{z\in\mathbb{Z}_K} |\mathcal{N}(\Phi(\xi) - \Phi(z))| = |\mathcal{N}(\Phi(\xi) - \Phi(\int{\xi}))|.
+    \end{equation*}
+    Для $\xi \in K$ обозначим через $\fr{\xi} = \xi - \int{\xi}$.
+\end{definition}
+
+Из доказанного в работе~\cite{source:Lezowski} следует, что получающееся определение дробной части корректно.
+
+\begin{statement}[\cite{source:Lezowski}]\label{statement:orbit}
+    Пусть $x \in \mathbb{R}^n$.
+    Обозначим
+    \begin{equation*}
+        m_{\overline{K}}(x) = \inf_{z\in\mathbb{Z}_K} |\mathcal{N}(x - \Phi(z))|.
+    \end{equation*}
+    Тогда для любого $\varepsilon \in \invertible{\mathbb{Z}_K}$, $Z \in \Phi(\mathbb{Z}_K)$ выполнено
+    \begin{equation*}
+        m_{\overline{K}}(\Phi(\varepsilon)x - Z) = m_{\overline{K}}(x).
+    \end{equation*}
+\end{statement}
+
+\begin{definition}
+    Пусть $x\in \mathbb{R}^n$.
+    Обозначим
+    \begin{equation*}
+        \mathcal{F} = \left\{
+            \sum\limits_{i=1}^n x_i\Phi(e_i) \Big| x_i \in \mathbb{Q}\cap[0, 1)
+        \right\}
+    \end{equation*}
+    Определим \emph{орбиту элемента} $x$ следующим образом 
+    \begin{equation*}
+        \textrm{Orb}(x) = \left\{
+        \Phi(\varepsilon)x - z \in \mathcal{F} \Big| \varepsilon \in \invertible{\mathbb{Z}_K}, z \in \mathbb{Z}_K
+    \right\}.
+    \end{equation*}
+\end{definition}
+
+Из утверждения \ref{statement:orbit} следует, что функция $m_{\overline{K}}$ принимает одно значение на всех элементах орбиты.
+
+\begin{statement}[\cite{source:Lezowski}]
+    Для любого элемента $x\in \mathbb{R}^n$ орбита $\textrm{Orb}(x)$ конечна тогда и только тогда, когда $x \in \Phi(K)$.
+\end{statement}
+
+\begin{definition}
+    Для всех $1 \le i \le n$ обозначим
+    \begin{equation*}
+        \Gamma_i = \prod\limits_{j=1}^r \max\left\{
+            |\sigma_i(\varepsilon_j)|, \frac{1}{|\sigma_i(\varepsilon_j)}
+        \right\}.
+    \end{equation*}
+
+    А так же определим
+    \begin{equation*}
+        \Gamma(k) =
+        \begin{cases}
+            \left(
+                \prod\limits_{j=1}^{n-1} \Gamma_j
+            \right)^{\frac{1}{n}} k^{\frac{1}{n}}\ \textrm{если}\ K\ \textrm{действительное},\\
+            \left(
+                \prod\limits_{j=1}^{r_1} \Gamma_j \prod\limits_{j=1}^{r_1+r_2-1} \Gamma_j \Gamma_{j+r_2}
+            \right)^{\frac{1}{n}} k^{\frac{1}{n}}\ \textrm{иначе},
+        \end{cases}
+    \end{equation*}
+    где $k>0$.
+\end{definition}
+
+\begin{statement}[\cite{source:Lezowski}]\label{proposition:division_with_least_norm_remainder}
+    Пусть $x \in \Phi(K)$ и $k > 0$.
+    Для каждого $z \in \textrm{Orb}(x)$ обозначим
+    \begin{equation*}
+        \mathcal{I}_{z, k} = \{Z \in \Phi(\mathbb{Z}_K): |z_i-Z_i| \le \Gamma(k) \forall i, 1 \le i \le n\},
+    \end{equation*}
+    \begin{equation*}
+        \mathcal{M}_k = \min\limits_{z \in \textrm{Orb}(x)} \min\limits_{Z \in \mathcal{I}_{z, k}} |\mathcal{N}(z-Z)|.
+    \end{equation*}
+
+    Тогда, если $\mathcal{M}_k \le k$, то $m_{\overline{K}}(x) = \mathcal{M}_k$.
+\end{statement}
+
+\begin{definition}
+    Пусть $\ideal{n} \subseteq R$ произвольный идеал кольца $R$.
+    Тогда существуют элементы $\alpha_1, \dots, \alpha_r \in R$ для $r \leq n$, что
+    \begin{equation*}
+        \ideal{n} = \{\xi_1 \alpha_1 + \dots + \xi_r \alpha_r | \xi_i \in R\}.
+    \end{equation*}
+    
+    Такое представление будем обозначать $\ideal{n} = (\alpha_1, \dots, \alpha_r)$ и называть \emph{базисным представлением идеала}.
+\end{definition}
+
+\begin{definition}
+    Пусть $\ideal{n} \subseteq R$ произвольный идеал кольца $R$.
+    Тогда существуют элементы $e_1, \dots, e_r \in R$ для $r \leq n$, что
+    \begin{equation*}
+        \ideal{n} = \{x_1 e_1 + \dots + x_m e_m | x_i \in \mathbb{Z}\}.
+    \end{equation*}
+
+    Такое представление будем обозначать $\ideal{n} = (e_1, \dots, e_n)_{\mathbb{Z}}$ и называть \emph{$\mathbb{Z}$-представлением идеала}.
+    Для оценки трудоемкости операций над идеалами $\mathbb{Z}$-представление будем записывать как матрицу $A \in \mathbb{\mathbb{Z}}^{n \times n}$, такую что её столбец под номером $i$ - это коэффициенты разложения $e_i$ в фиксированный целый базис $R$.
+\end{definition}
+
+\begin{statement}[\cite{source:Cohen, source:Post}]
+    Любой идеал имеет $\mathbb{Z}$-представление.
+\end{statement}
+
+\begin{definition}
+    Пусть $\ideal{n} \subseteq R$ произвольный идеал кольца $R$.
+    Тогда существуют элементы $a \in \mathbb{N} \cup \{0\}$ и $\alpha \in R$, что 
+    \begin{equation*}
+        \ideal{n} = \{a \xi_1 + \alpha \xi_2 | \xi_1, \xi_2 \in \mathcal{O}_K\}.
+    \end{equation*}
+
+    Такое представление будем обозначать $\ideal{n} = (a, \alpha)_2$ и называть \emph{$2$-представлением идеала}.
+    Для оценки трудоемкости операций над идеалами $2$-представление будем записывать как вектор из $\mathbb{Z}^n$ состоящий из коэффициентов разложения $\alpha$ в целый базис и целого неотрицательное число $a$.
+    $2$-представление является частным случаем базисного представления и любое $2$-представление задаёт идеал.
+\end{definition}
+
+\begin{statement}[\cite{source:Cohen, source:Post}]
+    Любой идеал имеет 2-представление.
+\end{statement}
+
+\begin{statement}[\cite{source:Post}]
+    Существует полиномиальный алгоритм перехода от $2$-представления к $\mathbb{Z}$-представлению и обратно.
+\end{statement}
+
+\begin{remark}
+    Несмотря на то, что алгоритм полиномиальный, он может оказаться достаточно трудоёмким.
+\end{remark}
+
+Важной операцией над идеалами является их сравнение.
+Так как $\mathbb{Z}$-представление идеала можно записать как матрицу, то можно рассмотреть следующий способ записи $\mathbb{Z}$-представления идеала.
+
+\begin{definition}
+    Будем говорить, что матрица $A \in \mathbb{Z}^{n \times n}$ записана в нормальной эрмитовой форме, если выполнены следующие условия:
+    \begin{enumerate}
+        \item $A_{i, j} = 0$, если $i > j$.
+        
+        \item $A_{i,i} > 0$ для любого $i$.
+        
+        \item Для любого $i > j$ выполнено $0 \leq A_{i, j} \leq A_{i, i}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Будем говорить, что $\mathbb{Z}$-представление идеала $\ideal{a} = (e_1,\dots,e_n)_{\mathbb{Z}}$ находится в нормальной эрмитовой форме, если соответствующая матрица является матрицей в эрмитовой нормальной форме.
+\end{definition}
+
+\begin{statement}[\cite{source:Cohen, source:Post}]
+    Любой идеал может быть записан в нормальной эрмитовой форме, причём такое представление единственно.
+\end{statement}
+
+\begin{statement}[\cite{source:Kannan}]
+    Существует полиномиальный алгоритм получения представления идеала в нормальной эрмитовой форме из его $\mathbb{Z}$-представления.
+\end{statement}
+
+\begin{corollary}
+    Существуют алгоритмы для получения $\mathbb{Z}$-представления, 2-представления или представления в нормальной эрмитовой форме из любого из этих представлений.
+\end{corollary}
+
+\begin{definition}
+    Пусть $\ideal{n}$ идеал кольца $R$ с целым базисом $E$.
+    Пусть $\ideal{n} = (e_1, \dots, e_n)_{\mathbb{Z}}$.
+    Обозначим
+    \begin{equation*}
+        l(\ideal{n}) = \max\limits_{i = \overline{1,n}, j = \overline{1,n}} |a_{ij}|, 
+    \end{equation*}
+    где $A = (a_{ij}) \in \mathbb{Z}^{n \times n}$ матрица соответствующая указанному $\mathbb{Z}$-представлению.
+    Значение $l(\ideal{n})$ будем называть \emph{абсолютным значением идеала}.
+    Логарифм абсолютного значения идеала характеризует количество памяти необходимое для того, чтобы закодировать его $\mathbb{Z}$-представление.
+\end{definition}
+
+\begin{remark}
+    Если кольцо $R$ факториальное, любой идеал является главным, а значит любой идеал может быть задан с помощью порождающего его элемента.
+    В таких кольцах идеал, как и любой элемент, будет кодироваться в виде вектора $\mathbb{Z}^n$ коэффициентов разложения в целый базис кольца $R$.
+\end{remark}
+
+\begin{remark}
+    В работе используется оценка сложности перемножения двух натуральных чисел, получаемая из алгоритма Шенхаге-Штрассена~\cite{source:Schonhage}.
+    Для упрощения записи оценки сложности алгоритмов в работе введем следующее обозначение.
+    Пусть $f(L),$ $g(L)$ две различные функции натурального аргумента $L$.
+    Будем писать $f(L) = \tilde O(g(L))$, если существует положительная функция $h(L)$, такая что $f(L) \le h(L)g(L)$ для любых $L \in \mathbb{N}$, и $h(L) = O(\log g(L)\log \log g(L))$.
+    
+    Любое положительная действительное число $C$ будем называть эффективно вычислимой константной, если оно зависит только от инвариантов поля $K$ и существует алгоритм нахождения данного числа.
+\end{remark}
+
+Далее предполагаем, что элементы заданы с помощью коэффициентов своего разложения в целый базис $R$.
+
+\begin{proposition}\label{proposition:operations}
+    Пусть $a, b \in \zeroless{R}$ и $l(a) \leq L$, $l(b) \leq L$, тогда $a + b$, $a b,$ $b/a$ (включая проверку условия $a|b$), $\elementnorm{a}$, $\overline{a}$ могут быть  вычислены за $\tilde{O}(\log L)$ бинарных операций.
+\end{proposition}
+
+\begin{remark}
+    Из доказательства предложения~\ref{proposition:operations} следует, что существует константа $D$, такая что $\elementnorm(a) \leq D (l(a))^n$ для любого $a \in R$.
+    Следовательно, по правилу Крамера, существуют константы $E$ и $q$, такие что $l(\overline{a}) \leq E L^q$ для любого $a \in R$.
+\end{remark}
+
+\begin{proposition}\label{proposition:mod}
+    Существует константа $M$, такая что для любых $a, m \in \zeroless{R}$, $l(a) \leq L, l(m) \leq L$ за $\tilde{O}(\log L)$ бинарных операций может быть найдено $z \in R$, удовлетворяющее условию $a \equiv z \pmod{m}$ и $l(z) \leq M l(m)$.
+    Такое $z$ будем обозначать $a \pmod{m}$.
+\end{proposition}
+
+\begin{corollary}\label{corollary:mod}
+    Пусть $k \in \mathbb{N}$, и для $a, b, m \in \zeroless{R}$ выполнено $l(a) \leq L$, $l(b) \leq L$, $l(m) \leq L$.
+    Тогда $a + b \pmod{m}$ и $a^k \pmod{m}$ могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
+\end{corollary}
+
+\begin{proposition}\label{proposition:equality}
+    Пусть идеалы $\ideal{a}$ и $\ideal{b}$ заданы в виде нормальной эрмитовой формы и $l(\ideal{a}), l(\ideal{b}) \leq L$.
+    Тогда проверка равенства $\ideal{a} = \ideal{b}$ может быть выполнена за $O(\log L)$ бинарных операций.
+\end{proposition}
+
+\begin{proposition}\label{proposition:particular_equality}
+    Пусть $\ideal{p} = (\alpha, a)_2$~-- простой идеал, заданный в виде 2-представления, а $\ideal{n}$ произвольный идеал заданный в виде $\mathbb{Z}$-представления, причём $l(\ideal{p}), l(\ideal{n}) \leq L$.
+    Тогда проверка равенства $\ideal{p} = \ideal{n}$ может быть выполнена за $\tilde{O}(\log L)$ операций.
+\end{proposition}
+
+\begin{proposition}\label{proposition:norm}
+    Пусть идеал $\ideal{a}$ задан в виде $\mathbb{Z}$-представления и $l(\ideal{a}) \leq L$.
+    Тогда норма $\Nm(\ideal{a})$ может быть вычислена за $\tilde{O}(\log L)$ бинарных операций.
+\end{proposition}
+
+\begin{proposition}\label{proposition:congruence}
+    Пусть идеал $\ideal{a}$ задан в виде $\mathbb{Z}$-представления и $l(\ideal{a}), l(a), l(b) \leq L$, то проверка сравнения $a \equiv b \pmod{\ideal{a}}$ может быть выполнена за $\tilde{O}(\log L)$ бинарных операций.
+\end{proposition}
+
+\begin{proposition}\label{proposition:residue_modulo_ideal}
+    Пусть нетривиальный идеал $\ideal{n}$ задан с помощью $\mathbb{Z}$-представления и $l(\ideal{n}) \leq L$.
+    Пусть $a \in R$ и $l(a) \leq L$.
+    Тогда за $\tilde{O}(\log L)$ бинарных операций можно найти $z \in R$, такое что $z \equiv a \pmod{\ideal{n}}$ и $l(z) \leq N (l(\ideal{n}))^n$.
+    Такое $z$ будем обозначать $a \pmod{m}$.
+\end{proposition}
+
+\begin{corollary}
+    Пусть $k \in \mathbb{N}$ и $a, b \in \zeroless{R}$, $\ideal{n}$~-- нетривиальный идеал заданный с помощью $\mathbb{Z}$-представления.
+    Пусть выполнено $l(a) \leq L$, $l(b) \leq L$, $l(\ideal{n}) \leq L$.
+    Элементы $a + b \pmod{\ideal{n}}$ и $a^k \pmod{\ideal{n}}$, $l(z_1) \leq N (l(\ideal{n}))^n$, $l(z_2) \leq N (l(\ideal{n}))^n$, могут быть определены за $\tilde{O}(\log L)$, $\tilde{O}(\log k \log L)$  бинарных операций соответственно.
+\end{corollary}
+
+\begin{remark}
+    Отметим, что все указанные операции могут быть выполнены за полиномиальное время в случае, когда идеалы заданы с помощью одного из представлений: $\mathbb{Z}$-представление, 2-представление, нормальная эрмитова форма; в силу того, что из одного представления может быть получено другое за полиномиальное время.
+\end{remark}
+
+\begin{statement}[\cite{source:Wikstrom}]\label{statement:GCD_Wikstrom}
+    Пусть $R$ кольцо целых алгебраических элементов числового поля.
+    Тогда для любых $a, b \in R$ наибольший общий делитель $(a, b)$ можно вычислить на $O(n^2)$ арифметических операций в $\mathbb{Z}$, где $n$ длина бинарной записи $a$ и $b$.
+\end{statement}
+
+\begin{statement}[\cite{source:Dedekind}(Теорема Дедекинда)]\label{statement:dedekind}
+    Пусть $f(T)$ минимальный многочлен алгебраического числа $\theta$ в $\mathbb{Z}[\theta]$.
+    Для простого рационального числа $p$, не делящего индекс $[\mathcal{O}_K:\mathbb{Z}[\theta]]$, запишем
+    \begin{equation*}
+        f(T) \equiv (\pi_1(T))^{e_1}\dots (\pi_g(T))^{e_g} \modul p,
+    \end{equation*}
+    где $\pi_i(T)$~-- различные монические неприводимые многочлены в $\mathbb{F}_p[T]$.
+    Тогда
+    \begin{equation*}
+        (p) = \mathfrak{p}_1^{e_1}\dots \mathfrak{p}_g^{e_g},
+    \end{equation*}
+    где $\mathfrak{p}_i = (p_i, T_i(\theta))$, $T_i(T) \equiv \pi_i(T)(\modul p)$.
+\end{statement}
+
+\begin{statement}[\cite{source:Coppersmith}(Теорема Копперсмита)]\label{statement:coppersmith}
+    Пусть
+    \begin{equation*}
+        f(x, y) = \sum\limits_{i, j = 0}^{\delta} p_{i, j} x^i y^j
+    \end{equation*}
+    неприводимый многочлен от двух переменных над $\mathbb{Z}$.
+    Пусть $X, Y \ge 0$ такие, что $|x_0| \le X$ и $|y_0| \le Y$, где $(x_0, y_0)$ решение уравнения $f(x, y) = 0$.
+    Обозначим
+    \begin{equation*}
+        W = \max_{i, j} |p_{i, j}| X^i Y^j.
+    \end{equation*}
+    Пусть $XY < W^{\frac{3}{2\delta}}$, то существует полиномиальный относительно $\log W$ и $2^\delta$ алгоритм, который позволяет найти такую пару $(x_0, y_0)$, что $f(x_0, y_0) = 0$, $|x_0| \le X$ и $|y_0| \le Y$.
+\end{statement}
+
+\section{Аналог критерия Эйлера}
+
+\begin{definition}
+    Пусть характер $\chi$ задан на множестве идеалов кольца $R$, не является главным и определен по модулю идеала $\ideal{n} \subset R$.
+    Через $\ideal{p}_{\chi}$ обозначим идеал минимальной нормы, для которого $\chi(\ideal{p}_{\chi}) \neq 0, 1$.
+\end{definition}
+
+\begin{definition}
+    Пусть $R$ дедекиндово кольцо с полем частных $K$ и $L$ расширение поля $K$ степени не меньше $2$.
+    Будем говорить, что кольцо $R$ \emph{удовлетворяет условию A для идеала $\ideal{n}$}, если существует многочлен $f_R$, что для любого характера $\chi$, не являющегося главным и определенного по модулю $\ideal{n}$, выполнено
+    \begin{equation*}
+        \Nm{\ideal{p}_{\chi}} \le f_R(\log{\Nm{\ideal{n}}}).
+    \end{equation*}
+\end{definition}
+
+\begin{remark}
+    Из работы Баха~\cite{source:Bach} следует, что, если расширенная гипотеза Римана выполнена, то условие A выполнено для всех колец $\mathcal{O}_K$ целых алгебраических чисел числового поля $K$ и $f_{\mathcal{O}_K}(x) = 12x^2 + 12\log^2 \Delta_{K}$.
+\end{remark}
+
+\begin{remark}
+    Из работы Анкени~\cite{source:Ankeny} следует, что, если обобщенная гипотеза Римана выполнена, то условие A выполнено для кольца целых чисел и $f_{\mathbb{Z}}(x) = 2x^2$.
+\end{remark}
+
+\begin{proposition}\label{proposition:condition_A_with_any_homomorphism}
+    Пусть кольцо $R$ удовлетворяет условию A.
+    Пусть $\chi: \invertible{R/\ideal{n}} \to G$ нетривиальный гомоморфизм.
+    Тогда существует идеал $\ideal{a}$ взаимнопростой с $\ideal{n}$ и такой, что $\chi(\ideal{a}) \neq 1$ и
+    \begin{equation*}
+        \Nm{\ideal{a}} \le f_R(\log{\Nm{\ideal{n}}}).
+    \end{equation*}
+\end{proposition}
+
+\begin{proposition}\label{proposition:miller_criteria_character}
+    Пусть идеал $\ideal{p}$ простой с нечетной нормой.
+    Тогда сравнение
+    \begin{equation*}
+        x^{\Nm{\ideal{p}} - 1} \equiv 1 \pmod{\ideal{p}^2}
+    \end{equation*}
+    имеет не более $\Nm{\ideal{p}} - 1$ решений относительно $x \in \invertible{R/\ideal{p}^2}$.
+\end{proposition}
+
+\begin{theorem}\label{theorem:euler_criteria}
+    Пусть $\ideal{n}$~-- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
+    Тогда $\ideal{n}$~-- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$ выполнено
+    \begin{equation*}
+        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
+    \end{equation*}
+
+    Если кольцо $R$ факториальное и удовлетворяет условию A, то $\ideal{n}$~-- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$ выполнено
+    \begin{equation*}
+        a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
+    \end{equation*}
+\end{theorem}
+
+\begin{algorithm}\label{algorithm:solovay_strassen}
+    Дан нетривиальный идеал $\ideal{n} \subset R$.
+    Необходимо определить является ли он простым.
+
+    \begin{enumerate}
+        \item Вычислить $\Nm{\ideal{n}}$;
+        
+        \item Выбрать случайное $a \in \invertible{R/\ideal{n}}$;
+
+        \item Вычислить $r_0 \equiv a^{\frac{\Nm{\ideal{n}} - 1}{2}} \pmod{\ideal{n}}$, $r_1 = \jacobi{a}{\ideal{n}}$;
+
+        \item Если $r_0 \equiv r_1 \pmod{\ideal{n}}$, то вернуть ''неизвестно'' и завершить алгоритм;
+
+        \item Вернуть ''$\ideal{n}$ не простой'' и завершить алгоритм.
+    \end{enumerate}
+\end{algorithm}
+
+\begin{remark}
+    Алгоритм \ref{algorithm:solovay_strassen} является вероятностным.
+    Если был получен ответ "неизвестно", то можно выполнить алгоритм еще раз.
+\end{remark}
+
+\begin{proposition}
+    Пусть $\ideal{n}$~-- не простой идеал.
+    Тогда вероятность ответа "$\ideal{n}$ не простой" у алгоритма \ref{algorithm:solovay_strassen} не менее $1/2$.
+\end{proposition}
+
+\begin{remark}
+    Если $\ideal{n}$~-- составной, то при выполнении алгоритма \ref{algorithm:miller_rabin} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
+\end{remark}
+
+\section{Аналог критерия Миллера}
+
+\begin{theorem}\label{theorem:miller_criteria}
+    Пусть $\ideal{n}$~-- нетривиальный идеал нечетной нормы дедекиндового кольца $R$.
+    Пусть $\Nm{\ideal{n}} - 1 = 2^t u$, $(u, 2) = 1$.
+    Тогда $\ideal{n}$~-- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+
+    Пусть кольцо $R$ факториальное и удовлетворяет условию A.
+    Тогда $\ideal{n}$~-- простой идеал тогда и только тогда, когда для любого $a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$, $(a, \ideal{n}) = 1$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ существует $k\in \{0, \dots, t-1\}$, такое что $a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}$.
+\end{theorem}
+
+\begin{algorithm}\label{algorithm:miller_rabin}
+    Дан идеал $\ideal{n} \subset R$.
+    Необходимо определить является ли он простым.
+
+    \begin{enumerate}
+        \item Найти $u, t \in \mathbb{N}$, что $\Nm{\ideal{n}} - 1 = 2^t u$ и $(2, u) = 1$;
+        
+        \item Выбрать случайный $a \in \invertible{R/\ideal{n}}$;
+
+        \item Вычислить $r_0 \equiv a^u \pmod{\ideal{n}}$;
+
+        \item Если $r_0 = 1$, то вернуть ''неизвестно'' и завершить алгоритм;
+
+        \item Положить $k = 0$;
+
+        \item Пока $k < t$ выполнять:
+        \begin{enumerate}
+            \item Если $r_k = -1$, то вернуть ''неизвестно'' и завершить алгоритм;
+
+            \item Увеличить $k$ на $1$;
+
+            \item Вычислить $r_{k+1} \equiv r_k^2 \pmod{\ideal{n}}$;
+        \end{enumerate}
+
+        \item Вернуть ''$\ideal{n}$ не простой'' и завершить алгоритм.
+    \end{enumerate}
+\end{algorithm}
+
+\begin{remark}
+    Алгоритм \ref{algorithm:miller_rabin} является вероятностным.
+    Если был получен ответ "неизвестно", то можно выполнить алгоритм еще раз.
+\end{remark}
+
+\begin{proposition}
+    Пусть $\ideal{n}$~-- не простой идеал.
+    Тогда вероятность ответа "$\ideal{n}$ не простой" у алгоритма \ref{algorithm:miller_rabin} не менее $1/2$.
+\end{proposition}
+
+\begin{remark}
+    Если $\ideal{n}$~-- составной, то при выполнении алгоритма \ref{algorithm:miller_rabin} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
+\end{remark}
+
+\begin{remark}
+    Доказанные критерии и алгоритмы можно использовать при генерации простых идеалов.
+    В частности для кольца целых чисел они используются в алгоритме Гордона построения сильных простых чисел.
+    Генерация простых идеалов является обязательной частью в криптосистеме RSA в дедекиндовых кольцах.
+    Такая криптосистема будет рассмотрена в главе~\ref{chapter:RSA-cryptosystem}.
+\end{remark}
+
+\section{Вычислительная сложность алгоритма Миллера-Рабина}
+
+\begin{proposition}
+    Пусть $K$ числовое поле и $R$ кольцо целых алгебраических элементов числового поля $K$.
+    Пусть $\ideal{n} \subseteq R$ идеал кольца $R$.
+    Для того, чтобы использовать алгоритм~\ref{algorithm:solovay_strassen} для $\ideal{n}$ требуется полиномиальное относительно $\log^2 l(\ideal{n})$ количество арифметических операций в $\mathbb{Z}$.
+\end{proposition}
+
+\begin{proposition}
+    Пусть $\ideal{n} \subseteq R$ идеал дедекиндового кольца $R$.
+    Для того, чтобы использовать алгоритм~\ref{algorithm:miller_rabin} для $\ideal{n}$ требуется $O(\log \Nm{\ideal{n}})$ арифметических операций.
+\end{proposition}
+
+\begin{proposition}
+    Пусть $K$ числовое поле и $R$ кольцо целых алгебраических элементов числового поля $K$.
+    Пусть $\ideal{n} \subseteq R$ идеал кольца $R$.
+    Для того, чтобы использовать алгоритм~\ref{algorithm:miller_rabin} для $\ideal{n}$ требуется $\tilde{O}(\log^2 l(\ideal{n}))$ бинарных операций.
+\end{proposition}
+
+\section*{Выводы по главе \ref{chapter:Primality}}
+\addcontentsline{toc}{section}{Выводы по главе \ref{chapter:Primality}}
+
+В данной главе диссертации приведены основные определения и известные свойства алгебраических структур.
+Доказаны аналоги критериев Эйлера и Миллера в случае дедекиндовых колец.
+На основе доказанных критериев, построены алгоритмы тестирования на простоту и доказана их эффективность.
+Получены достаточные условия того, что алгоритмы можно модифицировать, сделав детерминированными.
+Получены оценки вычислительной сложности в случае произвольных дедекиндовых колец в терминах арифметических операций, а так же в числовых кольцах в терминах бинарных операций.
+
+\begin{definition}
+    Пусть $a$ и $b$ ненулевые элементы факториального кольца $R$.
+    Для любых $k \in \mathbb{N}$ и $q_1, \dots, q_k \in R$ обозначим
+    \begin{equation*}
+        \mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, r_0, \dots, r_{k-1}, r_k) \in R^{k+2},
+    \end{equation*}
+    где $r_{-1} = a$, $r_0 = b$, $r_i = r_{i-2} - q_i r_{i-1}$, для $i = 1, \dots, k$.
+    Выражение $\mathcal{D}_{a, b}(q_1, \dots, q_k)$ будем называть цепочкой делений для $a, b \in R$.
+    Обозначим через $\mathcal{E}_{a, b}$ следующее множество:
+    \begin{equation*}
+        \mathcal{E}_{a, b} = \left\{
+        \mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, \dots, r_k) \big| r_1, \dots, r_{k-1} \in \zeroless{R}, r_k = 0
+        \right\}.
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Пусть $a$ и $b$ ненулевые элементы факториального кольца $R$.
+    Цепочкой делений с выбором минимального по норме остатка для $a, b \in R$ будем называть такую цепочку делений, что $q_i = \textrm{int}(r_{i-2}/r_{i-1})$ для любого $i = 1, \dots, k$.
+
+    Если цепочка делений с выбором минимального по норме остатка существует, то обозначим через $\mathcal{L}_{a, b}$ ее длину.
+    Если ее не существует, то обозначим $\mathcal{L}_{a, b} = \infty$.
+\end{definition}
+
+\begin{definition}
+    Обозначим через $\mathpzc{l}_{a, b}$ длину кратчайшей цепочки делений для $a, b \in \zeroless{R}$.
+    \begin{equation*}
+        \mathpzc{l}_{a, b} = \begin{cases}
+            \min_{\mathcal{D}_{a, b}(q_1, \dots, q_k) \in \mathcal{E}_{a, b}} k, & \textrm{ если } \mathcal{E}_{a, b} \neq \emptyset\\
+            \infty, & \textrm{ если } \mathcal{E}_{a, b} = \emptyset
+        \end{cases}.
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Через $l_n(R)$ обозначим максимальную длину цепочки делений с выбором минимального по норме остатка для $a, b \in \zeroless{R}$ с ограниченной нормой.
+    \begin{equation*}
+        l_n(R) = \max \left\{
+            \mathcal{L}_{a, b} \big| a, b \in \zeroless{R}, \elementnorm{a} \le \elementnorm{b} \le n
+        \right\}.
+    \end{equation*}
+\end{definition}
+
+\begin{remark}
+    Теорему Кронекера-Валена в кольце целых чисел можно сформулировать в терминах этой главы следующим образом.
+    Пусть $R = \mathbb{Z}$, $\elementnorm{x} = |x|$, $\fr{\alpha} = \alpha - [\alpha + 1/2]$.
+    Тогда цепочка делений с выбором минимального по норме остатка является кратчайшей, т.е. $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$ для всех $a, b \in \zeroless{R}$.
+
+    Далее в этой главе определяются достаточные условия на факториальное кольцо $R$ с заданной нормой и дробной частью, при которых теорема Кронекера-Валена будет выполняться в этом кольце.
+\end{remark}
+
+\section{Теорема Кронекера-Валена в специальном классе факториальных колец}
+
+\begin{definition}
+    Определим функцию $\omega: F_1 \to F_1$ следующим образом
+    \begin{equation*}
+        \omega(\alpha) = \begin{cases}
+            \fr{\alpha^{-1}}, \textrm{ если } \alpha \neq 0\\
+            0, \textrm{ если } \alpha = 0
+        \end{cases}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Будем говорить, что $(x_0, \alpha, n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$ \emph{регулярная тройка}, если существуют
+    \begin{itemize}
+        \item $p, l \in \mathbb{N}$, $p \le n$ и $l \le p+1$,
+
+        \item $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$ для $i = 1, \dots, l-1$,
+
+        \item $\varepsilon \in \{0, 1\}$,
+    \end{itemize}
+    для которых выполнены следующие условия
+    \begin{itemize}
+        \item $\beta_1 = \omega^{(p)}\left(\fr{(\alpha - x_0)^{-1}}\right)$;
+
+        \item $\beta_{i+1} = (\varepsilon_i \beta_i + c_i)^{-1} + b_i$, $i = 1, \dots, l-1$;
+
+        \item $\beta_{l} = \alpha^{(-1)^{\varepsilon}}$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Через $\mathcal{T}$ обозначим множество всех таких факториальных колец $R$, для которых существует $D_R \in \mathbb{N}$, что выполнено
+    \begin{itemize}
+        \item для всех $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ тройка $(x_0, \alpha, D_R - 1)$ регулярная;
+
+        \item если $D_R \ge 3$, то для любого $k \in [3, D_R] \cap \mathbb{N}$ и любых $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ из равенства $\omega^{(k-2)}(\fr{(\alpha - x_0)^{-1}}) = 0$ следует, что тройка $(x_0, \alpha, k-2)$ регулярная.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Обозначим
+    \begin{equation*}
+        [x_1: x_2: \dots: x_k] = x_{1} + \cfrac{1}{
+            x_{2} + \cfrac{1}{
+                x_{3} + \cfrac{1}{
+                    \ddots + \cfrac{1}{
+                        x_{k}
+                    }
+                }
+            }
+        }.
+    \end{equation*}
+    Будем говорить, что для $\alpha \in F$ и $k \in \mathbb{N}$ имеет место $(\alpha, k)$-разрешимость, если разрешимо уравнение
+    \begin{equation*}
+        \alpha = [x_1: x_2: \dots: x_k].
+    \end{equation*}
+\end{definition}
+
+\begin{lemma}\label{lemma:omega_and_euclidean_algorithm}
+    Пусть кольцо $R \in \mathcal{T}$.
+    Для любых $\alpha \in F_1$ и $k \in \mathbb{N}$ имеет место $(\alpha, k)$-разрешимость тогда и только тогда, когда $\omega^{(k-1)}(\alpha) = 0$.
+\end{lemma}
+
+\begin{lemma}\label{lemma:euclidean_algorithm_and_minima}
+    Пусть кольцо $R$ факториальное.
+    Тогда для любых двух элементов $a, b \in \zeroless{R}$ выполнено равенство
+    \begin{equation*}
+        \mathcal{L}_{a, b} = \min\left\{
+            k \in \mathbb{N} \big| \omega^{(k-1)}\left(\frac{a}{b}\right) = 0
+        \right\},
+    \end{equation*}
+    где $\min \emptyset = \infty$.
+\end{lemma}
+
+\begin{theorem}\label{theorem:Kroneker_Vahlen_theorem_in_UFD}
+    Пусть $R \in \mathcal{T}$.
+    Тогда цепочка делений с выбором минимального по норме остатка является кратчайшей, т.е. $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$ для всех $a, b \in \zeroless{R}$.
+\end{theorem}
+
+\subsection{Упрощенный метод проверки $R \in \mathcal{T}$}
+
+Пусть дано некоторое факториальное кольцо $R$.
+Рассмотрим алгоритм проверки принадлежности этого кольца классу $T$.
+
+\begin{definition}
+    Через $\mathcal{S}$ обозначим множество всех таких факториальных колец $R$, что для всех $x \in \zeroless{R}$ и $\alpha \in \zeroless{F_1}$ выполнено одно из условий
+    \begin{itemize}
+        \item $\int{(\alpha - x)^{-1}} \in \invertible{R} \cup \{0\}$;
+        
+        \item $x \int{(\alpha - x)^{-1}} + 1 \in \invertible{R}$.
+    \end{itemize}
+\end{definition}
+
+\begin{lemma}
+    Множество $\mathcal{S}$ содержится в $\mathcal{T}$.
+\end{lemma}
+
+Используя доказанную выше лемму, сформулируем метод проверки включения $R \in \mathcal{S}$.
+
+\begin{algorithm}\label{algorithm:R_in_S}
+    На вход подается факториальное кольцо $R$.
+    
+    \begin{enumerate}
+        \item Построить множество
+        \begin{equation*}
+            J = \left\{
+                x \in \zeroless{R} \big| \forall \alpha \in \zeroless{F_1}, \int{(\alpha - x)^{-1}} \in \invertible{R} \cup \{0\}
+            \right\}
+        \end{equation*}
+        
+        \item Для каждого $x_0 \in \zeroless{R} \setminus J$ построить множество
+        \begin{equation*}
+            Y(x_0) = \left\{
+                f_{x_0}(\alpha) = \int{(\alpha - x_0)^{-1}} | \alpha \in \zeroless{F_1}
+            \right\}
+        \end{equation*}
+        
+        \item Для каждого $x_0 \in \zeroless{R} \setminus J$ построить множество
+        \begin{equation*}
+            U(x_0) = \left(
+                \left\{
+                    \frac{\varepsilon - 1}{x_0} | \varepsilon \in \invertible{R}
+                \right\} \cap R
+            \right) \cup \invertible{R}
+        \end{equation*}
+        
+        \item Если $Y(x_0) \subseteq U(x_0)$ для всех $x_0 \in \zeroless{R} \setminus J$, то ответ ''$R \in \mathcal{S}$'', иначе ответ ''неизвестно''
+    \end{enumerate}
+\end{algorithm}
+
+Докажем корректность этого алгоритма.
+
+\begin{lemma}
+    Если алгоритм~\ref{algorithm:R_in_S} вернул ответ ''$R \in \mathcal{S}$'', то $R \in \mathcal{S}$.
+\end{lemma}
+
+\subsection{Примеры проверки $R \in \mathcal{T}$}
+
+\begin{example}\label{example:Z}
+    Пусть $R = \mathbb{Z}$.
+    Норма задана функцией $\elementnorm{x} = |x|$.
+    Дробная часть $\fr{\alpha} = \alpha - \left[\alpha + \frac{1}{2}\right]$.
+    Тогда
+    \begin{itemize}
+        \item $J = \left\{x \in \mathbb{Z} \big| |x| > 1\right\}$
+        
+        \item $Y(1) = \{-2, -1\}$, $Y(-1) = \{1, 2\}$
+        
+        \item $U(1) = \{-2, -1, 0, 1\}$, $U(-1) = \{-1, 0, 1, 2\}$
+        
+        \item $Y(1) \subseteq U(1)$, $Y(-1) \subseteq U(-1)$
+    \end{itemize}
+    
+    Следовательно, $\mathbb{Z} \in \mathcal{S}$.
+\end{example}
+
+\begin{example}\label{example:P[t]}
+    Пусть $P$ поле.
+    Положим $R = \mathbb{P}[t]$.
+    Норма задана функцией $\upsilon(f)=\deg f$, $f \in \mathbb{P}[t]$.
+    Дробная часть $\textrm{fr}(m(t)/n(t))=r(t)/n(t)$, $m(t)\equiv r(t)(\textrm{mod}\ n(t))$, $\deg r < \deg n$, $m(t)/n(t) \in \mathbb{P}(t).$
+
+    \begin{itemize}
+        \item $\mathbb{J}=\mathbb{K}_{*}$;
+
+        \item $\mathbb{K}_{*}\backslash\mathbb{J} = \emptyset$;
+    \end{itemize}
+
+    Следовательно, $\mathbb{P}[t] \in \mathcal{S}$.
+\end{example}
+
+\begin{example}\label{example:coordinate_ring_of_circle}
+    Пусть $R$ координатное кольцо $\mathbb{Q}[i][x, y]/(x^2 + y^2 + 1)$.
+    Известно, что $R$ изоморфно $\mathbb{Q}[i][t,  t^{-1}]$, где отображение задано следующим образом
+    \begin{equation*}
+        X \to \cos \theta \to \frac{e^{ix} + e^{-ix}}{2} \to \frac{t + t^{-1}}{2}\\
+        Y \to \sin \theta \to \frac{-ie^{ix} + ie^{-ix}}{2} \to \frac{-it + it^{-1}}{2}
+    \end{equation*}
+    Так же известно, что $Q[i][t, t^{-1}]$ является факториальным кольцом.
+    
+    Обратимыми элементами в этом кольце  являются одночлены вида $\alpha t^k$, где $\alpha\in\mathbb{Q}[i]$, $k\in\mathbb{Z}$.
+    Введем норму в этом кольце следующим образом
+    \begin{equation*}
+        \upsilon(x) = \upsilon\left(
+            \sum_{i=k_1}^{k_2} \alpha_i t^i
+        \right) = k_2 - k_1
+    \end{equation*}
+    где $\alpha_i\in\mathbb{Q}[i]$, если $x \neq 0$ и $\upsilon(0) = -\infty$.
+    Проверим критерии.
+    Рассмотрим два элемента кольца
+    \begin{equation*}
+        x = \sum_{i=k_1}^{k_2} \alpha_i t^i\\
+        y = \sum_{i=l_1}^{l_2} \beta_i t^i
+    \end{equation*}
+    При  умножении максимальная степень будет равна $k_2 + l_2$, а минимальная $k_1 + l_1$.
+    Тогда $\upsilon(xy) = k_2 + l_2 - k_1 - l_1 \ge k_2 - k_1$.
+    Это равенство будет выполняться только если $l_2 - l_1 = 0$.
+    А это будет означать, что $y\in\mathbb{I}$.
+    
+    Покажем, что $\textrm{fr}(\alpha) = \varepsilon^{-1}\textrm{fr}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
+    Предположим, что $\textrm{fr}\left(\frac{m}{n}\right) = \frac{r}{n}$.
+    Это означает, что $n | (m-r)$ и $r$ имеет минимальную норму из возможных.
+    Так как норма не меняется при умножении на обратимый элемент, то $\varepsilon r$ будет иметь минимальную норму, а так же $n | (\varepsilon m - \varepsilon r)$.
+    Следовательно, имеем $\textrm{fr}(\alpha) = \varepsilon^{-1}\textrm{fr}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
+    Тогда $\textrm{int}(\alpha) = \varepsilon^{-1}\textrm{int}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
+    
+    Заметим, что умножив $\textrm{int}((\alpha-x)^{-1})$ на некоторый обратимый элемент можно сделать так, что $\alpha$ принадлежит полю частных кольца многочленов, а $x$ это многочлен.
+    Тогда этот пример будет аналогичным примеру с многочленами.
+    Следовательно, для данного координатного кольца выполнен аналог теоремы Кронекера-Валена.
+\end{example}
+
+\begin{example}\label{example:Z[t]}
+    Пусть $R = \mathbb{Z}[t]$, $\upsilon(f)=\deg f$, $f \in \mathbb{Z}[t]$.
+    Определим дробную часть в $\mathbb{F}=\mathbb{Z}(t)$ следующим образом.
+    Рассмотрим отображение $\mathcal{A}:\mathbb{F}/\mathbb{K}\to\mathbb{F}$:
+    \begin{equation*}
+        \mathcal{A}(\mathbb{A})=m(t)/n(t),
+    \end{equation*}
+    где $\mathbb{A}=\{m(t)/n(t)+q(t)|q(t)\in\mathbb{Z}[t]\}.$
+    Для произвольных $\mathbb{A}\in\mathbb{F}/\mathbb{K},$ $\alpha\in\mathbb{A}$ положим
+    \begin{equation*}
+        \begin{array}{c}
+            \textrm{int}(\alpha)=r(t),\\
+            \textrm{fr}(\alpha)=\mathcal{A}(\mathbb{A})-r(t),
+        \end{array}
+    \end{equation*}
+    где $r(t)\in\mathbb{Z}[t]$ и для любого $p(t)\in\mathbb{Z}[t]$
+    \begin{equation*}
+        \lim_{t\to+\infty}\left|\frac{\mathcal{A}(\mathbb{A})-r(t)}{\mathcal{A}(\mathbb{A})-p(t)}\right|\le 1.
+    \end{equation*}
+
+    Докажем, что
+    \begin{equation*}
+        \mathbb{J}\supseteq\{f\in\mathbb{Z}[t]|\deg f>0\ \textrm{или}\ |f(t)|\equiv|x_{0}|>2\}.
+    \end{equation*}
+    Рассмотрим произвольные $\mathbb{A}\in\mathbb{F}/\mathbb{K}$ и $\alpha=m(t)/n(t)\in\mathbb{A}$, $\alpha=\textrm{fr}(\alpha)$.
+
+    Имеем два случая.
+    Предположим, что $\deg m > \deg n$.
+    Из того, что $\alpha=\textrm{fr}(\alpha)$ и определения дробной части следует, что
+    \begin{equation*}
+        1 \ge \lim_{t\to+\infty}\left|\frac{\frac{m(t)}{n(t)}}{\frac{m(t)}{n(t)} - p(t)}\right| = \lim_{t\to+\infty}\left|\frac{m(t)}{m(t) - n(t)p(t)}\right|.
+    \end{equation*}
+    Следовательно, получаем, что для любых $p(t)\in \mathbb{Z}[t]$ выполнено $\deg m(t) \le \deg(m(t) - n(t)p(t))$.
+    Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0}(t)\in\mathbb{Z}[t]$.
+    Тогда
+    \begin{equation*}
+        \begin{split}
+            \textrm{fr}((\alpha - x_{0})^{-1}) = (\alpha - x_0)^{-1} - r =\\
+            = \left(\frac{m}{n} - x_0\right)^{-1} - r = \frac{n}{m - x_0 n} - r =\\
+            = \frac{n - r(m - nx_{0})}{m - nx_{0}}.
+        \end{split}
+    \end{equation*}
+    Из того, что $\deg n < \deg m\le \deg(m-nx_{0})$ следует, что $\deg(n-r(m-nx_{0})) > \deg n$.
+    Однако выше показано, что $\deg(n-r(m-nx_{0})) < \deg n$, исходя из определения дробной части.
+    Получаем противоречие.
+    Следовательно, если $\deg m > \deg n$, то для любого $x_0 \in \mathbb{Z}[t]$ выполнено $\textrm{int}((\alpha-x_{0})^{-1}) = 0$.
+
+    Теперь предположим, что $\deg m \le \deg n$.
+    Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0}\in\mathbb{Z}[t]$, $\deg x_{0} > 0$.
+    Тогда $\deg(m-nx_{0}) > \deg n$.
+    Следовательно, имеем $\deg(n-r(m-nx_{0})) > \deg n$.
+    А это противоречит определению дробной части.
+    Следовательно, если $\deg m \le \deg n$, то для любого $x_{0}\in\mathbb{Z}[t]$, $\deg x_{0} > 0$ выполнено $\textrm{int}((\alpha-x_{0})^{-1}) = 0$.
+    
+    Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0} = c \in \mathbb{Z}\setminus\{0, \pm 1, \pm 2\}$.
+    Если $\deg m < \deg n$, то $\deg n < \deg(n-r(m-nc))$ или $r=const$.
+    Первый вариант противоречит определению дробной части.
+    Если $r=const$, то $\lim_{t\to+\infty}\left|\frac{n(t)-r(m(t)-n(t)c)}{n(t)}\right|=|1+rc|\ge2$, но это противоречит определению дробной части.
+    Таким образом имеем $\deg m=\deg n$.
+    Учитывая то, что $\alpha=\textrm{fr}(\alpha)$ и $\deg m=\deg n$ получаем $\lim_{t\to+\infty}\left|\frac{m(t)}{n(t)}\right|\le 0.5$.
+    Если $\deg r>0,$ то $ \deg n<\deg(n-r(m-nc)),$ но это противоречие.
+    Таким образом $r=const$ и
+    \begin{align*}
+        \lim_{t\to+\infty}\left|\frac{n(t)-r(m(t)-n(t)c)}{n(t)}\right| \ge |1+rc|-|r|/2 \ge\\
+        \ge |r|(|c|-1/2)-1 \ge \frac{3}{2},
+    \end{align*}
+    но это противоречит определению дробной части.
+
+    Таким образом $\mathbb{J}\supseteq\{f\in\mathbb{Z}[t]|\deg f>0\ \textrm{или}\ |f(t)|\equiv|x_{0}|>2\}$.
+    Если $x_{0}\equiv\pm2,$ то $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ тогда и только тогда, когда $\deg m=\deg n$ и $r(t)\equiv\pm1$, откуда следует, что $\pm2\in\mathbb{J}$.
+    Несложно показать, что $0,\pm1\notin\mathbb{J}$.
+    
+    Тогда $\mathbb{K}_{*}\backslash\mathbb{J}\subseteq\{\pm1\}$.
+    Вычисляем $\mathbb{Y}(1)=\{-2,-1\}$, $\mathbb{Y}(-1)=\{1,2\}$ и $\mathbb{U}(1)=\{-2,-1,0,1\}$, $\mathbb{U}(-1)=\{-1,0,1,2\}$.
+
+    Следовательно, $\mathbb{Z}[t] \in \mathcal{S}.$
+\end{example}
+
+\begin{example}\label{example:a|b or b|a}
+    Пусть $R$ евклидово кольцо такое, что для любых $a,b\in\mathbb{K}$ или $a|b$, или $b|a$.
+    В этом случае $\mathbb{F}=\mathbb{K}\cup\{1/a|a\in\mathbb{K}_{*}\backslash\mathbb{I}\}$.
+
+    Докажем, что $\mathbb{J}=\mathbb{K}_{*}$.
+    Рассмотрим произвольный $\alpha\in\mathbb{F}_{1}^{*}$, тогда существует $b\in\mathbb{K}_{*}\backslash\mathbb{I}$ такой, что $\alpha=1/b$.
+    Пусть $x\in\mathbb{K}_{*}$.
+    Покажем, что $\textrm{int}((\alpha-x)^{-1}) = (\alpha-x)^{-1}$.
+    Имеем $(\alpha-x)^{-1}=\frac{b}{1-bx}$.
+    Предположим, что $\textrm{fr}(\frac{b}{1-bx}) \neq 0$, что эквивалентно утверждению, что $\frac{b}{1 - b x} = \frac{1}{c}$ для некоторого $c\in\mathbb{K}_{*}\backslash\mathbb{I}$.
+    Так как $b$ и $1 - b x$ взаимнопростые, то $b\in\mathbb{I}$.
+    Следовательно, имеем $\alpha-x=b^{-1}-x\in\mathbb{K}$, это означает, что $\alpha\in\mathbb{K}$, но это противоречит условию $\alpha \in \mathbb{F}_{1}^{*}$.
+    Таким образом имеем $x\ \textrm{int}((\alpha-x)^{-1})+1=\frac{1}{1-bx}$.
+    Предположим, что $1 - b x \in \mathbb{K}_{*}\backslash\mathbb{I}$.
+    Так как $b$ и $1-bx$ взаимнопростые, то $b|(1-bx)$.
+    Следовательно, $b\in\mathbb{I}$.
+    Из последнего следует, что $\alpha-x=b^{-1}-x\in\mathbb{K}$, но это противоречит условию $\alpha\in\mathbb{F}_{1}^{*}$.
+    Итого получаем $1-bx\in\mathbb{I}$.
+    Следовательно, $x\ \textrm{int}((\alpha-x)^{-1}) + 1 \in \mathbb{I}$.
+    
+    Тогда $\mathbb{K}_{*}\backslash\mathbb{J} = \emptyset$.
+    Следовательно, $\mathbb{K}\in \mathcal{S}$.
+\end{example}
+
+Рассмотрим пример факториального кольца, не лежащего в $\mathcal{S}$, но лежащего в $\mathcal{T}$.
+
+\begin{example}\label{example:Z[i]}
+    Пусть $R = \mathbb{Z}[i]$.
+    Покажем, что кольцо $\mathbb{Z}[i]$ не принадлежит $\mathcal{S}.$
+    Выберем $\alpha=\frac{9-4i}{20}$, $x=1$.
+    Тогда $\textrm{int}((\alpha-x)^{-1})=-2+i \notin \mathbb{I} \cup \{0\}$ и $x \ \textrm{int}((\alpha-x)^{-1})+1=-1+i \notin \mathbb{I}.$
+
+    Покажем, что $\mathbb{K}\in\mathcal{T}$.
+    Заметим, что $\mathbb{F}_1=\{z\in\mathbb{C}|Re(z),Im(z)\in\mathbb{Q}\cap[-1/2,1/2[\}$.
+    Положим $D_{\mathbb{K}}=3$ в определении множества $\mathcal{T}$.
+
+    Проверим первое условие из определения $\mathcal{T}$.
+    Рассмотрим произвольные $x_0\in\mathbb{Z}[i]\setminus\{0\}$ и $\alpha\in\mathbb{F}^*_1$.
+    Обозначим $b=\textrm{int}((\alpha-x_0)^{-1})$.
+    Пусть $p$~-- число из первого условия определения $\mathcal{T}$.
+    Если $\upsilon(x_0)>5$, то при $p=1$ имеем $\beta_1=\alpha$.
+    Если $b\in\mathbb{I}\cup\{0\}$, то для $p=1$ имеем $\beta_1=\textrm{fr}((\alpha-x_0)/(bx_0+1-\alpha))$, тогда $\beta_2=\alpha$.
+    Далее предполагаем, что $b\not\in\mathbb{I}\cup\{0\}$ и $\upsilon(x_0)\le 5$.
+    Заметим, что $\upsilon(x_0)\in\{1,2\}$.
+    Достаточно рассмотреть только случаи $x_0=1$ и $x_0=1+i$ (так как для любого $x_0$ таком, что $\upsilon(x_0)\in\{1,2\}$ существует элемент $\varepsilon\in\mathbb{I}$ такой, что $x_0=\varepsilon$ или $x_0=(1+i)\varepsilon$).
+
+    Пусть $x_0=1+i$, тогда $b=-1+i$.
+    Положим $p=1$, и получим
+    \begin{equation*}
+        \beta_1=\textrm{fr}((\alpha-(1+i))/(\alpha(1-i)-1)),\ \beta_2=\alpha^{-1}.
+    \end{equation*}
+
+    Пусть $x_0=1$, тогда $b\in\{-2,-1\pm i,-2\pm i\}$.
+
+    Если $b=-2$, то для $p=1$ имеем
+    \begin{equation*}
+        \beta_1=\textrm{fr}((\alpha-1)/(2\alpha-1)),\ \beta_2=\alpha^{-1}.
+    \end{equation*}
+
+    Если $b=-1\pm i$, то для $p=1$ имеем
+    \begin{equation*}
+        \beta_1=\textrm{fr}((\alpha-1)/(\alpha(1\mp i)\pm i)),\ \beta_2=\alpha^{-1}.
+    \end{equation*}
+
+    Пусть $b=-2+i$. Рассмотрим элемент
+    \begin{equation*}
+        \beta=\omega(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha-1)/(\alpha(2-i)-(1-i))).
+    \end{equation*}
+
+    Заметим, что
+    \begin{equation*}
+        \gamma=\textrm{int}((\alpha-1)/(\alpha(2-1)-(1-i)))\in\{1+i,1+2i,2+i,2+2i\}.
+    \end{equation*}
+
+    Если $\gamma=1+i$, то
+    \begin{equation*}
+        \beta=(1-\alpha(2+i))/(\alpha(2-i)-(1-i)).
+    \end{equation*}
+
+    Положим $p=2$, тогда имеем
+    \begin{equation*}
+        \begin{array}{c}
+            \beta_1=\omega^{(2)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha(2-i)-(1-i))/(1-\alpha(2+i))),\\
+            \beta_2=\alpha/(1-\alpha(2+i)),\\
+            \beta_3=\alpha^{-1}.
+        \end{array}
+    \end{equation*}
+
+    Если $\gamma=1+2i$, то
+    \begin{equation*}
+        \beta=((2+i)-\alpha(3+3i))/(\alpha(2-i)-(1-i)).
+    \end{equation*}
+
+    Положим $p=2$, тогда имеем
+    \begin{equation*}
+        \begin{array}{c}
+            \beta_1=\omega^{(2)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha(2-i)-(1-i))/((2+i)-\alpha(3+3i))),\\
+            \beta_2=\alpha/(1-\alpha(2+i)),\\
+            \beta_3=\alpha^{-1}.
+        \end{array}
+    \end{equation*}
+
+    Если $\gamma=2+i$, то
+    \begin{equation*}
+        \beta=((2-i)-4\alpha)/(\alpha(2-i)-(1-i)).
+    \end{equation*}
+
+    Положим $p=2$, тогда имеем
+    \begin{equation*}
+        \begin{array}{c}
+            \beta_1=\omega^{(2)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha(2-i)-(1-i))/((2-i)-4\alpha)),\\
+            \beta_2=\alpha/(1-\alpha(2+i)),\\
+            \beta_3=\alpha^{-1}.
+        \end{array}
+    \end{equation*}
+
+    Если $\gamma=2+2i$, то
+    \begin{equation*}
+        \beta=(3-\alpha(5+2i))/(\alpha(2-i)-(1-i)).
+    \end{equation*}
+
+    Положим $p=3$, тогда имеем
+    \begin{equation*}
+        \begin{array}{c}
+            \beta_1=\omega^{(3)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((3-\alpha(5+2i))/(2-2i-\alpha(5-2i))),\\
+            \beta_2=\alpha/(1-\alpha(2_i),\\
+            \beta_3=\alpha^{-1}.
+        \end{array}
+    \end{equation*}
+
+    Случай $b=-2-i$ аналогичен случаю $b=-2+i$.
+
+    Проверим второе условие определения множества $\mathcal{T}$.
+    Рассмотрим произвольные $x_0\in\mathbb{Z}[i]\setminus\{0\}$ и $\alpha\in\mathbb{F}^*_1$ такие, что $\omega(\textrm{fr}((\alpha-x_0)^{-1}))=0$.
+    Так как во всех случаях, кроме $x_0=1$, $b=-2\pm i$, можно взять $D_{\mathbb{K}}=2$ вместо $D_{\mathbb{K}}=3$, то необходимо рассмотреть только случай $x_0=1$, $b=-2\pm i$.
+    Пусть $b=-2+i$, тогда из условия $\omega(\textrm{fr}((\alpha-x_0)^{-1}))=0$ следует, что $\alpha\in\{1/(2+i),(2+i)/(3+3i),(2-i)/4,3/(5+2i)\}$.
+    Для первого, второго и третьего элемента выполнено $\omega^{(2)}(\alpha)=0$.
+    Для четвертого элемента условие $\alpha=\textrm{fr}(\alpha)$ не выполняется.
+    Случай $b=-2-i$ аналогичен случаю $b=-2+i$.
+    Следовательно, $\mathbb{K}=\mathbb{Z}[i]$ не принадлежит классу $\mathcal{S}$, но принадлежит классу $\mathcal{T}$.
+\end{example}
+
+В работе Роллетчека~\cite{source:Rolletschek_1990} приведен пример кольца, для которого цепочка делений с выбором минимального по норме остатка не является кратчайшей.
+Следовательно, это кольцо не может принадлежать классу $\mathcal{T}$.
+
+\begin{example}[\cite{source:Rolletschek_1990}]\label{example:Z[sqrt{-11}]}
+    Пусть $R = \mathbb{Z}[\sqrt{-11}]$.
+    Заметим, что множество
+    \begin{equation*}
+        \{6,-2i\sqrt{11},6,-3+i\sqrt{11},-1-i\sqrt{11},2,0\}
+    \end{equation*}
+    образует цепочку делений с выбором минимального по норме остатка для пары $(a,b)=(6,-2i\sqrt{11})$.
+    Тогда $\mathcal{L}_{a,b}=5$.
+    С другой стороны существует цепочка делений
+    \begin{equation*}
+        \{6,-2i\sqrt{11},-5+i\sqrt{11},3+i\sqrt{11},2,0\}.
+    \end{equation*}
+    
+    Из этого следует, что $\mathpzc{l}_{a,b}\le 4\le \mathcal{L}_{a,b}$.
+    Следовательно, теорема \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} не выполняется.
+    Предположим, что $\mathbb{Z}[i\sqrt{11}]\in\mathcal{T}$, но тогда по теореме \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} получаем, что для любой пары $(c,d)\in\mathbb{K}_* \times\mathbb{K}_*$ выполнено $\mathpzc{l}_{c,d}=\mathcal{L}_{c,d}$.
+    Получаем противоречие с приведенным примером.
+    Аналогично можно показать, что лемма \ref{lemma:omega_and_euclidean_algorithm} не выполняется для $\mathbb{Z}[\sqrt{-11}].$
+\end{example}
+
+\subsection{Общий метод проверки $R \in \mathcal{T}$}
+
+Приведем общий метод проверки включения $R \in \mathcal{T}$.
+
+\begin{algorithm}\label{algorithm:R_in_T}
+    На вход подается факториальное кольцо $R$.
+    
+    \begin{enumerate}
+        \item Выбрать $D_R, M \in \mathbb{N}$
+        
+        \item Построить множество
+        \begin{equation*}
+            \mathbb{J} = \left\{
+                x_0 \in R \Bigg| \int{\frac{1}{\alpha-x_0}} \in \invertible{R} \cup \{0\} \forall \alpha \in \zeroless{F}
+            \right\}
+        \end{equation*}
+        
+        \item Создать список $\mathbb{L}$, в котором будут храниться элементы из $R^i$, где $i \in \{1, \ldots, D_R - 1\}$
+
+        \item Вычислить $\mathbb{L}=\mathbb{K}^*\setminus\mathbb{J}$. Мы будем хранить элементы из $\mathbb{L}$, в которых более двух компонент в множестве $\mathbb{L}_M$
+
+        \item\label{step:every_element_in_L} Выбрать элемент $(x_0, \ldots, x_l) \in \mathbb{L}$ и удалить его из $\mathbb{L}$
+
+        \item Вычислить
+        \begin{equation*}
+            \delta = \left(
+                \left(
+                    \ldots\left(
+                        \left(
+                            \alpha - x_0
+                        \right)^{-1} - x_1
+                    \right)^{-1} - \ldots
+                \right)^{-1} - x_l
+            \right)^{-1}
+        \end{equation*}
+
+        \item Построить множество
+        \begin{equation*}
+            \mathbb{A} = \left\{
+                b \in R \big| b = \int{\delta}
+            \right\}
+        \end{equation*}
+
+        \item\label{step:every_element_in_A} Для каждого элемента $x_{l+1} \in \mathbb{A}$ выполнить
+        \begin{enumerate}
+            \item Вычислить
+            \begin{equation*}
+                \beta_1 = \omega^{(l+1)} \left(
+                    \int{(\alpha-x_0)^{-1}}
+                \right) = \fr{(\delta-x_{l+1})^{-1}}
+            \end{equation*}
+
+            \item Попробовать найти такие $(\varepsilon_i) \in \invertible{R}$ и $(a_i), (b_i) \in R$, что $\elementnorm{a_i},\elementnorm{b_i} \le M$ и
+            \begin{equation*}
+                \begin{split}
+                    \beta_{i+1}=\frac{1}{\varepsilon_i \beta_i + a_i} + b_i,\\
+                    \beta_{l+2}=\alpha \textrm{ или } \beta_{l+2}=\alpha^{-1}
+                \end{split}
+            \end{equation*}
+
+            \item Если такие элементы не нашлись и $l+1 \ge D_R - 1$, то вернуть ''выберите большие $D_R$ и $M$'' и завершить алгоритм
+            
+            \item Если такие элементы не нашлись и $l+1 < D_R - 1$, то добавить в множество $\mathbb{L}$ элемент $(x_0,\ldots,x_l,x_{l+1})$
+            
+            \item Если такие элементы нашлись, то перейти к следующему элементу в шаге~\ref{step:every_element_in_A}
+        \end{enumerate}
+
+        \item Если множество $\mathbb{L}$ не пустое, то выбрать другой элемент на шаге~\ref{step:every_element_in_L}
+        
+        \item Если множество $\mathbb{L}$ пустое и $D_R < 3$, то вернуть ''$R \in \mathcal{T}$'' и завершить алгоритм
+        
+        \item Для всех $k \in [3, D_R]$
+        \begin{enumerate}
+            \item Построить множество
+            \begin{equation*}
+                \mathbb{B} = \left\{
+                    \alpha \in \zeroless{F} \big| \omega^{(k-2)}\left(
+                        \fr{(\alpha-x_0)^{-1}}
+                    \right) = 0
+                \right\}
+            \end{equation*}
+
+            \item Для всех $\alpha_0 \in \mathbb{B}$ попробовать найти такие $(\varepsilon_i) \in \invertible{R}$ и $(a_i), (b_i) \in R$, что $\elementnorm{a_i}, \elementnorm{b_i} \le M$ и
+            \begin{equation*}
+                \begin{split}
+                    \beta_{i+1}=\frac{1}{\varepsilon_i \beta_i + a_i} + b_i,\\
+                    \beta_{k-1}=\alpha \textrm{ или } \beta_{k-1}=\alpha^{-1},
+                \end{split}
+            \end{equation*}
+            где $\beta_1 = 0$
+
+            \item Если такие элементы не были найдены, то вернуть ''выберите большие $D_R$ и $M$'' и завершить алгоритм
+            
+            \item Если такие элементы были найдены и проверены все $x_0 \in \zeroless{\mathbb{L}}$, то вернуть ''$R \in \mathcal{T}$'' и завершить алгоритм
+        \end{enumerate}
+    \end{enumerate}
+\end{algorithm}
+
+\begin{lemma}
+    Пусть алгоритм~\ref{algorithm:R_in_T} вернул ''$R \in \mathcal{T}$''.
+    Тогда $R \in \mathcal{T}$.
+\end{lemma}
+
+\section{Теорема Кронекера-Валена в кольце алгебраических целых чисел числового поля}
+
+\subsection{Метод деления с выбором минимального по норме остатка}
+
+\begin{lemma}
+    Пусть $\xi \in K$ и $k > 0$.
+    Обозначим $x = \Phi(\xi)$.
+    Предположим, что $z' \in \textrm{Orb}(x)$ и $Z'\in\mathcal{I}_{z', k}$ такие элементы, что $\mathcal{M}_k = |\mathcal{N}(z'-Z')|$.
+    Если $\mathcal{M}_k \le k$, то $\int{\xi}$ можно вычислить за $O(1)$ арифметических операций в $K$.
+\end{lemma}
+
+\begin{remark}
+    Для произвольного $x \in \Phi(K)$ и $z \in \textrm{Orb}(x)$ будем предполагать, что известно $\varepsilon_z \in \invertible{\mathbb{Z}_K}$ такое, что $z = \Phi(\overline{\varepsilon_z \Phi^{-1}(x)})$, и более того можно вычислить $\varepsilon_z^{-1}$ за $O(1)$ арифметических операций.
+\end{remark}
+
+Используя доказанные выше утверждения, получаем следующий алгоритм.
+
+\begin{algorithm}\label{algorithm:least_norm_remainder}
+    Дано числовое поле $K$ и два элемента $a, b \in \mathbb{Z}_K$.
+    Необходимо вычислить наименьший общий остаток $r$ при делении $a$ на $b$.
+
+    \begin{enumerate}
+        \item Вычислить $x = \Phi(a/b) \in \Phi(K)$;
+        
+        \item Вычислить $\textrm{Orb}(x)$;
+
+        \item Выбрать произвольное действительное $k > 0$;
+
+        \item Вычислить $\Gamma(k)$ \label{loop:1};
+
+        \item Объявить переменные $z'$ и $Z'$, которые будут инициализированы позже;
+
+        \item Для всех $z \in \textrm{Orb}(x)$
+        \begin{enumerate}
+            \item Вычислить $\mathcal{I}_{z, k}$;
+
+            \item Для всех $Z \in \mathcal{I}_{z, k}$, если $z'$ и $Z'$ не инициализированы или $\mathcal{N}(z' - Z') > \mathcal{N}(z - Z)$ положить $z' = z$ и $Z' = Z$;
+        \end{enumerate}
+
+        \item Вычислить $\mathcal{M}_k = \mathcal{N}(z' - Z')$
+        
+        \item Если $\mathcal{M}_k > k$, то положить $k = \mathcal{M}_k$ и перейти к шагу \ref{loop:1}
+
+        \item Вычислить $\int{\frac{a}{b}} = Z'\Phi((\varepsilon_z')^{-1})$
+
+        \item Вернуть $r = a - b \int{\frac{a}{b}}$
+    \end{enumerate}
+\end{algorithm}
+
+Оценим вычислительную сложность этого алгоритма.
+
+\begin{proposition}
+    Для любых $a, b \in \zeroless{\mathbb{Z}_K}$ наименьший по норме остаток $r$ при делении $a$ на $b$ можно найти, используя алгоритм \ref{algorithm:least_norm_remainder}, за $O(1)$ арифметических операций в $K$.
+\end{proposition}
+
+\subsection{Метод доказательства невыполнимости теоремы Кронекера-Валена}
+
+В этой части работы будет представлен метод автоматического доказательства невыполнимости теоремы Кронекера-Валена в кольце целых алгебраических чисел числового поля $K$.
+Метод доказательства приведен в алгоритме \ref{algorithm:kronecker_vahlen_common}.
+
+\begin{algorithm}\label{algorithm:kronecker_vahlen_common}
+    Дано числовое поле $K$.
+    Требуется доказать, что теорема Кронекера-Валена не выполняется в $\mathbb{Z}_K$.
+    
+    \begin{enumerate}
+        \item Взять произвольные $a, b \in \mathbb{Z}_K$;
+
+        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}_{a, b}$;
+
+        \item Найти $c \in \mathbb{Z}_K$ такое, что $a = bx + c$ для некоторого $x \in \mathbb{Z}_K$;
+
+        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}'_{b,c}$;
+
+        \item Если $\textrm{len}(\mathcal{D}_{a, b}) > \textrm{len}(\mathcal{D}'_{b, c}) + 1$, то теорема Кронекера-Валена не выполняется в $K$.
+    \end{enumerate}
+\end{algorithm}
+
+\subsection{Теорема Кронекера-Валена в действительных квадратичных норменно-евклидовых кольцах}
+
+Применим описанный выше метод в частном случае.
+Предположим, что поле $K$ такое, что $\mathbb{Z}_K$ действительное квадратичное норменно-евклидово кольцо.
+В методе будем рассматривать такие целые элементы $a$ и $b$, которые являются рациональными, т.е. $a, b \in \mathbb{Z}$.
+А так же будем искать $c$ используя остаток при делении $a$ на $b$ на $\mathbb{Z}$.
+Модифицированный метод приведен в алгоритме~\ref{algorithm:kronecker_vahlen_special}.
+
+\begin{algorithm}\label{algorithm:kronecker_vahlen_special}
+    Дано такое числовое поле $K$, что $\mathbb{Z}_K$ действительное квадратичное норменно-евклидово кольцо
+    Требуется доказать, что теорема Кронекера-Валена не выполняется в $\mathbb{Z}_K$.
+
+    \begin{enumerate}
+        \item Взять произвольные $a, b \in \mathbb{Z}$;
+
+        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}_{a,b}$;
+
+        \item Вычислить остаток $c$ при делении $a$ на $b$;
+
+        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}'_{b, c}$;
+
+        \item Если $\textrm{len}(\mathcal{D}_{a, b}) > \textrm{len}(\mathcal{D}'_{b, c}) + 1$, то теорема Кронекера-Валена не выполняется в $K$;
+
+        \item Вычислить $c = a \% b - b$;
+
+        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}''_{b,c}$;
+
+        \item Если $\textrm{len}(\mathcal{D}_{a, b}) > \textrm{len}(\mathcal{D}''_{b, c}) + 1$, то теорема Кронекера-Валена не выполняется в $K$;
+    \end{enumerate}
+\end{algorithm}
+
+Реализуем этот алгоритм на R и применим его для всех действительных квадратичных норменно-евклидовых колец.
+
+\begin{theorem}\label{theorem:kronecker}
+    Пусть поле $K$ такое, что $\mathbb{Z}_K$ действительное квадратичное норменно-евклидово кольцо.
+    Тогда теорема Кронекера-Валена не выполняется в $\mathbb{Z}_K$.
+\end{theorem}
+
+\begin{proposition}
+    Пусть $R = \mathbb{Q}[\sqrt{d}]$~-- квадратичное норменно-евклидово кольцо.
+    Теорема Кронекера-Валена выполняется в $R$ тогда и только тогда, когда $d=-1, -2, -3, -7$.
+\end{proposition}
+
+\section{Теорема Ламе в факториальных кольцах}
+
+Ранее было показано, что при определенных условиях на кольцо цепочка делений с выбором минимального по норме остатка является кратчайшей.
+Однако существуют кольца, для которых эти условия не выполняются и в которых цепочка делений с выбором минимального по норме остатка не является кратчайшей.
+Например, в работе~\cite{source:Rolletschek_1990} было показано, что теорема Кронекера-Валена не выполняется в кольце $\mathbb{Z}[\sqrt{-11}]$.
+В работе~\cite{source:Cooke} было показано, что для колец целых алгебраических чисел с бесконечной группой единиц длина кратчайшей цепочки делений с выбором минимального по норме остатка ограничена константой.
+Следовательно, важным вопросом является исследование асимптотического поведения длины кратчайшей цепочки делений.
+
+\begin{definition}
+    Пусть $d \neq 1$~-- целое число свободное от квадратов.
+    Под \emph{фундаментальной областью поля} $\mathbb{Q}[\sqrt{d}]$ понимают множество, заданное следующим образом
+    \begin{equation*}
+        F(d) = \begin{cases}
+            \left(
+                \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{2}\right]
+            \right) \cap \left(
+                \mathbb{Q} \times \mathbb{Q}
+            \right), \textrm{ если } d \not\equiv 1 \pmod 4\\
+            \left(
+                \left[0, \frac{1}{2}\right] \times \left[0, \frac{1}{4}\right]
+            \right) \cap \left(
+                \mathbb{Q} \times \mathbb{Q}
+            \right), \textrm{ если } d \equiv 1 \pmod 4
+        \end{cases}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Пусть $d \neq 1$~-- целое число свободное от квадратов.
+    Под окрестностью точки $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$ радиуса $r > 0$ понимают множество заданное следующим образом
+    \begin{equation*}
+        U(\lambda, r) = \left\{
+            q_1 + q_2 \sqrt{d} \in Q[\sqrt{d}] \big| |(q_1 - \lambda_1)^2 - d(q_2 - \lambda_2)^2| < r
+        \right\}.
+    \end{equation*}
+
+    Под окрестностью множества точек $\Lambda \subseteq \mathbb{Z}[\sqrt{d}]$ радиуса $r > 0$ понимают множество заданное следующим образом
+    \begin{equation*}
+        U(\Lambda, r) = \bigcup_{\lambda \in \Lambda} U(\lambda, r).
+    \end{equation*}
+\end{definition}
+
+В работе~\cite{source:Selfridge} доказано следующее утверждение.
+
+\begin{statement}[\cite{source:Selfridge}]\label{proposition:fundamental_in_circle}
+    Пусть $d \neq 1$~-- целое число свободное от квадратов.
+    Тогда кольцо $\mathbb{Z}[\sqrt{d}]$ является евклидовым относительно нормы числового поля $\mathbb{Q}[\sqrt{d}]$ тогда и только тогда, когда существует множество $\Lambda \subseteq \mathbb{Z}[\sqrt{d}]$, что
+    \begin{equation*}
+        F(d) \subseteq U(\Lambda, 1).
+    \end{equation*}
+\end{statement}
+
+\begin{definition}\label{definition:euclidean_lambda}
+    Для $m/n \in F_1$ рассмотрим функцию
+    \begin{equation*}
+        |m/n| = \begin{cases}
+            \frac{\elementnorm{m}}{\elementnorm{n}}, & m \neq 0, (m, n) = 1\\
+            0, & m = 0
+        \end{cases}.
+    \end{equation*}
+    Обозначим
+    \begin{equation*}
+        \Lambda_K = \sup_{m/n \in F_1} |m/n|.
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}\label{theorem:euclidean_and_lambda}
+    Если $R$~-- евклидово кольцо относительно нормы $\elementnorm{\cdot}$, то $\Lambda_R \in [0, 1]$.
+
+    Если $R$~-- факториальное кольцо с мультипликативной нормой $\elementnorm{\cdot}$ и $\Lambda_R \in [0, 1)$, то $R$~-- евклидово относительно нормы $\elementnorm{\cdot}$ и $l_n(R) \le [\log_{\Lambda_R^{-1}} n] + 2$ для всех $n \in \mathbb{N}$, где $\log_{\infty} n = 0$.
+\end{theorem}
+
+\begin{theorem}
+    Пусть $d \neq 1$ целое число свободное от квадратов.
+    Если кольцо $\mathbb{Z}[\sqrt{d}]$ евклидово относительно нормы числового поля $\elementnorm{\cdot}$, то $l_n(\mathbb{Z}[\sqrt{d}]) = O(\log n)$.
+\end{theorem}
+
+\section*{Выводы по главе \ref{chapter:Kronecker-Vahlen theorem}}
+\addcontentsline{toc}{section}{Выводы по главе \ref{chapter:Kronecker-Vahlen theorem}}
+
+В данной главе диссертации получены достаточные условия для выполнения аналога теоремы Кронекера-Валена в факториальном кольце.
+Разработан метод проверки этого достаточного условия.
+Разработан метод автоматического доказательства невыполнимости теоремы Кронекера-Валена в факториальном кольце.
+Используя этот метод доказано, что теорема Кронекера-Валена не выполняется во всех действительных квадратичных норменно-евклидовых кольцах.
+Получены оценки длины цепочки делений с выбором минимального по норме остатка в евклидовых кольцах.
+
+
+Изложенный далее алгоритм аналога криптосистемы RSA был предложен в работе Петуховой и Тронина~\cite{source:Petukhova}.
+Была показана корректность полученной криптосистемы и представлены ограничения  на кольцо для ее эффективного применения.
+В этой части исследуется криптосистема RSA в дедекиндовых кольцах с конечным полем остатков.
+Целью является получение доказательств теорем, связанных с ее криптостойкостью.
+Например теоремы Винера, теоремы об эквивалентности факторизации и взлома криптосистемы, а так же изучение методов взлома криптосистемы.
+
+\begin{algorithm}[\cite{source:Petukhova}]\label{algorithm:RSA_in_dedekind}
+    Аналог криптосистемы RSA в дедекиндовых кольцах.
+
+    \begin{enumerate}
+        \item Выбираются максимальные идеалы $\ideal{p}$, $\ideal{q}\in R$
+
+        \item Вычисляется $\varphi(\ideal{N}),$ где $\ideal{N} = \ideal{p} \ideal{q}$
+
+        \item Выбирается случайное целое $e \in [1, \varphi(\ideal{N})],$ $(e, \varphi(\ideal{N}))=1$
+
+        \item Вычисляется целое положительное $d$ такое, что $ed \equiv 1 \pmod{\varphi(\ideal{N})}$
+    \end{enumerate}
+
+    Пара $(\ideal{N}, e)$ это публичный ключ $A$, пара $(\ideal{N}, d)$ секретный ключ $A$.
+    Функцией шифрования называется
+
+    \begin{equation*}
+        \begin{array}{c}
+            f: R/\ideal{N} \to R/\ideal{N},\\
+            f(x) \equiv x^{e} \pmod{\varphi(\ideal{N})}.
+        \end{array}
+    \end{equation*}
+
+    Функцией расшифрования называется
+
+    \begin{equation*}
+        \begin{array}{c}
+            f^{-1}: R/\ideal{N} \to R/\ideal{N},\\
+            f^{-1}(x) \equiv x^{d}\pmod{\varphi(\ideal{N})}.
+        \end{array}
+    \end{equation*}
+\end{algorithm}
+
+\begin{remark}
+    Корректность приведенной криптосистемы гарантируется аналогом теоремы Эйлера для дедекиндовых колец.
+\end{remark}
+
+\section{Анализ аналога криптосистемы RSA}
+
+Нетрудно заметить, что зная разложение на множители $\ideal{N} = \ideal{p}\ideal{q}$ для модуля криптосистемы RSA можно эффективно найти секретный ключ.
+В некоторых случаях можно доказать обратное утверждение.
+
+\begin{theorem}\label{theorem:factor}\ref{source:BSU_Journal_2020}
+    Пусть $K$~-- числовое поле и $\mathbb{Z}_K$ его кольцо целых алгебраических элементов.
+    Пусть $\mathbb{Z}_K$~-- кольцо с единственной факторизацией, $((N), e, d)$ параметры криптосистемы RSA в $\mathbb{Z}_K$.
+    Если $d$ известно, то $N$ можно эффективно разложить на множители с вероятностью не менее $\frac{1}{2}$ за полиномиальное относительно длины бинарной записи $N$ количество арифметических операций в $\mathbb{Z}$.
+\end{theorem}
+
+Следующая теорема является аналогом теоремы Винера о малой секретной экспоненте \cite{source:Wiener}.
+
+\begin{theorem}\label{theorem:Wiener}\ref{source:BSU_Journal_2020}
+    Пусть $(\ideal{N},e,d)$, $\ideal{N}=\ideal{p} \ideal{q}$~-- параметры криптосистемы RSA в дедекиндовом кольце $R$.
+    Пусть $\Nm{\ideal{q}} < \Nm{\ideal{p}} < \alpha^2 \Nm{\ideal{q}},$ где $\alpha > 1.$
+    Если $d<\frac{1}{\sqrt{2\alpha+2}}(\Nm{\ideal{N}})^{1/4},$ то $d$ можно эффективно вычислить за полиномиальное относительно $\log \Nm{\ideal{N}}$ число бинарных операций.
+\end{theorem}
+
+\begin{remark}
+    Доказанная выше теорема является основой для атаки Винера на криптосистему RSA.
+    При соблюдении определенных условий на параметры криптосистемы, можно сделать использование этой атаки невозможным.
+    Однако существуют атаки, от которых невозможно полностью защититься.
+    
+    Метод повторного шифрования является примером такой атаки.
+    Предположим, что было перехвачено некоторое зашифрованное сообщение $y = x^e \pmod{\ideal{N}}$, где $x \in \mathbb{Z}_{K} / \ideal{N}$~-- некоторое сообщение.
+    Построим последовательность $y_i = y^{e^i} \pmod{\ideal{N}}$, где $i \in \{1, 2, \ldots\}$.
+    Используя свойства возведения в степень и то, что $\mathbb{Z}_{K} / \ideal{N}$ конечно, получаем, что существует таое $m \in \mathbb{N}$, что $y_m = y$.
+    Тогда $y_{m-1} = x$.
+    
+    Единственный способ защиты от этого метода взлома состоит в том, чтобы сделать $m$ достаточно большим.
+\end{remark}
+
+Обозначим через $R_{\mathfrak{m}}$ и $R_{\mathfrak{m}}^{\times}$ аддитивную и мультипликативную группы вычетов по модулю $\mathfrak{m}$.
+Заметим, что если $\mathfrak{m}=\mathfrak{m}_1 \mathfrak{m}_2$, то $R_{\mathfrak{m}}^{\times} \cong R_{\mathfrak{m}_1}^{\times} \times R_{\mathfrak{m}_2}^{\times}$.
+
+\begin{theorem}\label{theorem:iterated}
+    Пусть $\ideal{N} = \ideal{p} \ideal{q}$~-- модуль криптосистемы RSA в дедекиндовом кольце $R$.
+    Предположим, что существуют различные простые числа $r$, $s$ и положительные целые числа $k$, $l$ такие, что $\varphi(\ideal{p}) = rk$, $\varphi(\ideal{q}) = sl$ и числа $r - 1$, $s - 1$ имеют различные простые делители $r_1$, $s_1$ соответственно.
+
+    Пусть $y$ и $e$~-- независимые равномерно распределенные случайные величины со значениями в $R / \ideal{N}$ и $\invertible{\mathbb{Z}_{\varphi(\ideal{N})}}$ соответственно.
+    Обозначим
+    \begin{equation*}
+        m_{e,y} = \min \{m \in \mathbb{N} | y_m = y\}.
+    \end{equation*}
+    Тогда выполняется неравенство
+    \begin{equation*}
+        P(m_{e,y} \ge r_1s_1)\ge(1-r^{-1})(1-s^{-1})(1-r_1^{-1})(1-s_1^{-1}).
+    \end{equation*}
+\end{theorem}
+
+\begin{theorem}\label{theorem:d_is_known_2}
+    Пусть $(\ideal{N}, e, d)$ параметры криптосистемы RSA в дедекиндовом кольце $R$, где $\Nm{\ideal{p}}$ и $\Nm{\ideal{q}}$ имеют одинаковую битовую длину.
+    Пусть $e d \le (\Nm{\ideal{N}})^2$, $\Nm{\ideal{N}} \ge 3$.
+    Если $d$ известно, то существует эффективный алгоритм, который позволяет найти $\Nm{\ideal{p}}$ и $\Nm{\ideal{q}}$.
+\end{theorem}
+
+\begin{remark}
+    Если в условии теоремы~\ref{theorem:d_is_known_2} заменить неравенство $ed \le (\Nm{\ideal{N}})^2$ на более строгое $e d \le (\Nm{\ideal{N}})^{3/2}$, то получим, что
+    \begin{equation*}
+        k - \overline{k} < 6(\Nm{\ideal{N}})^{-3/2}(ed-1) < 6.
+    \end{equation*}
+    
+    Следовательно, вычислив $\overline{k} = \frac{ed-1}{\Nm{\ideal{N}}}$, можно перебрать все возможные $k$ и для каждого вычислить $\varphi(\ideal{N})$, $\Nm{\ideal{p}}$, $\Nm{\ideal{q}}$.
+\end{remark}
+
+\begin{theorem}
+    Пусть дедекиндово кольцо $R$ является евклидовым относительно некоторой нормы $\upsilon(\cdot)$ и $\Lambda_{R} < 1$, где $\Lambda_{R}$ задано в определении~\ref{definition:euclidean_lambda}.
+    Тогда это кольцо главных идеалов.
+    Для простоты будем обозначать идеалы соответствующими элементами кольца.
+
+    Пусть $(N, e_1, d_1)$ и $(N, e_2, d_2)$ параметры криптосистемы RSA в $R$ и $(e_1, e_2) = 1$.
+    Пусть перехвачены сообщения $c_1 \equiv m^{e_1} \pmod{N}$ и $c_2 \equiv m^{e_2} \pmod{N}$.
+    Тогда сообщение $m$ можно вычислить за полиномиальное относительно $\log \upsilon(N)$ количество арифметических операций в $R$.
+\end{theorem}
+
+\begin{remark}
+    В работе \cite{source:Vaskouski_CSIST} в доказательстве предложения 1 показано, что $\Lambda_{R} < 1$ во всех квадратичных норменно-евклидовых кольцах.
+\end{remark}
+
+Приведем примеры работы криптосистемы для некоторых координатных колец.
+
+\begin{example}
+	Рассмотрим кольцо многочленов от двух переменных над $\mathbb{Z}_2$.
+	Рассмотрим координатное кольцо
+	\begin{equation*}
+		R = \frac{\mathbb{Z}_2(x, y)}{y-x} \cong \mathbb{Z}_2[x]
+	\end{equation*}
+	
+	Это кольцо дедекиндово.
+	Рассмотрим идеалы $\ideal{p} = (x^3 + x + 1)$ и $\ideal{q} = (x^3 + x^2 + 1)$.
+	И $R/\ideal{p}$, и $R/\ideal{q}$ состоит из многочленов степени не более $2$.
+	Следовательно, норма обоих идеалов равна $8$.
+	
+	Вычислим $\ideal{N} = \ideal{p}\ideal{q} = (x^6 + x^5 + x^4 + x^3 + x^2 + x + 1)$.
+	Заметим, что $R/\ideal{N}$ состоит из многочленов степени не более $5$.
+	Следовательно, $\Nm{\ideal{N}} = 64$.
+	Вычислим $\varphi(\ideal{N}) = 7 * 7 = 49$.
+
+	Заметим, что
+	\begin{equation*}
+		\begin{array}{l}
+			x^{7i} = 1\\
+			x^{7i+1} = x\\
+			x^{7i+2} = x^2\\
+			x^{7i+3} = x^3\\
+			x^{7i+4} = x^4\\
+			x^{7i+5} = x^5\\
+			x^{7i+6} = x^5 + x^4 + x^3 + x^2 + x + 1
+		\end{array}
+	\end{equation*}
+
+	Выберем случайное $e = 11$.
+	Тогда $d = 9$.
+	Возьмем элемент $x^4 + x^2 + 1$.
+	Зашифруем его, а затем расшифруем
+	\begin{equation*}
+	    \begin{split}
+    		(x^4 + x^2 + 1)^{11} = x^2 + x + 1\\
+    		(x^2 + x + 1)^{9} = x^4 + x^2 + 1
+	    \end{split}
+	\end{equation*}
+\end{example}
+
+\begin{example}
+    Рассмотрим кольцо многочленов от двух переменных над $\mathbb{Z}_2$. И рассмотрим координатное кольцо
+    \begin{equation*}
+        R = \frac{\mathbb{Z}_2(x, y)}{\langle xy - 1\rangle}.
+    \end{equation*}
+    
+    Так как в этом координатном кольце $xy - 1 = 0$, то оно состоит из многочленов вида $xf(x) + yg(y) + c$.
+    Из этого несложно заметить, что $R \cong \mathbb{Z}_2(x, x^{-1})$.
+    
+    Рассмотрим идеал $\ideal{p} = (x + 1)$.
+    Его норма $2$, так как фактор кольцо $R/\ideal{p}$ состоит из элементов $0$ и $1$.
+    Рассмотрим идеал $\ideal{q} = (x^2 + x + 1)$.
+    Кольцо $R/\ideal{q}$ состоит из $x+1$, $x$, $1$, $0$.
+    Следовательно, норма этого идеала $4$.
+
+    Вычислим $\ideal{N} = \ideal{p}\ideal{q} = x^3 + 1$.
+    Несложно заметить, что $R/\ideal{N}$ состоит из многочленов степени не более $2$.
+    Значит норма $\Nm{\ideal{N}} = 8$.
+    Вычислим $\varphi_K(\ideal{N}) = 3$
+
+    Заметим, что
+    \begin{equation*}
+    	\begin{array}{l}
+    		x^{3i} = 1\\
+    		x^{3i+1} = x\\
+    		x^{3i+2} = x^2
+    	\end{array}
+    \end{equation*}
+
+    Выберем случайное $e = 2$.
+    Тогда $d = 2$.
+    Возьмем элемент $x^2 + 1$.
+    Зашифруем его, а затем расшифруем
+    \begin{equation*}
+        \begin{split}
+            (x^2 + 1)^2 = x^4 + 1 = x + 1\\
+            (x + 1)^2 = x^2 + 1
+        \end{split}
+    \end{equation*}
+\end{example}
+
+\section{Факторизация идеалов}
+
+В работе \cite{source:Darkey-Mensah} приводится алгоритм факторизации идеалов в дедекиндовых кольцах.
+Однако у этого алгоритма есть определенные ограничения.
+Они описаны в работе \cite{source:Darkey-Mensah} и состоят в том, что надо уметь вычислять радикал идеала, сумму идеалов и частное.
+Так же две из трех частей алгоритма факторизации приведены только для случая координатных колец.
+
+Пусть $R$ кольцо целых алгебраических элементов числового поля $K = \mathbb{Q}(\theta)$.
+Будем предполагать, что поле $K$ фиксировано и, следовательно, известен индекс $[R: \mathbb{Z}[\theta]]$.
+А так же разложение на простые идеалы всех простых делителей индекса.
+В этом случае, используя теорему Дедекинда~\ref{statement:dedekind} можно построить полиномиальное сведение задачи факторизации идеала к задаче факторизации целых чисел.
+
+\begin{algorithm}
+    Алгоритм факторизации идеала числового кольца.
+
+    \begin{enumerate}
+        \item Пусть дан идеал $(N)$ в форме своего $2$-представления.
+        
+        \item Считаем норму идеала, равную норме элемента $N$ и раскладываем норму на множители одним из известных алгоритмов для факторизации целых чисел.
+        Например методом решета числового поля или алгоритмом Шора.
+        Получаем разложение
+        \begin{equation*}
+            n = \Nm{N} = \prod_{i=1}^{k} p_i^{\alpha_i}.
+        \end{equation*}
+        Таким образом, мы знаем, что
+        \begin{equation*}
+            (\Nm{N}) = \prod_{i=1}^{k} (p_i)^{\alpha_i}.
+        \end{equation*}
+    
+        \item Факторизуем идеал $(p_i)$ с помощью теоремы Дедекинда \ref{statement:dedekind} и получаем двухэлементные представления идеалов
+        \begin{equation*}
+            (p_i) = \prod_{j=1}^{l_i} (p_i, f_{i, j}(\theta))
+        \end{equation*}
+    
+        \item Преобразуем полученные простые идеалы в $\mathbb{Z}$-представление и объединяем равные.
+        Получаем представление
+        \begin{equation*}
+            (\Nm{N}) = \prod_{i=1}^{l} \mathfrak{p}_i^{\beta_i}
+        \end{equation*}
+    
+        \item Используем бинарный поиск для нахождения степеней, в которых $\mathfrak{p}_i$ входит в $(N)$.
+    \end{enumerate}
+\end{algorithm}
+
+\begin{proposition}
+    Разложить идеал $(p)$, используя теорему Дедекинда, можно за $O((n\log n + \log p)n\log n\log\log n\log^2 p)$ бинарных операций.
+\end{proposition}
+
+\begin{remark}
+    Таким образом, зная разложение $(p_i)$ на произведение простых идеалов, можно найти одинаковые идеалы и разложение $(\Nm{N})$ на произведение различных идеалов за $O(P(n)Q(\log |N|))$ бинарных операций, так как $k \le \log \Nm{N}$ и $l_i \le n$.
+    Таким образом, найти разложение идеала $(\Nm{N})$ на произведение различных простых идеалов можно за полиномиальное относительно $\log\Nm{N}$ количество бинарных операций, если разложение $\Nm{N}$ на множители известно.
+
+    Это показывает, что аналог криптосистемы RSA в некотором смысле не дает никакого выигрыша при использовании в кольцах алгебраических целых чисел числовых полей.
+\end{remark}
+
+\begin{remark}
+    Задача факторизации в дедекиндовых кольцах является более сложной, так как нет доказательства аналога теоремы Дедекинда в дедекиндовых кольцах.
+\end{remark}
+
+\section*{Выводы по главе \ref{chapter:RSA-cryptosystem}}
+\addcontentsline{toc}{section}{Выводы по главе \ref{chapter:RSA-cryptosystem}}
+
+В данной главе диссертации приведен аналог криптосистемы RSA в дедекиндовых кольцах.
+Доказан аналог теоремы Винера о малой секретной экспоненте и другие теоремы, связанные с криптостойкостью криптосистемы RSA.
+Приведен способ защиты от атаки повторного шифрования на аналог криптосистемы RSA.
+Используя теоремы Копперсмита, доказан детерминированный аналог теоремы Винера.
+Исследована задача факторизации идеалов в дедекиндовых кольцах.
+Приведен метод полиномиального сведения задачи факторизации идеалов к задаче факторизации целых чисел в случае числовых колец, использующий теорему Дедекинда.
 
 \end{document}
