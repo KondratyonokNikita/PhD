@@ -7,11 +7,9 @@
     \tableofcontents
 }
 
-\begin{center}
-    \refstepcounter{chapter}
-    \chapter*{ГЛАВА \arabic{chapter}.\\ ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}\label{chapter:Primality}
-    \addcontentsline{toc}{chapter}{ГЛАВА \arabic{chapter}. ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}
-\end{center}
+\refstepcounter{chapter}
+\chapter*{ГЛАВА \arabic{chapter}.\\ ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}\label{chapter:Primality}
+\addcontentsline{toc}{chapter}{ГЛАВА \arabic{chapter}. ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}
 
 \section{Предварительные сведения}
 
@@ -93,7 +91,7 @@
     \end{equation*}
 \end{definition}
 
-\begin{statement}[Обобщенная теорема Эйлера]\cite{source:Petukhova}\label{statement:euler_function}
+\begin{statement}[\cite{source:Petukhova} (Обобщенная теорема Эйлера)]\label{statement:euler_function}
     Пусть $m \in R$ и $\ideal{n} \subset R$~-- идеал.
     Если $Rm + \ideal{n} = R$, то
     \begin{equation*}
