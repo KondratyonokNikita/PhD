@@ -44,6 +44,24 @@ jobs:
           name: autoref
           path: autoref/_00_autoref.pdf
 
+      - name: Build presentation
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: _00_pres.tex
+          working_directory: pres/
+          latexmk_use_xelatex: true
+          latexmk_shell_escape: true
+          pre_compile: |
+            apk add msttcorefonts-installer fontconfig
+            update-ms-fonts
+            fc-cache -f
+
+      - name: Upload presentation pdf
+        uses: actions/upload-artifact@v2
+        with:
+          name: presentation
+          path: pres/_00_pres.pdf
+
       - name: Variables
         id: vars
         run: |
@@ -59,6 +77,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: autoref
+
+      - name: Download pressentation
+        uses: actions/download-artifact@v2
+        with:
+          name: pres
 
       - name: Create Release
         uses: actions/create-release@v1
@@ -89,4 +112,14 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./_00_autoref.pdf
           asset_name: Kondratyonok_Autoref.pdf
+          asset_content_type: application/pdf
+
+      - name: Upload pres pdf
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./_00_pres.pdf
+          asset_name: Kondratyonok_Pres.pdf
           asset_content_type: application/pdf
