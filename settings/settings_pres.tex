@@ -8,24 +8,6 @@
   \hfill%
   \insertframenumber\,/\,\inserttotalframenumber}
 
-%create template for block without title
-\defbeamertemplate{block begin}{notitle}
-{
-  \usebeamerfont{block body}%
-  \begin{beamercolorbox}[colsep*=.75ex,vmode]{block body}%
-    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
-}
-
-\newenvironment{block_notitle}
-{
-    \setbeamertemplate{block begin}[notitle]
-    \begin{block}
-}
-{
-    \end{block}
-    \setbeamertemplate{block begin}[default]
-}
-
 \usepackage{polyglossia}
 \setmainlanguage{russian}
 \setotherlanguage{english}
@@ -57,10 +39,6 @@
 \renewcommand{\algorithmicrequire}{\textbf{Дано:}}
 \renewcommand{\algorithmicensure}{\textbf{Результат:}}
 \floatname{algorithm}{Алгоритм}
-
-\newcounter{slideNumber}
-\newcommand{\slide}[3][]{
-\stepcounter{slideNumber}
 
 \makeatletter
 \long\def\beamer@@ssection*#1{\beamer@section[]{}}
