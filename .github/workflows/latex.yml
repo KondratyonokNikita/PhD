@@ -59,7 +59,7 @@ jobs:
       - name: Upload presentation pdf
         uses: actions/upload-artifact@v2
         with:
-          name: presentation
+          name: pres
           path: pres/_00_pres.pdf
 
       - name: Variables
