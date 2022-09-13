@@ -16,6 +16,7 @@
 \subsection{Дедекиндовы кольца}
 
 \begin{definition}
+    Пусть $R$ коммутативное кольцо с единицей.
     \emph{Идеалом} кольца $R$ называется его подкольцо $\ideal{n}$, замкнутое относительно умножения на элементы $R$.
     Это означает, что для любого $a \in R$ выполнено включение $a\ideal{n} \subseteq \ideal{n}$.
     Идеал $\ideal{n}$ называется \emph{тривиальным}, если он совпадает с $R$ или нулевым идеалом $0$.
@@ -35,6 +36,12 @@
 \end{remark}
 
 \begin{definition}
+    \emph{Суммой} двух идеалов $\ideal{a}$ и $\ideal{b}$ называется минимальный идеал, который их всех содержит.
+
+    \emph{Произведением} двух идеалов $\ideal{a}$ и $\ideal{b}$ называется идеал, порожденный всеми произведениями $ab$, где $a \in \ideal{a}$, $b \in \ideal{b}$.
+\end{definition}
+
+\begin{definition}
     Кольцо $R$ называется \emph{дедекиндовым}, если любой нетривиальный идеал раскладывается в произведение простых идеалов единственным способом с точностью до порядка множителей.
 \end{definition}
 
@@ -50,7 +57,7 @@
     Рассмотрим примеры дедекиндовых колец с конечной нормой.
     \begin{itemize}
         \item Пусть $K$~-- числовое поле.
-        Кольцо $\mathbb{Z}_K$, образованное целыми алгебраическими элементами этого поля, является дедекиндовым с конечным полем остатков.
+        Кольцо $\mathcal{O}_K$, образованное целыми алгебраическими элементами этого поля, является дедекиндовым с конечной нормой.
         Частными случаями этого примера являются кольцо целых чисел и гауссовых чисел.
         
         \item Пусть $f(x, y) = y - mx - b$~-- прямая.
@@ -71,10 +78,6 @@
 \begin{definition}
     Идеал $\ideal{n}$ называется \emph{главным}, если $\ideal{n} = aR$, где $a \in R$.
     Если все идеалы кольца $R$ являются главными, то говорят, что $R$ \emph{кольцо главных идеалов}.
-\end{definition}
-
-\begin{definition}
-    \emph{Произведением} двух идеалов $\ideal{a}$ и $\ideal{b}$ называется идеал, порожденный всеми произведениями $ab$, где $a \in \ideal{a}$, $b \in \ideal{b}$.
 \end{definition}
 
 \begin{definition}
@@ -103,8 +106,9 @@
     \emph{Первообразным корнем по модулю идеала} $\ideal{n}$ будем называть такой элемент $g \in R$, что $g^{\varphi (\ideal{n})} \equiv 1 \pmod{\ideal{n}}$ и $g^{l} \not\equiv 1 \pmod{\ideal{n}}$ при $1 \leq l < \varphi(\ideal{n})$.
 \end{definition}
 
-\begin{statement}[Обобщенная китайская теорема об остатках]\label{statement:chinese_remainder_theorem}
-    Пусть $\ideal{n}_1, \ideal{n}_2, \dots, \ideal{n}_k$~-- попарно взаимнопростые идеалы кольца $R$.
+\begin{statement}[\cite{source:Leng} (Китайская теорема об остатках)]\label{statement:chinese_remainder_theorem}
+    Рассмотрим идеалы $\ideal{n}_1, \ideal{n}_2, \dots, \ideal{n}_k \subseteq R$.
+    Пусть $\ideal{n}_i + \ideal{n}_j = R$ для любых $i, j \in \{1, \dots, k\}$, $i \neq j$.
     Тогда
     \begin{equation*}
         \begin{split}
@@ -165,18 +169,17 @@
 \begin{definition}
     Пусть $\ideal{p}$ простой идеал кольца $R$.
     Рассмотрим идеал $\ideal{p}S$, который он генерирует в кольце $S$.
-    Этот идеал не обязан быть простым, но существует единственная факторизация его на простые идеалы
+    Существует единственная факторизация его на простые идеалы
     \begin{equation*}
         \ideal{p}S = \prod_{\ideal{q}} \ideal{q}^{e_{\ideal{q}}},
     \end{equation*}
     где произведение берется по всем простым идеалам кольца $S$ и $e_{\ideal{q}} > 0$ только для конечного количества простых $\ideal{q}$.
-    Если $e_{\ideal{q}} > 0$ для некоторого $\ideal{q}$, то говорят, что $\ideal{q}$ лежит над (lie over, lie above) простым идеалом $\ideal{p}$.
 
-    Число $e_{\ideal{q}}$ из разложения $\ideal{p}S = \prod_{\ideal{q}} \ideal{q}^{e_{\ideal{q}}}$ называется \emph{индексом разветвления} (ramification index) $\ideal{q}$.
+    Число $e_{\ideal{q}}$ из разложения $\ideal{p}S = \prod_{\ideal{q}} \ideal{q}^{e_{\ideal{q}}}$ называется \emph{индексом ветвления} $\ideal{q}$.
 
-    Если для простого идеала $\ideal{p} \subseteq R$ выполнено $e_{\ideal{q}} > 1$ для некоторого $\ideal{q} \subseteq S$, то говорят, что идеал $\ideal{p}$ \emph{ветвится} в $L$.
-    Если идеал $\ideal{p}S$ простой в $S$, то говорят, что $\ideal{p}$ \emph{инертный} (inert).
-    Если для всех $\ideal{q}$ выполняется или $e_{\ideal{q}} = 0$, или $e_{\ideal{q}} = 1$, то говорят, что $\ideal{p}$ \emph{полностью разлагается} (splits completely) в $L$.
+    Если для простого идеала $\ideal{p} \subseteq R$ выполнено $e_{\ideal{q}} > 1$ для некоторого $\ideal{q} \subseteq S$, то говорят, что идеал $\ideal{p}$ \emph{полностью разветвляется} в $L$.
+    Если идеал $\ideal{p}S$ простой в $S$, то говорят, что $\ideal{p}$ \emph{инертен}.
+    Если для всех $\ideal{q}$ выполняется или $e_{\ideal{q}} = 0$, или $e_{\ideal{q}} = 1$, то говорят, что $\ideal{p}$ \emph{полностью разлагается} в $L$.
 \end{definition}
 
 \begin{definition}
@@ -292,14 +295,14 @@
 \subsection{Числовые кольца}
 
 Пусть $K$~-- числовое поле со степенью расширения равной $n$.
-Пусть $R = \mathbb{Z}_K$~-- кольцо целых алгебраических элементов поля $K$.
-И пусть $(e_i)_{1 \le i \le n}$~-- базис $\mathbb{Z}_K$.
-Будем считать, что группа $\invertible{\mathbb{Z}_K}$ бесконечна и образована $r$ фундаментальными единицами и корнями единицы в $K$.
+Пусть $R = \mathcal{O}_K$~-- кольцо целых алгебраических элементов поля $K$.
+И пусть $(e_i)_{1 \le i \le n}$~-- базис $\mathcal{O}_K$.
+Будем считать, что группа $\invertible{\mathcal{O}_K}$ бесконечна и образована $r$ фундаментальными единицами и корнями единицы в $K$.
 Будем обозначать их через $\{\varepsilon_1, \dots, \varepsilon_r\}$ и считать, что они известны.
-Обозначим $\nu$~-- генератор корней из единицы в $K$ порядка $l$.
+Обозначим $\nu$~-- образующий элемент группы корней из единицы в $K$ порядка $l$.
 
 Обозначим через $N_{K/\mathbb{Q}}$ норму в числовом поле $K$.
-Далее будем полагать, что $\mathbb{Z}_K$ евклидово по отношению к норме $N_{K/\mathbb{Q}}$.
+Далее будем полагать, что $\mathcal{O}_K$ евклидово по отношению к норме $N_{K/\mathbb{Q}}$.
 
 \begin{definition}
     Для любого $a \in \zeroless{R}$ обозначим через $\overline{a} \in \zeroless{R}$ сопряжённый элемент определяемый как $\overline{a} = \elementnorm{a}/a$.
@@ -335,21 +338,21 @@
 
 Заметим, что для любых $x, y\in \mathbb{R}^n$ выполнено $\mathcal{N}(xy) = \mathcal{N}(x)\mathcal{N}(y)$.
 А так же для любых $\xi\in K$ выполнено $N_{K/\mathbb{Q}}(\xi) = \mathcal{N}(\Phi(\xi))$.
-Далее можно определить $\elementnorm{\cdot}: \mathbb{Z}_K \to \mathbb{N} \cup \{0, -\infty\}$ следующим образом.
+Далее можно определить $\elementnorm{\cdot}: \mathcal{O}_K \to \mathbb{N} \cup \{0, -\infty\}$ следующим образом.
 \begin{equation*}
     \elementnorm{\xi} = \begin{cases}
         -\infty & \textrm{ если } x = 0,\\
         \mathcal{N}(\Phi(\xi)) & \textrm{ если } x \in \zeroless{R},\\
     \end{cases}
 \end{equation*}
-Заметим, что тогда $\mathbb{Z}_K$ является евклидовым относительно нормы $\elementnorm{\cdot}$.
+Заметим, что тогда $\mathcal{O}_K$ является евклидовым относительно нормы $\elementnorm{\cdot}$.
 
 Дробную часть $\fr{\cdot}$ в $K$ введем аналогично замечанию~\ref{remark:easy_fr}.
 
 \begin{definition}
-    Для $\xi \in K$ обозначим через $\int{\xi} \in \mathbb{Z}_K$ такой элемент, что
+    Для $\xi \in K$ обозначим через $\int{\xi} \in \mathcal{O}_K$ такой элемент, что
     \begin{equation*}
-        \inf\limits_{z\in\mathbb{Z}_K} |\mathcal{N}(\Phi(\xi) - \Phi(z))| = |\mathcal{N}(\Phi(\xi) - \Phi(\int{\xi}))|.
+        \inf\limits_{z\in\mathcal{O}_K} |\mathcal{N}(\Phi(\xi) - \Phi(z))| = |\mathcal{N}(\Phi(\xi) - \Phi(\int{\xi}))|.
     \end{equation*}
     Для $\xi \in K$ обозначим $\fr{\xi} = \xi - \int{\xi}$.
 \end{definition}
@@ -360,9 +363,9 @@
     Пусть $x \in \mathbb{R}^n$.
     Обозначим
     \begin{equation*}
-        m_{\overline{K}}(x) = \inf_{z\in\mathbb{Z}_K} |\mathcal{N}(x - \Phi(z))|.
+        m_{\overline{K}}(x) = \inf_{z\in\mathcal{O}_K} |\mathcal{N}(x - \Phi(z))|.
     \end{equation*}
-    Тогда для любых $\varepsilon \in \invertible{\mathbb{Z}_K}$, $Z \in \Phi(\mathbb{Z}_K)$ выполнено
+    Тогда для любых $\varepsilon \in \invertible{\mathcal{O}_K}$, $Z \in \Phi(\mathcal{O}_K)$ выполнено
     \begin{equation*}
         m_{\overline{K}}(\Phi(\varepsilon)x - Z) = m_{\overline{K}}(x).
     \end{equation*}
@@ -379,7 +382,7 @@
     Определим \emph{орбиту элемента} $x$ следующим образом 
     \begin{equation*}
         \textrm{Orb}(x) = \left\{
-        \Phi(\varepsilon)x - z \in \mathcal{F} \Big| \varepsilon \in \invertible{\mathbb{Z}_K}, z \in \mathbb{Z}_K
+        \Phi(\varepsilon)x - z \in \mathcal{F} \Big| \varepsilon \in \invertible{\mathcal{O}_K}, z \in \mathcal{O}_K
     \right\}.
     \end{equation*}
 \end{definition}
@@ -417,7 +420,7 @@
     Пусть $x \in \Phi(K)$ и $k > 0$.
     Для каждого $z \in \textrm{Orb}(x)$ обозначим
     \begin{equation*}
-        \mathcal{I}_{z, k} = \{Z \in \Phi(\mathbb{Z}_K): |z_i-Z_i| \le \Gamma(k) \forall i, 1 \le i \le n\},
+        \mathcal{I}_{z, k} = \{Z \in \Phi(\mathcal{O}_K): |z_i-Z_i| \le \Gamma(k) \forall i, 1 \le i \le n\},
     \end{equation*}
     \begin{equation*}
         \mathcal{M}_k = \min\limits_{z \in \textrm{Orb}(x)} \min\limits_{Z \in \mathcal{I}_{z, k}} |\mathcal{N}(z-Z)|.
@@ -479,22 +482,11 @@
 Так как $\mathbb{Z}$-представление идеала можно записать как матрицу, то можно рассмотреть следующий способ записи $\mathbb{Z}$-представления идеала.
 
 \begin{definition}
-    Будем говорить, что матрица $A \in \mathbb{Z}^{n \times n}$ записана в нормальной эрмитовой форме, если выполнены следующие условия:
-    \begin{enumerate}
-        \item $A_{i, j} = 0$, если $i > j$.
-        
-        \item $A_{i,i} > 0$ для любого $i$.
-        
-        \item Для любого $i > j$ выполнено $0 \leq A_{i, j} \leq A_{i, i}$.
-    \end{enumerate}
-\end{definition}
-
-\begin{definition}
-    Будем говорить, что $\mathbb{Z}$-представление идеала $\ideal{a} = (e_1,\dots,e_n)_{\mathbb{Z}}$ находится в нормальной эрмитовой форме, если соответствующая матрица является матрицей в эрмитовой нормальной форме.
+    Будем говорить, что $\mathbb{Z}$-представление идеала $\ideal{a} = (e_1,\dots,e_n)_{\mathbb{Z}}$ находится в нормальной эрмитовой форме, если соответствующая матрица является нормальной эрмитовой формой самой себя.
 \end{definition}
 
 \begin{statement}[\cite{source:Cohen, source:Post}]
-    Любой идеал может быть записан в нормальной эрмитовой форме, причём такое представление единственно.
+    Любой идеал имеет $\mathbb{Z}$-представление в нормальной эрмитовой форме, причём такое представление единственно.
 \end{statement}
 
 \begin{statement}[\cite{source:Kannan}]
@@ -714,8 +706,8 @@
 \end{statement}
 
 \begin{statement}[\cite{source:Dedekind}(Теорема Дедекинда)]\label{statement:dedekind}
-    Пусть $f(T)$ минимальный многочлен алгебраического числа $\theta$ в $\mathbb{Z}[\theta]$.
-    Для простого рационального числа $p$, не делящего индекс $[\mathcal{O}_K:\mathbb{Z}[\theta]]$, запишем
+    Пусть $f(T)$ минимальный многочлен алгебраического числа $\theta$ в $\mathcal{O}_{\mathbb{Q}[\theta]}$.
+    Для простого рационального числа $p$, не делящего индекс $[\mathcal{O}_{\mathbb{Q}[\theta]} : \mathbb{Z}[\theta]]$, запишем
     \begin{equation*}
         f(T) \equiv (\pi_1(T))^{e_1}\dots (\pi_g(T))^{e_g} \modul p,
     \end{equation*}
@@ -743,19 +735,15 @@
 
 \section{Аналог критерия Эйлера}
 
-\begin{definition}
-    Пусть характер $\chi$ задан на множестве идеалов кольца $R$, не является главным и определен по модулю идеала $\ideal{n} \subset R$.
-    Через $\ideal{p}_{\chi}$ обозначим идеал минимальной нормы, для которого $\chi(\ideal{p}_{\chi}) \neq 0, 1$.
-\end{definition}
+Пусть характер $\chi$ задан на множестве идеалов кольца $R$, не является главным и определен по модулю идеала $\ideal{n} \subset R$.
+Через $\ideal{p}_{\chi}$ обозначим идеал минимальной нормы, для которого $\chi(\ideal{p}_{\chi}) \neq 0, 1$.
 
-\begin{definition}
-    Пусть $R$ дедекиндово кольцо с полем частных $K$.
-    Пусть $L$ расширение поля $K$ степени не меньше $2$.
-    Будем говорить, что кольцо $R$ \emph{удовлетворяет условию A для идеала $\ideal{n}$}, если существует многочлен $f_R$, что для любого характера $\chi$, не являющегося главным и определенного по модулю $\ideal{n}$, выполнено
-    \begin{equation*}
-        \Nm{\ideal{p}_{\chi}} \le f_R(\log{\Nm{\ideal{n}}}).
-    \end{equation*}
-\end{definition}
+Пусть $R$ дедекиндово кольцо с полем частных $K$.
+Пусть $L$ расширение поля $K$ степени не меньше $2$.
+Будем говорить, что кольцо $R$ \emph{удовлетворяет условию A для идеала $\ideal{n}$}, если существует многочлен $f_R$, что для любого характера $\chi$, не являющегося главным и определенного по модулю $\ideal{n}$, выполнено
+\begin{equation*}
+    \Nm{\ideal{p}_{\chi}} \le f_R(\log{\Nm{\ideal{n}}}).
+\end{equation*}
 
 \begin{remark}
     Из работы Баха~\cite{source:Bach} следует, что, если расширенная гипотеза Римана выполнена, то условие A выполнено для всех колец $\mathcal{O}_K$ целых алгебраических чисел числового поля $K$ и $f_{\mathcal{O}_K}(x) = 12x^2 + 12\log^2 \Delta_{K}$.
@@ -911,7 +899,7 @@
 \end{proof}
 
 \begin{remark}
-    Если $\ideal{n}$~-- составной, то при выполнении алгоритма \ref{algorithm:miller_rabin} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
+    Если $\ideal{n}$~-- составной, то при выполнении алгоритма \ref{algorithm:solovay_strassen} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
 \end{remark}
 
 \section{Аналог критерия Миллера}
@@ -1163,6 +1151,10 @@
 \begin{proposition}
     Пусть $\ideal{n} \subseteq R$ идеал дедекиндового кольца $R$.
     Для того, чтобы использовать алгоритм~\ref{algorithm:miller_rabin} для $\ideal{n}$ требуется $O(\log \Nm{\ideal{n}})$ арифметических операций.
+
+    Пусть $K$ числовое поле и $R$ кольцо целых алгебраических элементов числового поля $K$.
+    Пусть $\ideal{n} \subseteq R$ идеал кольца $R$.
+    Для того, чтобы использовать алгоритм~\ref{algorithm:miller_rabin} для $\ideal{n}$ требуется $\tilde{O}(\log^2 l(\ideal{n}))$ бинарных операций.
 \end{proposition}
 \begin{proof}
     Пусть $\Nm{\ideal{n}} = 2^t u$, где $(2, u) = 1$.
@@ -1172,15 +1164,8 @@
     Это требует не более $O(t)$ арифметических операций.
 
     Итого требуется $O(\log u) + O(t) = O(\log \Nm{\ideal{n}})$ арифметических операций.
-\end{proof}
 
-\begin{proposition}
-    Пусть $K$ числовое поле и $R$ кольцо целых алгебраических элементов числового поля $K$.
-    Пусть $\ideal{n} \subseteq R$ идеал кольца $R$.
-    Для того, чтобы использовать алгоритм~\ref{algorithm:miller_rabin} для $\ideal{n}$ требуется $\tilde{O}(\log^2 l(\ideal{n}))$ бинарных операций.
-\end{proposition}
-\begin{proof}
-    Следует из оценок сложностей операций над элементами и идеалами в кольце целых алгебраических элементов числового поля, которые были описаны ранее.
+    Второе утверждение предложения следует из оценок сложностей операций над элементами и идеалами в кольце целых алгебраических элементов числового поля, которые были описаны ранее.
 \end{proof}
 
 \section*{Выводы по главе \ref{chapter:Primality}}

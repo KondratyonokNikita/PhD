@@ -394,9 +394,9 @@
 
 Докажем корректность этого алгоритма.
 
-\begin{lemma}
+\begin{proposition}
     Если алгоритм~\ref{algorithm:R_in_S} вернул ответ ''$R \in \mathcal{S}$'', то $R \in \mathcal{S}$.
-\end{lemma}
+\end{proposition}
 \begin{proof}
     Предположим, что ответ ''$R \in \mathcal{S}$''.
     Рассмотрим произвольный $x_0 \in \zeroless{R}$.
@@ -724,7 +724,7 @@
 Следовательно, это кольцо не может принадлежать классу $\mathcal{T}$.
 
 \begin{example}[\cite{source:Rolletschek_1990}]\label{example:Z[sqrt{-11}]}
-    Пусть $R = \mathbb{Z}[\sqrt{-11}]$.
+    Пусть $R = \mathcal{O}_{\mathbb{Q}[\sqrt{-11}]}$.
     Заметим, что множество
     \begin{equation*}
         \{6,-2i\sqrt{11},6,-3+i\sqrt{11},-1-i\sqrt{11},2,0\}
@@ -738,9 +738,9 @@
     
     Из этого следует, что $\mathpzc{l}_{a,b}\le 4\le \mathcal{L}_{a,b}$.
     Следовательно, теорема \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} не выполняется.
-    Предположим, что $\mathbb{Z}[\sqrt{-11}]\in\mathcal{T}$, но тогда по теореме \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} получаем, что для любой пары $(c,d)\in\mathbb{K}_* \times\mathbb{K}_*$ выполнено $\mathpzc{l}_{c,d}=\mathcal{L}_{c,d}$.
+    Предположим, что $\mathcal{O}_{\mathbb{Q}[\sqrt{-11}]} \in \mathcal{T}$, но тогда по теореме \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} получаем, что для любой пары $(c,d)\in\mathbb{K}_* \times\mathbb{K}_*$ выполнено $\mathpzc{l}_{c,d}=\mathcal{L}_{c,d}$.
     Получаем противоречие с приведенным примером.
-    Аналогично можно показать, что лемма \ref{lemma:omega_and_euclidean_algorithm} не выполняется для $\mathbb{Z}[\sqrt{-11}].$
+    Аналогично можно показать, что лемма \ref{lemma:omega_and_euclidean_algorithm} не выполняется для $\mathcal{O}_{\mathbb{Q}[\sqrt{-11}]}$.
 \end{example}
 
 \subsection{Общий метод проверки $R \in \mathcal{T}$}
@@ -841,10 +841,10 @@
     \end{enumerate}
 \end{algorithm}
 
-\begin{lemma}
+\begin{proposition}
     Пусть алгоритм~\ref{algorithm:R_in_T} вернул ''$R \in \mathcal{T}$''.
     Тогда $R \in \mathcal{T}$.
-\end{lemma}
+\end{proposition}
 \begin{proof}
     Рассмотрим произвольный $x_0 \in R$.
     Если $x_0 \in \mathbb{J}$, то тройка $(x_0, \alpha, D_R - 1)$ правильная для всех $\alpha \in \zeroless{F}$ и $D_R \in \mathbb{N}$.
@@ -894,13 +894,13 @@
     
     Используя определение $m_{\overline{K}}(x)$ и условие этого утверждения, получаем, что
     \begin{equation*}
-        \inf\limits_{z \in \mathbb{Z}_K} |\mathcal{N}(x - \Phi(z))| = |\mathcal{N}(z' - Z')|.
+        \inf\limits_{z \in \mathcal{O}_K} |\mathcal{N}(x - \Phi(z))| = |\mathcal{N}(z' - Z')|.
     \end{equation*}
 
-    Из того, что $z' \in \textrm{Orb}(x)$ следует, что существует $\varepsilon \in \invertible{\mathbb{Z}_K}$ такое, что $z' = \Phi(\varepsilon)x$.
-    Так как $\mathcal{N}(x) = \mathcal{N}(\Phi(\varepsilon)x)$ для всех $x \in \mathbb{R}^n$ и $\varepsilon \in \invertible{\mathbb{Z}_K}$ выполнено следующее равенство
+    Из того, что $z' \in \textrm{Orb}(x)$ следует, что существует $\varepsilon \in \invertible{\mathcal{O}_K}$ такое, что $z' = \Phi(\varepsilon)x$.
+    Так как $\mathcal{N}(x) = \mathcal{N}(\Phi(\varepsilon)x)$ для всех $x \in \mathbb{R}^n$ и $\varepsilon \in \invertible{\mathcal{O}_K}$ выполнено следующее равенство
     \begin{equation*}
-        \inf\limits_{z \in \mathbb{Z}_K} |\mathcal(x - \Phi(z))| = |\mathcal{N}(x - Z'\Phi(\varepsilon^{-1}))|.
+        \inf\limits_{z \in \mathcal{O}_K} |\mathcal(x - \Phi(z))| = |\mathcal{N}(x - Z'\Phi(\varepsilon^{-1}))|.
     \end{equation*}
 
     Таким образом, получаем, что $\int{\xi} = Z'\Phi(\varepsilon^{-1})$, где $\varepsilon$ задана соотношением $z' = \Phi(\varepsilon)x$.
@@ -913,7 +913,7 @@
     Обозначим
     \begin{equation*}
         \mathcal{O}(\xi) = \left\{
-            \overline{\varepsilon\xi} \Big| \varepsilon \in \invertible{\mathbb{Z}_K}
+            \overline{\varepsilon\xi} \Big| \varepsilon \in \invertible{\mathcal{O}_K}
     	\right\}.
     \end{equation*}
     
@@ -936,14 +936,14 @@
 \end{proof}
 
 \begin{remark}
-    Для произвольного $x \in \Phi(K)$ и $z \in \textrm{Orb}(x)$ будем предполагать, что известно такое $\varepsilon_z \in \invertible{\mathbb{Z}_K}$, что $z = \Phi(\overline{\varepsilon_z \Phi^{-1}(x)})$, и более того можно вычислить $\varepsilon_z^{-1}$ за $O(1)$ арифметических операций.
+    Для произвольного $x \in \Phi(K)$ и $z \in \textrm{Orb}(x)$ будем предполагать, что известно такое $\varepsilon_z \in \invertible{\mathcal{O}_K}$, что $z = \Phi(\overline{\varepsilon_z \Phi^{-1}(x)})$, и более того можно вычислить $\varepsilon_z^{-1}$ за $O(1)$ арифметических операций.
 \end{remark}
 
 Используя доказанные выше утверждения, получаем следующий алгоритм.
 
 \begin{algorithm}\label{algorithm:least_norm_remainder}
-    Дано числовое поле $K$ и два элемента $a, b \in \mathbb{Z}_K$.
-    Необходимо вычислить наименьший общий остаток $r$ при делении $a$ на $b$.
+    Дано числовое поле $K$ и два элемента $a, b \in \mathcal{O}_K$.
+    Необходимо вычислить наименьший остаток $r$ при делении $a$ на $b$.
 
     \begin{enumerate}
         \item Вычислить $x = \Phi(a/b) \in \Phi(K)$;
@@ -976,7 +976,7 @@
 Оценим вычислительную сложность этого алгоритма.
 
 \begin{proposition}
-    Для любых $a, b \in \zeroless{\mathbb{Z}_K}$ наименьший по норме остаток $r$ при делении $a$ на $b$ можно найти, используя алгоритм \ref{algorithm:least_norm_remainder}, за $O(1)$ арифметических операций в $K$.
+    Для любых $a, b \in \zeroless{\mathcal{O}_K}$ наименьший по норме остаток $r$ при делении $a$ на $b$ можно найти, используя алгоритм \ref{algorithm:least_norm_remainder}, за $O(1)$ арифметических операций в $K$.
 \end{proposition}
 \begin{proof}
     Из того, что
@@ -997,14 +997,14 @@
 
 \begin{algorithm}\label{algorithm:kronecker_vahlen_common}
     Дано числовое поле $K$.
-    Требуется доказать, что теорема Кронекера-Валена не выполняется в $\mathbb{Z}_K$.
+    Требуется доказать, что теорема Кронекера-Валена не выполняется в $\mathcal{O}_K$.
     
     \begin{enumerate}
-        \item Взять произвольные $a, b \in \mathbb{Z}_K$;
+        \item Взять произвольные $a, b \in \mathcal{O}_K$;
 
         \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}_{a, b}$;
 
-        \item Найти такое $c \in \mathbb{Z}_K$, что $a = bx + c$ для некоторого $x \in \mathbb{Z}_K$;
+        \item Найти такое $c \in \mathcal{O}_K$, что $a = bx + c$ для некоторого $x \in \mathcal{O}_K$;
 
         \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}'_{b,c}$;
 
@@ -1015,14 +1015,14 @@
 \subsection{Теорема Кронекера-Валена в действительных квадратичных норменно-евклидовых кольцах}
 
 Применим описанный выше метод в частном случае.
-Предположим, что поле $K$ такое, что $\mathbb{Z}_K$ действительное квадратичное норменно-евклидово кольцо.
+Предположим, что поле $K$ такое, что $\mathcal{O}_K$ действительное квадратичное норменно-евклидово кольцо.
 В методе будем рассматривать $a, b \in \mathbb{Z}$.
 А так же будем искать $c$ используя остаток при делении $a$ на $b$ на $\mathbb{Z}$.
 Модифицированный метод приведен в алгоритме~\ref{algorithm:kronecker_vahlen_special}.
 
 \begin{algorithm}\label{algorithm:kronecker_vahlen_special}
-    Дано такое числовое поле $K$, что $\mathbb{Z}_K$ действительное квадратичное норменно-евклидово кольцо
-    Требуется доказать, что теорема Кронекера-Валена не выполняется в $\mathbb{Z}_K$.
+    Дано такое числовое поле $K$, что $\mathcal{O}_K$ действительное квадратичное норменно-евклидово кольцо
+    Требуется доказать, что теорема Кронекера-Валена не выполняется в $\mathcal{O}_K$.
 
     \begin{enumerate}
         \item Взять произвольные $a, b \in \mathbb{Z}$;
@@ -1046,8 +1046,8 @@
 Реализуем этот алгоритм на R и применим его для всех действительных квадратичных норменно-евклидовых колец.
 
 \begin{theorem}\label{theorem:kronecker}
-    Пусть поле $K$ такое, что $\mathbb{Z}_K$ действительное квадратичное норменно-евклидово кольцо.
-    Тогда теорема Кронекера-Валена не выполняется в $\mathbb{Z}_K$.
+    Пусть поле $K$ такое, что $\mathcal{O}_K$ действительное квадратичное норменно-евклидово кольцо.
+    Тогда теорема Кронекера-Валена не выполняется в $\mathcal{O}_K$.
 \end{theorem}
 \begin{proof}
     Известно, что существует ровно $16$ полей $K = \mathbb{Q}(\sqrt{d})$, удовлетворяющих условиям теоремы, со значениями $d$ из множества $\{2, 3, 5, 6, 7, 11, 13, 17, 19, 21, 29, 33, 37, 41, 57, 73\}$.
@@ -1224,10 +1224,10 @@
     
 \end{proof}
 
-\begin{proposition}
+\begin{corollary}
     Пусть $R = \mathbb{Q}[\sqrt{d}]$~-- квадратичное норменно-евклидово кольцо.
     Теорема Кронекера-Валена выполняется в $R$ тогда и только тогда, когда $d=-1, -2, -3, -7$.
-\end{proposition}
+\end{corollary}
 \begin{proof}
     Если $d \ge 0$, то утверждение следует из теоремы~\ref{theorem:kronecker}.
     Если $d < 0$, то утверждение следует из работы~\cite{source:Rolletschek_1990}.
@@ -1238,7 +1238,7 @@
 Ранее было показано, что при определенных условиях на кольцо цепочка делений с выбором минимального по норме остатка является кратчайшей.
 Однако существуют кольца, для которых эти условия не выполняются.
 В таких кольцах цепочка делений с выбором минимального по норме остатка не является кратчайшей.
-Например, в работе~\cite{source:Rolletschek_1990} было показано, что теорема Кронекера-Валена не выполняется в кольце $\mathbb{Z}[\sqrt{-11}]$.
+Например, в работе~\cite{source:Rolletschek_1990} было показано, что теорема Кронекера-Валена не выполняется в кольце $\mathcal{O}_{\mathbb{Q}[\sqrt{-11}]}$.
 В работе~\cite{source:Cooke} было показано, что для колец целых алгебраических чисел с бесконечной группой единиц длина кратчайшей цепочки делений с выбором минимального по норме остатка ограничена константой.
 Следовательно, важным вопросом является исследование асимптотического поведения длины кратчайшей цепочки делений.
 
@@ -1263,14 +1263,14 @@
 
 \begin{definition}
     Пусть $d \neq 1$~-- целое число свободное от квадратов.
-    Под окрестностью точки $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$ радиуса $r > 0$ понимают множество заданное следующим образом
+    Под окрестностью точки $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ радиуса $r > 0$ понимают множество заданное следующим образом
     \begin{equation*}
         U(\lambda, r) = \left\{
             q_1 + q_2 \sqrt{d} \in Q[\sqrt{d}] \big| |(q_1 - \lambda_1)^2 - d(q_2 - \lambda_2)^2| < r
         \right\}.
     \end{equation*}
 
-    Под окрестностью множества точек $\Lambda \subseteq \mathbb{Z}[\sqrt{d}]$ радиуса $r > 0$ понимают множество заданное следующим образом
+    Под окрестностью множества точек $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ радиуса $r > 0$ понимают множество заданное следующим образом
     \begin{equation*}
         U(\Lambda, r) = \bigcup_{\lambda \in \Lambda} U(\lambda, r).
     \end{equation*}
@@ -1280,7 +1280,7 @@
 
 \begin{statement}[\cite{source:Selfridge}]\label{proposition:fundamental_in_circle}
     Пусть $d \neq 1$~-- целое число свободное от квадратов.
-    Тогда кольцо $\mathbb{Z}[\sqrt{d}]$ является евклидовым относительно нормы числового поля $\mathbb{Q}[\sqrt{d}]$ тогда и только тогда, когда существует множество $\Lambda \subseteq \mathbb{Z}[\sqrt{d}]$, что
+    Тогда кольцо $\mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ является евклидовым относительно нормы числового поля $\mathbb{Q}[\sqrt{d}]$ тогда и только тогда, когда существует множество $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$, что
     \begin{equation*}
         F(d) \subseteq U(\Lambda, 1).
     \end{equation*}
@@ -1325,7 +1325,7 @@
 
 \begin{theorem}
     Пусть $d \neq 1$ целое число свободное от квадратов.
-    Если кольцо $\mathbb{Z}[\sqrt{d}]$ евклидово относительно нормы числового поля $\elementnorm{\cdot}$, то $l_n(\mathbb{Z}[\sqrt{d}]) = O(\log n)$.
+    Если кольцо $\mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ евклидово относительно нормы числового поля $\elementnorm{\cdot}$, то $l_n(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]}) = O(\log n)$.
 \end{theorem}
 \begin{proof}
     Обозначим
@@ -1336,19 +1336,19 @@
         \end{cases}
     \end{equation*}
 
-    Для $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathbb{Z}[\sqrt{d}]$ и $r > 0$ обозначим
+    Для $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ и $r > 0$ обозначим
     \begin{equation*}
         V(\lambda, r) = \left\{
             (x, y) \in R \times R \Big| \left|(x - \lambda_1)^2 - d(y - \lambda_2)^2\right| < r
         \right\}.
     \end{equation*}
 
-    Для множества точек $\Lambda \subseteq \mathbb{Z}[\sqrt{d}]$ и $r > 0$ обозначим
+    Для множества точек $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ и $r > 0$ обозначим
     \begin{equation*}
         V(\Lambda, r) = \bigcup_{\lambda \in \Lambda} V(\lambda, r).
     \end{equation*}
 
-    Из предложения~\ref{proposition:fundamental_in_circle} следует, что существует множество $\Lambda \subseteq \mathbb{Z}[\sqrt{d}]$, что $F(d) \subseteq U(\Lambda, 1)$.
+    Из предложения~\ref{proposition:fundamental_in_circle} следует, что существует множество $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$, что $F(d) \subseteq U(\Lambda, 1)$.
     Докажем, что $E(d) \subseteq V(\Lambda, 1)$.
 
     Предположим, что $(x_0, y_0) \in E(d) \setminus V(\Lambda, 1)$.
@@ -1383,12 +1383,12 @@
     Заметим, что $r_{x_0} < 1$, так как $E(d) \subseteq V(\Lambda, 1)$.
 
     Следовательно, существует $r_0 < 1$, что $F(d) \subseteq U(\Lambda, r_0)$.
-    Рассмотрим произвольные $\gamma, \delta \in \mathbb{Z}[\sqrt{d}]$, $\delta \neq 0$.
-    Из доказанного выше следует, что существует $q \in \mathbb{Z}[\sqrt{d}]$, что $\elementnorm{\frac{\gamma}{\delta} - q} \le r_0$.
-    Так как $\elementnorm{\frac{\gamma}{\delta} - q} = \frac{\elementnorm{\gamma - q\delta}}{\elementnorm{\delta}}$, то получаем, что существуют $q, r \in \mathbb{Z}[\sqrt{d}]$, что $\gamma = q\delta + r$ и $\elementnorm{r} \le r_0 \elementnorm{\delta}$.
-    Следовательно, $\Lambda_{\mathbb{Z}[\sqrt{d}]} \le r_0$.
+    Рассмотрим произвольные $\gamma, \delta \in \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$, $\delta \neq 0$.
+    Из доказанного выше следует, что существует $q \in \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$, что $\elementnorm{\frac{\gamma}{\delta} - q} \le r_0$.
+    Так как $\elementnorm{\frac{\gamma}{\delta} - q} = \frac{\elementnorm{\gamma - q\delta}}{\elementnorm{\delta}}$, то получаем, что существуют $q, r \in \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$, что $\gamma = q\delta + r$ и $\elementnorm{r} \le r_0 \elementnorm{\delta}$.
+    Следовательно, $\Lambda_{\mathcal{O}_{\mathbb{Q}[\sqrt{d}]}} \le r_0$.
 
-    Тогда, из теоремы~\ref{theorem:euclidean_and_lambda} следует, что $l_n(\mathbb{Z}[\sqrt{d}]) \le [\log_{r_0^{-1}} n] + 2$.
+    Тогда, из теоремы~\ref{theorem:euclidean_and_lambda} следует, что $l_n(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]}) \le [\log_{r_0^{-1}} n] + 2$.
 \end{proof}
 
 \section*{Выводы по главе \ref{chapter:Kronecker-Vahlen theorem}}
