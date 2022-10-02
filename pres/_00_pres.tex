@@ -46,30 +46,8 @@
 \end{frame}
 
 \begin{frame}
-    \begin{block}{Числовое поле}
-        Поле, содержащее $\mathbb{Q}$ и являющееся конечномерным векторным пространством над ним.
-    \end{block}
-
-    \begin{block}{Кольцо целых алгебраических чисел числового поля}
-        Подкольцо числового поля, состоящее из корней многочлена $f(x) \in \mathbb{Z}[x]$, где старший коэффициент $1$.
-    \end{block}
-    
-    \begin{block}{Примеры}
-        \begin{itemize}
-            \item $\mathbb{Z}$, $\mathbb{Z}[i] = \{a + bi | a, b\in\mathbb{Z}\}$
-            \item $\mathbb{Z}[\sqrt{-2}] = \{a + b\sqrt{-2} | a, b\in\mathbb{Z}\}$
-            \item $\mathbb{Z}[\sqrt{5}] = \left\{a + b\frac{1+\sqrt{5}}{2} | a, b\in\mathbb{Z}\right\}$
-        \end{itemize}
-    \end{block}
-\end{frame}
-
-\begin{frame}
     \begin{block}{Дедекиндово кольцо}
-        Коммутативное кольцо с единицей и без делителей нуля, в котором любой ненулевой идеал раскладывается в конечное произведение простых идеалов.
-    \end{block}
-
-    \begin{block}{Норма идеала $\mathfrak{m}$}
-        $\mathcal{N}(\mathfrak{m}) = |R/\mathfrak{m}| < \infty$
+        Коммутативное кольцо с единицей и без делителей нуля, в котором любой ненулевой идеал раскладывается в конечное произведение простых идеалов единственным образом с точностью до перестановки множителей.
     \end{block}
 
     \begin{block}{Примеры}
@@ -119,12 +97,12 @@
         Пусть $\ideal{n} \subset R$ \textendash\ нетривиальный идеал нечетной нормы.
         Пусть $\Nm{\ideal{n}} - 1 = 2^t u$, $(u, 2) = 1$.
         Тогда $\ideal{n}$ \textendash\ простой идеал $\Leftrightarrow$ $\forall a \in \invertible{R/\ideal{n}}$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ $\exists k\in \{0, \dots, t-1\}$, такое что
-        \begin{equation}\label{eq:miller}
+        \begin{equation*}\label{eq:miller}
             a^{2^{k}u} \equiv -1 \pmod{\ideal{n}}.
-        \end{equation}
+        \end{equation*}
     
         Пусть кольцо $R$ факториальное и удовлетворяет условию A.
-        Тогда $\ideal{n}$ \textendash\ простой идеал $\Leftrightarrow$ $\forall a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$, $(a, \ideal{n}) = 1$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ $\exists k\in \{0, \dots, t-1\}$, такое что выполнено сравнение \ref{eq:miller}.
+        Тогда $\ideal{n}$ \textendash\ простой идеал $\Leftrightarrow$ $\forall a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$, $(a, \ideal{n}) = 1$, $a^u \not\equiv 1 \pmod{\ideal{n}}$ $\exists k\in \{0, \dots, t-1\}$, такое что выполнено сравнение выше.
     \end{block}
     
     \begin{block}{Идея доказательства}
@@ -181,11 +159,11 @@
     \begin{block}{Аналог критерия простоты Эйлера}
         Пусть $\ideal{n} \subset R$ \textendash\ нетривиальный идеал нечетной нормы.
         Тогда $\ideal{n}$ \textendash\ простой идеал $\Leftrightarrow$ $\forall a \in \invertible{R/\ideal{n}}$ выполнено
-        \begin{equation}\label{eq:euler}
+        \begin{equation*}\label{eq:euler}
             a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \jacobi{a}{\ideal{n}} \pmod{\ideal{n}}.
-        \end{equation}
+        \end{equation*}
     
-        Если кольцо $R$ факториальное и удовлетворяет условию A, то $\ideal{n}$ \textendash\ простой идеал $\Leftrightarrow$ $\forall a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$ выполнено сравнение \ref{eq:euler}.
+        Если кольцо $R$ факториальное и удовлетворяет условию A, то $\ideal{n}$ \textendash\ простой идеал $\Leftrightarrow$ $\forall a \in \invertible{R/\ideal{n}}$, $\Nm{a} \le f_R(\Nm{\ideal{n}})$ выполнено сравнение выше.
     \end{block}
 
     \begin{block}{Аналог алгоритма Соловея-Штрассена}
@@ -232,55 +210,15 @@
         \begin{itemize}
             \item верна в кольце многочленов над полем (Lazard, 1977)
             
-            \item верна в кольце целых алгебраических чисел $\mathbb{Q}[\sqrt{d}]$, где $d<0, d \neq -11$ (Rolletschek, 1990)
+            \item верна в кольце целых алгебраических чисел $\mathcal{O}_{\mathbb{Q}(\sqrt{d})}$, где $d<0, d \neq -11$ (Rolletschek, 1990)
         \end{itemize}
     \end{block}
 \end{frame}
 
 \begin{frame}
-    \begin{block}{\vspace*{-3ex}}
-        $$
-            \mathbb{F}_{1}=\{\alpha\in\mathbb{F}|\alpha=\textrm{fr}(\alpha)\}
-        $$
-        $$
-            \omega:\mathbb{F}_{1}\to\mathbb{F}_{1}, \omega(\alpha)=
-            \begin{cases}
-                \textrm{fr}(\alpha^{-1}), & \alpha\neq0,\\
-                0, & \alpha = 0.
-            \end{cases}
-        $$
-    \end{block}
-    
-    \begin{block}{Лемма о длине цепочки делений с выбором минимального по норме остатка}
-        Пусть $\mathbb{K}$ кольцо с единственной факторизацией.
-        Тогда $\forall a, b \in \mathbb{K}_{*}\times\mathbb{K}_{*}$:
-        \begin{eqnarray*}
-            \mathcal{L}_{a,b}=\textnormal{min}\{k\in\mathbb{N}|\omega^{(k-1)}(\textrm{fr}(a/b))=0\}
-        \end{eqnarray*}
-    \end{block}
-    
-    \begin{block}{Идея доказательства}
+    \begin{block}{Регулярная тройка $(x_{0},\alpha,n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$}
         \begin{itemize}
-            \item $\mathcal{L}_{a,b} = \infty$ $\Rightarrow$ $\forall k \in \mathbb{N}: \omega^{(k-1)}(\textrm{fr}(a/b)) \neq 0$
-            
-            \item $\frac{a}{b}=q_{1}+\frac{r_{1}}{b}, \frac{b}{r_{1}}=q_{2}+\frac{r_{2}}{r_{1}}, \ldots, \frac{r_{k-3}}{r_{k-2}}=q_{k-1}+\frac{r_{k-1}}{r_{k-2}}, \frac{r_{k-2}}{r_{k-1}}=q_{k}$
-            
-            \item
-            $
-                \omega\left(\textrm{fr}\left(\frac{a}{b}\right)\right)=\textrm{fr}\left(\frac{b}{r_{1}}\right),
-                \ldots,
-                \omega^{(k-1)}\left(\textrm{fr}\left(\frac{a}{b}\right)\right)=\textrm{fr}\left(\frac{r_{k-2}}{r_{k-1}}\right)=0.
-            $
-            
-            \item $\omega^{(k-1)}(\textrm{fr}(a/b))=0$
-        \end{itemize}
-    \end{block}
-\end{frame}
-
-\begin{frame}
-    \begin{block}{Регулярная тройка $(x_{0},\alpha,n) \in \mathbb{K}_{*} \times \mathbb{F}_{1}^{*} \times \mathbb{N}$}
-        \begin{itemize}
-            \item $\exists p, l \in \mathbb{N}$, $p\le n$ и $l\le p+1$: $\exists \varepsilon_{i} \in \mathbb{I}$, $\varepsilon \in \{0,1\}$, $b_{i}, c_{i} \in \mathbb{K}, i = \overline{1,l-1}$
+            \item $\exists p, l \in \mathbb{N}$, $p\le n$ и $l\le p+1$: $\exists \varepsilon_{i} \in \invertible{R}$, $\varepsilon \in \{0,1\}$, $b_{i}, c_{i} \in R, i = \overline{1,l-1}$
             
             \item Выполнено
             \begin{eqnarray*}
@@ -295,47 +233,102 @@
     \end{block}
 
     \begin{block}{Множество $\mathcal{T}$}
-        Множество всех факториальных колец $\mathbb{K}$ таких, что $\exists D_\mathbb{K} \in \mathbb{N}$ т.ч.:
-    
+        Множество всех таких факториальных колец $R$, что $\exists D_R \in \mathbb{N}$, т.ч.:
         \begin{itemize}
-            \item $\forall x_{0}\in\mathbb{K}_{*}, \alpha\in\mathbb{F}_{1}^{*}$, тройка $(x_{0},\alpha,D_\mathbb{K})$ регулярная.
+            \item $\forall x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ тройка $(x_0, \alpha, D_R - 1)$ регулярная;
     
-            \item Если $D_\mathbb{K}\ge3$, то $\forall k\in[3,D_\mathbb{K}]$ и $x_{0}\in\mathbb{K}_{*}, \alpha\in\mathbb{F}_{1}^{*}$ тройка $(x_{0},\alpha,k-2)$ регулярная, если $\omega^{(k-2)}(\textrm{fr}((\alpha-x_{0})^{-1}))=0.$
+            \item если $D_R \ge 3$, то $\forall k \in [3, D_R] \cap \mathbb{N}$ и $\forall x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ из равенства $\omega^{(k-2)}(\fr{(\alpha - x_0)^{-1}}) = 0$ следует, что тройка $(x_0, \alpha, k-2)$ регулярная.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\begin{frame}
+    \begin{block}{\vspace*{-3ex}}
+        $$
+        \mathcal{S} = \left\{
+            R \Big| \forall x \in \zeroless{R}, \alpha \in F_{1}^{*}, \left[
+                \begin{array}{l}
+                    \textrm{int}((\alpha-x)^{-1}) \in \invertible{R}\cup\{0\}\\
+                    x \ \textrm{int}((\alpha-x)^{-1})+1 \in \invertible{R}
+                \end{array}
+            \right.
+        \right\} \subseteq \mathcal{T}
+        $$
+    \end{block}
+
+    \begin{block}{Метод проверки условия $R \in \mathcal{S}$}
+        \begin{algorithmic}[1]
+            \State $\mathbb{J} = \left\{
+                x \in \zeroless{R} \big| \forall \alpha \in \zeroless{F_1}, \int{(\alpha - x)^{-1}} \in \invertible{R} \cup \{0\}
+            \right\}$.
+    
+            \State Для $x_0 \in \zeroless{R} \setminus J$ вычислить $Y(x_0) = \left\{
+                f_{x_0}(\alpha) = \int{(\alpha - x_0)^{-1}} | \alpha \in \zeroless{F_1}
+            \right\}$.
+    
+            \State Для $x_0 \in \zeroless{R} \setminus J$ вычислить $U(x_0) = \left(
+                \left\{
+                    \frac{\varepsilon - 1}{x_0} | \varepsilon \in \invertible{R}
+                \right\} \cap R
+            \right) \cup \invertible{R}$.
+    
+            \If {$Y(x_0) \subseteq U(x_0)$ для всех $x_0 \in \zeroless{R} \setminus J$}
+                \State\Return ''Да'', $R \in \mathcal{S}$
+            \Else
+                \State\Return ''Неизвестно''
+            \EndIf
+        \end{algorithmic}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Примеры факториальных колец $R \in \mathcal{S}$}
+        \begin{itemize}
+            \item $\mathbb{Z}$
+            
+            \item $\mathbb{P}[t]$, где $\mathbb{P}$ \textendash\ поле
+            
+            \item $\mathbb{Z}[t]$
+            
+            \item $\mathbb{Q}(i)[x, y]/(x^2 + y^2 + 1)$
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Примеры факториальных колец $R \not\in \mathcal{S}$, но $R \in \mathcal{T}$}
+        \begin{itemize}
+            \item $\mathbb{Z}[i]$.
+            Выберем $\alpha=\frac{9-4i}{20}$, $x=1$.
+            Тогда
+            
+            $$
+                \textrm{int}((\alpha-x)^{-1})=-2+i \notin \mathbb{I} \cup \{0\}
+            $$
+            $$
+                x \ \textrm{int}((\alpha-x)^{-1})+1=-1+i \notin \mathbb{I}
+            $$
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Примеры факториальных колец $R \not\in \mathcal{T}$}
+        \begin{itemize}
+            \item $\mathcal{O}_{\mathbb{Q}(\sqrt{-11})}$
         \end{itemize}
     \end{block}
 \end{frame}
 
 \begin{frame}
-    \begin{block}{Пример проверки первого условия для $\mathbb{Z}[i]$}
-        \begin{itemize}
-            \item $D_{\mathbb{K}} = 3$
-
-            \item $\textrm{Nm}(x_0) > 5$ $\Rightarrow$ $p = 1, \beta_1 = \alpha$
-            
-            \item $x_0 = 1 + i$ $\Rightarrow$ $\left[\frac{1}{\alpha - x_0}\right] = -1 + i$ $\Rightarrow$ $p = 1, \beta_1 = \textrm{fr}\left(\frac{\alpha - (1 + i)}{\alpha(1 - i) - 1}\right)$ $\Rightarrow$ $\beta_2 = \frac{1}{\alpha}$
-            
-            \item $x_0 = 1$ $\Rightarrow$ $\left[\frac{1}{\alpha - x_0}\right] \in \{-2, -1 \pm i, -2 \pm i\}$
-            \begin{itemize}
-                \item $\left[\frac{1}{\alpha - x_0}\right] = -2$ $\Rightarrow$ $p = 1, \beta_1 = \textrm{fr}\left(\frac{\alpha - 1}{2\alpha - 1}\right)$ $\Rightarrow$ $\beta_2 = \frac{1}{\alpha}$
-
-                \item $\left[\frac{1}{\alpha - x_0}\right] = -1 \pm i$ $\Rightarrow$ $p = 1, \beta_1 = \textrm{fr}\left(\frac{\alpha - 1}{\alpha(1 \mp i) \pm i}\right)$ $\Rightarrow$ $\beta_2 = \frac{1}{\alpha}$
-
-                \item $\left[\frac{1}{\alpha - x_0}\right] = -2 + i$ $\Rightarrow$ $\omega\left(\textrm{fr}\left(\frac{1}{\alpha - 1}\right)\right) = \textrm{fr}\left(\frac{\alpha - 1}{\alpha(2 - i) - 1 + i}\right)$
-                
-                \item $\left[\frac{\alpha - 1}{\alpha(2 - i) - 1 + i}\right] \in \{1 + i, 1 + 2i, 2 + i, 2 + 2i\}$
-            \end{itemize}
-            
-            \item для проверки условия (2) определения класса $\mathcal{T}$ можно рассмотреть только $x_0 = 1, \left[\frac{1}{\alpha - x_0}\right] = -2 \pm i$.
-            \begin{itemize}
-                \item $\left[\frac{1}{\alpha - x_0}\right] = -2 + i$ $\Rightarrow$ $\alpha \in \left\{\frac{1}{2 + i}, \frac{2 + i}{3 + 3i}, \frac{2 - i}{4}, \frac{3}{5 + 2i}\right\}$
-                
-                \item $\textrm{fr}\left(\frac{3}{5 + 2i}\right) \neq \frac{3}{5 + 2i}$
-            \end{itemize}
-        \end{itemize}
+    \begin{block}{Лемма о длине цепочки делений с выбором минимального по норме остатка}
+        Пусть кольцо $R$ факториальное.
+        Тогда для любых двух элементов $a, b \in \zeroless{R}$ выполнено равенство
+        \begin{equation*}
+            \mathcal{L}_{a, b} = \min\left\{
+                k \in \mathbb{N} \big| \omega^{(k-1)}\left(\frac{a}{b}\right) = 0
+            \right\},
+        \end{equation*}
+        где $\min \emptyset = \infty$.
     \end{block}
-\end{frame}
 
-\begin{frame}
     \begin{block}{$(\alpha, k)$-разрешимость}
         Для $\alpha\in\mathbb{F}_1$ и $k\in\mathbb{N}$ существуют $x_{1},\ldots,x_{k}\in\mathbb{K}$ такие, что
         \begin{eqnarray*}
@@ -348,20 +341,8 @@
     \end{block}
 
     \begin{block}{Лемма о $(\alpha, k)$-разрешимости}
-        Пусть $\mathbb{K}\in\mathcal{T}$.
-        Уравнение $\alpha = [x_{1}:x_{2}:\ldots:x_{k}]$ является $(\alpha, k)$-разрешимым тогда и только тогда, когда $\omega^{(k-1)}(\alpha)=0$.
-    \end{block}
-    
-    \begin{block}{Идея доказательства}
-        \begin{itemize}
-            \item $(\alpha,k)$-разрешимость $\Longleftrightarrow$ $\exists z\in\mathbb{K}$: $((\alpha-z)^{-1},k-1)$-разрешимость
-            
-            \item $\omega^{(k-1)}(\alpha) = 0$ $\Longleftrightarrow$ $\exists z\in\mathbb{K}: \omega^{(k-2)}(\textrm{fr}((\alpha-z)^{-1})) = 0$
-            
-            \item $(z, \alpha, k-2)$ регулярная $\Rightarrow$ $\beta_{1}=\omega^{(p)}\left(\textrm{fr}\left(\frac{1}{\alpha-z}\right)\right)$, $\beta_{i+1}=(\varepsilon_{i}\beta_{i}+c_{i})^{-1}+b_{i}$, $\beta_{l}=\alpha^{(-1)^{\varepsilon}}$
-            
-            \item $(\beta_{1}, k-p-1)$-разрешимость $\Rightarrow$ $(\alpha^{(-1)^{\varepsilon}}, k-p+l-2)$-разрешимо
-        \end{itemize}
+        Пусть кольцо $R \in \mathcal{T}$.
+        Для любых $\alpha \in F_1$ и $k \in \mathbb{N}$ имеет место $(\alpha, k)$-разрешимость тогда и только тогда, когда $\omega^{(k-1)}(\alpha) = 0$.
     \end{block}
 \end{frame}
 
@@ -382,87 +363,12 @@
             \item $\mathcal{L}_{a,b}=\textrm{min}\{r\in\mathbb{N}|\omega^{(r-1)}(\textrm{fr}(a/b))=0\}\le k=\mathpzc{l}_{a,b}$
         \end{itemize}
     \end{block}
-\end{frame}
 
-\begin{frame}
-    \begin{block}{\vspace*{-3ex}}
-        $$
-        \mathcal{S} = \left\{
-            \mathbb{K} \Big| \forall x\in\mathbb{K}_*, \alpha\in\mathbb{F}_{1}^{*}, \left[
-                \begin{array}{l}
-                    \textrm{int}((\alpha-x)^{-1})\in\mathbb{I}\cup\{0\}\\
-                    x \ \textrm{int}((\alpha-x)^{-1})+1\in\mathbb{I}
-                \end{array}
-            \right.
-        \right\} \subseteq \mathcal{T}
-        $$
-    \end{block}
-
-    \begin{block}{Метод проверки условия $\mathbb{K}\in\mathcal{S}$}
-        \begin{algorithmic}[1]
-            \State $\mathbb{J} \gets \{x\in\mathbb{K}_{*}|\textrm{int}((\alpha-x)^{-1})\in\mathbb{I}\cup\{0\} \ \forall\alpha\in\mathbb{F}_{1}^{*}\}$.
-    
-            \State Для $x_0\in\mathbb{K}_*\setminus\mathbb{J}$ вычислить $\mathbb{Y}(x_{0})$ \textendash\ множество значений функции $f_{x_{0}}(\alpha)=\textrm{int}((\alpha-x_{0})^{-1}), \alpha\in\mathbb{F}_{1}^{*}$.
-    
-            \State Для $x_0\in\mathbb{K}_*\setminus\mathbb{J}$ вычислить $\mathbb{U}(x_{0}) \gets \{\frac{\varepsilon-1}{x_{0}}\in\mathbb{K}|\varepsilon\in\mathbb{I}\}\cup\mathbb{I}$.
-    
-            \If {$\mathbb{Y}(x_{0})\subseteq\mathbb{U}(x_{0})$ для любого $x_{0}\in\mathbb{K}_{*}\backslash\mathbb{J}$}
-                \State\Return ''Да'', $\mathbb{K}\in\mathcal{S}$
-            \Else
-                \State\Return ''Неизвестно''
-            \EndIf
-        \end{algorithmic}
-    \end{block}
-\end{frame}
-
-\begin{frame}
-    \begin{block}{Примеры факториальных колец $\mathbb{K} \in \mathcal{S}$}
-        \begin{itemize}
-            \item $\mathbb{K}=\mathbb{Z}$
-            
-            \item $\mathbb{K}=\mathbb{P}[t]$, где $\mathbb{P}$ \textendash\ поле
-            
-            \item $\mathbb{K}=\mathbb{Z}[t]$
-            
-            \item $\mathbb{Q}[i][x, y]/(x^2 + y^2 + 1)$
-        \end{itemize}
-    \end{block}
-    
-    \begin{block}{Примеры факториальных колец $\mathbb{K} \not\in \mathcal{S}$, но $\mathbb{K} \in \mathcal{T}$}
-        \begin{itemize}
-            \item $\mathbb{K}=\mathbb{Z}[i]$.
-            Выберем $\alpha=\frac{9-4i}{20}$, $x=1$.
-            Тогда
-            
-            $$
-                \textrm{int}((\alpha-x)^{-1})=-2+i \notin \mathbb{I} \cup \{0\}
-            $$
-            $$
-                x \ \textrm{int}((\alpha-x)^{-1})+1=-1+i \notin \mathbb{I}
-            $$
-        \end{itemize}
-    \end{block}
-    
-    \begin{block}{Примеры факториальных колец $\mathbb{K} \not\in \mathcal{T}$}
-        \begin{itemize}
-            \item $\mathbb{Z}[\sqrt{-11}]$
-        \end{itemize}
-    \end{block}
-\end{frame}
-
-\begin{frame}
     \begin{block}{Аналог теоремы Ламе в факториальных кольцах}
         \begin{itemize}
-            \item Если $\mathbb{K}$ евклидово кольцо относительно нормы $\upsilon$, то $\Lambda_{\mathbb{K}}\in[0,1]$.
-    
-            \item Если $\mathbb{K}$ \textendash\ кольцо с единственной факторизацией, заданной нормой $\upsilon$ и $\Lambda_{\mathbb{K}}\in[0,1)$, то $\mathbb{K}$ евклидово относительно нормы $\upsilon$ и выполнено следующее неравенство
-            \begin{eqnarray*}
-                l_{n}(\mathbb{K})\le[\log_{\Lambda_{\mathbb{K}}^{-1}} n]+2
-            \end{eqnarray*}
-            для любого $n\in\mathbb{N}$, где $\log_{\infty} n=0$ и 
-            $$
-                \Lambda_{\mathbb{K}} = \sup_{a/b \in \mathbb{F}^*_1} \inf_{q\in \mathbb{K}} \frac{\upsilon(a-bq)}{\upsilon(b)}.
-            $$
+            \item Если $R$~-- евклидово кольцо относительно нормы $\elementnorm{\cdot}$, то $\Lambda_R \in [0, 1]$.
+
+            \item Если $R$~-- факториальное кольцо с мультипликативной нормой $\elementnorm{\cdot}$ и $\Lambda_R \in [0, 1)$, то $R$~-- евклидово относительно нормы $\elementnorm{\cdot}$ и $l_n(R) \le [\log_{\Lambda_R^{-1}} n] + 2$ для всех $n \in \mathbb{N}$, где $\log_{\infty} n = 0$.
         \end{itemize}
     \end{block}
 \end{frame}
@@ -490,7 +396,7 @@
     \end{block}
 
     \begin{block}{Следствие}
-        Пусть $K$ \textendash\ кольцо алгебраических целых чисел числового поля $\mathbb{Q}[\sqrt{d}]$.
+        Пусть $K$ \textendash\ кольцо алгебраических целых чисел числового поля $\mathbb{Q}(\sqrt{d})$.
         Пусть $K$ квадратичное и норменно-евклидово.
         Теорема Кронекера-Валена выполняется в $K$ тогда и только тогда, когда $d=-1, -2, -3, -7$.
     \end{block}
@@ -599,7 +505,7 @@
             
             \item $r-1,$ $s-1$ имеют различные простые делители $r_1,$ $s_1$ соответственно
             
-            \item $y \sim U\left((\mathcal{R}/\mathfrak{m})^*\right)$ и $e \sim \left(\mathbb{Z}_{\varphi(\mathfrak{m})}^*\right)$ \textendash\ независимые случайные величины
+            \item $y \sim U\left((\mathcal{R}/\mathfrak{m})^*\right)$ и $e \sim U\left(\mathbb{Z}_{\varphi(\mathfrak{m})}^*\right)$ \textendash\ независимые случайные величины
             
             \item $m_{e,y}=\min\{m \in \mathbb{N}: y^{e^m}= y\}$
         \end{itemize}
@@ -624,13 +530,13 @@
 
 \begin{frame}
     \begin{block}{Положения, выносимые на защиту}
-        \begin{itemize}
+        \begin{enumerate}
             \item Аналоги критериев Миллера и Эйлера простоты идеалов в дедекиндовых кольцах с конечной нормой.
             
             \item Аналоги теорем Кронекера-Валена и Ламе в факториальных кольцах.
             
             \item Необходимые условия криптографической стойкости аналога криптосистемы RSA в дедекиндовых кольцах.
-        \end{itemize}
+        \end{enumerate}
     \end{block}
 \end{frame}
 
@@ -638,19 +544,19 @@
 
 \begin{frame}{Статьи в рецензируемых журналах}
     \begin{enumerate}
-        \item[Q2] Vaskouski M., Kondratyonok N., Prochorov N. Primes in quadratic unique factorization domains. {\it Journal of Number Theory.} 2016. V.~168. P.~101-116.
+        \item Vaskouski M., Kondratyonok N., Prochorov N. Primes in quadratic unique factorization domains. {\it Journal of Number Theory.} 2016. V.~168. P.~101-116. (Q2)
         
-        \item[Q2] Vaskouski M., Kondratyonok N. Shortest division chains in unique factorization domains. {\it Journal of Symbolic Computation.} 2016. V.~77. P.~175-188.
+        \item Vaskouski M., Kondratyonok N. Shortest division chains in unique factorization domains. {\it Journal of Symbolic Computation.} 2016. V.~77. P.~175-188. (Q2)
         
-        \item[Q3] Кондратёнок Н.В. Анализ RSA-криптосистемы в абстрактных числовых кольцах. {\it Журнал Белорусского государственного университета. Математика. Информатика.} 2020. \textnumero~1. С.~13-21.
+        \item Кондратёнок Н.В. Анализ RSA-криптосистемы в абстрактных числовых кольцах. {\it Журнал Белорусского государственного университета. Математика. Информатика.} 2020. \textnumero~1. С.~13-21. (Q3)
 
-        \item[Q2] Vaskouski M., Kondratyonok N. The Kronecker-Vahlen theorem fails in real quadratic norm-Euclidean fields. {\it Journal of Symbolic Computation.} 2021. V.~104, P.~134-141.
+        \item Vaskouski M., Kondratyonok N. The Kronecker-Vahlen theorem fails in real quadratic norm-Euclidean fields. {\it Journal of Symbolic Computation.} 2021. V.~104, P.~134-141. (Q2)
 
-        \item[-] Васьковский М.М., Кондратёнок Н.В. Конечные обобщенные цепные дроби в евклидовых кольцах. {\it Вестник БГУ Серия 1 ''Физика, Математика, Информатика''.} 2013. \textnumero~3. С.~117-123.
+        \item Васьковский М.М., Кондратёнок Н.В. Конечные обобщенные цепные дроби в евклидовых кольцах. {\it Вестник БГУ Серия 1 ''Физика, Математика, Информатика''.} 2013. \textnumero~3. С.~117-123.
         
-        \item[-] Васьковский М.М., Кондратёнок Н.В. Аналог RSA-криптосистемы в квадратичных кольцах с единственной факторизацией. {\it Доклады Национальной Академии Наук Беларуси.} 2015. Т.~59, \textnumero~5. С.~18-23. (англ)
+        \item Васьковский М.М., Кондратёнок Н.В. Аналог RSA-криптосистемы в квадратичных кольцах с единственной факторизацией. {\it Доклады Национальной Академии Наук Беларуси.} 2015. Т.~59, \textnumero~5. С.~18-23. (англ)
 
-        \item[-] Васьковский М.М., Кондратёнок Н.В., Прохоров Н.П. Аналог теста Соловея-Штрассена в квадратичных евклидовых кольцах. {\it Доклады Национальной Академии Наук Беларуси.} 2017. Т.~61. \textnumero~5. С.~28-32.
+        \item Васьковский М.М., Кондратёнок Н.В., Прохоров Н.П. Аналог теста Соловея-Штрассена в квадратичных евклидовых кольцах. {\it Доклады Национальной Академии Наук Беларуси.} 2017. Т.~61. \textnumero~5. С.~28-32.
     \end{enumerate}
 \end{frame}
 
@@ -669,7 +575,7 @@
     
             \item Кондратёнок Н.В. Свойства RSA-криптосистемы в абстрактных числовых кольцах. {\it Материалы международной научной конференции ''XIII Белорусская математическая конференция''} 2021. Ч.~2. С.~63-64
 
-            \item Васьковский М.М., Кондратёнок Н.В. Аналог критерия Миллера в дедекиндовых кольцах с конечной нормой. {\it CSIST.} 2022. (в печати)
+            \item Васьковский М.М., Кондратёнок Н.В. Аналог критерия Миллера в дедекиндовых кольцах с конечной нормой. {\it CSIST.} 2022.
         \end{enumerate}
     \end{small}
 \end{frame}
@@ -681,7 +587,7 @@
 % JSC - Q1, JNT - Q2, Журнал БГУ (только статья за 2020) - Q4. 
 % Еще можно указать твой h-индекс.
 % По scopus h=2, по google scholar h=3 
-        {\bf Цитирования:} scopus h-индекс = 2, google scholar h-индекс = 3
+        {\bf h-индекс:} scopus = 2, google scholar = 3
         
         {\bf Преподавание:} спецкурс "Криптографические системы в открытым ключом".
 

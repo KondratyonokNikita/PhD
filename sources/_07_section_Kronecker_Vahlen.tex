@@ -456,8 +456,8 @@
 \end{example}
 
 \begin{example}\label{example:coordinate_ring_of_circle}
-    Пусть $R$ координатное кольцо $\mathbb{Q}[i][x, y]/(x^2 + y^2 + 1)$.
-    Известно, что $R$ изоморфно $\mathbb{Q}[i][t,  t^{-1}]$, где отображение задано следующим образом
+    Пусть $R$ координатное кольцо $\mathbb{Q}(i)[x, y]/(x^2 + y^2 + 1)$.
+    Известно, что $R$ изоморфно $\mathbb{Q}(i)[t,  t^{-1}]$, где отображение задано следующим образом
     \begin{equation*}
         \begin{split}
             X \to \cos \theta \to \frac{e^{ix} + e^{-ix}}{2} \to \frac{t + t^{-1}}{2},\\
@@ -466,14 +466,14 @@
     \end{equation*}
     Так же известно, что $Q[i][t, t^{-1}]$ является факториальным кольцом.
     
-    Обратимыми элементами в этом кольце  являются одночлены вида $\alpha t^k$, где $\alpha\in\mathbb{Q}[i]$, $k\in\mathbb{Z}$.
+    Обратимыми элементами в этом кольце  являются одночлены вида $\alpha t^k$, где $\alpha\in\mathbb{Q}(i)$, $k\in\mathbb{Z}$.
     Введем норму в этом кольце следующим образом
     \begin{equation*}
         \upsilon(x) = \upsilon\left(
             \sum_{i=k_1}^{k_2} \alpha_i t^i
         \right) = k_2 - k_1
     \end{equation*}
-    где $\alpha_i\in\mathbb{Q}[i]$, если $x \neq 0$ и $\upsilon(0) = -\infty$.
+    где $\alpha_i\in\mathbb{Q}(i)$, если $x \neq 0$ и $\upsilon(0) = -\infty$.
     Проверим критерии.
     Рассмотрим два элемента кольца
     \begin{equation*}
@@ -724,7 +724,7 @@
 Следовательно, это кольцо не может принадлежать классу $\mathcal{T}$.
 
 \begin{example}[\cite{source:Rolletschek_1990}]\label{example:Z[sqrt{-11}]}
-    Пусть $R = \mathcal{O}_{\mathbb{Q}[\sqrt{-11}]}$.
+    Пусть $R = \mathcal{O}_{\mathbb{Q}(\sqrt{-11})}$.
     Заметим, что множество
     \begin{equation*}
         \{6,-2i\sqrt{11},6,-3+i\sqrt{11},-1-i\sqrt{11},2,0\}
@@ -738,9 +738,9 @@
     
     Из этого следует, что $\mathpzc{l}_{a,b}\le 4\le \mathcal{L}_{a,b}$.
     Следовательно, теорема \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} не выполняется.
-    Предположим, что $\mathcal{O}_{\mathbb{Q}[\sqrt{-11}]} \in \mathcal{T}$, но тогда по теореме \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} получаем, что для любой пары $(c,d)\in\mathbb{K}_* \times\mathbb{K}_*$ выполнено $\mathpzc{l}_{c,d}=\mathcal{L}_{c,d}$.
+    Предположим, что $\mathcal{O}_{\mathbb{Q}(\sqrt{-11})} \in \mathcal{T}$, но тогда по теореме \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} получаем, что для любой пары $(c,d)\in\mathbb{K}_* \times\mathbb{K}_*$ выполнено $\mathpzc{l}_{c,d}=\mathcal{L}_{c,d}$.
     Получаем противоречие с приведенным примером.
-    Аналогично можно показать, что лемма \ref{lemma:omega_and_euclidean_algorithm} не выполняется для $\mathcal{O}_{\mathbb{Q}[\sqrt{-11}]}$.
+    Аналогично можно показать, что лемма \ref{lemma:omega_and_euclidean_algorithm} не выполняется для $\mathcal{O}_{\mathbb{Q}(\sqrt{-11})}$.
 \end{example}
 
 \subsection{Общий метод проверки $R \in \mathcal{T}$}
@@ -1053,7 +1053,7 @@
     Известно, что существует ровно $16$ полей $K = \mathbb{Q}(\sqrt{d})$, удовлетворяющих условиям теоремы, со значениями $d$ из множества $\{2, 3, 5, 6, 7, 11, 13, 17, 19, 21, 29, 33, 37, 41, 57, 73\}$.
     Используя код, приведенный в приложениях, получаем контрпримеры для всех $\mathbb{Q}(\sqrt{d})$, которые опубликованы в работе~[\ref{source:JSC_2021}]:
     \begin{itemize}
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{2}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{2})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{equation*}
             \{50, 29, -8, -11-8\sqrt{2}, -7-5\sqrt{2}, 0\}.
@@ -1063,7 +1063,7 @@
             \{50, 29, 21, 19601-13860\sqrt{2}, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{3}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{3})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{equation*}
             \{52, 38, 14, 24+14\sqrt{3}, 14+8\sqrt{3}, 0\}.
@@ -1073,7 +1073,7 @@
             \{52, 38, -24, 2702-1560\sqrt{3}, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{5}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{5})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{multline*}
             \{58, 39, 17101-10569\frac{1+\sqrt{5}}{2},\\
@@ -1084,7 +1084,7 @@
             \{58, 39, 19, 1, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{6}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{6})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{equation*}
             \{50, 33, -2425+990\sqrt{6}, -9602+3920\sqrt{6}, -485+198\sqrt{6}, 0\}.
@@ -1094,7 +1094,7 @@
             \{50, 33, 17, -1, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{7}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{7})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{equation*}
             \{50, 23, -5355+2024\sqrt{7}, -20830+7873\sqrt{7}, 2024-765\sqrt{7}, 0\}.
@@ -1104,7 +1104,7 @@
             \{50, 23, 4, -1, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{11}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{11})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{equation*}
             \{50, 34, -902+272\sqrt{11}, -252+76\sqrt{11}, -398+120\sqrt{11}, 0\}.
@@ -1114,7 +1114,7 @@
             \{50, 34, 16, 2, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{13}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{13})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{multline*}
             \{52, 19, -355666+154451\frac{1+\sqrt{13}}{2},\\
@@ -1125,7 +1125,7 @@
             \{52, 19, -5, -1, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{17}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{17})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{multline*}
             \{51, 14, 11153-4354\frac{1+\sqrt{17}}{2},\\
@@ -1136,7 +1136,7 @@
             \{51, 14, -5, -1, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{19}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{19})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{equation*}
             \{70, 29, -6194+1421\sqrt{19}, 3012-691\sqrt{19}, -170+39\sqrt{19}, 0\}.
@@ -1146,7 +1146,7 @@
             \{70, 29, 12, -57799+13260\sqrt{19}, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{21}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{21})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{multline*}
           \{50, 33, 36845-13200\frac{1+\sqrt{21}}{2},\\
@@ -1157,7 +1157,7 @@
             \{50, 33, 17, -1, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{29}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{29})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{equation*}
             \{54, 21, 201-63\frac{1+\sqrt{29}}{2}, 96-30\frac{1+\sqrt{29}}{2}, -9+3\frac{1+\sqrt{29}}{2}, 0\}.
@@ -1167,7 +1167,7 @@
             \{54, 21, 12, -3, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{33}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{33})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{multline*}
             \{50, 27, 58999613-17495460\frac{1+\sqrt{33}}{2},\\
@@ -1178,7 +1178,7 @@
             \{50, 27, -4, -1, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{37}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{37})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{multline*}
             \{51, 23, -2525+713\frac{1+\sqrt{37}}{2},\\
@@ -1189,7 +1189,7 @@
             \{51, 23, 5, -1027+290\frac{1+\sqrt{37}}{2}, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{41}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{41})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{multline*}
             \{51, 33, -12093+3267\frac{1+\sqrt{41}}{2},\\
@@ -1200,7 +1200,7 @@
             \{51, 33, 18, -3, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{57}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{57})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{equation*}
             \{51, 31, -11, -2, -1, 0\}.
@@ -1210,7 +1210,7 @@
             \{51, 31, 20, 131+40\frac{1+\sqrt{57}}{2}, 0\}.
         \end{equation*}
     
-        \item $\mathcal{O}_{\mathbb{Q}[\sqrt{73}]}$.
+        \item $\mathcal{O}_{\mathbb{Q}(\sqrt{73})}$.
         Цепочка делений с выбором минимального по норме остатка:
         \begin{multline*}
             \{57, 32, -7, -580996+121751\frac{1+\sqrt{73}}{2},\\
@@ -1225,7 +1225,7 @@
 \end{proof}
 
 \begin{corollary}
-    Пусть $R = \mathbb{Q}[\sqrt{d}]$~-- квадратичное норменно-евклидово кольцо.
+    Пусть $R = \mathcal{O}_{\mathbb{Q}(\sqrt{d})}$~-- квадратичное норменно-евклидово кольцо.
     Теорема Кронекера-Валена выполняется в $R$ тогда и только тогда, когда $d=-1, -2, -3, -7$.
 \end{corollary}
 \begin{proof}
@@ -1238,13 +1238,13 @@
 Ранее было показано, что при определенных условиях на кольцо цепочка делений с выбором минимального по норме остатка является кратчайшей.
 Однако существуют кольца, для которых эти условия не выполняются.
 В таких кольцах цепочка делений с выбором минимального по норме остатка не является кратчайшей.
-Например, в работе~\cite{source:Rolletschek_1990} было показано, что теорема Кронекера-Валена не выполняется в кольце $\mathcal{O}_{\mathbb{Q}[\sqrt{-11}]}$.
+Например, в работе~\cite{source:Rolletschek_1990} было показано, что теорема Кронекера-Валена не выполняется в кольце $\mathcal{O}_{\mathbb{Q}(\sqrt{-11})}$.
 В работе~\cite{source:Cooke} было показано, что для колец целых алгебраических чисел с бесконечной группой единиц длина кратчайшей цепочки делений с выбором минимального по норме остатка ограничена константой.
 Следовательно, важным вопросом является исследование асимптотического поведения длины кратчайшей цепочки делений.
 
 \begin{definition}
     Пусть $d \neq 1$~-- целое число свободное от квадратов.
-    Под \emph{фундаментальной областью поля} $\mathbb{Q}[\sqrt{d}]$ понимают множество, заданное следующим образом
+    Под \emph{фундаментальной областью поля} $\mathbb{Q}(\sqrt{d})$ понимают множество, заданное следующим образом
     \begin{equation*}
         F(d) = \begin{cases}
             \left(
@@ -1263,14 +1263,14 @@
 
 \begin{definition}
     Пусть $d \neq 1$~-- целое число свободное от квадратов.
-    Под окрестностью точки $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ радиуса $r > 0$ понимают множество заданное следующим образом
+    Под окрестностью точки $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathcal{O}_{\mathbb{Q}(\sqrt{d})}$ радиуса $r > 0$ понимают множество заданное следующим образом
     \begin{equation*}
         U(\lambda, r) = \left\{
             q_1 + q_2 \sqrt{d} \in Q[\sqrt{d}] \big| |(q_1 - \lambda_1)^2 - d(q_2 - \lambda_2)^2| < r
         \right\}.
     \end{equation*}
 
-    Под окрестностью множества точек $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ радиуса $r > 0$ понимают множество заданное следующим образом
+    Под окрестностью множества точек $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}(\sqrt{d})}$ радиуса $r > 0$ понимают множество заданное следующим образом
     \begin{equation*}
         U(\Lambda, r) = \bigcup_{\lambda \in \Lambda} U(\lambda, r).
     \end{equation*}
@@ -1280,7 +1280,7 @@
 
 \begin{statement}[\cite{source:Selfridge}]\label{proposition:fundamental_in_circle}
     Пусть $d \neq 1$~-- целое число свободное от квадратов.
-    Тогда кольцо $\mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ является евклидовым относительно нормы числового поля $\mathbb{Q}[\sqrt{d}]$ тогда и только тогда, когда существует множество $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$, что
+    Тогда кольцо $\mathcal{O}_{\mathbb{Q}(\sqrt{d})}$ является евклидовым относительно нормы числового поля $\mathbb{Q}(\sqrt{d})$ тогда и только тогда, когда существует множество $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}(\sqrt{d})}$, что
     \begin{equation*}
         F(d) \subseteq U(\Lambda, 1).
     \end{equation*}
@@ -1325,7 +1325,7 @@
 
 \begin{theorem}
     Пусть $d \neq 1$ целое число свободное от квадратов.
-    Если кольцо $\mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ евклидово относительно нормы числового поля $\elementnorm{\cdot}$, то $l_n(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]}) = O(\log n)$.
+    Если кольцо $\mathcal{O}_{\mathbb{Q}(\sqrt{d})}$ евклидово относительно нормы числового поля $\elementnorm{\cdot}$, то $l_n(\mathcal{O}_{\mathbb{Q}(\sqrt{d})}) = O(\log n)$.
 \end{theorem}
 \begin{proof}
     Обозначим
@@ -1336,19 +1336,19 @@
         \end{cases}
     \end{equation*}
 
-    Для $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ и $r > 0$ обозначим
+    Для $\lambda = \lambda_1 + \lambda_2 \sqrt{d} \in \mathcal{O}_{\mathbb{Q}(\sqrt{d})}$ и $r > 0$ обозначим
     \begin{equation*}
         V(\lambda, r) = \left\{
             (x, y) \in R \times R \Big| \left|(x - \lambda_1)^2 - d(y - \lambda_2)^2\right| < r
         \right\}.
     \end{equation*}
 
-    Для множества точек $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$ и $r > 0$ обозначим
+    Для множества точек $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}(\sqrt{d})}$ и $r > 0$ обозначим
     \begin{equation*}
         V(\Lambda, r) = \bigcup_{\lambda \in \Lambda} V(\lambda, r).
     \end{equation*}
 
-    Из предложения~\ref{proposition:fundamental_in_circle} следует, что существует множество $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$, что $F(d) \subseteq U(\Lambda, 1)$.
+    Из предложения~\ref{proposition:fundamental_in_circle} следует, что существует множество $\Lambda \subseteq \mathcal{O}_{\mathbb{Q}(\sqrt{d})}$, что $F(d) \subseteq U(\Lambda, 1)$.
     Докажем, что $E(d) \subseteq V(\Lambda, 1)$.
 
     Предположим, что $(x_0, y_0) \in E(d) \setminus V(\Lambda, 1)$.
@@ -1383,12 +1383,12 @@
     Заметим, что $r_{x_0} < 1$, так как $E(d) \subseteq V(\Lambda, 1)$.
 
     Следовательно, существует $r_0 < 1$, что $F(d) \subseteq U(\Lambda, r_0)$.
-    Рассмотрим произвольные $\gamma, \delta \in \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$, $\delta \neq 0$.
-    Из доказанного выше следует, что существует $q \in \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$, что $\elementnorm{\frac{\gamma}{\delta} - q} \le r_0$.
-    Так как $\elementnorm{\frac{\gamma}{\delta} - q} = \frac{\elementnorm{\gamma - q\delta}}{\elementnorm{\delta}}$, то получаем, что существуют $q, r \in \mathcal{O}_{\mathbb{Q}[\sqrt{d}]}$, что $\gamma = q\delta + r$ и $\elementnorm{r} \le r_0 \elementnorm{\delta}$.
-    Следовательно, $\Lambda_{\mathcal{O}_{\mathbb{Q}[\sqrt{d}]}} \le r_0$.
+    Рассмотрим произвольные $\gamma, \delta \in \mathcal{O}_{\mathbb{Q}(\sqrt{d})}$, $\delta \neq 0$.
+    Из доказанного выше следует, что существует $q \in \mathcal{O}_{\mathbb{Q}(\sqrt{d})}$, что $\elementnorm{\frac{\gamma}{\delta} - q} \le r_0$.
+    Так как $\elementnorm{\frac{\gamma}{\delta} - q} = \frac{\elementnorm{\gamma - q\delta}}{\elementnorm{\delta}}$, то получаем, что существуют $q, r \in \mathcal{O}_{\mathbb{Q}(\sqrt{d})}$, что $\gamma = q\delta + r$ и $\elementnorm{r} \le r_0 \elementnorm{\delta}$.
+    Следовательно, $\Lambda_{\mathcal{O}_{\mathbb{Q}(\sqrt{d})}} \le r_0$.
 
-    Тогда, из теоремы~\ref{theorem:euclidean_and_lambda} следует, что $l_n(\mathcal{O}_{\mathbb{Q}[\sqrt{d}]}) \le [\log_{r_0^{-1}} n] + 2$.
+    Тогда, из теоремы~\ref{theorem:euclidean_and_lambda} следует, что $l_n(\mathcal{O}_{\mathbb{Q}(\sqrt{d})}) \le [\log_{r_0^{-1}} n] + 2$.
 \end{proof}
 
 \section*{Выводы по главе \ref{chapter:Kronecker-Vahlen theorem}}
