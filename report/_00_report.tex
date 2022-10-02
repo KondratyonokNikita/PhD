@@ -1,12 +1,29 @@
-\documentclass[12pt]{article}
+\documentclass[a4paper,12pt]{article} % Задаем класс документа и формат бумаги; в данном классе можно использовать кегель 8-12, 14, 17 и 20 пунктов.
 
-\input{../settings/settings}
-% \pagestyle{empty}
+\usepackage{polyglossia} % Конфигурируем работу с правилами типографики для разных языков.
+\setdefaultlanguage{russian} % Устанавливаем русский основным языком документа.
+
+\setmainfont{CMU Serif}
+\newfontfamily{\cyrillicfont}{CMU Serif}
+\setsansfont{CMU Sans Serif}
+\newfontfamily{\cyrillicfontsf}{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}
+\newfontfamily{\cyrillicfonttt}{CMU Typewriter Text}
+
+\usepackage{geometry}
+\geometry{left=3cm}
+\geometry{right= 1.5cm}
+\geometry{top=2cm}
+\geometry{bottom=2cm}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \begin{document}
 
 \begin{center}
-\textbf{Доклад Н.В. Кондратёнок на защите диссертации ''Свойства теоретико-числовых и криптографических алгоритмов в дедекиндовых кольцах''}
+    \textbf{Доклад Н.В. Кондратёнок на защите диссертации ''Свойства теоретико-числовых и криптографических алгоритмов в дедекиндовых кольцах''}
 \end{center}
 
 Добрый день, уважаемые участники семинара.
