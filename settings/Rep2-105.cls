@@ -185,7 +185,7 @@
  \renewcommand\subsubsection[1]{\rgsubsubsection{##1}}%
  \@startsection{section}{1}%
  {0mm}{\GostBeforTitleSkip}{\GostAfterTitleSkip}%
- {\GostTitleStyle\fontsize{15}{16}\selectfont\Gost@ChapterStyle}%
+ {\GostTitleStyle\fontsize{15}{16}\selectfont}%
 }
 
 %  Пункт
@@ -195,8 +195,8 @@
 \newcommand\rgsubsection{%
  \renewcommand\subsubsection[1]{\rgsubsubsection{##1}}%
  \@startsection{subsection}{2}%
- {0mm}{\GostBeforTitleSkip}{\GostAfterTitleSkip}%
- {\GostTitleStyle\Gost@ChapterStyle}%
+ {0mm}{}{}%
+ {\GostTitleStyle}%
 }
 %  ... не попадающий в оглавление
 \newcommand\rgnsubsection{%

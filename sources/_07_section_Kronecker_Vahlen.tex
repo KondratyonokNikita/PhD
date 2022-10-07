@@ -8,8 +8,8 @@
 }
 
 \refstepcounter{chapter}
-\chapter*{ГЛАВА \arabic{chapter}.\\ ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}\label{chapter:Kronecker-Vahlen theorem}
-\addcontentsline{toc}{chapter}{ГЛАВА \arabic{chapter}. ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}
+\chapter*{ГЛАВА \arabic{chapter}\\ ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}\label{chapter:Kronecker-Vahlen theorem}
+\addcontentsline{toc}{chapter}{ГЛАВА \arabic{chapter} ТЕОРЕМА КРОНЕКЕРА-ВАЛЕНА В ФАКТОРИАЛЬНЫХ КОЛЬЦАХ}
 
 \begin{definition}
     Пусть $a$ и $b$ ненулевые элементы факториального кольца $R$.
@@ -247,7 +247,7 @@
     Следовательно, получаем $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$.
 \end{proof}
 
-\subsection{Упрощенный метод проверки $R \in \mathcal{T}$}
+% \subsection{Упрощенный метод проверки $R \in \mathcal{T}$}
 
 Пусть дано некоторое факториальное кольцо $R$.
 Рассмотрим алгоритм проверки принадлежности этого кольца классу $T$.
@@ -287,14 +287,12 @@
     Предположим, что $b \in \invertible{R} \cup \{0\}$.
     Если $b = 0$, то
     \begin{equation*}
-        \begin{split}
-            \beta_2 = \left(
-                \beta_1 + x + c
-            \right)^{-1} = \\
-            = \left(
-                \frac{\alpha - x}{1} - c + x + c
-            \right)^{-1} = \alpha^{-1}.
-        \end{split}
+        \beta_2 = \left(
+            \beta_1 + x + c
+        \right)^{-1} =
+        \left(
+            \frac{\alpha - x}{1} - c + x + c
+        \right)^{-1} = \alpha^{-1}.
     \end{equation*}
 
     Если $b \in \invertible{R}$, то
@@ -316,8 +314,7 @@
             \right)^{-1} + b^{-1} + x = \\
             = \left(
                 \frac{- b}{1 - b\alpha + bx}
-            \right)^{-1} + b^{-1} + x = \\
-            = \frac{-1 + b\alpha - bx}{b} + b^{-1} + x = \alpha.
+            \right)^{-1} + b^{-1} + x = \frac{-1 + b\alpha - bx}{b} + b^{-1} + x = \alpha.
         \end{split}
     \end{equation*}
     
@@ -328,12 +325,29 @@
         \begin{split}
             \beta_2 = \left(
                 \beta_1 \varepsilon^2 + c\varepsilon^2 + x\varepsilon
-            \right)^{-1} + b\varepsilon^{-1} = \\
-            = \frac{\varepsilon^{-1}}{\beta_1 \varepsilon + c\varepsilon + x} + b\varepsilon^{-1} = \\
-            = \frac{1 - bx\varepsilon^{-1}}{\beta_1 \varepsilon + c\varepsilon + x} + b\varepsilon^{-1} = \\
-            = \frac{1 - bx\varepsilon^{-1} + b\varepsilon^{-1}\beta_1 \varepsilon + b\varepsilon^{-1}c\varepsilon + b\varepsilon^{-1}x}{\beta_1 \varepsilon + c\varepsilon + x} = \\
-            = \frac{1 + b\beta_1 + bc}{\beta_1 \varepsilon + c\varepsilon + x} = \\
-            = \frac{1 + b\beta_1 + bc}{\beta_1(xb + 1) + c(xb + 1) + x} = \\
+            \right)^{-1} + b\varepsilon^{-1} = \frac{
+                \varepsilon^{-1}
+            }{
+                \beta_1 \varepsilon + c\varepsilon + x
+            } + b\varepsilon^{-1} = \\
+            = \frac{
+                1 - bx\varepsilon^{-1}
+            }{
+                \beta_1 \varepsilon + c\varepsilon + x
+            } + b\varepsilon^{-1} = \frac{
+                1 - bx\varepsilon^{-1} + b\varepsilon^{-1}\beta_1 \varepsilon + b\varepsilon^{-1}c\varepsilon + b\varepsilon^{-1}x
+            }{
+                \beta_1 \varepsilon + c\varepsilon + x
+            } = \\
+            = \frac{
+                1 + b\beta_1 + bc
+            }{
+                \beta_1 \varepsilon + c\varepsilon + x
+            } = \frac{
+                1 + b\beta_1 + bc
+            }{
+                \beta_1(xb + 1) + c(xb + 1) + x
+            } = \\
             = \frac{
                 1 + b\left(
                     \frac{\alpha - x}{1 - b\alpha + bx} - c
@@ -342,8 +356,7 @@
                 \left(
                     \frac{\alpha - x}{1 - b\alpha + bx} - c
                 \right)(xb + 1) + c(xb + 1) + x
-            } = \\
-            = \frac{
+            } = \frac{
                 1 + \frac{b\alpha - bx}{1 - b\alpha + bx}
             }{
                 \frac{xb\alpha + \alpha - x^2b - x}{1 - b\alpha + bx} + x
@@ -395,7 +408,7 @@
 Докажем корректность этого алгоритма.
 
 \begin{proposition}
-    Если алгоритм~\ref{algorithm:R_in_S} вернул ответ ''$R \in \mathcal{S}$'', то $R \in \mathcal{S}$.
+    Если алгоритм~$\ref{algorithm:R_in_S}$ вернул ответ ''$R \in \mathcal{S}$'', то $R \in \mathcal{S}$.
 \end{proposition}
 \begin{proof}
     Предположим, что ответ ''$R \in \mathcal{S}$''.
@@ -420,7 +433,7 @@
     Значит выполнено второе условие определения множества $\mathcal{S}$.
 \end{proof}
 
-\subsection{Примеры проверки $R \in \mathcal{T}$}
+% \subsection{Примеры проверки $R \in \mathcal{T}$}
 
 \begin{example}\label{example:Z}
     Пусть $R = \mathbb{Z}$.
@@ -611,7 +624,12 @@
     Тогда $\textrm{int}((\alpha-x)^{-1})=-2+i \notin \mathbb{I} \cup \{0\}$ и $x \ \textrm{int}((\alpha-x)^{-1})+1=-1+i \notin \mathbb{I}.$
 
     Покажем, что $\mathbb{K}\in\mathcal{T}$.
-    Заметим, что $\mathbb{F}_1=\{z\in\mathbb{C}|Re(z),Im(z)\in\mathbb{Q}\cap[-1/2,1/2[\}$.
+    Заметим, что
+    \begin{equation}
+        \mathbb{F}_1 = \left\{
+            z \in \mathbb{C} | Re(z), Im(z) \in \mathbb{Q} \cap [-1/2,1/2[
+        \right\}.
+    \end{equation}
     Положим $D_{\mathbb{K}}=3$ в определении множества $\mathcal{T}$.
 
     Проверим первое условие из определения $\mathcal{T}$.
@@ -737,13 +755,13 @@
     \end{equation*}
     
     Из этого следует, что $\mathpzc{l}_{a,b}\le 4\le \mathcal{L}_{a,b}$.
-    Следовательно, теорема \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} не выполняется.
-    Предположим, что $\mathcal{O}_{\mathbb{Q}(\sqrt{-11})} \in \mathcal{T}$, но тогда по теореме \ref{theorem:Kroneker_Vahlen_theorem_in_UFD} получаем, что для любой пары $(c,d)\in\mathbb{K}_* \times\mathbb{K}_*$ выполнено $\mathpzc{l}_{c,d}=\mathcal{L}_{c,d}$.
+    Следовательно, теорема~\ref{theorem:Kroneker_Vahlen_theorem_in_UFD} не выполняется.
+    Предположим, что $\mathcal{O}_{\mathbb{Q}(\sqrt{-11})} \in \mathcal{T}$, но тогда по теореме~\ref{theorem:Kroneker_Vahlen_theorem_in_UFD} получаем, что для любой пары $(c,d)\in\mathbb{K}_* \times\mathbb{K}_*$ выполнено $\mathpzc{l}_{c,d}=\mathcal{L}_{c,d}$.
     Получаем противоречие с приведенным примером.
-    Аналогично можно показать, что лемма \ref{lemma:omega_and_euclidean_algorithm} не выполняется для $\mathcal{O}_{\mathbb{Q}(\sqrt{-11})}$.
+    Аналогично можно показать, что лемма~\ref{lemma:omega_and_euclidean_algorithm} не выполняется для $\mathcal{O}_{\mathbb{Q}(\sqrt{-11})}$.
 \end{example}
 
-\subsection{Общий метод проверки $R \in \mathcal{T}$}
+% \subsection{Общий метод проверки $R \in \mathcal{T}$}
 
 Приведем общий метод проверки включения $R \in \mathcal{T}$.
 
@@ -842,7 +860,7 @@
 \end{algorithm}
 
 \begin{proposition}
-    Пусть алгоритм~\ref{algorithm:R_in_T} вернул ''$R \in \mathcal{T}$''.
+    Пусть алгоритм~$\ref{algorithm:R_in_T}$ вернул ''$R \in \mathcal{T}$''.
     Тогда $R \in \mathcal{T}$.
 \end{proposition}
 \begin{proof}
@@ -878,7 +896,7 @@
 
 \section{Теорема Кронекера-Валена в кольце алгебраических целых элементов числового поля}
 
-\subsection{Метод деления с выбором минимального по норме остатка}
+% \subsection{Метод деления с выбором минимального по норме остатка}
 
 \begin{lemma}
     Пусть $\xi \in K$ и $k > 0$.
@@ -887,7 +905,7 @@
     Если $\mathcal{M}_k \le k$, то $\int{\xi}$ можно вычислить за $O(1)$ арифметических операций в $K$.
 \end{lemma}
 \begin{proof}
-    Из утверждения \ref{proposition:division_with_least_norm_remainder} следует, что
+    Из утверждения~\ref{proposition:division_with_least_norm_remainder} следует, что
     \begin{equation*}
         m_{\overline{K}}(x) = \mathcal{M}_k.
     \end{equation*}
@@ -965,7 +983,7 @@
 
         \item Вычислить $\mathcal{M}_k = \mathcal{N}(z' - Z')$
         
-        \item Если $\mathcal{M}_k > k$, то положить $k = \mathcal{M}_k$ и перейти к шагу \ref{loop:1}
+        \item Если $\mathcal{M}_k > k$, то положить $k = \mathcal{M}_k$ и перейти к шагу~\ref{loop:1}
 
         \item Вычислить $\int{\frac{a}{b}} = Z'\Phi((\varepsilon_z')^{-1})$
 
@@ -976,7 +994,7 @@
 Оценим вычислительную сложность этого алгоритма.
 
 \begin{proposition}
-    Для любых $a, b \in \zeroless{\mathcal{O}_K}$ наименьший по норме остаток $r$ при делении $a$ на $b$ можно найти, используя алгоритм \ref{algorithm:least_norm_remainder}, за $O(1)$ арифметических операций в $K$.
+    Для любых $a, b \in \zeroless{\mathcal{O}_K}$ наименьший по норме остаток $r$ при делении $a$ на $b$ можно найти, используя алгоритм~$\ref{algorithm:least_norm_remainder}$, за $O(1)$ арифметических операций в $K$.
 \end{proposition}
 \begin{proof}
     Из того, что
@@ -986,14 +1004,14 @@
     следует, что множество $\textrm{Orb}(x)$ можно найти за $O(1)$ арифметических операций в $K$.
     Так же мощность множества $\mathcal{I}_{z, k}$ ограничена некоторой константой, зависящей только от $\Gamma(k)$.
     Заметим, что $\Gamma(k)$ на зависит от $\frac{a}{b}$.
-    Так как функция $k \to \mathcal{M}_k$ неубывающая, из предложения \ref{proposition:division_with_least_norm_remainder} следует, что цикл необходимо будет повторить не более двух раз.
+    Так как функция $k \to \mathcal{M}_k$ неубывающая, из предложения~\ref{proposition:division_with_least_norm_remainder} следует, что цикл необходимо будет повторить не более двух раз.
     Таким образом, можно заключить, что наименьший по норме остаток при делении $a$ на $b$ можно найти за $O(1)$ арифметических операций в $K$.
 \end{proof}
 
-\subsection{Метод доказательства невыполнимости теоремы Кронекера-Валена}
+% \subsection{Метод доказательства невыполнимости теоремы Кронекера-Валена}
 
 В этой части работы будет представлен метод автоматического доказательства невыполнимости теоремы Кронекера-Валена в кольце целых алгебраических элементов числового поля $K$.
-Метод доказательства приведен в алгоритме \ref{algorithm:kronecker_vahlen_common}.
+Метод доказательства приведен в алгоритме~\ref{algorithm:kronecker_vahlen_common}.
 
 \begin{algorithm}\label{algorithm:kronecker_vahlen_common}
     Дано числовое поле $K$.
@@ -1012,7 +1030,7 @@
     \end{enumerate}
 \end{algorithm}
 
-\subsection{Теорема Кронекера-Валена в действительных квадратичных норменно-евклидовых кольцах}
+% \subsection{Теорема Кронекера-Валена в действительных квадратичных норменно-евклидовых кольцах}
 
 Применим описанный выше метод в частном случае.
 Предположим, что поле $K$ такое, что $\mathcal{O}_K$ действительное квадратичное норменно-евклидово кольцо.
@@ -1051,7 +1069,7 @@
 \end{theorem}
 \begin{proof}
     Известно, что существует ровно $16$ полей $K = \mathbb{Q}(\sqrt{d})$, удовлетворяющих условиям теоремы, со значениями $d$ из множества $\{2, 3, 5, 6, 7, 11, 13, 17, 19, 21, 29, 33, 37, 41, 57, 73\}$.
-    Используя код, приведенный в приложениях, получаем контрпримеры для всех $\mathbb{Q}(\sqrt{d})$, которые опубликованы в работе~[\ref{source:JSC_2021}]:
+    Используя код, приведенный в приложении Б, получаем контрпримеры для всех $\mathbb{Q}(\sqrt{d})$, которые опубликованы в работе~[\ref{source:JSC_2021}]:
     \begin{itemize}
         \item $\mathcal{O}_{\mathbb{Q}(\sqrt{2})}$.
         Цепочка делений с выбором минимального по норме остатка:
@@ -1391,8 +1409,8 @@
     Тогда, из теоремы~\ref{theorem:euclidean_and_lambda} следует, что $l_n(\mathcal{O}_{\mathbb{Q}(\sqrt{d})}) \le [\log_{r_0^{-1}} n] + 2$.
 \end{proof}
 
-\section*{Выводы по главе \ref{chapter:Kronecker-Vahlen theorem}}
-\addcontentsline{toc}{section}{Выводы по главе \ref{chapter:Kronecker-Vahlen theorem}}
+\section*{Выводы по главе~\ref{chapter:Kronecker-Vahlen theorem}}
+\addcontentsline{toc}{section}{Выводы по главе~\ref{chapter:Kronecker-Vahlen theorem}}
 
 В данной главе диссертации получены достаточные условия для выполнения аналога теоремы Кронекера-Валена в факториальном кольце.
 Разработан метод проверки этого достаточного условия.

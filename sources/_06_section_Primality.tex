@@ -8,12 +8,12 @@
 }
 
 \refstepcounter{chapter}
-\chapter*{ГЛАВА \arabic{chapter}.\\ ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}\label{chapter:Primality}
-\addcontentsline{toc}{chapter}{ГЛАВА \arabic{chapter}. ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}
+\chapter*{ГЛАВА \arabic{chapter}\\ ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}\label{chapter:Primality}
+\addcontentsline{toc}{chapter}{ГЛАВА \arabic{chapter} ТЕСТИРОВАНИЕ ИДЕАЛОВ НА ПРОСТОТУ В ДЕДЕКИНДОВЫХ КОЛЬЦАХ}
 
 \section{Предварительные сведения}
 
-\subsection{Дедекиндовы кольца}
+% \subsection{Дедекиндовы кольца}
 
 \begin{definition}
     Пусть $R$ коммутативное кольцо с единицей.
@@ -210,7 +210,7 @@
     Будем говорить, что характер $\chi$ \emph{задан по модулю идеала} $\ideal{f} \subset R$, если для всех идеалов $\ideal{n} \subseteq R$ из сравнения $\ideal{n} \equiv 1 \pmod{\ideal{f}}$ следует равенство $\chi(\ideal{n}) = 1$.
 \end{definition}
 
-\subsection{Факториальные кольца}
+% \subsection{Факториальные кольца}
 
 \begin{definition}
     Кольцо $R$ называется \emph{факториальным}, если каждый его ненулевой элемент $x \in R$ либо обратим, либо однозначно представляется в виде произведения неприводимых элементов с точностью до перестановки множителей.
@@ -292,7 +292,7 @@
 
 Далее будем считать, что факториальное кольцо $R$ задано вместе дробной частью $\fr{\cdot}$ и целой частью $\int{\cdot}$.
 
-\subsection{Числовые кольца}
+% \subsection{Числовые кольца}
 
 Пусть $K$~-- числовое поле со степенью расширения равной $n$.
 Пусть $R = \mathcal{O}_K$~-- кольцо целых алгебраических элементов поля $K$.
@@ -387,7 +387,7 @@
     \end{equation*}
 \end{definition}
 
-Из утверждения \ref{statement:orbit} следует, что функция $m_{\overline{K}}$ принимает одно значение на всех элементах орбиты.
+Из утверждения~\ref{statement:orbit} следует, что функция $m_{\overline{K}}$ принимает одно значение на всех элементах орбиты.
 
 \begin{statement}[\cite{source:Lezowski}]
     Для любого элемента $x\in \mathbb{R}^n$ орбита $\textrm{Orb}(x)$ конечна тогда и только тогда, когда $x \in \Phi(K)$.
@@ -705,7 +705,7 @@
     Тогда для любых $a, b \in R$ наибольший общий делитель $(a, b)$ можно вычислить на $O(n^2)$ арифметических операций в $\mathbb{Z}$, где $n$ длина бинарной записи $a$ и $b$.
 \end{statement}
 
-\begin{statement}[\cite{source:Dedekind}(Теорема Дедекинда)]\label{statement:dedekind}
+\begin{statement}[\cite{source:Dedekind} (Теорема Дедекинда)]\label{statement:dedekind}
     Пусть $f(T)$ минимальный многочлен алгебраического числа $\theta$ в $\mathcal{O}_{\mathbb{Q}(\theta)}$.
     Для простого рационального числа $p$, не делящего индекс $[\mathcal{O}_{\mathbb{Q}(\theta)} : \mathbb{Z}[\theta]]$, запишем
     \begin{equation*}
@@ -719,7 +719,7 @@
     где $\mathfrak{p}_i = (p_i, T_i(\theta))$, $T_i(T) \equiv \pi_i(T)(\modul p)$.
 \end{statement}
 
-\begin{statement}[\cite{source:Coppersmith}(Теорема Копперсмита)]\label{statement:coppersmith}
+\begin{statement}[\cite{source:Coppersmith} (Теорема Копперсмита)]\label{statement:coppersmith}
     Пусть
     \begin{equation*}
         f(x, y) = \sum\limits_{i, j = 0}^{\delta} p_{i, j} x^i y^j
@@ -823,13 +823,13 @@
     Пусть для любого $a \in \invertible{R/\ideal{n}}$ выполнено $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv \left[\frac{a}{\ideal{n}}\right] \pmod{\ideal{n}}$.
 
     Пусть существует такой $j \in \{1, \dots, r\}$, что $\alpha_j > 1$ в разложении $\ideal{n}$ на множители.
-    Из теоремы Коши для групп и свойств функции Эйлера \ref{statement:euler_function} следует, что существует $a \in \invertible{R/\ideal{n}}$ порядка $q_j$.
+    Из теоремы Коши для групп и свойств функции Эйлера~\ref{statement:euler_function} следует, что существует $a \in \invertible{R/\ideal{n}}$ порядка $q_j$.
     Тогда $q_j | \Nm{\ideal{n}} - 1$, что невозможно.
 
     Следовательно, $\alpha_j = 1$ для любого $j \in \{1, \ldots, r\}$.
     Так как $\ideal{n}$~-- составное, то $r \ge 2$.
     Рассмотрим произвольный квадратичный невычет $b \in \invertible{R/\ideal{p}_1}$.
-    Согласно аналогу Китайской теоремы об остатках \ref{statement:chinese_remainder_theorem}, существует такой $a \in \invertible{R/\ideal{n}}$, что выполнено $a \equiv b \pmod{\ideal{p}_1}$ и $a \equiv 1 \pmod{\ideal{p}_2\dots\ideal{p}_r}$.
+    Согласно аналогу Китайской теоремы об остатках~\ref{statement:chinese_remainder_theorem}, существует такой $a \in \invertible{R/\ideal{n}}$, что выполнено $a \equiv b \pmod{\ideal{p}_1}$ и $a \equiv 1 \pmod{\ideal{p}_2\dots\ideal{p}_r}$.
     Но в этом случае $\jacobi{a}{\ideal{n}} = -1$.
     Из условия теоремы следует, что $a^{\frac{\Nm{\ideal{n}} - 1}{2}} \equiv -1 \pmod{\ideal{n}}$, что противоречит условию $a \equiv 1 \pmod{\ideal{p}_2}$.
     Это завершает доказательство достаточности.
@@ -874,13 +874,13 @@
 \end{algorithm}
 
 \begin{remark}
-    Алгоритм \ref{algorithm:solovay_strassen} является вероятностным.
+    Алгоритм~\ref{algorithm:solovay_strassen} является вероятностным.
     Если был получен ответ "неизвестно", то можно выполнить алгоритм еще раз.
 \end{remark}
 
 \begin{proposition}
     Пусть $\ideal{n}$~-- не простой идеал.
-    Тогда вероятность ответа "$\ideal{n}$ не простой" у алгоритма \ref{algorithm:solovay_strassen} не менее $1/2$.
+    Тогда вероятность ответа "$\ideal{n}$ не простой" у алгоритма~$\ref{algorithm:solovay_strassen}$ не менее $1/2$.
 \end{proposition}
 \begin{proof}
     Рассмотрим множество
@@ -899,7 +899,7 @@
 \end{proof}
 
 \begin{remark}
-    Если $\ideal{n}$~-- составной, то при выполнении алгоритма \ref{algorithm:solovay_strassen} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
+    Если $\ideal{n}$~-- составной, то при выполнении алгоритма~$\ref{algorithm:solovay_strassen}$ $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
 \end{remark}
 
 \section{Аналог критерия Миллера}
@@ -916,7 +916,7 @@
     Докажем первую часть теоремы.
     Предположим, что $\ideal{n}$~-- простой идеал.
     Рассмотрим произвольный $a \in \invertible{R/\ideal{n}}$, $a^u \not\equiv 1 \pmod{\ideal{n}}$.
-    Из теоремы Эйлера \ref{statement:euler_function} следует, что:
+    Из теоремы Эйлера~\ref{statement:euler_function} следует, что:
     \begin{equation*}
         a^{2^{t} u} = a^{\varphi(\ideal{n})} \equiv 1 \pmod{\ideal{n}}
     \end{equation*}
@@ -1039,13 +1039,13 @@
 \end{algorithm}
 
 \begin{remark}
-    Алгоритм \ref{algorithm:miller_rabin} является вероятностным.
+    Алгоритм~$\ref{algorithm:miller_rabin}$ является вероятностным.
     Если был получен ответ "неизвестно", то можно выполнить алгоритм еще раз.
 \end{remark}
 
 \begin{proposition}
     Пусть $\ideal{n}$~-- не простой идеал.
-    Тогда вероятность ответа "$\ideal{n}$ не простой" у алгоритма \ref{algorithm:miller_rabin} не менее $1/2$.
+    Тогда вероятность ответа "$\ideal{n}$ не простой" у алгоритма~$\ref{algorithm:miller_rabin}$ не менее $1/2$.
 \end{proposition}
 \begin{proof}
     Рассмотрим множество всех $a$, для которых алгоритм дает ответ "неизвестно".
@@ -1126,14 +1126,14 @@
 \end{proof}
 
 \begin{remark}
-    Если $\ideal{n}$~-- составной, то при выполнении алгоритма \ref{algorithm:miller_rabin} $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
+    Если $\ideal{n}$~-- составной, то при выполнении алгоритма~$\ref{algorithm:miller_rabin}$ $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
 \end{remark}
 
 \begin{remark}
     Доказанные критерии и алгоритмы можно использовать при генерации простых идеалов.
     Для кольца целых чисел они используются в алгоритме Гордона построения сильных простых чисел.
     Генерация простых идеалов является обязательной частью в криптосистеме RSA в дедекиндовых кольцах.
-    Такая криптосистема будет рассмотрена в главе~\ref{chapter:RSA-cryptosystem}.
+    Такая криптосистема будет рассмотрена в главе~$\ref{chapter:RSA-cryptosystem}$.
 \end{remark}
 
 \section{Вычислительная сложность алгоритма Миллера-Рабина}
@@ -1141,7 +1141,7 @@
 \begin{proposition}
     Пусть $K$ числовое поле и $R$ кольцо целых алгебраических элементов числового поля $K$.
     Пусть $\ideal{n} \subseteq R$ идеал кольца $R$.
-    Для того, чтобы использовать алгоритм~\ref{algorithm:solovay_strassen} для $\ideal{n}$ требуется полиномиальное относительно $\log^2 l(\ideal{n})$ количество арифметических операций в $\mathbb{Z}$.
+    Для того, чтобы использовать алгоритм~$\ref{algorithm:solovay_strassen}$ для $\ideal{n}$ требуется полиномиальное относительно $\log^2 l(\ideal{n})$ количество арифметических операций в $\mathbb{Z}$.
 \end{proposition}
 \begin{proof}
     В работе Ленстры~\cite{source:Lenstra_Jacobi} доказано, что существует полиномиальный алгоритм вычисления символа Якоби в числовых кольцах.
@@ -1150,11 +1150,11 @@
 
 \begin{proposition}
     Пусть $\ideal{n} \subseteq R$ идеал дедекиндового кольца $R$.
-    Для того, чтобы использовать алгоритм~\ref{algorithm:miller_rabin} для $\ideal{n}$ требуется $O(\log \Nm{\ideal{n}})$ арифметических операций.
+    Для того, чтобы использовать алгоритм~$\ref{algorithm:miller_rabin}$ для $\ideal{n}$ требуется $O(\log \Nm{\ideal{n}})$ арифметических операций.
 
     Пусть $K$ числовое поле и $R$ кольцо целых алгебраических элементов числового поля $K$.
     Пусть $\ideal{n} \subseteq R$ идеал кольца $R$.
-    Для того, чтобы использовать алгоритм~\ref{algorithm:miller_rabin} для $\ideal{n}$ требуется $\tilde{O}(\log^2 l(\ideal{n}))$ бинарных операций.
+    Для того, чтобы использовать алгоритм~$\ref{algorithm:miller_rabin}$ для $\ideal{n}$ требуется $\tilde{O}(\log^2 l(\ideal{n}))$ бинарных операций.
 \end{proposition}
 \begin{proof}
     Пусть $\Nm{\ideal{n}} = 2^t u$, где $(2, u) = 1$.
@@ -1168,8 +1168,8 @@
     Второе утверждение предложения следует из оценок сложностей операций над элементами и идеалами в кольце целых алгебраических элементов числового поля, которые были описаны ранее.
 \end{proof}
 
-\section*{Выводы по главе \ref{chapter:Primality}}
-\addcontentsline{toc}{section}{Выводы по главе \ref{chapter:Primality}}
+\section*{Выводы по главе~\ref{chapter:Primality}}
+\addcontentsline{toc}{section}{Выводы по главе~\ref{chapter:Primality}}
 
 В данной главе диссертации приведены основные определения и известные свойства алгебраических структур.
 Доказаны аналоги критериев Эйлера и Миллера в случае дедекиндовых колец.
