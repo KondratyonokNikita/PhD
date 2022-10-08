@@ -289,8 +289,6 @@
 % \vbadness=1000000
 % \hbadness=1000000
 
-\usepackage[
-    backend=biber,
-    style=alphabetic,
-    sorting=ynt
-]{biblatex}
+\usepackage[nocompress]{cite}
+\renewcommand{\citepunct}{;\penalty\citepunctpenalty%
+        \hskip.13emplus.1emminus.1em\relax}
