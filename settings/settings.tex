@@ -225,16 +225,16 @@
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
 % page number at the top of the page
-\usepackage{fancyhdr}
+% \usepackage{fancyhdr}
 
-\fancyhf{}
-\fancyheadoffset{0cm}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-\fancypagestyle{plain}{%
-\fancyhf{}%
-\fancyhead[C]{\fontsize{13pt}{13pt}\selectfont\thepage}%
-}
+% \fancyhf{}
+% \fancyheadoffset{0cm}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
+% \fancypagestyle{plain}{%
+% \fancyhf{}%
+% \fancyhead[C]{\fontsize{13pt}{13pt}\selectfont\thepage}%
+% }
 \pagestyle{plain}
 
 \usepackage{subfiles}
@@ -288,3 +288,9 @@
 % remove all underfull box notes
 % \vbadness=1000000
 % \hbadness=1000000
+
+\usepackage[
+    backend=biber,
+    style=alphabetic,
+    sorting=ynt
+]{biblatex}
