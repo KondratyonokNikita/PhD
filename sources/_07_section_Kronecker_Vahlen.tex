@@ -12,36 +12,33 @@
 \addcontentsline{toc}{chapter}{Глава \arabic{chapter} Теорема Кронекера-Валена в факториальных кольцах}
 
 \begin{definition}
-    Пусть $a$ и $b$ ненулевые элементы факториального кольца $R$.
-    Для любых $k \in \mathbb{N}$ и $q_1, \dots, q_k \in R$ обозначим
+    Пусть $R$ факториальное кольцо и $a, b \in R$.
+    Рассмотрим произвольные $k \in \mathbb{N}$ и $q_1, \dots, q_k \in R$.
+    Обозначим $r_{-1} = a$, $r_0 = b$, $r_i = r_{i-2} - q_i r_{i-1}$, для $i = 1, \dots, k$.
+    Выражение
     \begin{equation*}
-        \mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, r_0, \dots, r_{k-1}, r_k) \in R^{k+2},
+        \mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, r_0, \dots, r_{k-1}, r_k) \in R^{k+2}
     \end{equation*}
-    где $r_{-1} = a$, $r_0 = b$, $r_i = r_{i-2} - q_i r_{i-1}$, для $i = 1, \dots, k$.
-    Выражение $\mathcal{D}_{a, b}(q_1, \dots, q_k)$ будем называть цепочкой делений для $a, b \in R$.
-    Обозначим через $\mathcal{E}_{a, b}$ следующее множество:
-    \begin{equation*}
-        \mathcal{E}_{a, b} = \left\{
-        \mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, \dots, r_k) \big| r_1, \dots, r_{k-1} \in \zeroless{R}, r_k = 0
-        \right\}.
-    \end{equation*}
+    будем называть \emph{цепочкой делений} для $a, b \in R$.
 \end{definition}
 
 \begin{definition}
     Пусть $a$ и $b$ ненулевые элементы факториального кольца $R$.
-    Цепочкой делений с выбором минимального по норме остатка для $a, b \in R$ будем называть такую цепочку делений, что $q_i = \textrm{int}(r_{i-2}/r_{i-1})$ для любого $i = 1, \dots, k$.
+    Цепочкой делений с выбором минимального по норме остатка для $a, b \in R$ будем называть такую цепочку делений, что $q_i = \int{r_{i-2}/r_{i-1}}$ для любого $i = 1, \dots, k$.
 
     Если цепочка делений с выбором минимального по норме остатка существует, то обозначим через $\mathcal{L}_{a, b}$ ее длину.
     Если ее не существует, то обозначим $\mathcal{L}_{a, b} = \infty$.
 \end{definition}
 
 \begin{definition}
+    Пусть $a, b \in \zeroless{R}$.
     Обозначим через $\mathpzc{l}_{a, b}$ длину кратчайшей цепочки делений для $a, b \in \zeroless{R}$.
     \begin{equation*}
-        \mathpzc{l}_{a, b} = \begin{cases}
-            \min_{\mathcal{D}_{a, b}(q_1, \dots, q_k) \in \mathcal{E}_{a, b}} k, & \textrm{ если } \mathcal{E}_{a, b} \neq \emptyset\\
-            \infty, & \textrm{ если } \mathcal{E}_{a, b} = \emptyset
-        \end{cases}.
+        \mathpzc{l}_{a, b} = \min\left(
+            \left\{
+                k \big| \mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, \dots, r_k), r_k = 0
+            \right\} \cap \{\infty\}
+        \right)
     \end{equation*}
 \end{definition}
 
@@ -75,7 +72,7 @@
 \end{definition}
 
 \begin{definition}
-    Будем говорить, что $(x_0, \alpha, n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$ \emph{регулярная тройка}, если существуют
+    Будем говорить, что $(x_0, \alpha, n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$~--- \emph{регулярная тройка}, если существуют
     \begin{itemize}
         \item $p, l \in \mathbb{N}$, $p \le n$ и $l \le p+1$,
 
@@ -122,27 +119,30 @@
 \end{definition}
 
 \begin{lemma}\label{lemma:omega_and_euclidean_algorithm}
-    Пусть кольцо $R \in \mathcal{T}$.
-    Для любых $\alpha \in F_1$ и $k \in \mathbb{N}$ имеет место $(\alpha, k)$-разрешимость тогда и только тогда, когда $\omega^{(k-1)}(\alpha) = 0$.
+    Пусть $R \in \mathcal{T}$, $\alpha = m/n \in F_1$, $(m, n) = 1$ и $k \in \mathbb{N}$.
+    Тогда имеет место $(\alpha, k)$-разрешимость тогда и только тогда, когда $\omega^{(k-1)}(\alpha) = 0$.
 \end{lemma}
 \begin{proof}
-    Пусть $\alpha = m/n$, где $(m, n) = 1$.
     Если $\alpha = 0$ или $k = 1$, то утверждение леммы очевидно.
 
     Пусть $k = 2$.
-    Заметим, что $(\alpha, 2)$-разрешимость имеет место тогда и только тогда, когда $m \equiv \varepsilon \pmod{n}$ для некоторого $\varepsilon \in \invertible{R}$.
+    Из определения получаем, что $(\alpha, 2)$-разрешимость означает, что разрешимо уравнение
+    \begin{equation*}
+        \frac{m}{n} = x_1 + \frac{1}{x_2} = \frac{x_1 x_2 + 1}{x_2}.
+    \end{equation*}
+    Это уравнение разрешимо тогда и только тогда, когда $m \equiv \varepsilon \pmod{n}$ для некоторого $\varepsilon \in \invertible{R}$.
     Пусть $q \in R$ и $m = q n + \varepsilon$, тогда $m/n = \fr{m/n} = \fr{\varepsilon/n}$.
     Если $n \in \invertible{R}$, то $\fr{\varepsilon/n} = 0$ и утверждение леммы очевидно.
     Если $n \not\in \invertible{R}$, то $\fr{\varepsilon/n} = \varepsilon/n$ и $\omega(m/n) = \fr{n/\varepsilon} = 0$.
 
     Пусть $k \ge 3$.
     Докажем лемму индукцией по $k$.
-    Заметим, что $(\alpha, k)$-разрешимость имеет место тогда и только тогда, когда существует $z \in R$, что имеет место $((\alpha - z)^{-1}, k-1)$-разрешимость.
-    Таким образом надо показать, что $\omega^{(k-1)}(\alpha) = 0$ тогда и только тогда, когда существует $z \in R$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
-    Если $\omega^{(k-1)}(\alpha) = 0$, то по определению $\omega^{(k-2)}(\fr{\alpha^{-1}}) = 0$.
-    Если $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$ и $z = 0$, то по определению $\omega^{(k-1)}(\alpha) = 0$.
+    Заметим, что $(\alpha, k)$-разрешимость имеет место тогда и только тогда, когда существует $z \in R$, что имеет место $\left((\alpha - z)^{-1}, k-1\right)$-разрешимость.
+    Таким образом надо показать, что $\omega^{(k-1)}(\alpha) = 0$ тогда и только тогда, когда существует $z \in R$, что $\omega^{(k-2)}\left(\fr{(\alpha - z)^{-1}}\right) = 0$.
+    Если $\omega^{(k-1)}(\alpha) = 0$, то по определению $\omega^{(k-2)}\left(\fr{\alpha^{-1}}\right) = 0$.
+    Если $\omega^{(k-2)}\left(\fr{(\alpha - z)^{-1}}\right) = 0$ и $z = 0$, то по определению $\omega^{(k-1)}(\alpha) = 0$.
 
-    Предположим, что существует $z \neq 0$, что $\omega^{(k-2)}(\fr{(\alpha - z)^{-1}}) = 0$.
+    Предположим, что существует $z \neq 0$, что $\omega^{(k-2)}\left(\fr{(\alpha - z)^{-1}}\right) = 0$.
     Если $D_R \ge 3$ и $k \le D_R$, то обозначим $X = k-2$, иначе $X = D_R - 1$.
     Заметим, что $X \le k-2$.
     Из определения класса $\mathcal{T}$ следует, что тройка $(z, \alpha, X)$ регулярная.
@@ -156,26 +156,25 @@
     \end{equation*}
 
     Заметим, что $0 \le k-p-2 < k$, так как $p \le X \le k-2$.
-    Из предположения индукции и равенства $\omega^{(k-p-2)}(\beta_1) = 0$ следует, что имеет место $(\beta_1, k-p-1)$-разрешимость.
+    Из предположения индукции и равенства $\omega^{(k-p-2)}\left(\beta_1\right) = 0$ следует, что имеет место $\left(\beta_1, k-p-1\right)$-разрешимость.
     Из определения $\beta_i$ следует, что для любых $i = 1, \dots, l-1$ и $j \in \mathbb{N}$ из того, что имеет место $(\beta_i, j)$-разрешимость следует, что имеет место $(\beta_{i+1}, j+1)$-разрешимость.
-    Следовательно, имеет место $(\alpha^{(-1)^{\varepsilon}}, k-p+l-2)$-разрешимость.
-    Так как $k - p + l - 2 \le k - 1$, то по предположению индукции $\omega^{(k-p+l-3)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
-    Следовательно, $\omega^{(k-2)}(\fr{\alpha^{(-1)^{\varepsilon}}}) = 0$.
+    Следовательно, имеет место $\left(\alpha^{(-1)^{\varepsilon}}, k-p+l-2\right)$-разрешимость.
+    Так как $k - p + l - 2 \le k - 1$, то по предположению индукции $\omega^{(k-p+l-3)}\left(\fr{\alpha^{(-1)^{\varepsilon}}}\right) = 0$.
+    Следовательно, $\omega^{(k-2)}\left(\fr{\alpha^{(-1)^{\varepsilon}}}\right) = 0$.
     Тогда из определения $\omega$ получаем $\omega^{(k-1)}(\alpha) = 0$.
 \end{proof}
 
 \begin{lemma}\label{lemma:euclidean_algorithm_and_minima}
-    Пусть кольцо $R$ факториальное.
-    Тогда для любых двух элементов $a, b \in \zeroless{R}$ выполнено равенство
+    Пусть кольцо $R$ факториальное и $a, b \in \zeroless{R}$.
+    Тогда
     \begin{equation*}
         \mathcal{L}_{a, b} = \min\left\{
-            k \in \mathbb{N} \big| \omega^{(k-1)}\left(\frac{a}{b}\right) = 0
+            k \in \mathbb{N} \Big| \omega^{(k-1)}\left(\frac{a}{b}\right) = 0
         \right\},
     \end{equation*}
     где $\min \emptyset = \infty$.
 \end{lemma}
 \begin{proof}
-    Рассмотрим произвольные $a, b \in \zeroless{R}$.
     Предположим, что $\mathcal{L}_{a, b} = k < \infty$ и $\mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, r_0, \dots, r_k)$ это цепочка делений с выбором минимального по норме остатка.
 
     Из определения цепочки делений с выбором минимального по норме остатка следует, что
@@ -234,14 +233,13 @@
 \end{proof}
 
 \begin{theorem}\label{theorem:Kroneker_Vahlen_theorem_in_UFD}
-    Пусть $R \in \mathcal{T}$.
-    Тогда $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$ для всех $a, b \in \zeroless{R}$, или другими словами, цепочка делений с выбором минимального по норме остатка является кратчайшей.
+    Пусть $R \in \mathcal{T}$, $a, b \in \zeroless{R}$.
+    Тогда $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$.
 \end{theorem}
 \begin{proof}
-    Пусть $\mathpzc{l}_{a, b} = \infty$.
-    Тогда $\mathcal{L}_{a, b} = \infty$, так как иначе цепочка делений с выбором минимального по норме остатка имела бы длину меньше, чем кратчайшая.
+    Если $\mathpzc{l}_{a, b} = \infty$, то утверждение теоремы следует из определения кратчайшей цепочки делений.
 
-    Пусть $\mathpzc{l}_{a, b} = k < \infty$ и $\mathcal{D}_{a, b}(q_1, \dots, q_k) = (r_{-1}, r_0, \dots, r_k)$ кратчайшая цепочка делений.
+    Пусть $\mathpzc{l}_{a, b} = k < \infty$.
     Из леммы~\ref{lemma:omega_and_euclidean_algorithm} следует, что $\omega^{(k-1)}\left(\frac{a}{b}\right) = 0$.
     Тогда, по лемме~\ref{lemma:euclidean_algorithm_and_minima} получаем, что $\mathcal{L}_{a, b} \le k$.
     Следовательно, получаем $\mathcal{L}_{a, b} = \mathpzc{l}_{a, b}$.
@@ -372,7 +370,7 @@
     Следовательно, тройка $(x, \alpha, D_R - 1)$ регулярная.
 \end{proof}
 
-Используя доказанную выше лемму, сформулируем метод проверки включения $R \in \mathcal{S}$.
+Используя доказанную выше лемму, сформулируем метод проверки включения $R \in \mathcal{T}$.
 
 \begin{algorithm}\label{algorithm:R_in_S}
     На вход подается факториальное кольцо $R$.
@@ -401,17 +399,17 @@
             \right) \cup \invertible{R}
         \end{equation*}
         
-        \item Если $Y(x_0) \subseteq U(x_0)$ для всех $x_0 \in \zeroless{R} \setminus J$, то ответ ''$R \in \mathcal{S}$'', иначе ответ ''неизвестно''
+        \item Если $Y(x_0) \subseteq U(x_0)$ для всех $x_0 \in \zeroless{R} \setminus J$, то ответ ''$R \in \mathcal{T}$'', иначе ответ ''неизвестно''
     \end{enumerate}
 \end{algorithm}
 
 Докажем корректность этого алгоритма.
 
 \begin{proposition}
-    Если алгоритм~$\ref{algorithm:R_in_S}$ вернул ответ ''$R \in \mathcal{S}$'', то $R \in \mathcal{S}$.
+    Если алгоритм~$\ref{algorithm:R_in_S}$ вернул ответ ''$R \in \mathcal{T}$'', то $R \in \mathcal{T}$.
 \end{proposition}
 \begin{proof}
-    Предположим, что ответ ''$R \in \mathcal{S}$''.
+    Предположим, что ответ ''$R \in \mathcal{T}$''.
     Рассмотрим произвольный $x_0 \in \zeroless{R}$.
     Если $x_0 \in J$, то
     \begin{equation*}
@@ -436,9 +434,7 @@
 % \subsection{Примеры проверки $R \in \mathcal{T}$}
 
 \begin{example}\label{example:Z}
-    Пусть $R = \mathbb{Z}$.
-    Норма задана функцией $\elementnorm{x} = |x|$.
-    Дробная часть $\fr{\alpha} = \alpha - \left[\alpha + \frac{1}{2}\right]$.
+    Пусть $R = \mathbb{Z}$, норма $\elementnorm{x} = |x|$, дробная часть $\fr{\alpha} = \alpha - \left[\alpha + \frac{1}{2}\right]$.
     Тогда
     \begin{itemize}
         \item $J = \left\{x \in \mathbb{Z} \big| |x| > 1\right\}$
@@ -454,288 +450,375 @@
 \end{example}
 
 \begin{example}\label{example:P[t]}
-    Пусть $P$ поле.
-    Положим $R = \mathbb{P}[t]$.
-    Норма задана функцией $\upsilon(f)=\deg f$, $f \in \mathbb{P}[t]$.
-    Дробная часть $\textrm{fr}(m(t)/n(t))=r(t)/n(t)$, $m(t)\equiv r(t)(\textrm{mod}\ n(t))$, $\deg r < \deg n$, $m(t)/n(t) \in \mathbb{P}(t).$
-
+    Пусть $R = \mathbb{P}[t]$, где $\mathbb{P}$~--- поле, норма $\upsilon(f)=\deg f$, $f \in \mathbb{P}[t]$, дробная часть $\fr{m(t)/n(t)} = r(t)/n(t)$, $m(t)\equiv r(t) \pmod{n(t)}$, $\deg r < \deg n$, $m(t)/n(t) \in \mathbb{P}(t)$.
+    Тогда
     \begin{itemize}
-        \item $\mathbb{J}=\mathbb{K}_{*}$;
+        \item $J = \zeroless{R}$;
 
-        \item $\mathbb{K}_{*}\backslash\mathbb{J} = \emptyset$;
+        \item $\zeroless{R} \setminus J = \emptyset$;
     \end{itemize}
 
     Следовательно, $\mathbb{P}[t] \in \mathcal{S}$.
 \end{example}
 
 \begin{example}\label{example:coordinate_ring_of_circle}
-    Пусть $R$ координатное кольцо $\mathbb{Q}(i)[x, y]/(x^2 + y^2 + 1)$.
-    Известно, что $R$ изоморфно $\mathbb{Q}(i)[t,  t^{-1}]$, где отображение задано следующим образом
+    Пусть $R = \mathbb{Q}(i)[x, y]/(x^2 + y^2 + 1) \cong \mathbb{Q}(i)[t,  t^{-1}]$, где отображение задано следующим образом
     \begin{equation*}
         \begin{split}
             X \to \cos \theta \to \frac{e^{ix} + e^{-ix}}{2} \to \frac{t + t^{-1}}{2},\\
             Y \to \sin \theta \to \frac{-ie^{ix} + ie^{-ix}}{2} \to \frac{-it + it^{-1}}{2}
         \end{split}
     \end{equation*}
-    Так же известно, что $Q[i][t, t^{-1}]$ является факториальным кольцом.
+    Несложно показать, что $Q[i][t, t^{-1}]$ является факториальным кольцом.
     
-    Обратимыми элементами в этом кольце  являются одночлены вида $\alpha t^k$, где $\alpha\in\mathbb{Q}(i)$, $k\in\mathbb{Z}$.
-    Введем норму в этом кольце следующим образом
+    Определим функцию $\upsilon : R -> \mathbb{N} \cup \{0, -\infty\}$ следующим образом
+    Если $x \neq 0$, то
     \begin{equation*}
         \upsilon(x) = \upsilon\left(
             \sum_{i=k_1}^{k_2} \alpha_i t^i
         \right) = k_2 - k_1
     \end{equation*}
-    где $\alpha_i\in\mathbb{Q}(i)$, если $x \neq 0$ и $\upsilon(0) = -\infty$.
-    Проверим критерии.
-    Рассмотрим два элемента кольца
+    где $\alpha_i \in \mathbb{Q}(i)$.
+    Иначе, $\upsilon(0) = -\infty$.
+    Докажем, что $\upsilon$ это норма в $Q[i][t, t^{-1}]$.
+
+    Рассмотрим
     \begin{equation*}
-        \begin{split}
-            x = \sum_{i=k_1}^{k_2} \alpha_i t^i,\\
-            y = \sum_{i=l_1}^{l_2} \beta_i t^i
-        \end{split}
+        x' = \sum_{i=k_1}^{k_2} \alpha_i t^i,
+        y' = \sum_{i=l_1}^{l_2} \beta_i t^i
     \end{equation*}
-    При  умножении максимальная степень будет равна $k_2 + l_2$, а минимальная $k_1 + l_1$.
-    Тогда $\upsilon(xy) = k_2 + l_2 - k_1 - l_1 \ge k_2 - k_1$.
-    Это равенство будет выполняться только при $l_2 - l_1 = 0$.
-    А это будет означать, что $y\in\mathbb{I}$.
-    
-    Покажем, что $\textrm{fr}(\alpha) = \varepsilon^{-1}\textrm{fr}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
-    Предположим, что $\textrm{fr}\left(\frac{m}{n}\right) = \frac{r}{n}$.
-    Это означает, что $n | (m-r)$ и $r$ имеет минимальную норму из возможных.
-    Так как норма не меняется при умножении на обратимый элемент, то $\varepsilon r$ будет иметь минимальную норму, а так же $n | (\varepsilon m - \varepsilon r)$.
-    Следовательно, имеем $\textrm{fr}(\alpha) = \varepsilon^{-1}\textrm{fr}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
-    Тогда $\textrm{int}(\alpha) = \varepsilon^{-1}\textrm{int}(\varepsilon\alpha)$ для $\varepsilon\in\mathbb{I}$, $\alpha\in\mathbb{K}$.
-    
-    Заметим, что умножив $\textrm{int}((\alpha-x)^{-1})$ на некоторый обратимый элемент можно сделать так, что $\alpha$ принадлежит полю частных кольца многочленов, а $x$ это многочлен.
-    Тогда этот пример будет аналогичным примеру с многочленами.
-    Следовательно, для данного координатного кольца выполнен аналог теоремы Кронекера-Валена.
+
+    Пусть
+    \begin{equation*}
+        x'y' = \sum_{i=m_1}^{m_2} \gamma_i t^i
+    \end{equation*}
+
+    Тогда $m_2 = k_2 + l_2$, $m_1 = k_1 + l_1$.
+    Следовательно, $\upsilon(x'y') = k_2 + l_2 - k_1 - l_1 \ge k_2 - k_1 = \upsilon(x')$.
+    Пусть $\upsilon(x'y') = \upsilon(x)$, тогда $l_2 - l_1 = 0$.
+    Следовательно, $y' \in \invertible{R}$.
+
+    Пусть $m/n \in F$, $\varepsilon \in \invertible{R}$.
+    Предположим, что $\fr{\frac{m}{n}} = \frac{r}{n}$.
+    Это означает, что $n | (m - r)$ и $r$ имеет минимальную норму из возможных.
+    С другой стороны $n | (\varepsilon m - \varepsilon r)$ и $\upsilon(\varepsilon r) = \upsilon(r)$.
+    Из этого следует, что $\fr{\alpha} = \varepsilon^{-1}\fr{\varepsilon\alpha}$ для $\varepsilon \in \invertible{R}$, $\alpha \in F$.
+    Тогда $\int{\alpha} = \varepsilon^{-1}\int{\varepsilon\alpha}$ для $\varepsilon \in \invertible{R}$, $\alpha \in F$.
+
+    Пусть $\alpha \in F$, $x' \in R$.
+    Тогда существует $\varepsilon \in \invertible{R}$, что
+    \begin{equation*}
+        \varepsilon \int{\frac{1}{\alpha - x'}} = \int{\frac{1}{\beta - y'}},
+    \end{equation*}
+    где $y' \in \mathbb{Q}(i)[x]$, $\beta$ принадлежит полю частных $\mathbb{Q}(i)[x]$.
+    Следовательно, проверка $R \in \mathcal{S}$ сводится к проверке $\mathbb{Q}(i)[x] \in \mathcal{S}$, что верно.
 \end{example}
 
 \begin{example}\label{example:Z[t]}
-    Пусть $R = \mathbb{Z}[t]$, $\upsilon(f)=\deg f$, $f \in \mathbb{Z}[t]$.
-    Определим дробную часть в $\mathbb{F}=\mathbb{Z}(t)$ следующим образом.
-    Рассмотрим отображение $\mathcal{A}:\mathbb{F}/\mathbb{K}\to\mathbb{F}$:
+    Пусть $R = \mathbb{Z}[t]$, норма $\upsilon(f) = \deg f$, $f \in R$.
+
+    Рассмотрим отображение $f: F/R \to R$:
     \begin{equation*}
-        \mathcal{A}(\mathbb{A})=m(t)/n(t),
-    \end{equation*}
-    где $\mathbb{A}=\{m(t)/n(t)+q(t)|q(t)\in\mathbb{Z}[t]\}.$
-    Для произвольных $\mathbb{A}\in\mathbb{F}/\mathbb{K},$ $\alpha\in\mathbb{A}$ положим
-    \begin{equation*}
-        \begin{array}{c}
-            \textrm{int}(\alpha)=r(t),\\
-            \textrm{fr}(\alpha)=\mathcal{A}(\mathbb{A})-r(t),
-        \end{array}
-    \end{equation*}
-    где $r(t)\in\mathbb{Z}[t]$ и для любого $p(t)\in\mathbb{Z}[t]$
-    \begin{equation*}
-        \lim_{t\to+\infty}\left|\frac{\mathcal{A}(\mathbb{A})-r(t)}{\mathcal{A}(\mathbb{A})-p(t)}\right|\le 1.
+        f\left(
+            \left\{
+                \frac{m}{n} + q \Big| q \in R
+            \right\}
+        \right) = \frac{m}{n}.
     \end{equation*}
 
-    Докажем, что
+    Для произвольных $A \in F/R,$ $\alpha \in A$ положим
     \begin{equation*}
-        \mathbb{J}\supseteq\{f\in\mathbb{Z}[t]|\deg f>0\ \textrm{или}\ |f(t)|\equiv|x_{0}|>2\}.
+        \begin{split}
+            \int{\alpha} = r,\\
+            \fr{\alpha} = f(A) - r,
+        \end{split}
     \end{equation*}
-    Рассмотрим произвольные $\mathbb{A}\in\mathbb{F}/\mathbb{K}$ и $\alpha=m(t)/n(t)\in\mathbb{A}$, $\alpha=\textrm{fr}(\alpha)$.
+    где $r \in R$ и для любого $p \in R$
+    \begin{equation*}
+        \lim_{t \to +\infty}\left|
+            \frac{f(A) - r}{f(A) - p}
+        \right| \le 1.
+    \end{equation*}
 
-    Имеем два случая.
-    Предположим, что $\deg m > \deg n$.
-    Из того, что $\alpha=\textrm{fr}(\alpha)$ и определения дробной части следует, что
+    Рассмотрим произвольные $A \in F/R$ и $\alpha = m/n \in A$, $\fr{\alpha} = \alpha$.
+
+    Пусть $\deg m > \deg n$.
+    Предположим, что для некоторого $x_0 \in R$
     \begin{equation*}
-        1 \ge \lim_{t\to+\infty}\left|\frac{\frac{m(t)}{n(t)}}{\frac{m(t)}{n(t)} - p(t)}\right| = \lim_{t\to+\infty}\left|\frac{m(t)}{m(t) - n(t)p(t)}\right|.
+        \int{\left(
+            \frac{m}{n} - x_0
+        \right)^{-1}} = r \not\equiv 0.
     \end{equation*}
-    Следовательно, получаем, что для любых $p(t)\in \mathbb{Z}[t]$ выполнено $\deg m(t) \le \deg(m(t) - n(t)p(t))$.
-    Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0}(t)\in\mathbb{Z}[t]$.
     Тогда
     \begin{equation*}
         \begin{split}
-            \textrm{fr}((\alpha - x_{0})^{-1}) = (\alpha - x_0)^{-1} - r =\\
-            = \left(\frac{m}{n} - x_0\right)^{-1} - r = \frac{n}{m - x_0 n} - r =\\
-            = \frac{n - r(m - nx_{0})}{m - nx_{0}}.
+            \fr{\left(
+                \frac{m}{n} - x_0
+            \right)^{-1}} = \left(
+                \frac{m}{n} - x_0
+            \right)^{-1} - r =\\
+            = \frac{n}{m - n x_0} - r = \frac{n - r(m - n x_0)}{m - n x_0}.
         \end{split}
     \end{equation*}
-    Из того, что $\deg n < \deg m\le \deg(m-nx_{0})$ следует, что $\deg(n-r(m-nx_{0})) > \deg n$.
-    Однако выше показано, что $\deg(n-r(m-nx_{0})) < \deg n$, исходя из определения дробной части.
-    Получаем противоречие.
-    Следовательно, если $\deg m > \deg n$, то для любого $x_0 \in \mathbb{Z}[t]$ выполнено $\textrm{int}((\alpha-x_{0})^{-1}) = 0$.
+    Из того, что $\fr{\alpha} = \alpha$ следует, что
+    \begin{equation*}
+        1 \ge \lim_{t \to +\infty}\left|
+            \frac{\frac{m}{n}}{\frac{m}{n} - p}
+        \right| = \lim_{t \to +\infty}\left|
+            \frac{m}{m - n p}
+        \right|.
+    \end{equation*}
+    Следовательно, $\deg m \le \deg(m - n p)$ для любого $p \in R$.
+    Тогда $\deg n < \deg m \le \deg(m - n x_0)$ и $\deg(n - r(m - n x_0)) > \deg n$.
+    Но это противоречит определению дробной части.
+    Следовательно, если $\deg m > \deg n$, то для любого $x_0 \in R$ выполнено $\int{(\alpha - x_{0})^{-1}} = 0$.
 
-    Теперь предположим, что $\deg m \le \deg n$.
-    Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0}\in\mathbb{Z}[t]$, $\deg x_{0} > 0$.
-    Тогда $\deg(m-nx_{0}) > \deg n$.
-    Следовательно, имеем $\deg(n-r(m-nx_{0})) > \deg n$.
-    А это противоречит определению дробной части.
-    Следовательно, если $\deg m \le \deg n$, то для любого $x_{0}\in\mathbb{Z}[t]$, $\deg x_{0} > 0$ выполнено $\textrm{int}((\alpha-x_{0})^{-1}) = 0$.
+    Пусть $\deg m \le \deg n$.
+    Предположим, что для некоторого $x_0 \in R$, $\deg x_0 > 0$
+    \begin{equation*}
+        \int{\left(
+            \frac{m}{n} - x_0
+        \right)^{-1}} = r \not\equiv 0.
+    \end{equation*}
+    Из того, что $\deg x_0 > 0$ следует, что $\deg(m - n x_0) > \deg n$ и $\deg(n - r(m - n x_0)) > \deg n$.
+    Но это противоречит определению дробной части.
+    Следовательно, если $\deg m \le \deg n$, то для любого $x_0 \in \mathbb{Z}[t]$, $\deg x_0 > 0$ выполнено $\int{(\alpha - x_0)^{-1}} = 0$.
     
-    Предположим, что $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ для некоторого $x_{0} = c \in \mathbb{Z}\setminus\{0, \pm 1, \pm 2\}$.
-    Если $\deg m < \deg n$, то $\deg n < \deg(n-r(m-nc))$ или $r=const$.
-    Первый вариант противоречит определению дробной части.
-    Если $r=const$, то $\lim_{t\to+\infty}\left|\frac{n(t)-r(m(t)-n(t)c)}{n(t)}\right|=|1+rc|\ge2$, но это противоречит определению дробной части.
-    Таким образом имеем $\deg m=\deg n$.
-    Учитывая то, что $\alpha=\textrm{fr}(\alpha)$ и $\deg m=\deg n$ получаем $\lim_{t\to+\infty}\left|\frac{m(t)}{n(t)}\right|\le 0.5$.
-    Если $\deg r>0,$ то $ \deg n<\deg(n-r(m-nc)),$ но это противоречие.
-    Таким образом $r=const$ и
+    Предположим, что для некоторого $x_0 \equiv c \in \mathbb{Z} \setminus \{0, \pm 1, \pm 2\}$
+    \begin{equation*}
+        \int{\left(
+            \frac{m}{n} - x_0
+        \right)^{-1}} = r \not\equiv 0
+    \end{equation*}
+
+    Пусть $\deg m < \deg n$.
+    Тогда $\deg n < \deg(n - r(m - nc))$ или $r \in \mathbb{Z}$.
+    Если выполняется первое неравенство, то получаем противоречие с определением дробной части.
+    Если $r \in \mathbb{Z}$, то
+    \begin{equation*}
+        \lim_{t \to +\infty}\left|
+            \frac{n - r(m - n c)}{n}
+        \right| = |1 + r c| \ge 2,
+    \end{equation*}
+    Но это противоречит определению дробной части.
+
+    Пусть $\deg m = \deg n$.
+    Тогда
+    \begin{equation*}
+        \lim_{t \to +\infty}\left|
+            \frac{m}{n}
+        \right| \le 0.5.
+    \end{equation*}
+    Если $\deg r > 0$, то $\deg n < \deg(n - r(m - nc))$, но это противоречит определению дробной части.
+    Если $\deg r = 0$, то
     \begin{align*}
-        \lim_{t\to+\infty}\left|\frac{n(t)-r(m(t)-n(t)c)}{n(t)}\right| \ge |1+rc|-|r|/2 \ge\\
-        \ge |r|(|c|-1/2)-1 \ge \frac{3}{2},
+        \lim_{t \to +\infty}\left|
+            \frac{n - r(m - n c)}{n}
+        \right| \ge |1 + rc| - |r|/2 \ge\\
+        \ge |r|(|c| - 1/2) - 1 \ge \frac{3}{2},
     \end{align*}
     но это противоречит определению дробной части.
 
-    Таким образом $\mathbb{J}\supseteq\{f\in\mathbb{Z}[t]|\deg f>0\ \textrm{или}\ |f(t)|\equiv|x_{0}|>2\}$.
-    Если $x_{0}\equiv\pm2,$ то $\textrm{int}((\alpha-x_{0})^{-1})=r(t)\not\equiv0$ тогда и только тогда, когда $\deg m=\deg n$ и $r(t)\equiv\pm1$, откуда следует, что $\pm2\in\mathbb{J}$.
-    Несложно показать, что $0,\pm1\notin\mathbb{J}$.
+    Из этого получаем, что
+    \begin{equation*}
+        J \supseteq \left\{
+            f \in R \big| \deg f > 0 \textrm{ или } f \equiv x_0, |x_0| > 2
+        \right\}.
+    \end{equation*}
     
-    Тогда $\mathbb{K}_{*}\backslash\mathbb{J}\subseteq\{\pm1\}$.
-    Вычисляем $\mathbb{Y}(1)=\{-2,-1\}$, $\mathbb{Y}(-1)=\{1,2\}$ и $\mathbb{U}(1)=\{-2,-1,0,1\}$, $\mathbb{U}(-1)=\{-1,0,1,2\}$.
+    Пусть $x_0 \equiv \pm 2$.
+    Из этого следует, что $\int{(\alpha - x_0)^{-1}} = r \not\equiv 0$ тогда и только тогда, когда $\deg m = \deg n$ и $r \equiv \pm 1$.
+    Следовательно, $\pm 2 \in J$.
+    Несложно показать, что $0, \pm 1 \not\in J$.
+    
+    Тогда
+    \begin{equation*}
+        \zeroless{R} \setminus J \subseteq \{\pm1\}.
+    \end{equation*}
+
+    Вычисляем
+    \begin{equation*}
+        \begin{split}
+            Y(1) = \{-2, -1\}, Y(-1) = \{1, 2\},\\
+            U(1) = \{-2, -1, 0, 1\}, U(-1) = \{-1, 0, 1, 2\}.
+        \end{split}
+    \end{equation*}
 
     Следовательно, $\mathbb{Z}[t] \in \mathcal{S}.$
 \end{example}
 
 \begin{example}\label{example:a|b or b|a}
-    Пусть $R$ такое евклидово кольцо, что для любых $a,b\in\mathbb{K}$ или $a|b$, или $b|a$.
-    В этом случае $\mathbb{F}=\mathbb{K}\cup\{1/a|a\in\mathbb{K}_{*}\backslash\mathbb{I}\}$.
+    Пусть $R$ такое евклидово кольцо, что для любых $a, b \in R$ или $a|b$, или $b|a$.
+    В этом случае $F = R \cup \{1/a | a \in \zeroless{R} \setminus \invertible{R}\}$.
 
-    Докажем, что $\mathbb{J}=\mathbb{K}_{*}$.
-    Рассмотрим произвольный $\alpha\in\mathbb{F}_{1}^{*}$, тогда существует $b\in\mathbb{K}_{*}\backslash\mathbb{I}$ такой, что $\alpha=1/b$.
-    Пусть $x\in\mathbb{K}_{*}$.
-    Покажем, что $\textrm{int}((\alpha-x)^{-1}) = (\alpha-x)^{-1}$.
-    Имеем $(\alpha-x)^{-1}=\frac{b}{1-bx}$.
-    Предположим, что $\textrm{fr}(\frac{b}{1-bx}) \neq 0$, что эквивалентно утверждению, что $\frac{b}{1 - b x} = \frac{1}{c}$ для некоторого $c\in\mathbb{K}_{*}\backslash\mathbb{I}$.
-    Так как $b$ и $1 - b x$ взаимнопростые, то $b\in\mathbb{I}$.
-    Следовательно, имеем $\alpha-x=b^{-1}-x\in\mathbb{K}$.
-    Это означает, что $\alpha\in\mathbb{K}$, но это противоречит условию $\alpha \in \mathbb{F}_{1}^{*}$.
-    Таким образом, $x\ \textrm{int}((\alpha-x)^{-1})+1=\frac{1}{1-bx}$.
-    Предположим, что $1 - b x \in \mathbb{K}_{*}\backslash\mathbb{I}$.
-    Так как $b$ и $1-bx$ взаимнопростые, то $b|(1-bx)$.
-    Следовательно, $b\in\mathbb{I}$.
-    Из последнего следует, что $\alpha-x=b^{-1}-x\in\mathbb{K}$, но это противоречит условию $\alpha\in\mathbb{F}_{1}^{*}$.
-    Итого получаем $1-bx\in\mathbb{I}$.
-    Следовательно, $x\ \textrm{int}((\alpha-x)^{-1}) + 1 \in \mathbb{I}$.
+    Пусть $\alpha \in \zeroless{F_1}$, $x \in R$.
+    Существует такой $b \in \zeroless{R} \setminus \invertible{R}$, что $\alpha = 1/b$.
+    Следовательно, получаем
+    \begin{equation*}
+        (\alpha - x)^{-1} = \frac{b}{1 - b x}.
+    \end{equation*}
+    Предположим, что $\fr{\frac{b}{1 - bx}} \neq 0$.
+    Тогда $\frac{b}{1 - b x} = \frac{1}{c}$ для некоторого $c \in \zeroless{R} \setminus \invertible{R}$.
+    Следовательно, $b \in \invertible{R}$ и $\alpha - x = b^{-1} - x \in R$.
+    Это означает, что $\alpha \in R$, но это противоречит условию $\alpha \in \zeroless{F_1}$.
+    Следовательно, получаем
+    \begin{equation*}
+        x \int{(\alpha - x)^{-1}} + 1 = \frac{1}{1 - b x}.
+    \end{equation*}
+    Заметим, что выражение слева принадлежит $R$.
+    Следовательно, $\frac{1}{1 - b x} \in R$.
+    Тогда $1 - b x \in \invertible{R}$.
+    Следовательно, $x \int{(\alpha-x)^{-1}} + 1 \in \invertible{R}$.
     
-    Тогда $\mathbb{K}_{*}\backslash\mathbb{J} = \emptyset$.
-    Следовательно, $\mathbb{K}\in \mathcal{S}$.
+    Тогда $\zeroless{R} \setminus J = \emptyset$.
+    Следовательно, $R \in \mathcal{S}$.
 \end{example}
 
 Рассмотрим пример факториального кольца, не лежащего в $\mathcal{S}$, но лежащего в $\mathcal{T}$.
 
 \begin{example}\label{example:Z[i]}
     Пусть $R = \mathbb{Z}[i]$.
-    Покажем, что кольцо $\mathbb{Z}[i]$ не принадлежит $\mathcal{S}.$
-    Выберем $\alpha=\frac{9-4i}{20}$, $x=1$.
-    Тогда $\textrm{int}((\alpha-x)^{-1})=-2+i \notin \mathbb{I} \cup \{0\}$ и $x \ \textrm{int}((\alpha-x)^{-1})+1=-1+i \notin \mathbb{I}.$
+    Покажем, что $R \not\in \mathcal{S}$.
+    Выберем $\alpha = \frac{9 - 4i}{20}$, $x = 1$.
+    Тогда
+    \begin{equation*}
+        \begin{split}
+            \int{(\alpha-x)^{-1}} = -2+i \not\in \invertible{R} \cup \{0\},\\
+            x \int{(\alpha-x)^{-1}} + 1 = -1 + i \not\in \invertible{R}.
+        \end{split}
+    \end{equation*}
 
-    Покажем, что $\mathbb{K}\in\mathcal{T}$.
+    Покажем, что $R \in \mathcal{T}$.
     Заметим, что
     \begin{equation*}
-        \mathbb{F}_1 = \left\{
+        F_1 = \left\{
             z \in \mathbb{C} | Re(z), Im(z) \in \mathbb{Q} \cap [-1/2,1/2[
         \right\}.
     \end{equation*}
-    Положим $D_{\mathbb{K}}=3$ в определении множества $\mathcal{T}$.
+    Положим $D_R = 3$ в определении множества $\mathcal{T}$.
 
     Проверим первое условие из определения $\mathcal{T}$.
-    Рассмотрим произвольные $x_0\in\mathbb{Z}[i]\setminus\{0\}$ и $\alpha\in\mathbb{F}^*_1$.
-    Обозначим $b=\textrm{int}((\alpha-x_0)^{-1})$.
-    Пусть $p$~-- число из первого условия определения $\mathcal{T}$.
-    Если $\upsilon(x_0)>5$, то при $p=1$ имеем $\beta_1=\alpha$.
-    Если $b\in\mathbb{I}\cup\{0\}$, то для $p=1$ имеем $\beta_1=\textrm{fr}((\alpha-x_0)/(bx_0+1-\alpha))$, тогда $\beta_2=\alpha$.
-    Далее предполагаем, что $b\not\in\mathbb{I}\cup\{0\}$ и $\upsilon(x_0)\le 5$.
-    Заметим, что $\upsilon(x_0)\in\{1,2\}$.
-    Достаточно рассмотреть только случаи $x_0=1$ и $x_0=1+i$ (так как для любого такого $x_0$, что $\upsilon(x_0)\in\{1,2\}$, существует элемент такой $\varepsilon\in\mathbb{I}$, что $x_0=\varepsilon$ или $x_0=(1+i)\varepsilon$).
+    Рассмотрим произвольные $x_0 \in \zeroless{R}$ и $\alpha \in \zeroless{F_1}$.
+    Обозначим $b = \int{(\alpha - x_0)^{-1}}$.
+    Через $p$ обозначим соответствующее число из первого условия определения $\mathcal{T}$.
+    
+    Если $\upsilon(x_0) > 5$, то при $p = 1$ имеем $\beta_1 = \alpha$.
+    Если $b \in \invertible{R} \cup \{0\}$, то для $p = 1$ имеем $\beta_1 = \fr{(\alpha - x_0)/(b x_0 + 1 - \alpha)}$, тогда $\beta_2 = \alpha$.
 
-    Пусть $x_0=1+i$, тогда $b=-1+i$.
-    Положим $p=1$, и получим
+    Пусть $b \not\in \invertible{R} \cup \{0\}$ и $\upsilon(x_0) \le 5$.
+    Тогда $\upsilon(x_0) \in \{1, 2\}$ и достаточно рассмотреть случаи $x_0 = 1$ и $x_0=1+i$.
+
+    Пусть $x_0 = 1 + i$, тогда $b = -1 + i$.
+    Положим $p = 1$, и получим
     \begin{equation*}
-        \beta_1=\textrm{fr}((\alpha-(1+i))/(\alpha(1-i)-1)),\ \beta_2=\alpha^{-1}.
+        \beta_1 = \fr{\frac{\alpha - (1 + i)}{\alpha(1-i)-1}}, \beta_2 = \alpha^{-1}.
     \end{equation*}
 
-    Пусть $x_0=1$, тогда $b\in\{-2,-1\pm i,-2\pm i\}$.
+    Пусть $x_0 = 1$, тогда $b \in \{-2, -1 \pm i, -2 \pm i\}$.
 
-    Если $b=-2$, то для $p=1$ имеем
+    Если $b = -2$, то для $p = 1$ имеем
     \begin{equation*}
-        \beta_1=\textrm{fr}((\alpha-1)/(2\alpha-1)),\ \beta_2=\alpha^{-1}.
+        \beta_1 = \fr{\frac{\alpha - 1}{2\alpha - 1}}, \beta_2 = \alpha^{-1}.
     \end{equation*}
 
-    Если $b=-1\pm i$, то для $p=1$ имеем
+    Если $b = -1 \pm i$, то для $p = 1$ имеем
     \begin{equation*}
-        \beta_1=\textrm{fr}((\alpha-1)/(\alpha(1\mp i)\pm i)),\ \beta_2=\alpha^{-1}.
+        \beta_1 = \fr{\frac{\alpha - 1}{\alpha(1 \mp i) \pm i}}, \beta_2 = \alpha^{-1}.
     \end{equation*}
 
-    Пусть $b=-2+i$. Рассмотрим элемент
+    Пусть $b = -2 + i$. Рассмотрим элемент
     \begin{equation*}
-        \beta=\omega(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha-1)/(\alpha(2-i)-(1-i))).
+        \beta = \omega\left(
+            \fr{(\alpha - 1)^{-1}}
+        \right) = \fr{\frac{\alpha - 1}{\alpha(2 - i) - (1 - i)}}.
     \end{equation*}
 
     Заметим, что
     \begin{equation*}
-        \gamma=\textrm{int}((\alpha-1)/(\alpha(2-1)-(1-i)))\in\{1+i,1+2i,2+i,2+2i\}.
+        \gamma = \int{\frac{\alpha - 1}{\alpha(2 - 1) - (1 - i)}} \in \{1 + i, 1 + 2i, 2 + i, 2 + 2i\}.
     \end{equation*}
 
-    Если $\gamma=1+i$, то
+    Если $\gamma = 1 + i$, то
     \begin{equation*}
-        \beta=(1-\alpha(2+i))/(\alpha(2-i)-(1-i)).
+        \beta = \frac{1 - \alpha(2 + i)}{\alpha(2 - i) - (1 - i)}.
     \end{equation*}
 
-    Положим $p=2$, тогда имеем
+    Положим $p = 2$, тогда имеем
     \begin{equation*}
-        \begin{array}{c}
-            \beta_1=\omega^{(2)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha(2-i)-(1-i))/(1-\alpha(2+i))),\\
-            \beta_2=\alpha/(1-\alpha(2+i)),\\
-            \beta_3=\alpha^{-1}.
-        \end{array}
+        \begin{split}
+            \beta_1 = \omega^{(2)}\left(
+                \fr{(\alpha-1)^{-1}}
+            \right) = \fr{\frac{\alpha(2-i)-(1-i)}{1-\alpha(2+i)}},\\
+            \beta_2 = \frac{\alpha}{1-\alpha(2+i)},\\
+            \beta_3 = \alpha^{-1}.
+        \end{split}
     \end{equation*}
 
-    Если $\gamma=1+2i$, то
+    Если $\gamma = 1 + 2i$, то
     \begin{equation*}
-        \beta=((2+i)-\alpha(3+3i))/(\alpha(2-i)-(1-i)).
+        \beta = \frac{(2 + i) - \alpha(3 + 3i)}{\alpha(2 - i) - (1 - i)}.
     \end{equation*}
 
-    Положим $p=2$, тогда имеем
+    Положим $p = 2$, тогда имеем
     \begin{equation*}
-        \begin{array}{c}
-            \beta_1=\omega^{(2)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha(2-i)-(1-i))/((2+i)-\alpha(3+3i))),\\
-            \beta_2=\alpha/(1-\alpha(2+i)),\\
-            \beta_3=\alpha^{-1}.
-        \end{array}
+        \begin{split}
+            \beta_1 = \omega^{(2)}\left(
+                \fr{(\alpha-1)^{-1}}
+            \right) = \fr{\frac{\alpha(2 - i) - (1 - i)}{(2 + i) - \alpha(3 + 3i)}},\\
+            \beta_2 = \frac{\alpha}{1 - \alpha(2 + i)},\\
+            \beta_3 = \alpha^{-1}.
+        \end{split}
     \end{equation*}
 
-    Если $\gamma=2+i$, то
+    Если $\gamma = 2 + i$, то
     \begin{equation*}
-        \beta=((2-i)-4\alpha)/(\alpha(2-i)-(1-i)).
+        \beta = \frac{(2 - i) - 4\alpha}{\alpha(2 - i) - (1 - i)}.
     \end{equation*}
 
-    Положим $p=2$, тогда имеем
+    Положим $p = 2$, тогда имеем
     \begin{equation*}
-        \begin{array}{c}
-            \beta_1=\omega^{(2)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((\alpha(2-i)-(1-i))/((2-i)-4\alpha)),\\
-            \beta_2=\alpha/(1-\alpha(2+i)),\\
-            \beta_3=\alpha^{-1}.
-        \end{array}
+        \begin{split}
+            \beta_1 = \omega^{(2)}\left(
+                \fr{(\alpha-1)^{-1}}
+            \right) = \fr{\frac{\alpha(2 - i) - (1 - i)}{(2 - i) - 4\alpha}},\\
+            \beta_2 = \frac{\alpha}{1 - \alpha(2 + i)},\\
+            \beta_3 = \alpha^{-1}.
+        \end{split}
     \end{equation*}
 
-    Если $\gamma=2+2i$, то
+    Если $\gamma = 2 + 2i$, то
     \begin{equation*}
-        \beta=(3-\alpha(5+2i))/(\alpha(2-i)-(1-i)).
+        \beta = \frac{3 - \alpha(5 + 2i)}{\alpha(2 - i) - (1 - i)}.
     \end{equation*}
 
-    Положим $p=3$, тогда имеем
+    Положим $p = 3$, тогда имеем
     \begin{equation*}
-        \begin{array}{c}
-            \beta_1=\omega^{(3)}(\textrm{fr}((\alpha-1)^{-1}))=\textrm{fr}((3-\alpha(5+2i))/(2-2i-\alpha(5-2i))),\\
-            \beta_2=\alpha/(1-\alpha(2_i),\\
-            \beta_3=\alpha^{-1}.
-        \end{array}
+        \begin{split}
+            \beta_1 = \omega^{(3)}\left(
+                \fr{(\alpha-1)^{-1}}
+            \right) = \fr{\frac{3 - \alpha(5 + 2i)}{2 - 2i - \alpha(5 - 2i)}},\\
+            \beta_2 = \frac{\alpha}{1 - \alpha(2 - i)},\\
+            \beta_3 = \alpha^{-1}.
+        \end{split}
     \end{equation*}
 
-    Случай $b=-2-i$ аналогичен случаю $b=-2+i$.
+    Случай $b = -2 - i$ аналогичен случаю $b = -2 + i$.
 
     Проверим второе условие определения множества $\mathcal{T}$.
-    Рассмотрим произвольные $x_0\in\mathbb{Z}[i]\setminus\{0\}$ и $\alpha\in\mathbb{F}^*_1$, для которых выполнено равенство $\omega(\textrm{fr}((\alpha-x_0)^{-1}))=0$.
-    Так как во всех случаях, кроме $x_0=1$, $b=-2\pm i$, можно взять $D_{\mathbb{K}}=2$ вместо $D_{\mathbb{K}}=3$, то необходимо рассмотреть только случай $x_0=1$, $b=-2\pm i$.
-    Пусть $b=-2+i$, тогда из условия $\omega(\textrm{fr}((\alpha-x_0)^{-1}))=0$ следует, что $\alpha\in\{1/(2+i),(2+i)/(3+3i),(2-i)/4,3/(5+2i)\}$.
-    Для первого, второго и третьего элемента выполнено $\omega^{(2)}(\alpha)=0$.
-    Для четвертого элемента условие $\alpha=\textrm{fr}(\alpha)$ не выполняется.
-    Случай $b=-2-i$ аналогичен случаю $b=-2+i$.
-    Следовательно, $\mathbb{K}=\mathbb{Z}[i]$ не принадлежит классу $\mathcal{S}$, но принадлежит классу $\mathcal{T}$.
+    Пусть $x_0 \in \zeroless{R}$ и $\alpha \in \zeroless{F_1}$, для которых выполнено равенство $\omega\left(\fr{(\alpha - x_0)^{-1}}\right) = 0$.
+    Из того, что во всех  случаях кроме $x_0 = 1$, $b = -2 \pm i$, можно взять $D_R = 2$, то необходимо рассмотреть только случай $x_0 = 1$, $b = -2 \pm i$.
+
+    Пусть $b = -2 + i$, тогда
+    \begin{equation*}
+        \alpha \in \left\{
+            \frac{1}{2 + i}, \frac{2 + i}{3 + 3i}, \frac{2 - i}{4}, \frac{3}{5 + 2i}
+        \right\}.
+    \end{equation*}
+    Заметим, что $\omega^{(2)}(\alpha) = 0$ для всех элементов выше кроме $\frac{3}{5 + 2i}$, а $\fr{\frac{3}{5 + 2i}} \neq \frac{3}{5 + 2i}$.
+    Следовательно, второе условие определения множества $\mathcal{T}$ выполняется
+    Случай $b = -2 - i$ аналогичен случаю $b = -2 + i$.
+
+    Следовательно, $\mathbb{Z}[i] \in \mathcal{T}$.
 \end{example}
 
 В работе Роллетчека~\cite[с.~341]{source:Rolletschek_1990} приведен пример кольца, для которого цепочка делений с выбором минимального по норме остатка не является кратчайшей.
@@ -773,16 +856,17 @@
         
         \item Построить множество
         \begin{equation*}
-            \mathbb{J} = \left\{
+            J = \left\{
                 x_0 \in R \Bigg| \int{\frac{1}{\alpha-x_0}} \in \invertible{R} \cup \{0\} \forall \alpha \in \zeroless{F}
             \right\}
         \end{equation*}
         
-        \item Создать список $\mathbb{L}$, в котором будут храниться элементы из $R^i$, где $i \in \{1, \ldots, D_R - 1\}$
+        \item Создать список $L$, в котором будут храниться элементы из $R^i$, где $i \in \{1, \ldots, D_R - 1\}$
 
-        \item Вычислить $\mathbb{L}=\mathbb{K}^*\setminus\mathbb{J}$. Мы будем хранить элементы из $\mathbb{L}$, в которых более двух компонент в множестве $\mathbb{L}_M$
+        \item Вычислить $L = \zeroless{R} \setminus J$.
+        Мы будем хранить элементы из $L$, в которых более двух компонент в множестве $L_M$
 
-        \item\label{step:every_element_in_L} Выбрать элемент $(x_0, \ldots, x_l) \in \mathbb{L}$ и удалить его из $\mathbb{L}$
+        \item\label{step:every_element_in_L} Выбрать элемент $(x_0, \ldots, x_l) \in L$ и удалить его из $L$
 
         \item Вычислить
         \begin{equation*}
@@ -799,16 +883,16 @@
 
         \item Построить множество
         \begin{equation*}
-            \mathbb{A} = \left\{
+            A = \left\{
                 b \in R \big| b = \int{\delta}
             \right\}
         \end{equation*}
 
-        \item\label{step:every_element_in_A} Для каждого элемента $x_{l+1} \in \mathbb{A}$ выполнить
+        \item\label{step:every_element_in_A} Для каждого элемента $x_{l+1} \in A$ выполнить
         \begin{enumerate}
             \item Вычислить
             \begin{equation*}
-                \beta_1 = \omega^{(l+1)} \left(
+                \beta_1 = \omega^{(l+1)}\left(
                     \int{(\alpha-x_0)^{-1}}
                 \right) = \fr{(\delta-x_{l+1})^{-1}}
             \end{equation*}
@@ -823,38 +907,38 @@
 
             \item Если такие элементы не нашлись и $l+1 \ge D_R - 1$, то вернуть ''выберите большие $D_R$ и $M$'' и завершить алгоритм
             
-            \item Если такие элементы не нашлись и $l+1 < D_R - 1$, то добавить в множество $\mathbb{L}$ элемент $(x_0,\ldots,x_l,x_{l+1})$
+            \item Если такие элементы не нашлись и $l+1 < D_R - 1$, то добавить в множество $L$ элемент $(x_0,\ldots,x_l,x_{l+1})$
             
             \item Если такие элементы нашлись, то перейти к следующему элементу в шаге~\ref{step:every_element_in_A}
         \end{enumerate}
 
-        \item Если множество $\mathbb{L}$ не пустое, то выбрать другой элемент на шаге~\ref{step:every_element_in_L}
+        \item Если множество $L$ не пустое, то выбрать другой элемент на шаге~\ref{step:every_element_in_L}
         
-        \item Если множество $\mathbb{L}$ пустое и $D_R < 3$, то вернуть ''$R \in \mathcal{T}$'' и завершить алгоритм
+        \item Если множество $L$ пустое и $D_R < 3$, то вернуть ''$R \in \mathcal{T}$'' и завершить алгоритм
         
         \item Для всех $k \in [3, D_R]$
         \begin{enumerate}
             \item Построить множество
             \begin{equation*}
-                \mathbb{B} = \left\{
+                B = \left\{
                     \alpha \in \zeroless{F} \big| \omega^{(k-2)}\left(
                         \fr{(\alpha-x_0)^{-1}}
                     \right) = 0
                 \right\}
             \end{equation*}
 
-            \item Для всех $\alpha_0 \in \mathbb{B}$ попробовать найти такие $(\varepsilon_i) \in \invertible{R}$ и $(a_i), (b_i) \in R$, что $\elementnorm{a_i}, \elementnorm{b_i} \le M$ и
+            \item Для всех $\alpha_0 \in B$ попробовать найти такие $(\varepsilon_i) \in \invertible{R}$ и $(a_i), (b_i) \in R$, что $\elementnorm{a_i}, \elementnorm{b_i} \le M$ и
             \begin{equation*}
                 \begin{split}
-                    \beta_{i+1}=\frac{1}{\varepsilon_i \beta_i + a_i} + b_i,\\
-                    \beta_{k-1}=\alpha \textrm{ или } \beta_{k-1}=\alpha^{-1},
+                    \beta_{i + 1} = \frac{1}{\varepsilon_i \beta_i + a_i} + b_i,\\
+                    \beta_{k - 1} = \alpha \textrm{ или } \beta_{k-1} = \alpha^{-1},
                 \end{split}
             \end{equation*}
             где $\beta_1 = 0$
 
             \item Если такие элементы не были найдены, то вернуть ''выберите большие $D_R$ и $M$'' и завершить алгоритм
             
-            \item Если такие элементы были найдены и проверены все $x_0 \in \zeroless{\mathbb{L}}$, то вернуть ''$R \in \mathcal{T}$'' и завершить алгоритм
+            \item Если такие элементы были найдены и проверены все $x_0 \in L$, то вернуть ''$R \in \mathcal{T}$'' и завершить алгоритм
         \end{enumerate}
     \end{enumerate}
 \end{algorithm}
@@ -865,15 +949,15 @@
 \end{proposition}
 \begin{proof}
     Рассмотрим произвольный $x_0 \in R$.
-    Если $x_0 \in \mathbb{J}$, то тройка $(x_0, \alpha, D_R - 1)$ правильная для всех $\alpha \in \zeroless{F}$ и $D_R \in \mathbb{N}$.
+    Если $x_0 \in J$, то тройка $(x_0, \alpha, D_R - 1)$ правильная для всех $\alpha \in \zeroless{F}$ и $D_R \in \mathbb{N}$.
 
-    Рассмотрим множество $\mathbb{L}_1$ всех элементов, что добавлялись в $\mathbb{L}$.
-    Если $(x_0, \ldots, x_k) \in \mathbb{L}_1$, $(y_0, \ldots, y_l) \in \mathbb{L}_1$ и $x_i = y_i$ для всех $i = \overline{1,k}$, $k \le l$, то удалим $(x_0, \ldots, x_k)$ из $\mathbb{L}_1$.
+    Рассмотрим множество $L_1$ всех элементов, что добавлялись в $L$.
+    Если $(x_0, \ldots, x_k) \in L_1$, $(y_0, \ldots, y_l) \in L_1$ и $x_i = y_i$ для всех $i = \overline{1, k}$, $k \le l$, то удалим $(x_0, \ldots, x_k)$ из $L_1$.
 
     Зафиксируем $x_0$ и покажем, что тройка $(x_0, \alpha, D_R - 1)$ регулярная.
     Заметим, что, если тройка $(x_0, \alpha, k)$ регулярная, то тройка $(x_0, \alpha, k + i)$ регулярная для всех $i \in \mathbb{N}$.
 
-    Рассмотрим элемент $(x_0, \ldots, x_l) \in \mathbb{L}_1$.
+    Рассмотрим элемент $(x_0, \ldots, x_l) \in L_1$.
     Этот элемент генерирует множество таких элементов $\alpha$, что
     \begin{equation*}
         x_l = \left(
@@ -886,7 +970,7 @@
             \right)^{-1} - x_{l-1}
         \right)^{-1}.
     \end{equation*}
-    Очевидно, что все такие элементы $\mathbb{L}_1$ с фиксированным $x_0$ генерируют $\zeroless{F}$.
+    Очевидно, что все такие элементы $L_1$ с фиксированным $x_0$ генерируют $\zeroless{F}$.
     
     Так как ответ алгоритма ''$R \in \mathcal{T}$'', то тройка $(x_0, \alpha, D_R - 1)$ регулярная для всех $x_0, \alpha$.
     Следовательно, выполняется первая часть определения множества $\mathcal{T}$.
@@ -940,7 +1024,7 @@
     Для $\nu$ наименьшее такое число обозначим $l$.
     Далее будем полагать, что $l$ и $l_i$ известны для $K$.
     
-    С этими обозначениями, из работы \cite[с.~1413]{source:Lezowski} следует, что
+    Из работы \cite[с.~1413]{source:Lezowski} следует, что
     \begin{equation*}
         \mathcal{O}(\xi) = \left\{
             \overline{\nu}^m \prod\limits_{i=1}^r \overline{\varepsilon_i}^{m_i} \overline{\xi}:
@@ -997,15 +1081,14 @@
     Для любых $a, b \in \zeroless{\mathcal{O}_K}$ наименьший по норме остаток $r$ при делении $a$ на $b$ можно найти, используя алгоритм~$\ref{algorithm:least_norm_remainder}$, за $O(1)$ арифметических операций в $K$.
 \end{proposition}
 \begin{proof}
-    Из того, что
+    Множество $\textrm{Orb}(x)$ можно найти за $O(1)$ арифметических операций в $K$ так как
     \begin{equation*}
-        |\textrm{Orb}(x)| \le l\prod\limits_{i=1}^r l_i
+        |\textrm{Orb}(x)| \le l\prod\limits_{i=1}^r l_i.
     \end{equation*}
-    следует, что множество $\textrm{Orb}(x)$ можно найти за $O(1)$ арифметических операций в $K$.
-    Так же мощность множества $\mathcal{I}_{z, k}$ ограничена некоторой константой, зависящей только от $\Gamma(k)$.
-    Заметим, что $\Gamma(k)$ на зависит от $\frac{a}{b}$.
-    Так как функция $k \to \mathcal{M}_k$ неубывающая, из предложения~\ref{proposition:division_with_least_norm_remainder} следует, что цикл необходимо будет повторить не более двух раз.
-    Таким образом, можно заключить, что наименьший по норме остаток при делении $a$ на $b$ можно найти за $O(1)$ арифметических операций в $K$.
+
+    Заметим, что мощность множества $\mathcal{I}_{z, k}$ ограничена некоторой константой, зависящей только от $\Gamma(k)$, которая не зависит от $\frac{a}{b}$.
+    Из предложения~\ref{proposition:division_with_least_norm_remainder} и того, что функция $k \to \mathcal{M}_k$ неубывающая следует, что цикл необходимо будет повторить не более двух раз.
+    Следовательно, наименьший по норме остаток при делении $a$ на $b$ можно найти за $O(1)$ арифметических операций в $K$.
 \end{proof}
 
 % \subsection{Метод доказательства невыполнимости теоремы Кронекера-Валена}
