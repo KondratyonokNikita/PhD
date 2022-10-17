@@ -1472,18 +1472,21 @@
     Множество $E(d)$ замкнутое.
     Следовательно, существует такая точка $(x_0, y_0) \in E(d)$, что
     \begin{equation*}
+        \begin{split}
         r_{x_0} = \min_{\substack{
             \lambda \in V(\Lambda, 1),\\
             \lambda = \lambda_1 + \lambda_2 \sqrt{d}
         }} \left|
             (x_0 - \lambda_1)^2 - d(y_0 - \lambda_2)^2
-        \right| = \min_{\substack{
+        \right| =\\
+        = \min_{\substack{
             x \in E(d),\\
             \lambda \in V(\Lambda, 1),\\
             \lambda = \lambda_1 + \lambda_2 \sqrt{d}
         }} \left|
             (x - \lambda_1)^2 - d(y - \lambda_2)^2
         \right|.
+        \end{split}
     \end{equation*}
     Заметим, что $r_{x_0} < 1$, так как $E(d) \subseteq V(\Lambda, 1)$.
 
