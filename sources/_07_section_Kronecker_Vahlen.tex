@@ -24,10 +24,10 @@
 
 \begin{definition}
     Пусть $a$ и $b$ ненулевые элементы факториального кольца $R$.
-    Цепочкой делений с выбором минимального по норме остатка для $a, b \in R$ будем называть такую цепочку делений, что $q_i = \int{r_{i-2}/r_{i-1}}$ для любого $i = 1, \dots, k$.
+    Цепочку делений, для которой $q_i = \int{r_{i-2}/r_{i-1}}$ для любого $i = 1, \dots, k$, будем называть \emph{цепочкой делений с выбором минимального по норме остатка} для $a, b \in R$.
 
-    Если цепочка делений с выбором минимального по норме остатка существует, то обозначим через $\mathcal{L}_{a, b}$ ее длину.
-    Если ее не существует, то обозначим $\mathcal{L}_{a, b} = \infty$.
+    Через $\mathcal{L}_{a, b}$ обозначим длину цепочки делений с выбором минимального по норме остатка для $a, b \in R$, если она существует.
+    Если такой цепочки не существует, то будем считать, что $\mathcal{L}_{a, b} = \infty$.
 \end{definition}
 
 \begin{definition}
@@ -72,7 +72,7 @@
 \end{definition}
 
 \begin{definition}
-    Будем говорить, что $(x_0, \alpha, n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$~--- \emph{регулярная тройка}, если существуют
+    Будем говорить, что $(x_0, \alpha, n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$~-- \emph{регулярная тройка}, если существуют
     \begin{itemize}
         \item $p, l \in \mathbb{N}$, $p \le n$ и $l \le p+1$,
 
@@ -80,7 +80,7 @@
 
         \item $\varepsilon \in \{0, 1\}$,
     \end{itemize}
-    для которых выполнены следующие условия
+    для которых выполнены следующие равенства
     \begin{itemize}
         \item $\beta_1 = \omega^{(p)}\left(\fr{(\alpha - x_0)^{-1}}\right)$;
 
@@ -450,7 +450,7 @@
 \end{example}
 
 \begin{example}\label{example:P[t]}
-    Пусть $R = \mathbb{P}[t]$, где $\mathbb{P}$~--- поле, норма $\upsilon(f)=\deg f$, $f \in \mathbb{P}[t]$, дробная часть $\fr{m(t)/n(t)} = r(t)/n(t)$, $m(t)\equiv r(t) \pmod{n(t)}$, $\deg r < \deg n$, $m(t)/n(t) \in \mathbb{P}(t)$.
+    Пусть $R = \mathbb{P}[t]$, где $\mathbb{P}$~-- поле, норма $\upsilon(f)=\deg f$, $f \in \mathbb{P}[t]$, дробная часть $\fr{m(t)/n(t)} = r(t)/n(t)$, $m(t)\equiv r(t) \pmod{n(t)}$, $\deg r < \deg n$, $m(t)/n(t) \in \mathbb{P}(t)$.
     Тогда
     \begin{itemize}
         \item $J = \zeroless{R}$;
@@ -526,7 +526,7 @@
         \right) = \frac{m}{n}.
     \end{equation*}
 
-    Для произвольных $A \in F/R,$ $\alpha \in A$ положим
+    Для $A \in F/R,$ $\alpha \in A$ положим
     \begin{equation*}
         \begin{split}
             \int{\alpha} = r,\\
@@ -1021,8 +1021,8 @@
     	\right\}.
     \end{equation*}
     
-    Для каждого $1 \le i \le r$ существует такое положительное число $m$, что $\overline{\varepsilon_i}^m\overline{\xi} = \overline{\xi}$.
-    Обозначим $l_i$ наименьшее такое число.
+    Заметим, что для любого $1 \le i \le r$ существует такое $m > 0$, что $\overline{\varepsilon_i}^m\overline{\xi} = \overline{\xi}$.
+    Через $l_i$ обозначим наименьшее такое число.
     Для $\nu$ наименьшее такое число обозначим $l$.
     Далее будем полагать, что $l$ и $l_i$ известны для $K$.
     
@@ -1035,15 +1035,15 @@
     \end{equation*}
     и $\textrm{Orb}(\Phi(\xi)) = \{\Phi(\zeta):\zeta \in \mathcal{O}(\xi)\}$ для любого $\xi\in K$.
 
-    Предположим, что мы знаем такие $m$ и $m_i$ что $\varepsilon = \nu^m\prod_{i=1}^r \varepsilon_i^{m_i}$.
+    Предположим, что известны такие $m$ и $m_i$ что $\varepsilon = \nu^m\prod_{i=1}^r \varepsilon_i^{m_i}$.
     Так как $m$ и $m_i$ ограничены $l$ и $l_i$, то можно вычислить $\Phi(\varepsilon^{-1})$ за $O(1)$ арифметических операций.
 \end{proof}
 
 \begin{remark}
-    Для произвольного $x \in \Phi(K)$ и $z \in \textrm{Orb}(x)$ будем предполагать, что известно такое $\varepsilon_z \in \invertible{\mathcal{O}_K}$, что $z = \Phi(\overline{\varepsilon_z \Phi^{-1}(x)})$, и более того можно вычислить $\varepsilon_z^{-1}$ за $O(1)$ арифметических операций.
+    Пусть $x \in \Phi(K)$ и $z \in \textrm{Orb}(x)$.
+    Будем предполагать, что известно такое $\varepsilon_z \in \invertible{\mathcal{O}_K}$, что $z = \Phi(\overline{\varepsilon_z \Phi^{-1}(x)})$.
+    И будем предполагать, что существует алгоритм, который вычисляет $\varepsilon_z^{-1}$ за $O(1)$ арифметических операций.
 \end{remark}
-
-Используя доказанные выше утверждения, получаем следующий алгоритм.
 
 \begin{algorithm}\label{algorithm:least_norm_remainder}
     Дано числовое поле $K$ и два элемента $a, b \in \mathcal{O}_K$.
@@ -1077,26 +1077,24 @@
     \end{enumerate}
 \end{algorithm}
 
-Оценим вычислительную сложность этого алгоритма.
-
 \begin{proposition}
-    Для любых $a, b \in \zeroless{\mathcal{O}_K}$ наименьший по норме остаток $r$ при делении $a$ на $b$ можно найти, используя алгоритм~$\ref{algorithm:least_norm_remainder}$, за $O(1)$ арифметических операций в $K$.
+    Пусть $a, b \in \zeroless{\mathcal{O}_K}$.
+    Тогда алгоритм~$\ref{algorithm:least_norm_remainder}$ позволяет вычислить наименьший по норме остаток $r$ при делении $a$ на $b$ за $O(1)$ арифметических операций в $K$.
 \end{proposition}
 \begin{proof}
-    Множество $\textrm{Orb}(x)$ можно найти за $O(1)$ арифметических операций в $K$ так как
+    Множество $\textrm{Orb}(x)$ можно вычислить за $O(1)$ арифметических операций в $K$ так как
     \begin{equation*}
         |\textrm{Orb}(x)| \le l\prod\limits_{i=1}^r l_i.
     \end{equation*}
 
     Заметим, что мощность множества $\mathcal{I}_{z, k}$ ограничена некоторой константой, зависящей только от $\Gamma(k)$, которая не зависит от $\frac{a}{b}$.
-    Из утверждения~\ref{statement:division_with_least_norm_remainder} и того, что функция $k \to \mathcal{M}_k$ неубывающая следует, что цикл необходимо будет повторить не более двух раз.
-    Следовательно, наименьший по норме остаток при делении $a$ на $b$ можно найти за $O(1)$ арифметических операций в $K$.
+    Из утверждения~\ref{statement:division_with_least_norm_remainder} и того, что алгоритм надо повторить только если $\mathcal{M}_k > k$ следует, что таких повторов будет не более двух.
+    Итого получаем, что вычислительная сложность алгоритма~\ref{algorithm:least_norm_remainder} составляет $O(1)$ арифметических операций в $K$.
 \end{proof}
 
 % \subsection{Метод доказательства невыполнимости теоремы Кронекера-Валена}
 
-В этой части работы будет представлен метод автоматического доказательства невыполнимости теоремы Кронекера-Валена в кольце целых алгебраических элементов числового поля $K$.
-Метод доказательства приведен в алгоритме~\ref{algorithm:kronecker_vahlen_common}.
+Имея алгоритм деления с выбором минимального по норме остатка, можно сформулировать метод автоматического доказательства невыполнимости теоремы Кронекера-Валена в кольце целых алгебраических элементов числового поля $K$.
 
 \begin{algorithm}\label{algorithm:kronecker_vahlen_common}
     Дано числовое поле $K$.
@@ -1105,13 +1103,13 @@
     \begin{enumerate}
         \item Взять произвольные $a, b \in \mathcal{O}_K$;
 
-        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}_{a, b}$;
+        \item Вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}_{a, b}$, используя алгоритм~\ref{algorithm:least_norm_remainder};
 
         \item Найти такое $c \in \mathcal{O}_K$, что $a = bx + c$ для некоторого $x \in \mathcal{O}_K$;
 
-        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}'_{b,c}$;
+        \item Вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}'_{b,c}$, используя алгоритм~\ref{algorithm:least_norm_remainder};
 
-        \item Если $\textrm{len}(\mathcal{D}_{a, b}) > \textrm{len}(\mathcal{D}'_{b, c}) + 1$, то теорема Кронекера-Валена не выполняется в $K$.
+        \item Если $\textrm{len}(\mathcal{D}_{a, b}) > \textrm{len}(\mathcal{D}'_{b, c}) + 1$, то теорема Кронекера-Валена не выполняется в $\mathcal{O}_K$.
     \end{enumerate}
 \end{algorithm}
 
@@ -1126,19 +1124,19 @@
     \begin{enumerate}
         \item Взять произвольные $a, b \in \mathbb{Z}$;
 
-        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}_{a,b}$;
+        \item Вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}_{a,b}$, используя алгоритм~\ref{algorithm:least_norm_remainder};
 
         \item Вычислить остаток $c$ при делении $a$ на $b$;
 
-        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}'_{b, c}$;
+        \item Вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}'_{b, c}$, используя алгоритм~\ref{algorithm:least_norm_remainder};
 
         \item Если $\textrm{len}(\mathcal{D}_{a, b}) > \textrm{len}(\mathcal{D}'_{b, c}) + 1$, то теорема Кронекера-Валена не выполняется в $K$;
 
         \item Вычислить $c = a \% b - b$;
 
-        \item Используя алгоритм~\ref{algorithm:least_norm_remainder} вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}''_{b,c}$;
+        \item Вычислить цепочку делений с выбором минимального по норме остатка $\mathcal{D}''_{b,c}$, используя алгоритм~\ref{algorithm:least_norm_remainder};
 
-        \item Если $\textrm{len}(\mathcal{D}_{a, b}) > \textrm{len}(\mathcal{D}''_{b, c}) + 1$, то теорема Кронекера-Валена не выполняется в $K$;
+        \item Если $\textrm{len}(\mathcal{D}_{a, b}) > \textrm{len}(\mathcal{D}''_{b, c}) + 1$, то теорема Кронекера-Валена не выполняется в $\mathcal{O}_K$;
     \end{enumerate}
 \end{algorithm}
 
@@ -1152,27 +1150,8 @@
 \end{theorem}
 \begin{proof}
     Существует $16$ полей $K = \mathbb{Q}(\sqrt{d})$, удовлетворяющих условиям теоремы.
-    А именно
-    \begin{equation*}
-        \mathcal{O}_{\mathbb{Q}(\sqrt{2})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{3})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{5})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{6})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{7})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{11})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{13})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{17})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{19})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{21})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{29})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{33})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{37})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{41})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{57})},
-        \mathcal{O}_{\mathbb{Q}(\sqrt{73})},
-    \end{equation*}
     Используя код, приведенный в приложении Б, получаем контрпримеры для всех $\mathbb{Q}(\sqrt{d})$, которые опубликованы в работе~[\ref{source:JSC_2021}].
-    Для каждого кольце получаем следующие цепочки делений с выбором минимального по норме остатка и более короткие цепочки делений:
+    Для каждого кольца получаем следующие цепочки делений с выбором минимального по норме остатка и более короткие цепочки делений:
     \begin{itemize}
         \item $\mathcal{O}_{\mathbb{Q}(\sqrt{2})}$.
         Цепочки делений:

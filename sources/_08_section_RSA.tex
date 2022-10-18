@@ -73,12 +73,13 @@
     Пусть $b = a^{2^{j-1} u} \pmod{(N)}$.
     Из $b^2 \equiv 1 \pmod{(N)}$ и $b \not\equiv \pm 1 \pmod{(N)}$ следует, что $(b - 1, N)$~-- собственный делитель $N$.
 
-    Из утверждения~\ref{statement:GCD_Wikstrom} следует, что наибольший общий делитель $(b - 1, N)$ можно вычислить за полиномиальное относительно длины бинарной записи $N$ число арифметических операций в $\mathbb{Z}$.
+    Из утверждения~\ref{statement:GCD_Wikstrom} следует, что существует алгоритм, позволяющий вычислить $\textrm{НОД}(b - 1, N)$ за полиномиальное относительно длины бинарной записи $N$ число арифметических операций в $\mathbb{Z}$.
     
     Пусть $(N) = (p)(q)$, где $p, q$~-- простые элементы в $\mathcal{O}_K$.
     Положим $\varphi((p)) = 2^{v_1} u-1$, $\varphi((q)) = 2^{v_2} u_2$, где $v_1, v_2, u_1, u_2 \in \mathbb{N}$, $u_1, u_2$~-- нечетные.
     Обозначим $v = \min\{v_1, v_2\}$ и $K = (u, u_1)(u, u_2)$.
-    
+
+    Пусть $\alpha$ и $\beta$ примитивные элементы в $\invertible{\mathcal{O}_K / (p)}$ и $\invertible{\mathcal{O}_K / (q)}$ соответственно.
     Из свойств сравнений следует, что
     \begin{equation*}
         x^u \equiv 1 \pmod{(N)}
@@ -86,14 +87,13 @@
         \begin{cases}
             u \log_{\alpha} x \equiv 0 \pmod{\varphi((p))}\\
             u \log_{\beta} x \equiv 0 \pmod{\varphi((q))}
-        \end{cases},
+        \end{cases}
     \end{equation*}
-    где $\alpha$ и $\beta$ примитивные элементы в $\invertible{\mathcal{O}_K / (p)}$ и $\invertible{\mathcal{O}_K / (q)}$ соответственно.
-    Следовательно, это сравнение имеет $K$ решений.
+    Получаем, что сравнение $x^u \equiv 1 \pmod{(N)}$ имеет $K$ решений.
     
-    Рассмотрим сравнение $x^{2^j u} \equiv -1 \pmod{(N)}$, где $j \in \{0, \dots, t - 1\}$.
-    Если $j \ge v$, то решений нет.
-    Если $j < v$, то количество решений равно $4^j K$.
+    Пусть $j \in \{0, \dots, t - 1\}$.
+    Если $j \ge v$, то сравнение $x^{2^j u} \equiv -1 \pmod{(N)}$ не имеет решений.
+    Если $j < v$, то сравнение $x^{2^j u} \equiv -1 \pmod{(N)}$ имеет $4^j K$ решений.
     
     Следовательно, получаем, что
     \begin{equation*}
@@ -174,13 +174,15 @@
     \end{equation*}
 \end{theorem}
 \begin{proof}
-    Оценим вероятность $P\{rs | \textrm{ord}_{\invertible{R / \ideal{N}}}(y)\}$.
-
-    Так как $\invertible{R / \ideal{N}} \cong \invertible{R / \ideal{p}} \times \invertible{R / \ideal{q}}$ и группы $\invertible{R / \ideal{p}}$, $\invertible{R / \ideal{q}}$ циклические, то можно записать $y = (\alpha^i, \beta^j),$ где $\alpha$ и $\beta$ примитивные элементы $\invertible{R / \ideal{p}}$ и $\invertible{R / \ideal{q}}$ соответственно, $i$ и $j$ случайные величины со значениями в $\{1, \ldots, rk\}$ и $\{1, \ldots, s l\}$ соответственно.
+    Обозначим через $\alpha$ и $\beta$ примитивные элементы $\invertible{R / \ideal{p}}$ и $\invertible{R / \ideal{q}}$ соответственно.
+    Из того, что $\invertible{R / \ideal{N}} \cong \invertible{R / \ideal{p}} \times \invertible{R / \ideal{q}}$ и группы $\invertible{R / \ideal{p}}$, $\invertible{R / \ideal{q}}$ циклические следует, что $y = (\alpha^i, \beta^j)$, где $i$ и $j$ равномерно распределенные случайные величины со значениями в $\{1, \ldots, rk\}$ и $\{1, \ldots, s l\}$ соответственно.
     
-    Следовательно, получаем, что $\textrm{ord}_{\invertible{R / \ideal{N}}}(y) = \textrm{lcm}\left(\frac{rk}{(rk,i)}, \frac{sl}{(sl,j)}\right)$.
-    Если $r \nmid i$ и $s \nmid j$, то $\textrm{ord}_{\invertible{R / \ideal{N}}}(y) \vdots rs$.
-    Таким образом получаем
+    Тогда
+    \begin{equation*}
+        \textrm{ord}_{\invertible{R / \ideal{N}}}(y) = \textrm{lcm}\left(\frac{rk}{(rk,i)}, \frac{sl}{(sl,j)}\right).
+    \end{equation*}
+
+    Если $r \nmid i$ и $s \nmid j$, то $\textrm{ord}_{\invertible{R / \ideal{N}}}(y) \vdots rs$ и
     \begin{equation*}
         P\left\{
             rs \big| \textrm{ord}_{\invertible{R / \ideal{N}}}(y)
@@ -193,7 +195,7 @@
         \right).
     \end{equation*}
 
-    Так как $e \in \invertible{\mathbb{Z}_{rs}}$, то аналогично можно получить неравенство
+    Так как $e \in \invertible{\mathbb{Z}_{rs}}$, то аналогично получаем
     \begin{equation*}
         P\left\{
             r_1s_1|\textrm{ord}_{\mathbb{Z}^*_{rs}}(e)
@@ -204,7 +206,7 @@
         \right).
     \end{equation*}
 
-    Легко заметить, что $\textrm{ord}_{\invertible{R / \ideal{N}}}(y) | (e^{m_{e,y}}-1),$ следовательно, имеем
+    Из того, что $\textrm{ord}_{\invertible{R / \ideal{N}}}(y) | (e^{m_{e,y}}-1)$ следует, что
     \begin{equation*}
         \left\{
             rs | \textrm{ord}_{\invertible{R / \ideal{N}}}(y)
@@ -213,7 +215,7 @@
         \right\}.
     \end{equation*}
 
-    Следовательно, получаем
+    Итого
     \begin{equation*}
         \begin{split}
             P\left\{
@@ -238,15 +240,14 @@
     Пусть $e d - 1 = k\varphi(\ideal{N})$.
 
     Не нарушая общности, предположим, что $\Nm{\ideal{p}} \le \Nm{\ideal{q}}$.
-    Тогда $\Nm{\ideal{p}} \le (\Nm{\ideal{N}})^{1/2} \le \Nm{\ideal{q}} < 2\Nm{\ideal{p}} \le 2(\Nm{\ideal{N}})^{1/2}$.
-    Следовательно,
+    Тогда $\Nm{\ideal{p}} \le (\Nm{\ideal{N}})^{1/2} \le \Nm{\ideal{q}} < 2\Nm{\ideal{p}} \le 2(\Nm{\ideal{N}})^{1/2}$ и
     \begin{equation*}
         \Nm{\ideal{N}} - \varphi(\ideal{N}) = \Nm{\ideal{p}} + \Nm{\ideal{q}} - 1 < 3(\Nm{\ideal{N}})^{1/2} < 3(\Nm{\ideal{N}})^{1/2} \le \frac{\Nm{\ideal{N}}}{2}.
     \end{equation*}
 
     Тогда $\varphi(\ideal{N}) \in [\Nm{\ideal{N}}-3(\Nm{\ideal{N}})^{1/2}, \Nm{\ideal{N}}]$.
-    Разделим этот интервал на $6$ интервалов длины $\frac{1}{2}(\Nm{\ideal{N}})^{1/2}$ с центрами в точках $\Nm{\ideal{N}} - \frac{2i-1}{4}(\Nm{\ideal{N}})^{1/2}$, где $i \in \{1, \ldots, 6\}$.
-    Рассмотрим такое $i \in \{1, \ldots, 6\}$, что
+    Построим $6$ интервалов с длиной $\frac{1}{2}(\Nm{\ideal{N}})^{1/2}$ и центрами в точках $\Nm{\ideal{N}} - \frac{2i-1}{4}(\Nm{\ideal{N}})^{1/2}$, где $i \in \{1, \ldots, 6\}$.
+    Существует такое $i \in \{1, \ldots, 6\}$, что
     \begin{equation*}
         \left|
             \Nm{\ideal{N}}-\frac{2i-1}{4}(\Nm{\ideal{N}})^{1/2}-\varphi(\ideal{N})
@@ -335,7 +336,7 @@
     \end{equation*}
     
     Следовательно, если $\Nm{\ideal{N}} \ge 3$, то $W^{\frac{3}{2}} > XY$.
-    Тогда, используя теорему Копперсмита, мы можем найти корень $(x_0, y_0)$ за полиномиальное относительно $\log W$ время.
+    Тогда, используя теорему Копперсмита, можно вычислить корень $(x_0, y_0)$ за полиномиальное относительно $\log W$ время.
     Корень $(x_0, y_0)$ позволяет найти $\Nm{\ideal{p}}$ и $\Nm{\ideal{q}}$.
 \end{proof}
 
@@ -365,7 +366,7 @@
     \end{equation*}
 
     Из $e_1, e_2 > 0$ следует, что $s_1 < 0$ или $s_2 < 0$.
-    Не нарушая общности, предположим, что $s_2 < 0$.
+    Так как эти случаи равнозначны, то предположим, что $s_2 < 0$.
     Вычисление $c_2^{-1} \pmod{N}$ эквивалентно нахождению решения уравнения $c_2 x + N y = (c_2, N)$.
     Тогда, используя равенство $c_2^{s_2} = (c_2^{-1})^{|s_2|}$, можно вычислить значение $m$.
 
@@ -377,7 +378,7 @@
     Если $(c_2, N) = 1$, то надо решить уравнение $c_2 x + N y = 1$.
     Из теоремы~\ref{theorem:euclidean_and_lambda} следует, что его можно решить за полиномиальное относительно $\log \upsilon(N)$ количество арифметических операций в $R$.
 
-    Следовательно сообщение $m$ можно вычислить за полиномиальное относительно $\log \upsilon(N)$ количество арифметических операций в $R$.
+    Следовательно, существует алгоритм, позволяющий вычислить $m$ за полиномиальное относительно $\log \upsilon(N)$ количество арифметических операций в $R$.
 \end{proof}
 
 \begin{remark}
