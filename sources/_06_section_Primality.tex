@@ -310,8 +310,8 @@
 \end{definition}
 
 Через $(\sigma_i)_{1 \le i \le n}$ обозначим вложения $K$ в $\mathbb{C}$.
-Пусть $\sigma_i$ для $1 \le i \le r_1$ является действительным, а для $r_1 < i < r_1 + r_2$ мнимым и $\sigma_{i+r_2} = \overline{\sigma_{i}}$.
-Определим функцию $\Phi(x): K \to \mathbb{R}^n$ следующим образом
+Пусть $\sigma_i \in \mathbb{R}$ для $1 \le i \le r_1$ и $\sigma_{i+r_2} = \overline{\sigma_{i}}$ для $r_1 < i < r_1 + r_2$.
+Определим $\Phi(x): K \to \mathbb{R}^n$ следующим образом
 \begin{equation*}
     \Phi(x) = \left(
         \sigma_1(x), \ldots, \sigma_{r_1}(x),
@@ -331,15 +331,13 @@
     \end{cases}
 \end{equation*}
 
-Обозначим через $\mathcal{N}:\mathbb{R}^n \to \mathbb{R}$ норму в $\mathbb{R}^n$.
-По определению считаем, что
+Определим $\mathcal{N}:\mathbb{R}^n \to \mathbb{R}$ следующим образом
 \begin{equation*}
     \mathcal{N}(x) = \prod\limits_{i=1}^{r_1} x_i \prod\limits_{i=r_1+1}^{r_1+r_2} (x_i^2 + x_{i+r_2}^2).
 \end{equation*}
 
-Заметим, что для любых $x, y\in \mathbb{R}^n$ выполнено $\mathcal{N}(xy) = \mathcal{N}(x)\mathcal{N}(y)$.
-А так же для любых $\xi\in K$ выполнено $N_{K/\mathbb{Q}}(\xi) = \mathcal{N}(\Phi(\xi))$.
-Далее можно определить $\elementnorm{\cdot}: \mathcal{O}_K \to \mathbb{N} \cup \{0, -\infty\}$ следующим образом.
+Из определения следует, что $\mathcal{N}(xy) = \mathcal{N}(x)\mathcal{N}(y)$ для любых $x, y\in \mathbb{R}^n$ и $N_{K/\mathbb{Q}}(\xi) = \mathcal{N}(\Phi(\xi))$ для любых $\xi \in K$.
+Определим $\elementnorm{\cdot}: \mathcal{O}_K \to \mathbb{N} \cup \{0, -\infty\}$ следующим образом.
 \begin{equation*}
     \elementnorm{\xi} = \begin{cases}
         -\infty & \textrm{ если } x = 0,\\
@@ -395,14 +393,8 @@
 \end{statement}
 
 \begin{definition}
-    Для всех $1 \le i \le n$ обозначим
-    \begin{equation*}
-        \Gamma_i = \prod\limits_{j=1}^r \max\left\{
-            |\sigma_i(\varepsilon_j)|, \frac{1}{|\sigma_i(\varepsilon_j)}
-        \right\}.
-    \end{equation*}
-
-    А так же определим
+    Пусть $k > 0$.
+    Обозначим
     \begin{equation*}
         \Gamma(k) =
         \begin{cases}
@@ -414,12 +406,16 @@
             \right)^{\frac{1}{n}} k^{\frac{1}{n}},\ \textrm{иначе},
         \end{cases}
     \end{equation*}
-    где $k>0$.
+    где
+    \begin{equation*}
+        \Gamma_i = \prod\limits_{j=1}^r \max\left\{
+            |\sigma_i(\varepsilon_j)|, \frac{1}{|\sigma_i(\varepsilon_j)}
+        \right\}.
+    \end{equation*}
 \end{definition}
 
 \begin{statement}\label{statement:division_with_least_norm_remainder} \cite[с.~1403]{source:Lezowski} 
-    Пусть $x \in \Phi(K)$ и $k > 0$.
-    Для каждого $z \in \textrm{Orb}(x)$ обозначим
+    Для $x \in \Phi(K)$, $k > 0$, $z \in \textrm{Orb}(x)$ обозначим
     \begin{equation*}
         \mathcal{I}_{z, k} = \{Z \in \Phi(\mathcal{O}_K): |z_i-Z_i| \le \Gamma(k) \forall i, 1 \le i \le n\},
     \end{equation*}
@@ -427,7 +423,8 @@
         \mathcal{M}_k = \min\limits_{z \in \textrm{Orb}(x)} \min\limits_{Z \in \mathcal{I}_{z, k}} |\mathcal{N}(z-Z)|.
     \end{equation*}
 
-    Тогда, если $\mathcal{M}_k \le k$, то $m_{\overline{K}}(x) = \mathcal{M}_k$.
+    Пусть $\mathcal{M}_k \le k$.
+    Тогда $m_{\overline{K}}(x) = \mathcal{M}_k$.
 \end{statement}
 
 \begin{definition}
