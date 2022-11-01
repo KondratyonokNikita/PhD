@@ -45,25 +45,6 @@
     \end{block}
 \end{frame}
 
-\begin{frame}
-    \begin{block}{Дедекиндово кольцо}
-        Коммутативное кольцо с единицей и без делителей нуля, в котором любой ненулевой идеал раскладывается в конечное произведение простых идеалов единственным образом с точностью до перестановки множителей.
-    \end{block}
-
-    \begin{block}{Примеры}
-        \begin{itemize}
-            \item Кольцо целых алгебраических чисел
-            
-            \item Координатные кольца $K[x, y]/(f)$, где $f \in K[x, y]$
-            \begin{itemize}
-                \item $K[x, y]/(y - mx - b) \cong K[x]$
-                \item $\mathbb{C}[x, y]/(x^2 + y^2 - 1) \cong \mathbb{C}[x, x^{-1}]$
-                \item $\mathbb{Q}[x, y]/(x^2 + y^2 - 1) \not\cong \mathbb{Q}[x]$
-            \end{itemize}
-        \end{itemize}
-    \end{block}
-\end{frame}
-
 \section{Тестирование идеалов на простоту}
 
 \subsection{Определение условия A}
@@ -189,32 +170,6 @@
 
 \section{Теорема Кронекера-Валена}
 
-\subsection{Введение}
-
-\begin{frame}
-    \begin{block}{Алгоритм Евклида и цепочки делений в факториальных кольцах}
-        \begin{itemize}
-            \item $a = 8$, $b = 5$
-            
-            \item $8 = 1\cdot 5 + 3,$ $5 =  1\cdot 3+2,$ $3=1\cdot 2+1,$ $2=2\cdot 1+0$ $\Rightarrow$ $l_{a,b}=4$
-            
-            \item $8=2\cdot 5+(-2),$ $5=(-2)\cdot (-2)+1,$ $-2=(-2)\cdot 1+0$ $\Rightarrow$ $l_{a,b}=3$
-        \end{itemize}
-    \end{block}
-
-    \begin{block}{Теорема Кронекера-Валена (1901)}
-        Для любых $a,$ $b\in \mathbb{N}$ алгоритм Евклида с выбором наименьших по абсолютной величине остатков на каждом шаге имеет минимальную длину.
-    \end{block}
-    
-    \begin{block}{Аналоги теоремы Кронекера-Валена}
-        \begin{itemize}
-            \item верна в кольце многочленов над полем (Lazard, 1977)
-            
-            \item верна в кольце целых алгебраических чисел $\mathcal{O}_{\mathbb{Q}(\sqrt{d})}$, где $d<0, d \neq -11$ (Rolletschek, 1990)
-        \end{itemize}
-    \end{block}
-\end{frame}
-
 \begin{frame}
     \begin{block}{Регулярная тройка $(x_{0},\alpha,n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$}
         \begin{itemize}
@@ -317,51 +272,12 @@
     \end{block}
 \end{frame}
 
-\begin{frame}
-    \begin{block}{Лемма о длине цепочки делений с выбором минимального по норме остатка}
-        Пусть кольцо $R$ факториальное.
-        Тогда для любых двух элементов $a, b \in \zeroless{R}$ выполнено равенство
-        \begin{equation*}
-            \mathcal{L}_{a, b} = \min\left\{
-                k \in \mathbb{N} \big| \omega^{(k-1)}\left(\frac{a}{b}\right) = 0
-            \right\},
-        \end{equation*}
-        где $\min \emptyset = \infty$.
-    \end{block}
-
-    \begin{block}{$(\alpha, k)$-разрешимость}
-        Для $\alpha\in\mathbb{F}_1$ и $k\in\mathbb{N}$ существуют $x_{1},\ldots,x_{k}\in\mathbb{K}$ такие, что
-        \begin{eqnarray*}
-            \alpha = [x_{1}:x_{2}:\ldots:x_{k}] = x_{1} + \frac{1}{
-                x_{2} + \frac{1}{
-                    \dots + \frac{1}{x_{k}}
-                }
-            }
-        \end{eqnarray*}
-    \end{block}
-
-    \begin{block}{Лемма о $(\alpha, k)$-разрешимости}
-        Пусть кольцо $R \in \mathcal{T}$.
-        Для любых $\alpha \in F_1$ и $k \in \mathbb{N}$ имеет место $(\alpha, k)$-разрешимость тогда и только тогда, когда $\omega^{(k-1)}(\alpha) = 0$.
-    \end{block}
-\end{frame}
-
 \subsection{Класс колец, для которых теорема Кронекера-Валена верна}
 
 \begin{frame}
     \begin{block}{Аналог теоремы Кронекера-Валена в факториальных кольцах}
         Пусть $\mathbb{K}\in\mathcal{T}$.
         Тогда $\mathcal{L}_{a,b}=\mathpzc{l}_{a,b}$ для любых $a,b\in\mathbb{K}_{*}$.
-    \end{block}
-    
-    \begin{block}{Идея доказательства}
-        \begin{itemize}
-            \item $\mathpzc{l}_{a,b} = k < \infty$ $\Rightarrow$ $(a/b, k)$-разрешимо $\Rightarrow$ $(\textrm{fr}(a/b), k)$-разрешимо
-            
-            \item $\omega^{(k-1)}(\textrm{fr}(a/b)) = 0$
-            
-            \item $\mathcal{L}_{a,b}=\textrm{min}\{r\in\mathbb{N}|\omega^{(r-1)}(\textrm{fr}(a/b))=0\}\le k=\mathpzc{l}_{a,b}$
-        \end{itemize}
     \end{block}
 
     \begin{block}{Аналог теоремы Ламе в факториальных кольцах}
@@ -563,6 +479,8 @@
 \begin{frame}{Материалы конференций}
     \begin{small}
         \begin{enumerate}
+            \setcounter{enumi}{7}
+
             \item Кондратёнок Н.В., Васьковский М.М. Цепные дроби в евклидовых кольцах. {\it Материалы XVI Республиканской научной конференции студентов и аспирантов.} 2013. Ч.~1. С.~63-64.
             
             \item Васьковский М.М., Кондратёнок Н.В., Прохоров Н.П. Тест Соловея-Штрассена в квадратичных евклидовых кольцах. {\it Материалы международной научной конференции ''XII Белорусская математическая конференция''.} 2016. Ч.~5. С.~15-16
