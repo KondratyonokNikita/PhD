@@ -183,10 +183,7 @@
 
 \textbf{Определение 3.8}
     Обозначим $[x_1: x_2: \dots: x_k] = x_{1} + 1/(x_{2} + 1/(x_{3} + 1/(\dots + x_k)))$.
-    Будем говорить, что для $\alpha \in F$ и $k \in \mathbb{N}$ имеет место $(\alpha, k)$-разрешимость, если разрешимо уравнение
-    \begin{equation*}
-        \alpha = [x_1: x_2: \dots: x_k].
-    \end{equation*}
+    Будем говорить, что для $\alpha \in F$ и $k \in \mathbb{N}$ имеет место $(\alpha, k)$-разрешимость, если разрешимо уравнение $\alpha = [x_1: x_2: \dots: x_k]$.
 
 \textbf{Теорема 3.1}\label{theorem:Kroneker_Vahlen_theorem_in_UFD}
     Пусть $R \in \mathcal{T}$, $a, b \in \zeroless{R}$.
@@ -277,29 +274,13 @@
             \right)^{-1}
         \end{equation*}
 
-        \item Построить множество
-        \begin{equation*}
-            A = \left\{
-                b \in R \big| b = \int{\delta}
-            \right\}
-        \end{equation*}
+        \item Построить множество $A = \left\{b \in R \big| b = \int{\delta}\right\}$
 
         \item\label{step:every_element_in_A} Для каждого элемента $x_{l+1} \in A$ выполнить
         \begin{enumerate}
-            \item Вычислить
-            \begin{equation*}
-                \beta_1 = \omega^{(l+1)}\left(
-                    \int{(\alpha-x_0)^{-1}}
-                \right) = \fr{(\delta-x_{l+1})^{-1}}
-            \end{equation*}
+            \item Вычислить $\beta_1 = \omega^{(l+1)}\left(\int{(\alpha-x_0)^{-1}}\right) = \fr{(\delta-x_{l+1})^{-1}}$
 
-            \item Попробовать найти такие $(\varepsilon_i) \in \invertible{R}$ и $(a_i), (b_i) \in R$, что $\elementnorm{a_i},\elementnorm{b_i} \le M$ и
-            \begin{equation*}
-                \begin{split}
-                    \beta_{i+1}=\frac{1}{\varepsilon_i \beta_i + a_i} + b_i,\\
-                    \beta_{l+2}=\alpha \textrm{ или } \beta_{l+2}=\alpha^{-1}
-                \end{split}
-            \end{equation*}
+            \item Попробовать найти такие $(\varepsilon_i) \in \invertible{R}$ и $(a_i), (b_i) \in R$, что $\elementnorm{a_i},\elementnorm{b_i} \le M$ и $\beta_{i+1}=\frac{1}{\varepsilon_i \beta_i + a_i} + b_i$, $\beta_{l+2}=\alpha \textrm{ или } \beta_{l+2}=\alpha^{-1}$.
 
             \item Если такие элементы не нашлись и $l+1 \ge D_R - 1$, то вернуть ''выберите большие $D_R$ и $M$'' и завершить алгоритм
             
@@ -323,14 +304,7 @@
                 \right\}
             \end{equation*}
 
-            \item Для всех $\alpha_0 \in B$ попробовать найти такие $(\varepsilon_i) \in \invertible{R}$ и $(a_i), (b_i) \in R$, что $\elementnorm{a_i}, \elementnorm{b_i} \le M$ и
-            \begin{equation*}
-                \begin{split}
-                    \beta_{i + 1} = \frac{1}{\varepsilon_i \beta_i + a_i} + b_i,\\
-                    \beta_{k - 1} = \alpha \textrm{ или } \beta_{k-1} = \alpha^{-1},
-                \end{split}
-            \end{equation*}
-            где $\beta_1 = 0$
+            \item Для всех $\alpha_0 \in B$ попробовать найти такие $(\varepsilon_i) \in \invertible{R}$ и $(a_i), (b_i) \in R$, что $\elementnorm{a_i}, \elementnorm{b_i} \le M$ и $\beta_{i + 1} = \frac{1}{\varepsilon_i \beta_i + a_i} + b_i$, $\beta_{k - 1} = \alpha \textrm{ или } \beta_{k-1} = \alpha^{-1}$, где $\beta_1 = 0$
 
             \item Если такие элементы не были найдены, то вернуть ''выберите большие $D_R$ и $M$'' и завершить алгоритм
             
@@ -424,10 +398,7 @@
             0, & m = 0
         \end{cases}.
     \end{equation*}
-    Обозначим
-    \begin{equation*}
-        \Lambda_K = \sup_{m/n \in F_1} |m/n|.
-    \end{equation*}
+    Обозначим $\Lambda_K = \sup_{m/n \in F_1} |m/n|$.
 
 \textbf{Теорема 3.3}\label{theorem:euclidean_and_lambda}
     Если $R$~-- евклидово кольцо относительно нормы $\elementnorm{\cdot}$, то $\Lambda_R \in [0, 1]$.
@@ -463,19 +434,12 @@
 
     Пара $(\ideal{N}, e)$ это публичный ключ $A$, пара $(\ideal{N}, d)$ секретный ключ $A$.
     Функцией шифрования называется
-
     \begin{equation*}
-        \begin{array}{c}
-            f: R/\ideal{N} \to R/\ideal{N},\\
-            f(x) \equiv x^{e} \pmod{\varphi(\ideal{N})}.
-        \end{array}
+        f: R/\ideal{N} \to R/\ideal{N}, f(x) \equiv x^{e} \pmod{\varphi(\ideal{N})}.
     \end{equation*}
     Функцией расшифрования называется
     \begin{equation*}
-        \begin{array}{c}
-            f^{-1}: R/\ideal{N} \to R/\ideal{N},\\
-            f^{-1}(x) \equiv x^{d}\pmod{\varphi(\ideal{N})}.
-        \end{array}
+        f^{-1}: R/\ideal{N} \to R/\ideal{N}, f^{-1}(x) \equiv x^{d}\pmod{\varphi(\ideal{N})}.
     \end{equation*}
 
 \textbf{Замечание 4.1}
