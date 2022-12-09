@@ -50,7 +50,7 @@
         \item Вернуть ''$\ideal{n}$ не простой'' и завершить алгоритм.
     \end{enumerate}
 
-\textbf{Замечания 2.11}
+\textbf{Замечание 2.11}
     Алгоритм~2.1 является вероятностным.
     Если был получен ответ "неизвестно", то можно выполнить алгоритм еще раз.
 
@@ -58,7 +58,7 @@
     Пусть $\ideal{n}$~-- не простой идеал.
     Тогда вероятность ответа "$\ideal{n}$ не простой" у алгоритма~$2.1$ не менее $1/2$.
 
-\textbf{Замечание 2.11}
+\textbf{Замечание 2.12}
     Если $\ideal{n}$~-- составной, то при выполнении алгоритма~$2.1$ $k$ раз вероятность получить ответ ''$\ideal{n}$ не простой'' не меньше $1 - \frac{1}{2^k}$.
 
 % \section{Аналог критерия Миллера}
@@ -176,13 +176,13 @@
     \end{equation*}
 
 \textbf{Определение 3.6}
-    Будем говорить, что $(x_0, \alpha, n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$ \emph{регулярная тройка}, если существуют $p, l \in \mathbb{N}$, $p \le n$ и $l \le p+1$, $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$ для $i = 1, \dots, l-1$, $\varepsilon \in \{0, 1\}$, для которых выполнены следующие условия $\beta_1 = \omega^{(p)}\left(\fr{(\alpha - x_0)^{-1}}\right)$, $\beta_{i+1} = (\varepsilon_i \beta_i + c_i)^{-1} + b_i$, $i = 1, \dots, l-1$, $\beta_{l} = \alpha^{(-1)^{\varepsilon}}$.
+    Будем говорить, что $(x_0, \alpha, n) \in \zeroless{R} \times \zeroless{F_1} \times \mathbb{N}$~-- \emph{регулярная тройка}, если существуют $p, l \in \mathbb{N}$, $p \le n$ и $l \le p+1$, $\varepsilon_i \in \invertible{R}$, $b_i, c_i \in R$ для $i = 1, \dots, l-1$, $\varepsilon \in \{0, 1\}$, для которых выполнены следующие условия $\beta_1 = \omega^{(p)}\left(\fr{(\alpha - x_0)^{-1}}\right)$, $\beta_{i+1} = (\varepsilon_i \beta_i + c_i)^{-1} + b_i$, $i = 1, \dots, l-1$, $\beta_{l} = \alpha^{(-1)^{\varepsilon}}$.
 
 \textbf{Определение 3.7}
     Через $\mathcal{T}$ обозначим множество всех таких факториальных колец $R$, для которых существует $D_R \in \mathbb{N}$, что выполнено 1) для всех $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ тройка $(x_0, \alpha, D_R - 1)$ регулярная; 2) если $D_R \ge 3$, то для любого $k \in [3, D_R] \cap \mathbb{N}$ и любых $x_0 \in \zeroless{R}$, $\alpha \in \zeroless{F_1}$ из равенства $\omega^{(k-2)}(\fr{(\alpha - x_0)^{-1}}) = 0$ следует, что тройка $(x_0, \alpha, k-2)$ регулярная.
 
 \textbf{Определение 3.8}
-    Обозначим $[x_1: x_2: \dots: x_k] = x_{1} + 1/(x_{2} + 1/(x_{3} + 1/(\dots + x_k)))$.
+    Обозначим $[x_1: x_2: \dots: x_k] = x_{1} + 1/(x_{2} + 1/(x_{3} + 1/(\dots + 1/x_k)))$.
     Будем говорить, что для $\alpha \in F$ и $k \in \mathbb{N}$ имеет место $(\alpha, k)$-разрешимость, если разрешимо уравнение $\alpha = [x_1: x_2: \dots: x_k]$.
 
 \textbf{Теорема 3.1}\label{theorem:Kroneker_Vahlen_theorem_in_UFD}
@@ -231,8 +231,6 @@
         
         \item Если $Y(x_0) \subseteq U(x_0)$ для всех $x_0 \in \zeroless{R} \setminus J$, то ответ ''$R \in \mathcal{T}$'', иначе ответ ''неизвестно''
     \end{enumerate}
-
-Докажем корректность этого алгоритма.
 
 \textbf{Предложение 3.1}
     Если алгоритм~$3.1$ вернул ответ ''$R \in \mathcal{T}$'', то $R \in \mathcal{T}$.
